@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vua Tiếng Việt Trung Thu - Cổng Game</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Quicksand:wght@600;700;800&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: radial-gradient(circle at center, #2b0008 0%, #0d0003 100%);
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 20px;
+        }
+        .portal-card {
+            background: rgba(255, 255, 255, 0.06);
+            border: 3px solid #ffd700;
+            border-radius: 28px;
+            padding: 35px 25px;
+            max-width: 480px;
+            width: 100%;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.8), inset 0 0 25px rgba(255,215,0,0.15);
+        }
+        .logo { font-size: 4.5rem; margin-bottom: 10px; animation: float 3s ease-in-out infinite; }
+        @keyframes float { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-8px); } }
+        h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.2rem;
+            color: #ffd700;
+            font-weight: 900;
+            margin-bottom: 8px;
+            text-shadow: 0 0 15px rgba(255,215,0,0.4);
+        }
+        p { color: #ffe6aa; font-size: 1.05rem; margin-bottom: 25px; font-weight: 600; }
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 16px;
+            margin-bottom: 15px;
+            border-radius: 30px;
+            font-size: 1.15rem;
+            font-weight: 800;
+            text-decoration: none;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.2s;
+            cursor: pointer;
+        }
+        .btn-player {
+            background: linear-gradient(135deg, #ffd700, #ffaa00);
+            color: #4a000c;
+            border: 2px solid #fff;
+            box-shadow: 0 8px 25px rgba(255,215,0,0.4);
+        }
+        .btn-player:hover { transform: scale(1.03); }
+        .btn-host {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffd700;
+            border: 2px solid #ffd700;
+        }
+        .btn-host:hover { background: rgba(255, 215, 0, 0.2); }
+    </style>
+</head>
+<body>
+    <div class="portal-card">
+        <div class="logo">🌕</div>
+        <h1>VUA TIẾNG VIỆT TRUNG THU</h1>
+        <p>Đoán chữ đảo ngược rước đèn đêm rằm!</p>
+        
+        <a href="player.html" class="btn btn-player">📱 Vào Màn Hình Người Chơi</a>
+        <a href="host.html" class="btn btn-host">🖥️ Mở Màn Hình MC / Máy Chiếu</a>
+    </div>
+
+    <script>
+        // Tự động chuyển hướng nếu người dùng mở bằng điện thoại
+        const isMobile = /iPhone|iPad|iPod|Android|webOS|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+        if (isMobile) {
+            window.location.replace("player.html");
+        }
+    </script>
+</body>
+</html>
