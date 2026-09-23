@@ -328,8 +328,11 @@
     <div class="ambient-bg"></div>
 
     <div class="network-bar" id="netBar">
-        <div class="network-dot" id="netDot"></div>
-        <span id="netText">Đã kết nối</span>
+        <div style="display:flex; align-items:center; gap:6px;">
+            <div class="network-dot" id="netDot"></div>
+            <span id="netText">Đã kết nối</span>
+        </div>
+        <button id="btnExitRoom" style="display:none; background:rgba(220,20,60,0.25); border:1px solid rgba(255,100,100,0.5); color:#ffd700; font-size:0.75rem; font-weight:800; cursor:pointer; padding:3px 8px; margin-left:8px; border-radius:12px;" onclick="resetProfile()">🚪 Đổi Tên</button>
     </div>
 
     <!-- CARD 1: LOGIN & AVATAR PICKER -->
@@ -487,6 +490,10 @@
             document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
             const target = document.getElementById(cardId);
             if (target) target.classList.add('active');
+            const exitBtn = document.getElementById('btnExitRoom');
+            if (exitBtn) {
+                exitBtn.style.display = (cardId === 'cardLogin') ? 'none' : 'inline-block';
+            }
         }
 
         function setNetworkStatus(online, text) {
@@ -627,10 +634,16 @@
         }
 
         function resetProfile() {
+            if (db && clientId) {
+                db.ref('players/' + clientId).remove().catch(() => {});
+            }
             localStorage.removeItem('tt_player_name');
             localStorage.removeItem('tt_player_avatar');
             document.getElementById('playerNameInput').value = '';
             currentPlayer = null;
+            myTotalScore = 0;
+            currentQIdx = -1;
+            hasSubmittedCurrentQ = false;
             showCard('cardLogin');
         }
 
@@ -735,6 +748,13 @@
             lastStateStatus = data.status;
 
             if (data.status === 'LOBBY') {
+                currentQIdx = -1;
+                hasSubmittedCurrentQ = false;
+                const ansInput = document.getElementById('answerInput');
+                if (ansInput) ansInput.value = '';
+                const btnSubmit = document.getElementById('btnSubmitAnswer');
+                if (btnSubmit) btnSubmit.disabled = false;
+
                 if (currentPlayer) showCard('cardLobby');
                 else showCard('cardLogin');
             } else if (data.status === 'RULES') {
@@ -838,6 +858,18 @@
                 const players = Object.values(pObj);
                 updateLobbyCount(players.length);
                 renderMobileLobbyPlayers(players);
+
+                // Nếu Host đã xóa phòng (WIPE_ALL) hoặc người chơi không còn tồn tại
+                if (currentPlayer && (!snap.exists() || !pObj[clientId])) {
+                    currentPlayer = null;
+                    myTotalScore = 0;
+                    currentQIdx = -1;
+                    hasSubmittedCurrentQ = false;
+                    localStorage.removeItem('tt_player_name');
+                    showCard('cardLogin');
+                    showJoinError("ℹ️ <b>MC đã làm mới phòng chơi!</b><br>Vui lòng nhập tên của bạn để tham gia vòng mới.");
+                    return;
+                }
 
                 // Cập nhật Top 5
                 const sorted = [...players].sort((a, b) => (b.score || 0) - (a.score || 0));
