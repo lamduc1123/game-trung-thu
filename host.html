@@ -168,60 +168,81 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            margin: 15px auto;
+            margin: 10px auto;
             width: 100%;
-            gap: 15px;
+            gap: 12px;
         }
         .qr-card {
             background: #ffffff;
             padding: 16px;
-            border-radius: 24px;
-            border: 4px solid #ffd700;
-            box-shadow: 0 10px 35px rgba(255, 215, 0, 0.4), 0 0 25px rgba(0,0,0,0.6);
+            border-radius: 28px;
+            border: 5px solid #ffd700;
+            box-shadow: 0 15px 45px rgba(255, 215, 0, 0.45), 0 0 35px rgba(0,0,0,0.7);
             display: inline-block;
         }
         #qrContainer {
-            width: 240px;
-            height: 240px;
+            width: 360px;
+            height: 360px;
+            max-width: 85vw;
+            max-height: 85vw;
             margin: 0 auto;
             display: flex;
             justify-content: center;
             align-items: center;
         }
         #qrContainer canvas, #qrContainer img {
-            width: 240px !important;
-            height: 240px !important;
-            border-radius: 8px;
+            width: 360px !important;
+            height: 360px !important;
+            max-width: 85vw !important;
+            max-height: 85vw !important;
+            border-radius: 12px;
             display: block;
         }
 
         .qr-url-text {
-            font-size: 1.15rem;
+            font-size: 1.05rem;
             color: #ffd700;
             font-weight: 800;
-            background: rgba(0,0,0,0.5);
-            padding: 8px 24px;
+            background: rgba(0,0,0,0.55);
+            padding: 6px 18px;
             border-radius: 25px;
             border: 1.5px solid rgba(255,215,0,0.5);
+            max-width: 90vw;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
         }
 
-        .btn-tab {
-            background: rgba(255, 215, 0, 0.15);
+        /* Question Set Selector */
+        .question-set-bar {
+            display: inline-flex;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.5);
             border: 2px solid #ffd700;
+            border-radius: 30px;
+            padding: 5px;
+            gap: 6px;
+        }
+        .btn-qset {
+            background: transparent;
+            border: none;
             color: #ffd700;
-            font-size: 1rem;
+            font-size: 0.95rem;
             font-weight: 800;
             padding: 8px 20px;
             border-radius: 25px;
             cursor: pointer;
             transition: all 0.2s ease;
         }
-        .btn-tab.active {
+        .btn-qset.active {
             background: linear-gradient(135deg, #ffd700, #ffaa00);
             color: #4a000c;
-            box-shadow: 0 0 15px rgba(255, 215, 0, 0.6);
-            border-color: #ffffff;
+            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.5);
         }
+        .btn-qset:hover:not(.active) {
+            background: rgba(255, 215, 0, 0.15);
+        }
+
         .btn-small-gold {
             background: linear-gradient(135deg, #ffd700, #ffaa00);
             color: #4a000c;
@@ -683,41 +704,38 @@
     <div class="screen active" id="screenLobby">
         <div class="lobby-box">
             <div class="lobby-title">🌕 VUA TIẾNG VIỆT TRUNG THU 🏮</div>
-            <p style="font-size: 1.25rem; color: #fff5b7; margin-bottom: 20px; font-weight: 700;">
+            <p style="font-size: 1.15rem; color: #fff5b7; margin-bottom: 12px; font-weight: 700;">
                 QUÉT MÃ QR BẰNG CAMERA ĐIỆN THOẠI ĐỂ THAM GIA ĐOÁN CHỮ!
             </p>
 
-            <div class="qr-section">
-                <!-- Chuyển đổi giữa Wi-Fi nội bộ và 4G/5G Tunnel -->
-                <div style="display:flex; justify-content:center; gap:12px; margin-bottom:12px; flex-wrap:wrap;">
-                    <button class="btn-tab active" id="tabWifi" onclick="selectUrlMode('wifi')">📶 Wi-Fi Nhà / Nội Bộ</button>
-                    <button class="btn-tab" id="tabPublic" onclick="selectUrlMode('public')">🌍 4G / 5G (Internet)</button>
-                </div>
-
-                <div class="qr-card">
-                    <div id="qrContainer">
-                        <div style="color:#666; font-size:0.95rem; font-weight:700; padding:40px 10px;">Đang tạo mã QR...</div>
-                    </div>
-                </div>
-
-                <div style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:8px;">
-                    <div class="qr-url-text" id="qrUrlText" style="cursor:pointer;" onclick="copyUrl()" title="Nhấp để copy link">Đang tải địa chỉ...</div>
-                    <button class="btn-small-gold" onclick="copyUrl()">📋 Copy Link</button>
-                </div>
-
-                <div style="display:flex; justify-content:center; align-items:center; gap:8px; margin-top:10px; flex-wrap:wrap;">
-                    <input type="text" id="customUrlInput" placeholder="Nhập IP/URL tùy chỉnh..." style="padding:8px 16px; border-radius:20px; border:2px solid #ffd700; width:290px; text-align:center; font-weight:800; color:#4a000c; outline:none; background:#fff; font-size:0.95rem;">
-                    <button class="btn-small-gold" onclick="applyCustomUrl()">🔄 Đổi QR</button>
+            <!-- Bộ Chọn Gói Câu Hỏi (Bộ 1 / Bộ 2) -->
+            <div style="display:flex; justify-content:center; margin-bottom: 10px;">
+                <div class="question-set-bar">
+                    <button class="btn-qset active" id="btnQSet1" onclick="switchQuestionSet('set1')">📚 Bộ 1 (Kinh Điển)</button>
+                    <button class="btn-qset" id="btnQSet2" onclick="switchQuestionSet('set2')">📚 Bộ 2 (Mới & Độc Đáo)</button>
                 </div>
             </div>
 
-            <div style="margin: 15px 0;">
+            <div class="qr-section">
+                <div class="qr-card">
+                    <div id="qrContainer">
+                        <div style="color:#666; font-size:1.1rem; font-weight:700; padding:60px 10px;">Đang tạo mã QR...</div>
+                    </div>
+                </div>
+
+                <div style="display:flex; align-items:center; justify-content:center; gap:10px; flex-wrap:wrap; margin-top:2px;">
+                    <div class="qr-url-text" id="qrUrlText" style="cursor:pointer;" onclick="copyUrl()" title="Nhấp để copy link">Đang tải địa chỉ...</div>
+                    <button class="btn-small-gold" onclick="copyUrl()">📋 Copy Link</button>
+                </div>
+            </div>
+
+            <div style="margin: 10px 0 6px 0;">
                 <div class="player-count-badge" id="lobbyPlayerCount">👥 0 NGƯỜI ĐÃ THAM GIA</div>
             </div>
 
             <div class="players-avatar-grid" id="lobbyPlayersGrid"></div>
 
-            <div style="margin-top: 15px; display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
+            <div style="margin-top: 14px; display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
                 <button class="btn-gold" onclick="hostAction('START_GAME')">📜 XEM THỂ LỆ & BẮT ĐẦU</button>
                 <button class="btn-gold-outline" onclick="openResetModal()" title="Cài đặt lại trạng thái phòng chơi">⚙️ Tùy Chọn Reset</button>
             </div>
@@ -857,16 +875,37 @@
     <script src="audio.js"></script>
 
     <script>
-        const QUESTIONS = window.GAME_QUESTIONS || [];
+        let currentSetId = 'set1';
+        let QUESTIONS = (window.QUESTION_SETS && window.QUESTION_SETS[currentSetId]) 
+            ? window.QUESTION_SETS[currentSetId].questions 
+            : (window.GAME_QUESTIONS || []);
+
         let timerInterval = null;
         let timeLeft = 0;
-        let currentState = { status: 'LOBBY', current_q_idx: 0 };
+        let currentState = { status: 'LOBBY', current_q_idx: 0, question_set: 'set1' };
         let currentSubmissionsRef = null;
         let activePlayerUrl = '';
         let prevPlayersCount = 0;
 
         // 1. Khởi tạo Firebase Database
         const db = window.getFirebaseDB ? window.getFirebaseDB() : null;
+
+        function switchQuestionSet(setId) {
+            if (!window.QUESTION_SETS || !window.QUESTION_SETS[setId]) return;
+            currentSetId = setId;
+            QUESTIONS = window.QUESTION_SETS[setId].questions;
+            
+            const btn1 = document.getElementById('btnQSet1');
+            const btn2 = document.getElementById('btnQSet2');
+            if (btn1) btn1.classList.toggle('active', setId === 'set1');
+            if (btn2) btn2.classList.toggle('active', setId === 'set2');
+
+            if (db) {
+                db.ref('game_state').update({
+                    question_set: setId
+                });
+            }
+        }
 
         function showScreen(screenId) {
             document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
@@ -914,20 +953,23 @@
         function renderQRCode(url) {
             if (!url) return;
             activePlayerUrl = url;
-            document.getElementById('qrUrlText').innerText = url;
-            document.getElementById('customUrlInput').value = url;
+            const urlEl = document.getElementById('qrUrlText');
+            if (urlEl) urlEl.innerText = url;
 
             const container = document.getElementById('qrContainer');
             if (!container) return;
 
-            const primaryUrl = `https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=${encodeURIComponent(url)}`;
-            const fallback1 = `https://chart.googleapis.com/chart?cht=qr&chs=240x240&chl=${encodeURIComponent(url)}`;
-            const fallback2 = `https://quickchart.io/qr?size=240&text=${encodeURIComponent(url)}`;
+            // Kích thước 360x360 px (Tăng 150% so với 240px ban đầu)
+            const primaryUrl = `https://api.qrserver.com/v1/create-qr-code/?size=360x360&data=${encodeURIComponent(url)}`;
+            const fallback1 = `https://chart.googleapis.com/chart?cht=qr&chs=360x360&chl=${encodeURIComponent(url)}`;
+            const fallback2 = `https://quickchart.io/qr?size=360&text=${encodeURIComponent(url)}`;
 
             const img = document.createElement('img');
-            img.style.width = '240px';
-            img.style.height = '240px';
-            img.style.borderRadius = '8px';
+            img.style.width = '360px';
+            img.style.height = '360px';
+            img.style.maxWidth = '85vw';
+            img.style.maxHeight = '85vw';
+            img.style.borderRadius = '12px';
             img.style.display = 'block';
             img.style.margin = '0 auto';
             img.alt = 'Mã QR Tham Gia';
@@ -955,14 +997,6 @@
             img.src = primaryUrl;
         }
 
-        function applyCustomUrl() {
-            const val = document.getElementById('customUrlInput').value.trim();
-            if (val) {
-                const target = val.startsWith('http') ? val : `http://${val}`;
-                renderQRCode(target);
-            }
-        }
-
         function copyUrl() {
             if (!activePlayerUrl) return;
             navigator.clipboard.writeText(activePlayerUrl).then(() => {
@@ -973,12 +1007,6 @@
             }).catch(() => {
                 alert("Đã copy: " + activePlayerUrl);
             });
-        }
-
-        function selectUrlMode(mode) {
-            document.getElementById('tabWifi').classList.toggle('active', mode === 'wifi');
-            document.getElementById('tabPublic').classList.toggle('active', mode === 'public');
-            renderQRCode(getPlayerPageUrl());
         }
 
         // ====================================================================
@@ -1005,11 +1033,12 @@
             if (timerInterval) clearInterval(timerInterval);
 
             if (type === 'NEW_ROUND') {
-                // Đưa trạng thái game về LOBBY, câu hỏi 0
+                // Đưa trạng thái game về LOBBY, câu hỏi 0, giữ nguyên gói câu hỏi
                 db.ref('game_state').set({
                     status: 'LOBBY',
                     current_q_idx: 0,
-                    q_start_time: 0
+                    q_start_time: 0,
+                    question_set: currentSetId
                 });
                 // Xóa toàn bộ bài nộp
                 db.ref('submissions').remove();
@@ -1031,7 +1060,8 @@
                 db.ref('game_state').set({
                     status: 'LOBBY',
                     current_q_idx: 0,
-                    q_start_time: 0
+                    q_start_time: 0,
+                    question_set: currentSetId
                 });
                 db.ref('submissions').remove();
                 db.ref('players').remove();
@@ -1123,6 +1153,17 @@
         function handleStateUpdate(data) {
             if (!data) return;
             currentState = data;
+
+            // Đồng bộ gói câu hỏi đang chọn
+            if (data.question_set && data.question_set !== currentSetId && window.QUESTION_SETS && window.QUESTION_SETS[data.question_set]) {
+                currentSetId = data.question_set;
+                QUESTIONS = window.QUESTION_SETS[currentSetId].questions;
+                const btn1 = document.getElementById('btnQSet1');
+                const btn2 = document.getElementById('btnQSet2');
+                if (btn1) btn1.classList.toggle('active', currentSetId === 'set1');
+                if (btn2) btn2.classList.toggle('active', currentSetId === 'set2');
+            }
+
             const qIdx = data.current_q_idx || 0;
             const currentQ = QUESTIONS[qIdx] || QUESTIONS[0];
 
@@ -1312,7 +1353,8 @@
                     db.ref('game_state').set({
                         status: 'LOBBY',
                         current_q_idx: 0,
-                        q_start_time: 0
+                        q_start_time: 0,
+                        question_set: 'set1'
                     });
                 } else {
                     handleStateUpdate(state);

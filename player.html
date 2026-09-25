@@ -445,7 +445,10 @@
     <script src="questions.js"></script>
 
     <script>
-        const QUESTIONS = window.GAME_QUESTIONS || [];
+        let currentSetId = 'set1';
+        let QUESTIONS = (window.QUESTION_SETS && window.QUESTION_SETS[currentSetId]) 
+            ? window.QUESTION_SETS[currentSetId].questions 
+            : (window.GAME_QUESTIONS || []);
         const db = window.getFirebaseDB ? window.getFirebaseDB() : null;
 
         let selectedAvatar = '🐰';
@@ -746,6 +749,12 @@
         function handleStateUpdate(data) {
             if (!data) return;
             lastStateStatus = data.status;
+
+            // Đồng bộ bộ câu hỏi từ Host
+            if (data.question_set && data.question_set !== currentSetId && window.QUESTION_SETS && window.QUESTION_SETS[data.question_set]) {
+                currentSetId = data.question_set;
+                QUESTIONS = window.QUESTION_SETS[currentSetId].questions;
+            }
 
             if (data.status === 'LOBBY') {
                 currentQIdx = -1;
