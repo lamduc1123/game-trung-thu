@@ -251,6 +251,32 @@
             font-weight: 900;
             display: inline-block;
             margin-left: 8px;
+            border: 1.5px solid #ffd700;
+            transition: all 0.2s ease;
+        }
+        .badge-timer-mobile.urgent {
+            background: #b91c1c;
+            animation: timerPulseMobile 0.7s infinite alternate;
+        }
+        @keyframes timerPulseMobile {
+            0% { transform: scale(1); box-shadow: 0 0 10px #ff3300; }
+            100% { transform: scale(1.08); box-shadow: 0 0 20px #ff0000; }
+        }
+
+        .player-timeout-banner {
+            display: none;
+            background: rgba(220, 20, 60, 0.95);
+            border: 2px solid #ffd700;
+            border-radius: 18px;
+            padding: 12px 14px;
+            margin-bottom: 14px;
+            color: #ffffff;
+            font-weight: 800;
+            font-size: 0.95rem;
+            line-height: 1.45;
+            text-align: center;
+            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.5);
+            animation: popIn 0.3s ease-out;
         }
 
         /* Leaderboard item inside player view */
@@ -402,6 +428,12 @@
         <div class="scramble-header-mobile">🔀 CÁC CHỮ CÁI BỊ ĐẢO:</div>
         <div class="scramble-box-mobile" id="scrambleMobile">...</div>
 
+        <!-- Thông báo Hết giờ cho người chơi -->
+        <div class="player-timeout-banner" id="playerTimeOutAlert">
+            <div style="font-size: 1.4rem; margin-bottom: 4px;">⏰ HẾT GIỜ!</div>
+            <div>Đã hết thời gian nộp bài cho câu này.<br>Hãy nhìn lên màn hình lớn để xem đáp án đúng nhé!</div>
+        </div>
+
         <input type="text" class="input-box" id="answerInput" placeholder="GÕ ĐÁP ÁN TIẾNG VIỆT..." autocomplete="off" autocapitalize="characters">
 
         <button class="btn-submit" id="btnSubmitAnswer" onclick="submitAnswer()">🚀 GỬI ĐÁP ÁN</button>
@@ -457,6 +489,10 @@
         let currentQIdx = -1;
         let hasSubmittedCurrentQ = false;
         let lastStateStatus = null;
+        let serverTimeOffset = 0;
+        let playerTimerInterval = null;
+        let playerTimerLastSec = -1;
+        let isTimeExpired = false;
 
         // Định danh duy nhất cho điện thoại (lưu vĩnh viễn trên trình duyệt)
         let clientId = localStorage.getItem('tt_client_id');
@@ -654,7 +690,12 @@
         // NỘP ĐÁP ÁN ĐOÁN CHỮ
         // ====================================================================
         function submitAnswer() {
+            if (isTimeExpired) {
+                alert("⏱️ Đã hết thời gian nộp bài cho câu hỏi này!");
+                return;
+            }
             const input = document.getElementById('answerInput');
+            if (input.disabled) return;
             const ans = input.value.trim();
             if (!ans) return;
 
@@ -710,6 +751,7 @@
                     // Lưu bài nộp vào Firebase
                     return qSubRef.child(clientId).set(subData).then(() => {
                         hasSubmittedCurrentQ = true;
+                        if (playerTimerInterval) clearInterval(playerTimerInterval);
                         const playerRef = db.ref('players/' + clientId);
 
                         if (isCorrect) {
@@ -744,6 +786,78 @@
         });
 
         // ====================================================================
+        // ĐỒNG BỘ BỘ ĐẾM NGƯỢC THỜI GIAN VỚI HOST
+        // ====================================================================
+        function startPlayerQuestionTimer(duration, startTime) {
+            if (playerTimerInterval) clearInterval(playerTimerInterval);
+            playerTimerLastSec = -1;
+            isTimeExpired = false;
+
+            const badge = document.getElementById('qTimerMobile');
+            const ansInput = document.getElementById('answerInput');
+            const btnSubmit = document.getElementById('btnSubmitAnswer');
+            const timeOutAlert = document.getElementById('playerTimeOutAlert');
+
+            if (badge) {
+                badge.classList.remove('urgent');
+            }
+            if (timeOutAlert) {
+                timeOutAlert.style.display = 'none';
+            }
+
+            const validStartTime = (typeof startTime === 'number') ? startTime : Date.now();
+
+            function tickPlayerTimer() {
+                const now = Date.now() + serverTimeOffset;
+                const elapsed = Math.max(0, Math.floor((now - validStartTime) / 1000));
+                const timeLeft = Math.max(0, duration - elapsed);
+
+                if (timeLeft <= 0) {
+                    clearInterval(playerTimerInterval);
+                    isTimeExpired = true;
+
+                    if (badge) {
+                        badge.innerText = `⏱️ HẾT GIỜ!`;
+                        badge.classList.add('urgent');
+                    }
+
+                    // Nếu người chơi chưa kịp nộp bài -> Khóa tính năng nhập & báo hết giờ
+                    if (!hasSubmittedCurrentQ) {
+                        if (ansInput) {
+                            ansInput.disabled = true;
+                            ansInput.placeholder = "ĐÃ HẾT GIỜ NỘP BÀI!";
+                            ansInput.blur();
+                        }
+                        if (btnSubmit) {
+                            btnSubmit.disabled = true;
+                            btnSubmit.innerText = "⏱️ HẾT GIỜ NỘP BÀI";
+                            btnSubmit.style.opacity = '0.6';
+                            btnSubmit.style.cursor = 'not-allowed';
+                        }
+                        if (timeOutAlert) {
+                            timeOutAlert.style.display = 'block';
+                        }
+                        if (navigator.vibrate) {
+                            try { navigator.vibrate([200, 100, 200]); } catch(e){}
+                        }
+                    }
+                } else {
+                    if (badge) {
+                        badge.innerText = `⏱️ ${timeLeft}s`;
+                        if (timeLeft <= 10) {
+                            badge.classList.add('urgent');
+                        } else {
+                            badge.classList.remove('urgent');
+                        }
+                    }
+                }
+            }
+
+            tickPlayerTimer();
+            playerTimerInterval = setInterval(tickPlayerTimer, 250);
+        }
+
+        // ====================================================================
         // ĐỒNG BỘ TRẠNG THÁI GAME TỪ FIREBASE
         // ====================================================================
         function handleStateUpdate(data) {
@@ -757,32 +871,64 @@
             }
 
             if (data.status === 'LOBBY') {
+                if (playerTimerInterval) clearInterval(playerTimerInterval);
                 currentQIdx = -1;
                 hasSubmittedCurrentQ = false;
+                isTimeExpired = false;
+
                 const ansInput = document.getElementById('answerInput');
-                if (ansInput) ansInput.value = '';
+                if (ansInput) {
+                    ansInput.disabled = false;
+                    ansInput.value = '';
+                    ansInput.placeholder = "GÕ ĐÁP ÁN TIẾNG VIỆT...";
+                }
                 const btnSubmit = document.getElementById('btnSubmitAnswer');
-                if (btnSubmit) btnSubmit.disabled = false;
+                if (btnSubmit) {
+                    btnSubmit.disabled = false;
+                    btnSubmit.innerText = "🚀 GỬI ĐÁP ÁN";
+                    btnSubmit.style.opacity = '1';
+                    btnSubmit.style.cursor = 'pointer';
+                }
+                const timeOutAlert = document.getElementById('playerTimeOutAlert');
+                if (timeOutAlert) timeOutAlert.style.display = 'none';
 
                 if (currentPlayer) showCard('cardLobby');
                 else showCard('cardLogin');
             } else if (data.status === 'RULES') {
+                if (playerTimerInterval) clearInterval(playerTimerInterval);
                 showCard('cardRules');
             } else if (data.status === 'QUESTION') {
                 const qIdx = data.current_q_idx || 0;
                 const currentQ = QUESTIONS[qIdx];
+                const duration = data.q_duration || (currentQ ? (currentQ.time || 30) : 30);
 
                 if (currentQIdx !== qIdx) {
                     currentQIdx = qIdx;
                     hasSubmittedCurrentQ = false;
-                    document.getElementById('answerInput').value = '';
-                    document.getElementById('btnSubmitAnswer').disabled = false;
+                    isTimeExpired = false;
+
+                    const ansInput = document.getElementById('answerInput');
+                    if (ansInput) {
+                        ansInput.disabled = false;
+                        ansInput.value = '';
+                        ansInput.placeholder = "GÕ ĐÁP ÁN TIẾNG VIỆT...";
+                    }
+                    const btnSubmit = document.getElementById('btnSubmitAnswer');
+                    if (btnSubmit) {
+                        btnSubmit.disabled = false;
+                        btnSubmit.innerText = "🚀 GỬI ĐÁP ÁN";
+                        btnSubmit.style.opacity = '1';
+                        btnSubmit.style.cursor = 'pointer';
+                    }
+                    const timeOutAlert = document.getElementById('playerTimeOutAlert');
+                    if (timeOutAlert) timeOutAlert.style.display = 'none';
 
                     // Kiểm tra xem người chơi này đã từng nộp câu này chưa (nếu reload trang)
                     if (db) {
                         db.ref('submissions/' + currentQIdx + '/' + clientId).once('value').then(snap => {
                             if (snap.exists()) {
                                 hasSubmittedCurrentQ = true;
+                                if (playerTimerInterval) clearInterval(playerTimerInterval);
                                 const sub = snap.val();
                                 showCard('cardSubmitted');
                                 if (sub.is_correct) {
@@ -801,20 +947,27 @@
 
                 if (!hasSubmittedCurrentQ && currentQ) {
                     document.getElementById('qBadgeMobile').innerText = `CÂU ${currentQ.id} / ${QUESTIONS.length} (${currentQ.words} TỪ)`;
-                    document.getElementById('qTimerMobile').innerText = `⏱️ ${currentQ.time}s`;
                     document.getElementById('scrambleMobile').innerText = currentQ.scrambled;
                     document.getElementById('hintMobile').innerText = '💡 ' + (currentQ.hint || '');
                     showCard('cardQuestion');
+                    startPlayerQuestionTimer(duration, data.q_start_time);
                 }
             } else if (data.status === 'REVEAL') {
+                if (playerTimerInterval) clearInterval(playerTimerInterval);
                 showCard('cardSubmitted');
-                const currentQ = QUESTIONS[data.current_q_idx || currentQIdx];
-                if (currentQ) {
+                const currentQ = QUESTIONS[data.current_q_idx !== undefined ? data.current_q_idx : currentQIdx];
+                if (!hasSubmittedCurrentQ) {
+                    document.getElementById('submittedIcon').innerText = '⏰';
+                    document.getElementById('submittedTitle').innerText = 'HẾT GIỜ!';
+                    document.getElementById('submittedDetailText').innerText = currentQ ? `ĐÁP ÁN: ${currentQ.answer}` : 'Đã hết giờ nộp bài';
+                } else if (currentQ) {
                     document.getElementById('submittedDetailText').innerText = `ĐÁP ÁN: ${currentQ.answer}`;
                 }
             } else if (data.status === 'LEADERBOARD') {
+                if (playerTimerInterval) clearInterval(playerTimerInterval);
                 showCard('cardLeaderboard');
             } else if (data.status === 'FINALE') {
+                if (playerTimerInterval) clearInterval(playerTimerInterval);
                 document.getElementById('finaleMyScore').innerText = `TỔNG ĐIỂM CỦA BẠN: ${myTotalScore}`;
                 showCard('cardFinale');
             }
@@ -853,6 +1006,11 @@
                 } else {
                     setNetworkStatus(false, "Đang kết nối lại...");
                 }
+            });
+
+            // Đồng bộ độ lệch thời gian với server Firebase
+            db.ref('.info/serverTimeOffset').on('value', snap => {
+                serverTimeOffset = snap.val() || 0;
             });
 
             // Lắng nghe thay đổi trạng thái Game

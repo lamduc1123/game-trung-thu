@@ -1071,6 +1071,9 @@
         // ====================================================================
         // FIREBASE REALTIME GAME LOGIC
         // ====================================================================
+        let serverTimeOffset = 0;
+        let hostTimerLastSec = -1;
+
         function hostAction(action) {
             if (!db) {
                 alert("⚠️ Vui lòng dán cấu hình Firebase của bạn vào file firebase-config.js!");
@@ -1080,18 +1083,24 @@
             if (action === 'START_GAME') {
                 db.ref('game_state').update({ status: 'RULES' });
             } else if (action === 'START_QUESTIONS') {
+                const currentQ = QUESTIONS[0] || QUESTIONS[0];
+                const qDuration = (currentQ && currentQ.time) ? currentQ.time : 30;
                 db.ref('game_state').update({
                     status: 'QUESTION',
                     current_q_idx: 0,
-                    q_start_time: Date.now()
+                    q_start_time: firebase.database.ServerValue.TIMESTAMP,
+                    q_duration: qDuration
                 });
             } else if (action === 'NEXT_QUESTION') {
                 const nextIdx = (currentState.current_q_idx || 0) + 1;
                 if (nextIdx < QUESTIONS.length) {
+                    const currentQ = QUESTIONS[nextIdx];
+                    const qDuration = (currentQ && currentQ.time) ? currentQ.time : 30;
                     db.ref('game_state').update({
                         status: 'QUESTION',
                         current_q_idx: nextIdx,
-                        q_start_time: Date.now()
+                        q_start_time: firebase.database.ServerValue.TIMESTAMP,
+                        q_duration: qDuration
                     });
                 } else {
                     db.ref('game_state').update({ status: 'FINALE' });
@@ -1107,15 +1116,19 @@
             }
         }
 
-        function startQuestionTimer(duration) {
+        function startQuestionTimer(duration, startTime) {
             if (timerInterval) clearInterval(timerInterval);
-            timeLeft = duration;
+            hostTimerLastSec = -1;
             const badge = document.getElementById('qTimerBadge');
-            badge.innerText = `⏱️ ${timeLeft}s`;
             badge.classList.remove('urgent');
 
-            timerInterval = setInterval(() => {
-                timeLeft--;
+            const validStartTime = (typeof startTime === 'number') ? startTime : Date.now();
+
+            function tickHostTimer() {
+                const now = Date.now() + serverTimeOffset;
+                const elapsed = Math.max(0, Math.floor((now - validStartTime) / 1000));
+                const timeLeft = Math.max(0, duration - elapsed);
+
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
                     badge.innerText = `⏱️ HẾT GIỜ!`;
@@ -1126,12 +1139,18 @@
                     const isUrgent = (timeLeft <= 10);
                     if (isUrgent) {
                         badge.classList.add('urgent');
-                        if (window.soundEngine) window.soundEngine.playTick(true);
                     } else {
-                        if (window.soundEngine) window.soundEngine.playTick(false);
+                        badge.classList.remove('urgent');
+                    }
+                    if (timeLeft !== hostTimerLastSec) {
+                        hostTimerLastSec = timeLeft;
+                        if (window.soundEngine) window.soundEngine.playTick(isUrgent);
                     }
                 }
-            }, 1000);
+            }
+
+            tickHostTimer();
+            timerInterval = setInterval(tickHostTimer, 250);
         }
 
         function renderLobbyPlayers(players, totalCount) {
@@ -1176,8 +1195,8 @@
                 if (currentQ) {
                     document.getElementById('qBadgeTitle').innerText = `CÂU HỎI ${currentQ.id} / ${QUESTIONS.length} (${currentQ.words} TỪ)`;
                     document.getElementById('qScrambleText').innerText = currentQ.scrambled;
-                    document.getElementById('qHintText').innerText = `💡 Gợi ý: ${currentQ.hint || ''}`;
-                    startQuestionTimer(currentQ.time || 30);
+                    const duration = data.q_duration || (currentQ ? (currentQ.time || 30) : 30);
+                    startQuestionTimer(duration, data.q_start_time);
                 }
                 listenSubmissions(qIdx);
             } else if (data.status === 'REVEAL') {
@@ -1345,6 +1364,11 @@
         renderQRCode(getPlayerPageUrl());
 
         if (db) {
+            // Đồng bộ độ lệch thời gian với server Firebase
+            db.ref('.info/serverTimeOffset').on('value', snap => {
+                serverTimeOffset = snap.val() || 0;
+            });
+
             // Lắng nghe trạng thái game
             db.ref('game_state').on('value', snap => {
                 const state = snap.val();
