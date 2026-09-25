@@ -750,10 +750,10 @@
                 <b>1. Hình thức:</b> Màn hình lớn hiển thị các chữ cái bị đảo lộn ngẫu nhiên. Người chơi sử dụng điện thoại để sắp xếp thành cụm từ Tiếng Việt hoàn chỉnh có nghĩa.
             </div>
             <div class="rule-item">
-                <b>2. Thời gian:</b> Câu 1 đến Câu 11 có <b>30 giây</b> đếm ngược. Câu 12 đến 15 (câu khó nhiều từ) có <b>60 giây</b> đếm ngược.
+                <b>2. Thời gian:</b> Mỗi câu hỏi có tối đa <b>60 giây</b> đếm ngược. Khi mọi người chơi đã nộp bài xong, MC có thể bấm mở đáp án sớm bất kỳ lúc nào để chuyển câu tiếp theo.
             </div>
             <div class="rule-item">
-                <b>3. Tính điểm tốc độ:</b> Trả lời ĐÚNG nhận <b>100 điểm gốc</b>. Người trả lời đúng nhanh nhất nhận điểm thưởng tốc độ tối đa (Top 1: +50đ, Top 2: +48đ, Top 3: +46đ...).
+                <b>3. Tính điểm thời gian thực:</b> Trả lời ĐÚNG nhận <b>100 điểm gốc</b> + <b>Điểm thời gian tối đa 50đ</b> tính theo từng khắc (mili-giây): <code>50 × (Thời gian còn lại / 60s)</code>. Nộp càng nhanh điểm càng cao!
             </div>
 
             <div class="prize-highlight">
@@ -771,7 +771,7 @@
         <div class="q-app-container">
             <div class="top-bar-q">
                 <div class="q-badge" id="qBadgeTitle">CÂU HỎI 1 / 15 (3 TỪ)</div>
-                <div class="timer-badge" id="qTimerBadge">⏱️ 30s</div>
+                <div class="timer-badge" id="qTimerBadge">⏱️ 60s</div>
             </div>
 
             <div class="hint-box" id="qHintText">
@@ -1084,7 +1084,7 @@
                 db.ref('game_state').update({ status: 'RULES' });
             } else if (action === 'START_QUESTIONS') {
                 const currentQ = QUESTIONS[0] || QUESTIONS[0];
-                const qDuration = (currentQ && currentQ.time) ? currentQ.time : 30;
+                const qDuration = (currentQ && currentQ.time) ? currentQ.time : 60;
                 db.ref('game_state').update({
                     status: 'QUESTION',
                     current_q_idx: 0,
@@ -1095,7 +1095,7 @@
                 const nextIdx = (currentState.current_q_idx || 0) + 1;
                 if (nextIdx < QUESTIONS.length) {
                     const currentQ = QUESTIONS[nextIdx];
-                    const qDuration = (currentQ && currentQ.time) ? currentQ.time : 30;
+                    const qDuration = (currentQ && currentQ.time) ? currentQ.time : 60;
                     db.ref('game_state').update({
                         status: 'QUESTION',
                         current_q_idx: nextIdx,

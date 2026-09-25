@@ -409,10 +409,10 @@
         <div style="font-size: 3.5rem; margin-bottom: 8px;">📜</div>
         <div class="header-title">THỂ LỆ TRÒ CHƠI</div>
         <div class="badge-status">TOP 5 NHẬN THƯỞNG 100K</div>
-        <p style="font-size: 1rem; line-height: 1.6; color: #fff8e7; margin-top: 10px; text-align: left;">
-            1. MC đọc câu hỏi và hiển thị các chữ cái đảo lộn.<br>
-            2. Gõ câu trả lời chính xác trên điện thoại và gửi sớm nhất.<br>
-            3. Đúng nhận <b>100đ</b> + Điểm thưởng tốc độ cực cao cho người nộp bài đầu tiên!
+        <p style="font-size: 0.95rem; line-height: 1.6; color: #fff8e7; margin-top: 10px; text-align: left;">
+            1. MC mở câu hỏi với các chữ cái bị đảo lộn (thời gian tối đa <b>60 giây</b>).<br>
+            2. Gõ đáp án Tiếng Việt trên điện thoại và gửi càng sớm càng tốt.<br>
+            3. Đúng nhận <b>100đ gốc</b> + <b>Điểm thời gian tối đa 50đ</b> tính theo mili-giây: <code>50 × (Thời gian còn lại / 60s)</code>!
         </p>
     </div>
 
@@ -420,7 +420,7 @@
     <div class="card" id="cardQuestion">
         <div>
             <span class="badge-status" id="qBadgeMobile">CÂU 1 / 15</span>
-            <span class="badge-timer-mobile" id="qTimerMobile">⏱️ 30s</span>
+            <span class="badge-timer-mobile" id="qTimerMobile">⏱️ 60s</span>
         </div>
 
         <div class="hint-box-mobile" id="hintMobile">Gợi ý câu hỏi sẽ hiện tại đây</div>
@@ -493,6 +493,8 @@
         let playerTimerInterval = null;
         let playerTimerLastSec = -1;
         let isTimeExpired = false;
+        let currentQStartTime = 0;
+        let currentQDuration = 60;
 
         // Định danh duy nhất cho điện thoại (lưu vĩnh viễn trên trình duyệt)
         let clientId = localStorage.getItem('tt_client_id');
@@ -733,9 +735,21 @@
                     const allSubs = allSubsSnap.val() || {};
                     const correctSubs = Object.values(allSubs).filter(s => s.is_correct);
                     const order = isCorrect ? (correctSubs.length + 1) : 0;
-                    // Điểm thưởng tốc độ: Top 1 +50đ, Top 2 +48đ, Top 3 +46đ... tối thiểu +2đ
-                    const speedBonus = isCorrect ? Math.max(2, 52 - (order * 2)) : 0;
+
+                    // Tính điểm thời gian thực theo từng khắc (mili-giây):
+                    // Hệ số thời gian = T_còn_lại / Tổng_thời_gian (mặc định 60s = 60.000ms)
+                    // Điểm thưởng = 50 * Hệ số
+                    const now = Date.now() + serverTimeOffset;
+                    const startTime = (typeof currentQStartTime === 'number' && currentQStartTime > 0) ? currentQStartTime : now;
+                    const totalSec = currentQDuration || (currentQ.time || 60);
+                    const totalMs = totalSec * 1000;
+                    const elapsedMs = Math.max(0, now - startTime);
+                    const remainingMs = Math.max(0, totalMs - elapsedMs);
+                    const timeRatio = Math.min(1, Math.max(0, remainingMs / totalMs));
+                    const exactBonus = 50 * timeRatio;
+                    const speedBonus = isCorrect ? Math.round(exactBonus) : 0;
                     const points = isCorrect ? (100 + speedBonus) : 0;
+                    const elapsedSecStr = (elapsedMs / 1000).toFixed(1);
 
                     const subData = {
                         client_id: clientId,
@@ -744,6 +758,8 @@
                         answer: ans,
                         is_correct: isCorrect,
                         points: points,
+                        speed_bonus: speedBonus,
+                        elapsed_sec: +(elapsedSecStr),
                         order: order,
                         submitted_at: firebase.database.ServerValue.TIMESTAMP
                     };
@@ -761,7 +777,7 @@
 
                             document.getElementById('submittedIcon').innerText = '🎉';
                             document.getElementById('submittedTitle').innerText = 'CHÍNH XÁC!';
-                            document.getElementById('submittedDetailText').innerText = `+${points}đ (Tốc độ thứ #${order})`;
+                            document.getElementById('submittedDetailText').innerText = `+${points}đ (Phản xạ: ${elapsedSecStr}s | Thưởng tốc độ: +${speedBonus}đ)`;
                         } else {
                             playerRef.child('answers/' + currentQIdx).set(subData);
 
@@ -900,7 +916,10 @@
             } else if (data.status === 'QUESTION') {
                 const qIdx = data.current_q_idx || 0;
                 const currentQ = QUESTIONS[qIdx];
-                const duration = data.q_duration || (currentQ ? (currentQ.time || 30) : 30);
+                const duration = data.q_duration || (currentQ ? (currentQ.time || 60) : 60);
+
+                currentQStartTime = (typeof data.q_start_time === 'number') ? data.q_start_time : Date.now();
+                currentQDuration = duration;
 
                 if (currentQIdx !== qIdx) {
                     currentQIdx = qIdx;
@@ -934,7 +953,9 @@
                                 if (sub.is_correct) {
                                     document.getElementById('submittedIcon').innerText = '🎉';
                                     document.getElementById('submittedTitle').innerText = 'CHÍNH XÁC!';
-                                    document.getElementById('submittedDetailText').innerText = `+${sub.points}đ (Tốc độ thứ #${sub.order})`;
+                                    const bonusText = sub.speed_bonus !== undefined ? ` | Thưởng tốc độ: +${sub.speed_bonus}đ` : '';
+                                    const timeText = sub.elapsed_sec !== undefined ? `Phản xạ: ${sub.elapsed_sec}s` : `Tốc độ thứ #${sub.order}`;
+                                    document.getElementById('submittedDetailText').innerText = `+${sub.points}đ (${timeText}${bonusText})`;
                                 } else {
                                     document.getElementById('submittedIcon').innerText = '❌';
                                     document.getElementById('submittedTitle').innerText = 'CHƯA CHÍNH XÁC';

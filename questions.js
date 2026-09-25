@@ -12,7 +12,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "g / o / n / đ / s / è / n / ô / a",
         "hint": "Món đồ chơi Trung Thu truyền thống 5 cánh bằng giấy bóng kính màu đỏ tươi rực rỡ.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 2,
@@ -20,7 +20,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "n / ẻ / b / h / á / o / d",
         "hint": "Món bánh Trung Thu vỏ màu trắng mịn làm từ bột nếp thơm nức hương hoa bưởi.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 3,
@@ -28,7 +28,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "g / h / c / n / ọ / t / ỏ",
         "hint": "Linh vật nhỏ nhắn tinh nghịch, cần mẫn giã thuốc tiên trên Cung Trăng.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 4,
@@ -36,7 +36,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "ằ / g / ị / n / h / h / c",
         "hint": "Tiên nữ xinh đẹp sống trên Cung Trăng, người bạn thân thiết của thiếu nhi mỗi dịp Rằm tháng Tám.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 5,
@@ -44,7 +44,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "g / è / l / n / đ / ồ / n",
         "hint": "Món đồ chơi thắp nến lung linh các bé cầm đi rước khắp xóm làng đêm Trung Thu.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 6,
@@ -52,7 +52,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "đ / g / ị / a / ô / n",
         "hint": "Nhân vật bụng phệ cầm quạt giấy vui nhộn luôn đi cùng đoàn Múa Lân.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 7,
@@ -60,7 +60,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "h / i / n / r / g / ù / t / n / h / r / i / n",
         "hint": "Từ mô phỏng tiếng trống rước đèn quen thuộc thiếu nhi nào cũng thuộc bài hát.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 8,
@@ -68,7 +68,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "ư / n / á / g / h / ớ / b / n / n",
         "hint": "Món bánh Trung Thu truyền thống vỏ màu vàng óng, nhân thập cẩm hoặc đậu xanh thơm ngon.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 9,
@@ -76,7 +76,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "â / l / m / ú / n / a",
         "hint": "Màn biểu diễn rộn ràng tiếng trống mang lại may mắn tưng bừng khắp phố phường.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 10,
@@ -84,7 +84,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "ò / n / r / ă / g / t / n / r / t",
         "hint": "Đĩa bạc lung linh tỏa sáng rạng rỡ khắp làng xóm đêm Trung Thu.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 11,
@@ -92,7 +92,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "ỗ / p / á / c / h",
         "hint": "Hoạt động vui nhất khi trăng lên đỉnh đầu, cả nhà cùng vây quanh ăn bánh trái.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 12,
@@ -139,7 +139,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "ấ / n / m / y / ặ / t / g / i / a",
         "hint": "Món đồ chơi dân gian bồi bằng giấy vẽ hình chú Tễu, đầu Lân ngộ nghĩnh các bạn nhỏ đeo đi rước đèn.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 2,
@@ -147,7 +147,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "g / u / r / n / c / ă / g / t / n",
         "hint": "Nơi chốn thần tiên huyền ảo trên bầu trời đêm trong các câu chuyện cổ tích dân gian.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 3,
@@ -155,7 +155,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "m / ũ / g / â / ả / q / n / m / u",
         "hint": "Bàn quả gồm 5 loại trái cây mùa thu được bày biện trang trọng để dâng cúng tổ tiên và phá cỗ.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 4,
@@ -163,7 +163,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "g / ú / r / m / ồ / a / n",
         "hint": "Màn biểu diễn dân gian công phu với thân hình uốn lượn uyển chuyển, thường xuất hiện cùng múa lân.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 5,
@@ -171,7 +171,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "o / è / u / k / đ / â / n / n / é / q",
         "hint": "Chiếc đèn lồng cổ truyền kỳ diệu, khi thắp nến thì bóng các hình ảnh bên trong tự động quay tròn.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 6,
@@ -179,7 +179,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "é / c / đ / h / è / p / á / n / c",
         "hint": "Chiếc đèn mang hình ảnh loài vật vượt vũ môn hóa rồng, gửi gắm ước mơ học hành đỗ đạt.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 7,
@@ -187,7 +187,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "h / ố / t / c / r / ế / g / n",
         "hint": "Món đồ chơi âm nhạc gõ tay cầm nhỏ nhắn, tạo nên âm thanh cắc tùng rộn rã gắn liền với tuổi thơ.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 8,
@@ -195,7 +195,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "ử / đ / u / s / ầ / t / ư",
         "hint": "Chiếc mũ hóa trang rực rỡ sắc màu có đôi mắt chớp chớp dùng trong các bài múa dân gian náo nhiệt.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 9,
@@ -203,7 +203,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "u / h / n / đ / x / ậ / n / h / a / â / n",
         "hint": "Vị nhân bánh Trung Thu truyền thống thơm bùi, ngọt thanh và được nhiều thế hệ yêu thích nhất.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 10,
@@ -211,7 +211,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "o / n / b / e / h / á / h / o / c / n",
         "hint": "Chiếc bánh nướng nhỏ xíu ngộ nghĩnh hình gia đình ủn ỉn, thường được đặt trong chiếc rọ tre xinh xắn.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 11,
@@ -219,7 +219,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "m / á / t / ằ / g / t / h / á / r / n / m",
         "hint": "Ngày trăng sáng và tròn nhất mùa thu theo âm lịch hàng năm.",
-        "time": 30
+        "time": 60
       },
       {
         "id": 12,
