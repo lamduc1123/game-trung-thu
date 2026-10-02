@@ -431,7 +431,7 @@
     <div class="card" id="cardRules">
         <div style="font-size: 3.5rem; margin-bottom: 8px;">🎯</div>
         <div class="header-title">LUẬT CHƠI SĂN TALENT</div>
-        <div class="badge-status">TOP 5 CHIẾN THẦN NHẬN THƯỞNG 100K</div>
+        <div class="badge-status">TOP 6 CHIẾN THẦN NHẬN THƯỞNG 100K</div>
         <p style="font-size: 0.95rem; line-height: 1.6; color: #f8fafc; margin-top: 10px; text-align: left; font-weight: 700;">
             1. MC mở từ khóa nghề nghiệp / tuyển dụng bị đảo lộn (thời gian tối đa <b>50 giây</b>).<br>
             2. Gõ đáp án Tiếng Việt có dấu trên điện thoại và bấm gửi càng nhanh càng tốt.<br>
@@ -468,7 +468,7 @@
         <div class="header-title" id="submittedTitle">ĐÃ GỬI BÀI!</div>
         <div class="badge-status" id="submittedDetailText">Nộp bài thành công!</div>
         <p style="font-size: 1rem; line-height: 1.6; color: #cbd5e1; margin-top: 15px; font-weight: 700;">
-            Hãy theo dõi màn hình máy chiếu để xem đáp án & Bảng xếp hạng Top 5!
+            Hãy theo dõi màn hình máy chiếu để xem đáp án & Bảng xếp hạng Top 6!
         </p>
         <div class="badge-score" id="myCurrentScore">ĐIỂM: 0</div>
     </div>
@@ -476,7 +476,7 @@
     <!-- CARD 6: LEADERBOARD SCREEN -->
     <div class="card" id="cardLeaderboard">
         <div style="font-size: 3.2rem; margin-bottom: 8px;">📊</div>
-        <div class="header-title">BẢNG XẾP HẠNG TOP TALENT</div>
+        <div class="header-title">BẢNG XẾP HẠNG TOP 6</div>
         <div id="leaderboardList" style="margin: 15px 0;"></div>
         <div class="badge-score" id="lbMyScore">ĐIỂM CỦA BẠN: 0</div>
     </div>
@@ -1022,13 +1022,13 @@
             }
         }
 
-        function renderLeaderboard(top5) {
+        function renderLeaderboard(top6) {
             const container = document.getElementById('leaderboardList');
             if (!container) return;
             container.innerHTML = '';
             document.getElementById('lbMyScore').innerText = `ĐIỂM CỦA BẠN: ${myTotalScore}`;
 
-            top5.forEach((p, idx) => {
+            top6.forEach((p, idx) => {
                 const isMe = (p.id === clientId || p.client_id === clientId);
                 const item = document.createElement('div');
                 item.className = 'lb-mini-item' + (isMe ? ' me' : '');
@@ -1087,9 +1087,9 @@
                     return;
                 }
 
-                // Cập nhật Top 5
+                // Cập nhật Top 6
                 const sorted = [...players].sort((a, b) => (b.score || 0) - (a.score || 0));
-                renderLeaderboard(sorted.slice(0, 5));
+                renderLeaderboard(sorted.slice(0, 6));
             });
 
             // Tự động vào phòng nếu đã có tên lưu trong máy
