@@ -763,7 +763,7 @@
             </div>
 
             <div class="hint-box" id="qHintText">
-                💡 Gợi ý: Món đồ chơi Trung Thu truyền thống 5 cánh bằng giấy bóng kính màu đỏ.
+                💡 Gợi ý câu hỏi sẽ hiện tại đây
             </div>
 
             <div class="scramble-box">
@@ -1186,8 +1186,10 @@
                 showScreen('screenQuestion');
                 if (currentQ) {
                     document.getElementById('qBadgeTitle').innerText = `CÂU HỎI ${currentQ.id} / ${QUESTIONS.length} (${currentQ.words} TỪ)`;
+                    const hintEl = document.getElementById('qHintText');
+                    if (hintEl) hintEl.innerText = `💡 Gợi ý: ${currentQ.hint || ''}`;
                     document.getElementById('qScrambleText').innerText = currentQ.scrambled;
-                    const duration = data.q_duration || (currentQ ? (currentQ.time || 30) : 30);
+                    const duration = data.q_duration || (currentQ ? (currentQ.time || 50) : 50);
                     startQuestionTimer(duration, data.q_start_time);
                 }
                 listenSubmissions(qIdx);
