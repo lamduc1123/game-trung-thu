@@ -254,8 +254,135 @@ window.QUESTION_SETS = {
         "time": 60
       }
     ]
+  },
+
+  set3: {
+    id: "set3",
+    name: "Bộ 3: HR / Headhunt",
+    questions: [
+      {
+        "id": 1,
+        "answer": "ỨNG VIÊN",
+        "words": 2,
+        "scrambled": "v / i / n / g / ê / ứ / n",
+        "hint": "Người nộp hồ sơ và tham gia vào quy trình thi tuyển của công ty.",
+        "time": 60
+      },
+      {
+        "id": 2,
+        "answer": "PHỎNG VẤN",
+        "words": 2,
+        "scrambled": "n / g / h / p / v / ỏ / ấ / n",
+        "hint": "Vòng đối thoại trực tiếp hoặc online để HR và ứng viên tìm hiểu, đánh giá mức độ phù hợp.",
+        "time": 60
+      },
+      {
+        "id": 3,
+        "answer": "THỬ VIỆC",
+        "words": 2,
+        "scrambled": "ệ / h / t / ứ / v / c / i",
+        "hint": "Giai đoạn thường kéo dài 2 tháng để cả hai bên kiểm chứng năng lực và văn hóa trước khi ký chính thức.",
+        "time": 60
+      },
+      {
+        "id": 4,
+        "answer": "SĂN ĐẦU NGƯỜI",
+        "words": 3,
+        "scrambled": "ư / đ / s / g / ầ / n / u / n / ă / i / ờ",
+        "hint": "Thuật ngữ dân dã nhưng quen thuộc chỉ nghề Headhunter - chuyên tìm kiếm nhân tài cấp cao.",
+        "time": 60
+      },
+      {
+        "id": 5,
+        "answer": "THỎA THUẬN LƯƠNG",
+        "words": 3,
+        "scrambled": "u / h / l / ỏ / n / t / ậ / a / ư / h / ơ / t / g / n",
+        "hint": "Bước đàm phán quan trọng về thu nhập và phúc lợi trước khi chốt hợp đồng (hay gọi vui là \"deal lương\").",
+        "time": 60
+      },
+      {
+        "id": 6,
+        "answer": "LƯƠNG THƯỞNG",
+        "words": 2,
+        "scrambled": "g / ư / t / ơ / h / n / l / ở / ư / g / n",
+        "hint": "Yếu tố then chốt tạo động lực làm việc và giữ chân nhân tài cống hiến cho công ty.",
+        "time": 60
+      },
+      {
+        "id": 7,
+        "answer": "NGUỒN NHÂN LỰC",
+        "words": 3,
+        "scrambled": "n / ồ / c / â / n / u / h / ự / l / g / n / n",
+        "hint": "Toàn bộ lực lượng lao động quý giá tạo nên sức mạnh nội tại của doanh nghiệp (viết tắt là HR).",
+        "time": 60
+      },
+      {
+        "id": 8,
+        "answer": "TRÚNG TUYỂN",
+        "words": 2,
+        "scrambled": "n / ú / y / t / g / ể / r / u / n / t",
+        "hint": "Kết quả ngọt ngào mà bất kỳ ứng viên nào cũng mong ngóng nhận được qua email sau khi phỏng vấn.",
+        "time": 60
+      },
+      {
+        "id": 9,
+        "answer": "VĂN HÓA DOANH NGHIỆP",
+        "words": 4,
+        "scrambled": "ă / d / n / ó / h / p / a / v / o / h / ệ / g / h / a / i / n / n",
+        "hint": "Tập hợp các giá trị, niềm tin và phong cách làm việc chung gắn kết mọi thành viên trong công ty.",
+        "time": 60
+      },
+      {
+        "id": 10,
+        "answer": "THƯ MỜI NHẬN VIỆC",
+        "words": 4,
+        "scrambled": "i / ệ / h / ờ / n / ư / v / m / ậ / t / h / i / c / n",
+        "hint": "Bản thông báo chính thức (Offer letter) ghi rõ mức lương, ngày bắt đầu và chế độ quyền lợi.",
+        "time": 60
+      },
+      {
+        "id": 11,
+        "answer": "NGÀY ĐẦU ĐI LÀM",
+        "words": 4,
+        "scrambled": "y / đ / à / u / l / n / đ / m / g / ầ / i / à",
+        "hint": "Ngày đầu tiên bước chân vào môi trường mới (Onboarding), vừa háo hức vừa nhiều bỡ ngỡ.",
+        "time": 60
+      },
+      {
+        "id": 12,
+        "answer": "GIỮ CHÂN NHÂN TÀI",
+        "words": 4,
+        "scrambled": "â / h / g / i / n / c / à / n / ữ / t / i / â / h / n",
+        "hint": "Bài toán chiến lược hàng đầu của các HR Manager và ban lãnh đạo công ty.",
+        "time": 60
+      },
+      {
+        "id": 13,
+        "answer": "ĐÚNG NGƯỜI ĐÚNG VIỆC",
+        "words": 4,
+        "scrambled": "ú / đ / n / g / i / ờ / v / đ / n / ệ / g / ú / c / n / ư / g / i",
+        "hint": "Nguyên tắc vàng trong tuyển dụng và bổ nhiệm nhân sự để phát huy tối đa thế mạnh của mỗi người.",
+        "time": 60
+      },
+      {
+        "id": 14,
+        "answer": "BẢO HIỂM XÃ HỘI",
+        "words": 4,
+        "scrambled": "h / ả / i / x / m / o / ã / b / ộ / h / ể / i",
+        "hint": "Chế độ an sinh bắt buộc và quan trọng bậc nhất mà HR phải đăng ký đầy đủ cho người lao động.",
+        "time": 60
+      },
+      {
+        "id": 15,
+        "answer": "MÔI TRƯỜNG LÀM VIỆC",
+        "words": 4,
+        "scrambled": "ờ / i / m / à / g / v / ư / c / t / n / ô / r / i / m / ệ / l",
+        "hint": "Không gian và bầu không khí làm việc năng động, tích cực giúp nhân viên gắn bó lâu dài.",
+        "time": 60
+      }
+    ]
   }
 };
 
-// Mặc định ban đầu là Bộ 1
-window.GAME_QUESTIONS = window.QUESTION_SETS.set1.questions;
+// Mặc định ban đầu là Bộ 3 HR / Headhunt
+window.GAME_QUESTIONS = window.QUESTION_SETS.set3.questions;

@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Vua Tiếng Việt Trung Thu - Người Chơi</title>
+    <title>Vua Tiếng Việt - Phiên Bản HR & Headhunt</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap');
 
@@ -19,8 +19,12 @@
         }
 
         body {
-            background: radial-gradient(circle at 50% 30%, #a3081e 0%, #61000f 55%, #2a0006 100%);
-            color: #fff;
+            background-color: #0b0f19;
+            background-image: 
+                radial-gradient(#1e293b 2px, transparent 2px),
+                radial-gradient(circle at 50% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 60%);
+            background-size: 24px 24px, 100% 100%;
+            color: #f8fafc;
             min-height: 100vh;
             min-height: -webkit-fill-available;
             display: flex;
@@ -28,36 +32,23 @@
             align-items: center;
             justify-content: center;
             padding: 16px;
-            padding-top: calc(env(safe-area-inset-top, 16px) + 10px);
-            padding-bottom: calc(env(safe-area-inset-bottom, 16px) + 10px);
+            padding-top: calc(env(safe-area-inset-top, 16px) + 12px);
+            padding-bottom: calc(env(safe-area-inset-bottom, 16px) + 12px);
             position: relative;
             overflow-x: hidden;
-        }
-
-        .ambient-bg {
-            position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background-image:
-                radial-gradient(2px 2px at 20px 30px, #ffd700, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 70px 80px, #ffffff, rgba(0,0,0,0)),
-                radial-gradient(2px 2px at 150px 140px, #ffd700, rgba(0,0,0,0));
-            background-repeat: repeat;
-            background-size: 160px 160px;
-            opacity: 0.35;
-            pointer-events: none;
-            z-index: 1;
         }
 
         /* Status Pill */
         .network-bar {
             position: fixed;
-            top: env(safe-area-inset-top, 8px);
-            font-size: 0.75rem;
+            top: env(safe-area-inset-top, 10px);
+            font-size: 0.78rem;
             font-weight: 800;
-            padding: 4px 12px;
+            padding: 6px 14px;
             border-radius: 20px;
-            background: rgba(0,0,0,0.6);
-            border: 1px solid rgba(255,215,0,0.4);
+            background: #1e293b;
+            border: 2.5px solid #000000;
+            box-shadow: 2px 2px 0px #000000;
             color: #4ade80;
             z-index: 100;
             display: flex;
@@ -76,51 +67,55 @@
             box-shadow: 0 0 8px #ef4444;
         }
 
-        /* CARDS CONTAINER */
+        /* CARDS CONTAINER - 2D GRAPHIC COMIC STYLE */
         .card {
-            background: rgba(45, 2, 9, 0.94);
-            border: 3px solid #ffd700;
+            background: #1e293b;
+            border: 3.5px solid #000000;
             border-radius: 24px;
-            padding: 26px 20px;
+            padding: 24px 18px;
             width: 100%;
             max-width: 440px;
             text-align: center;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.8);
-            backdrop-filter: blur(10px);
+            box-shadow: 6px 6px 0px #000000;
             z-index: 10;
             position: relative;
             display: none;
-            animation: popIn 0.3s ease-out;
+            animation: comicPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
         .card.active { display: block; }
 
-        @keyframes popIn {
-            from { opacity: 0; transform: scale(0.95) translateY(10px); }
+        @keyframes comicPop {
+            from { opacity: 0; transform: scale(0.94) translateY(12px); }
             to { opacity: 1; transform: scale(1) translateY(0); }
         }
 
         .header-title {
-            font-size: 1.7rem;
-            color: #ffd700;
+            font-size: 1.75rem;
+            color: #facc15;
             font-weight: 900;
             text-transform: uppercase;
-            margin-bottom: 8px;
-            text-shadow: 0 2px 10px rgba(255, 215, 0, 0.4);
+            margin-bottom: 6px;
+            text-shadow: 2px 2px 0px #000000;
+            letter-spacing: 0.5px;
         }
         .header-sub {
-            font-size: 0.95rem;
-            color: #fff5b7;
-            margin-bottom: 20px;
-            font-weight: 700;
+            font-size: 0.92rem;
+            color: #38bdf8;
+            margin-bottom: 18px;
+            font-weight: 800;
+            letter-spacing: 1px;
+            text-transform: uppercase;
         }
 
-        /* AVATAR GRID */
+        /* AVATAR GRID - HR / HEADHUNT THEME */
         .avatar-label {
-            font-size: 0.95rem;
-            color: #ffd700;
-            font-weight: 800;
+            font-size: 0.9rem;
+            color: #facc15;
+            font-weight: 900;
             margin-bottom: 10px;
             display: block;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         .avatar-grid {
             display: grid;
@@ -129,92 +124,109 @@
             margin-bottom: 20px;
         }
         .avatar-item {
-            background: rgba(255, 215, 0, 0.1);
-            border: 2px solid rgba(255, 215, 0, 0.4);
+            background: #0f172a;
+            border: 2.5px solid #000000;
+            box-shadow: 3px 3px 0px #000000;
             border-radius: 16px;
             padding: 10px 0;
             font-size: 2.2rem;
             cursor: pointer;
-            transition: transform 0.15s, background 0.15s, border-color 0.15s;
+            transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .avatar-item:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #000000;
         }
         .avatar-item.selected {
-            background: #ffd700;
-            border-color: #ffffff;
-            transform: scale(1.12);
-            box-shadow: 0 0 18px #ffd700;
+            background: #facc15;
+            border-color: #000000;
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0px #000000;
         }
 
         .input-box {
             width: 100%;
             padding: 15px;
-            border-radius: 25px;
-            border: 2.5px solid #ffd700;
+            border-radius: 18px;
+            border: 3px solid #000000;
             background: #ffffff;
-            color: #4a000c;
-            font-size: 1.2rem;
+            color: #0f172a;
+            font-size: 1.15rem;
             font-weight: 900;
             text-align: center;
-            margin-bottom: 18px;
+            margin-bottom: 16px;
             outline: none;
             text-transform: uppercase;
-            box-shadow: inset 0 2px 6px rgba(0,0,0,0.2);
+            box-shadow: 4px 4px 0px #000000;
+            transition: border-color 0.15s, box-shadow 0.15s;
+        }
+        .input-box:focus {
+            border-color: #38bdf8;
+            box-shadow: 4px 4px 0px #38bdf8;
         }
         .input-box::placeholder {
-            color: #aa7777;
+            color: #64748b;
             font-weight: 700;
-            font-size: 1rem;
+            font-size: 0.95rem;
         }
 
         .btn-submit {
             width: 100%;
             padding: 16px;
-            border-radius: 35px;
-            border: 2px solid #ffffff;
-            background: linear-gradient(135deg, #ffd700, #ffaa00);
-            color: #4a000c;
-            font-size: 1.25rem;
+            border-radius: 18px;
+            border: 3px solid #000000;
+            background: #facc15;
+            color: #000000;
+            font-size: 1.2rem;
             font-weight: 900;
             text-transform: uppercase;
             cursor: pointer;
-            box-shadow: 0 8px 25px rgba(255, 215, 0, 0.5);
-            transition: transform 0.1s, box-shadow 0.1s;
+            box-shadow: 5px 5px 0px #000000;
+            transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
+        }
+        .btn-submit:hover {
+            background: #fde047;
         }
         .btn-submit:active {
-            transform: scale(0.97);
-            box-shadow: 0 3px 10px rgba(255, 215, 0, 0.4);
+            transform: translate(3px, 3px);
+            box-shadow: 2px 2px 0px #000000;
         }
 
         /* SCRAMBLE TILES */
         .scramble-box-mobile {
             background: #ffffff;
-            border: 3px solid #ffd700;
+            border: 3.5px solid #000000;
             border-radius: 18px;
-            padding: 14px 12px;
-            margin-bottom: 15px;
-            color: #b30000;
-            font-size: 1.55rem;
+            padding: 14px 10px;
+            margin-bottom: 14px;
+            color: #0284c7;
+            font-size: 1.6rem;
             font-weight: 900;
             word-break: break-word;
             letter-spacing: 2px;
-            box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+            box-shadow: 5px 5px 0px #000000;
         }
 
         .hint-box-mobile {
-            background: rgba(255, 215, 0, 0.16);
-            border: 2px solid #ffd700;
+            background: #0284c7;
+            border: 2.5px solid #000000;
+            box-shadow: 3.5px 3.5px 0px #000000;
             padding: 12px 14px;
             border-radius: 16px;
-            font-size: 1rem;
-            color: #fff8e7;
+            font-size: 0.95rem;
+            color: #ffffff;
             text-align: left;
             margin-bottom: 14px;
             line-height: 1.45;
-            font-weight: 700;
+            font-weight: 800;
         }
         .scramble-header-mobile {
             font-size: 0.85rem;
-            color: #ffd700;
-            font-weight: 800;
+            color: #facc15;
+            font-weight: 900;
             margin-bottom: 6px;
             text-transform: uppercase;
             letter-spacing: 1px;
@@ -223,51 +235,54 @@
         }
 
         .badge-status {
-            background: rgba(255, 215, 0, 0.2);
-            border: 1.5px solid #ffd700;
-            color: #ffd700;
-            padding: 6px 16px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 800;
-            display: inline-block;
-            margin-bottom: 14px;
-        }
-
-        .badge-score {
-            font-size: 1.5rem;
-            color: #ffd700;
-            font-weight: 900;
-            margin-top: 15px;
-            text-shadow: 0 0 12px rgba(255,215,0,0.6);
-        }
-
-        .badge-timer-mobile {
-            background: #ef4444;
-            color: #ffffff;
-            padding: 4px 14px;
-            border-radius: 15px;
+            background: #facc15;
+            border: 2.5px solid #000000;
+            box-shadow: 3px 3px 0px #000000;
+            color: #000000;
+            padding: 6px 14px;
+            border-radius: 14px;
             font-size: 0.85rem;
             font-weight: 900;
             display: inline-block;
-            margin-left: 8px;
-            border: 1.5px solid #ffd700;
+            margin-bottom: 14px;
+            text-transform: uppercase;
+        }
+
+        .badge-score {
+            font-size: 1.6rem;
+            color: #facc15;
+            font-weight: 900;
+            margin-top: 15px;
+            text-shadow: 2px 2px 0px #000000;
+        }
+
+        .badge-timer-mobile {
+            background: #f43f5e;
+            color: #ffffff;
+            padding: 6px 14px;
+            border-radius: 14px;
+            font-size: 0.85rem;
+            font-weight: 900;
+            display: inline-block;
+            margin-left: 6px;
+            border: 2.5px solid #000000;
+            box-shadow: 3px 3px 0px #000000;
             transition: all 0.2s ease;
         }
         .badge-timer-mobile.urgent {
-            background: #b91c1c;
-            animation: timerPulseMobile 0.7s infinite alternate;
+            background: #e11d48;
+            animation: timerPulseMobile 0.6s infinite alternate;
         }
         @keyframes timerPulseMobile {
-            0% { transform: scale(1); box-shadow: 0 0 10px #ff3300; }
-            100% { transform: scale(1.08); box-shadow: 0 0 20px #ff0000; }
+            0% { transform: scale(1); }
+            100% { transform: scale(1.08); background: #be123c; }
         }
 
         .player-timeout-banner {
             display: none;
-            background: rgba(220, 20, 60, 0.95);
-            border: 2px solid #ffd700;
-            border-radius: 18px;
+            background: #f43f5e;
+            border: 3px solid #000000;
+            border-radius: 16px;
             padding: 12px 14px;
             margin-bottom: 14px;
             color: #ffffff;
@@ -275,8 +290,8 @@
             font-size: 0.95rem;
             line-height: 1.45;
             text-align: center;
-            box-shadow: 0 8px 25px rgba(220, 20, 60, 0.5);
-            animation: popIn 0.3s ease-out;
+            box-shadow: 4px 4px 0px #000000;
+            animation: comicPop 0.25s ease-out;
         }
 
         /* Leaderboard item inside player view */
@@ -287,116 +302,124 @@
             padding: 10px 14px;
             margin-bottom: 8px;
             border-radius: 14px;
-            background: rgba(255,215,0,0.1);
-            border: 1.5px solid rgba(255,215,0,0.3);
+            background: #0f172a;
+            border: 2.5px solid #000000;
+            box-shadow: 3px 3px 0px #000000;
             font-weight: 800;
         }
         .lb-mini-item.me {
-            background: rgba(255,215,0,0.3);
-            border-color: #ffd700;
-            box-shadow: 0 0 12px rgba(255,215,0,0.4);
+            background: #1e3a8a;
+            border-color: #38bdf8;
+            box-shadow: 4px 4px 0px #38bdf8;
         }
 
         .lobby-players-count-mobile {
-            background: linear-gradient(135deg, #ffd700, #ffaa00);
-            color: #4a000c;
-            padding: 8px 18px;
-            border-radius: 20px;
-            font-size: 1.05rem;
+            background: #38bdf8;
+            color: #000000;
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-size: 1rem;
             font-weight: 900;
             display: inline-block;
             margin: 12px 0 8px;
-            border: 2px solid #ffffff;
-            box-shadow: 0 4px 15px rgba(255, 215, 0, 0.4);
+            border: 2.5px solid #000000;
+            box-shadow: 3px 3px 0px #000000;
         }
         .lobby-players-chips-mobile {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
             gap: 8px;
-            max-height: 120px;
+            max-height: 125px;
             overflow-y: auto;
             margin: 8px 0;
             padding: 6px;
         }
         .mobile-player-chip {
-            background: rgba(255, 215, 0, 0.15);
-            border: 1px solid #ffd700;
-            border-radius: 15px;
+            background: #334155;
+            border: 2px solid #000000;
+            border-radius: 12px;
+            box-shadow: 2px 2px 0px #000000;
             padding: 4px 10px;
             font-size: 0.85rem;
             font-weight: 800;
-            color: #fff8e7;
+            color: #f8fafc;
             display: inline-flex;
             align-items: center;
             gap: 4px;
         }
         .mobile-player-chip.me {
-            background: rgba(255, 215, 0, 0.35);
-            border-color: #ffffff;
-            box-shadow: 0 0 8px #ffd700;
+            background: #facc15;
+            color: #000000;
+            border-color: #000000;
+            box-shadow: 2px 2px 0px #000000;
+            font-weight: 900;
         }
         .btn-change-profile {
-            background: transparent;
-            border: 1.5px dashed rgba(255, 215, 0, 0.6);
-            color: #ffd700;
+            background: #0f172a;
+            border: 2px solid #000000;
+            box-shadow: 2px 2px 0px #000000;
+            color: #facc15;
             padding: 7px 16px;
-            border-radius: 20px;
+            border-radius: 16px;
             font-size: 0.85rem;
             font-weight: 800;
             cursor: pointer;
             margin-top: 14px;
             display: inline-block;
+            transition: all 0.1s ease;
+        }
+        .btn-change-profile:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px #000000;
         }
     </style>
 </head>
 <body>
-    <div class="ambient-bg"></div>
-
     <div class="network-bar" id="netBar">
         <div style="display:flex; align-items:center; gap:6px;">
             <div class="network-dot" id="netDot"></div>
             <span id="netText">Đã kết nối</span>
         </div>
-        <button id="btnExitRoom" style="display:none; background:rgba(220,20,60,0.25); border:1px solid rgba(255,100,100,0.5); color:#ffd700; font-size:0.75rem; font-weight:800; cursor:pointer; padding:3px 8px; margin-left:8px; border-radius:12px;" onclick="resetProfile()">🚪 Đổi Tên</button>
+        <button id="btnExitRoom" style="display:none; background:#f43f5e; border:2px solid #000000; box-shadow:2px 2px 0px #000000; color:#ffffff; font-size:0.75rem; font-weight:900; cursor:pointer; padding:3px 8px; margin-left:8px; border-radius:10px;" onclick="resetProfile()">🚪 Đổi Tên</button>
     </div>
 
     <!-- CARD 1: LOGIN & AVATAR PICKER -->
     <div class="card active" id="cardLogin">
-        <div class="header-title">🌕 THAM GIA CHƠI 🏮</div>
-        <div class="header-sub">VUA TIẾNG VIỆT TRUNG THU</div>
+        <div class="header-title">⚡ VUA TIẾNG VIỆT 🎯</div>
+        <div class="header-sub">PHIÊN BẢN HR & HEADHUNT</div>
 
         <input type="text" class="input-box" id="playerNameInput" placeholder="NHẬP TÊN CỦA BẠN..." maxlength="20" autocomplete="off" autocapitalize="words">
 
-        <span class="avatar-label">CHỌN AVATAR ĐẠI DIỆN:</span>
+        <span class="avatar-label">CHỌN AVATAR NHÂN SỰ:</span>
         <div class="avatar-grid" id="avatarGrid">
-            <div class="avatar-item selected" onclick="selectAvatar('🐰', this)">🐰</div>
-            <div class="avatar-item" onclick="selectAvatar('👨‍🌾', this)">👨‍🌾</div>
-            <div class="avatar-item" onclick="selectAvatar('🧚‍♀️', this)">🧚‍♀️</div>
-            <div class="avatar-item" onclick="selectAvatar('🦁', this)">🦁</div>
-            <div class="avatar-item" onclick="selectAvatar('🏮', this)">🏮</div>
-            <div class="avatar-item" onclick="selectAvatar('🥮', this)">🥮</div>
-            <div class="avatar-item" onclick="selectAvatar('🌕', this)">🌕</div>
-            <div class="avatar-item" onclick="selectAvatar('🥁', this)">🥁</div>
+            <div class="avatar-item selected" onclick="selectAvatar('💼', this)">💼</div>
+            <div class="avatar-item" onclick="selectAvatar('🎯', this)">🎯</div>
+            <div class="avatar-item" onclick="selectAvatar('🚀', this)">🚀</div>
+            <div class="avatar-item" onclick="selectAvatar('💻', this)">💻</div>
+            <div class="avatar-item" onclick="selectAvatar('👔', this)">👔</div>
+            <div class="avatar-item" onclick="selectAvatar('☕', this)">☕</div>
+            <div class="avatar-item" onclick="selectAvatar('📈', this)">📈</div>
+            <div class="avatar-item" onclick="selectAvatar('🕵️‍♂️', this)">🕵️‍♂️</div>
         </div>
 
-        <button class="btn-submit" id="btnJoinGame" onclick="joinGame()">🚀 THAM GIA PHÒNG CHƠI</button>
-        <div id="loginErrorMsg" style="display:none; color:#ffffff; background:rgba(220,20,60,0.9); border:2px solid #ffd700; padding:12px 16px; border-radius:16px; margin-top:14px; font-weight:800; font-size:0.95rem; line-height:1.45; text-align:left;"></div>
+        <button class="btn-submit" id="btnJoinGame" onclick="joinGame()">🚀 THAM GIA DEAL VIỆC</button>
+        <div id="loginErrorMsg" style="display:none; color:#ffffff; background:#f43f5e; border:3px solid #000000; box-shadow:4px 4px 0px #000000; padding:12px 16px; border-radius:16px; margin-top:14px; font-weight:800; font-size:0.95rem; line-height:1.45; text-align:left;"></div>
     </div>
 
     <!-- CARD 2: WAITING LOBBY -->
     <div class="card" id="cardLobby">
-        <div style="font-size: 4.2rem; margin-bottom: 8px;" id="displayAvatar">🐰</div>
+        <div style="font-size: 4.2rem; margin-bottom: 8px;" id="displayAvatar">💼</div>
         <div class="header-title" id="displayName">TÊN BẠN</div>
-        <div class="badge-status">✅ ĐÃ SẴN SÀNG TRONG PHÒNG</div>
+        <div class="badge-status">✅ ĐÃ SẴN SÀNG VÀO PHÒNG</div>
         
         <div>
-            <div class="lobby-players-count-mobile" id="lobbyPlayerCountMobile">👥 ĐANG CẬP NHẬT PHÒNG CHƠI...</div>
+            <div class="lobby-players-count-mobile" id="lobbyPlayerCountMobile">👥 ĐANG CẬP NHẬT ỨNG VIÊN...</div>
         </div>
         <div class="lobby-players-chips-mobile" id="lobbyPlayersChipsMobile"></div>
 
-        <p style="font-size: 1rem; line-height: 1.5; color: #fff8e7; margin-top: 12px;">
-            Hãy nhìn lên màn hình lớn máy chiếu.<br>Trò chơi sẽ bắt đầu ngay khi MC bấm nút!
+        <p style="font-size: 0.95rem; line-height: 1.5; color: #cbd5e1; margin-top: 12px; font-weight: 700;">
+            Hãy nhìn lên màn hình lớn máy chiếu.<br>Game săn đầu người sẽ bắt đầu ngay khi MC bấm nút!
         </p>
 
         <div>
@@ -406,12 +429,12 @@
 
     <!-- CARD 3: RULES SCREEN -->
     <div class="card" id="cardRules">
-        <div style="font-size: 3.5rem; margin-bottom: 8px;">📜</div>
-        <div class="header-title">THỂ LỆ TRÒ CHƠI</div>
-        <div class="badge-status">TOP 5 NHẬN THƯỞNG 100K</div>
-        <p style="font-size: 0.95rem; line-height: 1.6; color: #fff8e7; margin-top: 10px; text-align: left;">
-            1. MC mở câu hỏi với các chữ cái bị đảo lộn (thời gian tối đa <b>60 giây</b>).<br>
-            2. Gõ đáp án Tiếng Việt trên điện thoại và gửi càng sớm càng tốt.<br>
+        <div style="font-size: 3.5rem; margin-bottom: 8px;">🎯</div>
+        <div class="header-title">LUẬT CHƠI SĂN TALENT</div>
+        <div class="badge-status">TOP 5 CHIẾN THẦN NHẬN THƯỞNG 100K</div>
+        <p style="font-size: 0.95rem; line-height: 1.6; color: #f8fafc; margin-top: 10px; text-align: left; font-weight: 700;">
+            1. MC mở từ khóa nghề nghiệp / tuyển dụng bị đảo lộn (thời gian tối đa <b>60 giây</b>).<br>
+            2. Gõ đáp án Tiếng Việt có dấu trên điện thoại và bấm gửi càng nhanh càng tốt.<br>
             3. Đúng nhận <b>100đ gốc</b> + <b>Điểm thời gian tối đa 50đ</b> tính theo mili-giây: <code>50 × (Thời gian còn lại / 60s)</code>!
         </p>
     </div>
@@ -423,20 +446,20 @@
             <span class="badge-timer-mobile" id="qTimerMobile">⏱️ 60s</span>
         </div>
 
-        <div class="hint-box-mobile" id="hintMobile">Gợi ý câu hỏi sẽ hiện tại đây</div>
+        <div class="hint-box-mobile" id="hintMobile">Gợi ý thuật ngữ sẽ hiện tại đây</div>
 
-        <div class="scramble-header-mobile">🔀 CÁC CHỮ CÁI BỊ ĐẢO:</div>
+        <div class="scramble-header-mobile">🔀 TỪ KHÓA BỊ ĐẢO CHỮ:</div>
         <div class="scramble-box-mobile" id="scrambleMobile">...</div>
 
         <!-- Thông báo Hết giờ cho người chơi -->
         <div class="player-timeout-banner" id="playerTimeOutAlert">
-            <div style="font-size: 1.4rem; margin-bottom: 4px;">⏰ HẾT GIỜ!</div>
-            <div>Đã hết thời gian nộp bài cho câu này.<br>Hãy nhìn lên màn hình lớn để xem đáp án đúng nhé!</div>
+            <div style="font-size: 1.3rem; margin-bottom: 4px; font-weight: 900;">⏰ HẾT GIỜ NỘP BÀI!</div>
+            <div>Đã hết thời gian nộp bài cho câu này.<br>Hãy nhìn lên màn hình lớn để xem đáp án chính xác nhé!</div>
         </div>
 
         <input type="text" class="input-box" id="answerInput" placeholder="GÕ ĐÁP ÁN TIẾNG VIỆT..." autocomplete="off" autocapitalize="characters">
 
-        <button class="btn-submit" id="btnSubmitAnswer" onclick="submitAnswer()">🚀 GỬI ĐÁP ÁN</button>
+        <button class="btn-submit" id="btnSubmitAnswer" onclick="submitAnswer()">🚀 GỬI ĐÁP ÁN DEAL VIỆC</button>
     </div>
 
     <!-- CARD 5: SUBMITTED WAIT -->
@@ -444,7 +467,7 @@
         <div style="font-size: 3.5rem; margin-bottom: 10px;" id="submittedIcon">⚡</div>
         <div class="header-title" id="submittedTitle">ĐÃ GỬI BÀI!</div>
         <div class="badge-status" id="submittedDetailText">Nộp bài thành công!</div>
-        <p style="font-size: 1.05rem; line-height: 1.6; color: #fff8e7; margin-top: 15px;">
+        <p style="font-size: 1rem; line-height: 1.6; color: #cbd5e1; margin-top: 15px; font-weight: 700;">
             Hãy theo dõi màn hình máy chiếu để xem đáp án & Bảng xếp hạng Top 5!
         </p>
         <div class="badge-score" id="myCurrentScore">ĐIỂM: 0</div>
@@ -453,7 +476,7 @@
     <!-- CARD 6: LEADERBOARD SCREEN -->
     <div class="card" id="cardLeaderboard">
         <div style="font-size: 3.2rem; margin-bottom: 8px;">📊</div>
-        <div class="header-title">BẢNG XẾP HẠNG TOP 5</div>
+        <div class="header-title">BẢNG XẾP HẠNG TOP TALENT</div>
         <div id="leaderboardList" style="margin: 15px 0;"></div>
         <div class="badge-score" id="lbMyScore">ĐIỂM CỦA BẠN: 0</div>
     </div>
@@ -461,9 +484,9 @@
     <!-- CARD 7: FINALE -->
     <div class="card" id="cardFinale">
         <div style="font-size: 4rem; margin-bottom: 10px;">🏆</div>
-        <div class="header-title">VINH DANH CHUNG CUỘC</div>
-        <p style="font-size: 1.1rem; line-height: 1.6; color: #fff8e7; margin: 15px 0;">
-            Chúc mừng tất cả người chơi đã tham gia ngày hội Đêm Rằm Trung Thu!
+        <div class="header-title">VINH DANH CHIẾN THẦN NHÂN SỰ</div>
+        <p style="font-size: 1.05rem; line-height: 1.6; color: #cbd5e1; margin: 15px 0; font-weight: 700;">
+            Chúc mừng tất cả ứng viên & chuyên gia Headhunt đã hoàn thành xuất sắc ngày hội!
         </p>
         <div class="badge-score" id="finaleMyScore">TỔNG ĐIỂM: 0</div>
     </div>
@@ -477,13 +500,13 @@
     <script src="questions.js"></script>
 
     <script>
-        let currentSetId = 'set1';
+        let currentSetId = 'set3';
         let QUESTIONS = (window.QUESTION_SETS && window.QUESTION_SETS[currentSetId]) 
             ? window.QUESTION_SETS[currentSetId].questions 
             : (window.GAME_QUESTIONS || []);
         const db = window.getFirebaseDB ? window.getFirebaseDB() : null;
 
-        let selectedAvatar = '🐰';
+        let selectedAvatar = '💼';
         let currentPlayer = null;
         let myTotalScore = 0;
         let currentQIdx = -1;
@@ -505,7 +528,7 @@
 
         // Khôi phục tên & avatar đã lưu
         const savedName = localStorage.getItem('tt_player_name');
-        const savedAvatar = localStorage.getItem('tt_player_avatar');
+        const savedAvatar = localStorage.getItem('tt_player_avatar') || '💼';
         if (savedName) {
             document.getElementById('playerNameInput').value = savedName;
         }
@@ -577,7 +600,7 @@
         function joinGame() {
             clearJoinError();
             let name = document.getElementById('playerNameInput').value.trim();
-            if (!name) name = "Người chơi " + Math.floor(Math.random() * 100 + 1);
+            if (!name) name = "Ứng viên " + Math.floor(Math.random() * 100 + 1);
 
             const btnJoin = document.getElementById('btnJoinGame');
             if (btnJoin) {
@@ -591,7 +614,7 @@
             if (!db) {
                 if (btnJoin) {
                     btnJoin.disabled = false;
-                    btnJoin.innerText = "🚀 THAM GIA PHÒNG CHƠI";
+                    btnJoin.innerText = "🚀 THAM GIA DEAL VIỆC";
                 }
                 showJoinError("⚠️ <b>Chưa cấu hình Firebase!</b><br>Vui lòng mở file <code>firebase-config.js</code> và dán mã cấu hình Firebase của bạn.");
                 return;
@@ -620,7 +643,7 @@
 
                     if (btnJoin) {
                         btnJoin.disabled = false;
-                        btnJoin.innerText = "🚀 THAM GIA PHÒNG CHƠI";
+                        btnJoin.innerText = "🚀 THAM GIA DEAL VIỆC";
                     }
                     setNetworkStatus(true, "Đã vào phòng");
                     
@@ -657,7 +680,7 @@
         function updateLobbyCount(count) {
             const countEl = document.getElementById('lobbyPlayerCountMobile');
             if (countEl) {
-                countEl.innerText = `👥 ĐANG CÓ ${count} NGƯỜI TRONG PHÒNG`;
+                countEl.innerText = `👥 ĐANG CÓ ${count} ỨNG VIÊN TRONG PHÒNG`;
             }
         }
 
@@ -680,6 +703,11 @@
             }
             localStorage.removeItem('tt_player_name');
             localStorage.removeItem('tt_player_avatar');
+            selectedAvatar = '💼';
+            document.querySelectorAll('.avatar-item').forEach(item => {
+                if (item.innerText.trim() === '💼') item.classList.add('selected');
+                else item.classList.remove('selected');
+            });
             document.getElementById('playerNameInput').value = '';
             currentPlayer = null;
             myTotalScore = 0;
@@ -753,7 +781,7 @@
 
                     const subData = {
                         client_id: clientId,
-                        player_name: currentPlayer ? currentPlayer.name : (savedName || 'Người chơi'),
+                        player_name: currentPlayer ? currentPlayer.name : (savedName || 'Ứng viên'),
                         player_avatar: currentPlayer ? currentPlayer.avatar : selectedAvatar,
                         answer: ans,
                         is_correct: isCorrect,
@@ -901,7 +929,7 @@
                 const btnSubmit = document.getElementById('btnSubmitAnswer');
                 if (btnSubmit) {
                     btnSubmit.disabled = false;
-                    btnSubmit.innerText = "🚀 GỬI ĐÁP ÁN";
+                    btnSubmit.innerText = "🚀 GỬI ĐÁP ÁN DEAL VIỆC";
                     btnSubmit.style.opacity = '1';
                     btnSubmit.style.cursor = 'pointer';
                 }
@@ -935,7 +963,7 @@
                     const btnSubmit = document.getElementById('btnSubmitAnswer');
                     if (btnSubmit) {
                         btnSubmit.disabled = false;
-                        btnSubmit.innerText = "🚀 GỬI ĐÁP ÁN";
+                        btnSubmit.innerText = "🚀 GỬI ĐÁP ÁN DEAL VIỆC";
                         btnSubmit.style.opacity = '1';
                         btnSubmit.style.cursor = 'pointer';
                     }
@@ -1006,11 +1034,11 @@
                 item.className = 'lb-mini-item' + (isMe ? ' me' : '');
                 item.innerHTML = `
                     <div style="display:flex; align-items:center; gap:8px;">
-                        <span style="font-size:1.1rem; color:#ffd700;">#${idx + 1}</span>
+                        <span style="font-size:1.1rem; color:#facc15;">#${idx + 1}</span>
                         <span style="font-size:1.4rem;">${p.avatar}</span>
-                        <span style="color:#fff; font-size:1rem;">${p.name}${isMe ? ' (Bạn)' : ''}</span>
+                        <span style="color:#ffffff; font-size:1rem;">${p.name}${isMe ? ' (Bạn)' : ''}</span>
                     </div>
-                    <span style="color:#ffd700; font-weight:900; font-size:1.1rem;">${p.score || 0}đ</span>
+                    <span style="color:#facc15; font-weight:900; font-size:1.1rem;">${p.score || 0}đ</span>
                 `;
                 container.appendChild(item);
             });
