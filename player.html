@@ -433,9 +433,9 @@
         <div class="header-title">LUẬT CHƠI SĂN TALENT</div>
         <div class="badge-status">TOP 5 CHIẾN THẦN NHẬN THƯỞNG 100K</div>
         <p style="font-size: 0.95rem; line-height: 1.6; color: #f8fafc; margin-top: 10px; text-align: left; font-weight: 700;">
-            1. MC mở từ khóa nghề nghiệp / tuyển dụng bị đảo lộn (thời gian tối đa <b>60 giây</b>).<br>
+            1. MC mở từ khóa nghề nghiệp / tuyển dụng bị đảo lộn (thời gian tối đa <b>50 giây</b>).<br>
             2. Gõ đáp án Tiếng Việt có dấu trên điện thoại và bấm gửi càng nhanh càng tốt.<br>
-            3. Đúng nhận <b>100đ gốc</b> + <b>Điểm thời gian tối đa 50đ</b> tính theo mili-giây: <code>50 × (Thời gian còn lại / 60s)</code>!
+            3. Đúng nhận <b>100đ gốc</b> + <b>Điểm thời gian tối đa 50đ</b> tính theo mili-giây: <code>50 × (Thời gian còn lại / 50s)</code>!
         </p>
     </div>
 
@@ -443,7 +443,7 @@
     <div class="card" id="cardQuestion">
         <div>
             <span class="badge-status" id="qBadgeMobile">CÂU 1 / 15</span>
-            <span class="badge-timer-mobile" id="qTimerMobile">⏱️ 60s</span>
+            <span class="badge-timer-mobile" id="qTimerMobile">⏱️ 50s</span>
         </div>
 
         <div class="hint-box-mobile" id="hintMobile">Gợi ý thuật ngữ sẽ hiện tại đây</div>
@@ -517,7 +517,7 @@
         let playerTimerLastSec = -1;
         let isTimeExpired = false;
         let currentQStartTime = 0;
-        let currentQDuration = 60;
+        let currentQDuration = 50;
 
         // Định danh duy nhất cho điện thoại (lưu vĩnh viễn trên trình duyệt)
         let clientId = localStorage.getItem('tt_client_id');
@@ -765,11 +765,11 @@
                     const order = isCorrect ? (correctSubs.length + 1) : 0;
 
                     // Tính điểm thời gian thực theo từng khắc (mili-giây):
-                    // Hệ số thời gian = T_còn_lại / Tổng_thời_gian (mặc định 60s = 60.000ms)
+                    // Hệ số thời gian = T_còn_lại / Tổng_thời_gian (mặc định 50s = 50.000ms)
                     // Điểm thưởng = 50 * Hệ số
                     const now = Date.now() + serverTimeOffset;
                     const startTime = (typeof currentQStartTime === 'number' && currentQStartTime > 0) ? currentQStartTime : now;
-                    const totalSec = currentQDuration || (currentQ.time || 60);
+                    const totalSec = currentQDuration || (currentQ.time || 50);
                     const totalMs = totalSec * 1000;
                     const elapsedMs = Math.max(0, now - startTime);
                     const remainingMs = Math.max(0, totalMs - elapsedMs);
@@ -944,7 +944,7 @@
             } else if (data.status === 'QUESTION') {
                 const qIdx = data.current_q_idx || 0;
                 const currentQ = QUESTIONS[qIdx];
-                const duration = data.q_duration || (currentQ ? (currentQ.time || 60) : 60);
+                const duration = data.q_duration || (currentQ ? (currentQ.time || 50) : 50);
 
                 currentQStartTime = (typeof data.q_start_time === 'number') ? data.q_start_time : Date.now();
                 currentQDuration = duration;

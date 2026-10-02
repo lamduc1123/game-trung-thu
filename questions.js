@@ -12,7 +12,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "g / o / n / đ / s / è / n / ô / a",
         "hint": "Món đồ chơi Trung Thu truyền thống 5 cánh bằng giấy bóng kính màu đỏ tươi rực rỡ.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 2,
@@ -20,7 +20,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "n / ẻ / b / h / á / o / d",
         "hint": "Món bánh Trung Thu vỏ màu trắng mịn làm từ bột nếp thơm nức hương hoa bưởi.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 3,
@@ -28,7 +28,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "g / h / c / n / ọ / t / ỏ",
         "hint": "Linh vật nhỏ nhắn tinh nghịch, cần mẫn giã thuốc tiên trên Cung Trăng.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 4,
@@ -36,7 +36,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "ằ / g / ị / n / h / h / c",
         "hint": "Tiên nữ xinh đẹp sống trên Cung Trăng, người bạn thân thiết của thiếu nhi mỗi dịp Rằm tháng Tám.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 5,
@@ -44,7 +44,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "g / è / l / n / đ / ồ / n",
         "hint": "Món đồ chơi thắp nến lung linh các bé cầm đi rước khắp xóm làng đêm Trung Thu.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 6,
@@ -52,7 +52,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "đ / g / ị / a / ô / n",
         "hint": "Nhân vật bụng phệ cầm quạt giấy vui nhộn luôn đi cùng đoàn Múa Lân.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 7,
@@ -60,7 +60,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "h / i / n / r / g / ù / t / n / h / r / i / n",
         "hint": "Từ mô phỏng tiếng trống rước đèn quen thuộc thiếu nhi nào cũng thuộc bài hát.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 8,
@@ -68,7 +68,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "ư / n / á / g / h / ớ / b / n / n",
         "hint": "Món bánh Trung Thu truyền thống vỏ màu vàng óng, nhân thập cẩm hoặc đậu xanh thơm ngon.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 9,
@@ -76,7 +76,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "â / l / m / ú / n / a",
         "hint": "Màn biểu diễn rộn ràng tiếng trống mang lại may mắn tưng bừng khắp phố phường.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 10,
@@ -84,7 +84,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "ò / n / r / ă / g / t / n / r / t",
         "hint": "Đĩa bạc lung linh tỏa sáng rạng rỡ khắp làng xóm đêm Trung Thu.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 11,
@@ -92,7 +92,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "ỗ / p / á / c / h",
         "hint": "Hoạt động vui nhất khi trăng lên đỉnh đầu, cả nhà cùng vây quanh ăn bánh trái.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 12,
@@ -100,7 +100,7 @@ window.QUESTION_SETS = {
         "words": 4,
         "scrambled": "r / ê / m / ộ / i / đ / ă / h / g / t / n / m / r / ằ",
         "hint": "Tên gọi rực rỡ của đêm tiệc Trung Thu dành cho thiếu nhi khi ánh trăng sáng vạch đỉnh trời.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 13,
@@ -108,7 +108,7 @@ window.QUESTION_SETS = {
         "words": 5,
         "scrambled": "m / ứ / b / ẩ / t / ố / n / h / r / p / g / á / m / c / ậ / i / u / t / h / n",
         "hint": "Món bánh nướng truyền thống ngon đậm đà với lạp xưởng, mứt bí, hạt dưa và lòng đỏ trứng muối béo ngậy.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 14,
@@ -116,7 +116,7 @@ window.QUESTION_SETS = {
         "words": 6,
         "scrambled": "y / ộ / c / g / i / ú / ồ / c / đ / h / u / c / i / ố / â / n / g / a / c",
         "hint": "Câu hát dân gian quen thuộc về hình ảnh chàng tiều phu ôm cây thần bay lên Cung Trăng.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 15,
@@ -124,7 +124,7 @@ window.QUESTION_SETS = {
         "words": 6,
         "scrambled": "u / ế / v / t / à / n / t / h / i / t / ê / r / n / đ / t / o / u / g / ế / t / n / t",
         "hint": "Cụm từ thể hiện ý nghĩa cốt lõi của ngày Rằm tháng Tám - thời điểm gia đình sum họp bên nhau.",
-        "time": 60
+        "time": 50
       }
     ]
   },
@@ -139,7 +139,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "ấ / n / m / y / ặ / t / g / i / a",
         "hint": "Món đồ chơi dân gian bồi bằng giấy vẽ hình chú Tễu, đầu Lân ngộ nghĩnh các bạn nhỏ đeo đi rước đèn.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 2,
@@ -147,7 +147,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "g / u / r / n / c / ă / g / t / n",
         "hint": "Nơi chốn thần tiên huyền ảo trên bầu trời đêm trong các câu chuyện cổ tích dân gian.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 3,
@@ -155,7 +155,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "m / ũ / g / â / ả / q / n / m / u",
         "hint": "Bàn quả gồm 5 loại trái cây mùa thu được bày biện trang trọng để dâng cúng tổ tiên và phá cỗ.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 4,
@@ -163,7 +163,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "g / ú / r / m / ồ / a / n",
         "hint": "Màn biểu diễn dân gian công phu với thân hình uốn lượn uyển chuyển, thường xuất hiện cùng múa lân.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 5,
@@ -171,7 +171,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "o / è / u / k / đ / â / n / n / é / q",
         "hint": "Chiếc đèn lồng cổ truyền kỳ diệu, khi thắp nến thì bóng các hình ảnh bên trong tự động quay tròn.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 6,
@@ -179,7 +179,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "é / c / đ / h / è / p / á / n / c",
         "hint": "Chiếc đèn mang hình ảnh loài vật vượt vũ môn hóa rồng, gửi gắm ước mơ học hành đỗ đạt.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 7,
@@ -187,7 +187,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "h / ố / t / c / r / ế / g / n",
         "hint": "Món đồ chơi âm nhạc gõ tay cầm nhỏ nhắn, tạo nên âm thanh cắc tùng rộn rã gắn liền với tuổi thơ.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 8,
@@ -195,7 +195,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "ử / đ / u / s / ầ / t / ư",
         "hint": "Chiếc mũ hóa trang rực rỡ sắc màu có đôi mắt chớp chớp dùng trong các bài múa dân gian náo nhiệt.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 9,
@@ -203,7 +203,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "u / h / n / đ / x / ậ / n / h / a / â / n",
         "hint": "Vị nhân bánh Trung Thu truyền thống thơm bùi, ngọt thanh và được nhiều thế hệ yêu thích nhất.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 10,
@@ -211,7 +211,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "o / n / b / e / h / á / h / o / c / n",
         "hint": "Chiếc bánh nướng nhỏ xíu ngộ nghĩnh hình gia đình ủn ỉn, thường được đặt trong chiếc rọ tre xinh xắn.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 11,
@@ -219,7 +219,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "m / á / t / ằ / g / t / h / á / r / n / m",
         "hint": "Ngày trăng sáng và tròn nhất mùa thu theo âm lịch hàng năm.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 12,
@@ -227,7 +227,7 @@ window.QUESTION_SETS = {
         "words": 4,
         "scrambled": "m / c / á / t / è / n / đ / h / á / r / ớ / g / t / ư / n",
         "hint": "Tên bài hát Trung Thu quốc dân: \"Tết Trung Thu rước đèn đi chơi, em rước đèn đi khắp phố phường...\".",
-        "time": 60
+        "time": 50
       },
       {
         "id": 13,
@@ -235,7 +235,7 @@ window.QUESTION_SETS = {
         "words": 4,
         "scrambled": "i / c / h / ộ / s / ú / c / t / ự / u / c / h / í",
         "hint": "Tên câu chuyện cổ tích dân gian gắn liền với gốc cây đa và chàng tiều phu trên mặt trăng.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 14,
@@ -243,7 +243,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "g / a / h / ằ / n / c / g / ị / n / h",
         "hint": "Tên người tiên nữ xinh đẹp nhân hậu cai quản Cung Trăng, người bạn thân thiết của thiếu nhi mỗi đêm rằm.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 15,
@@ -251,7 +251,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "h / ế / t / i / n / t / u / i / ế / t / h",
         "hint": "Tên gọi thân thương khác của Tết Trung Thu - ngày hội rộn rã ngập tràn niềm vui dành riêng cho các em nhỏ.",
-        "time": 60
+        "time": 50
       }
     ]
   },
@@ -266,7 +266,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "v / i / n / g / ê / ứ / n",
         "hint": "Người nộp hồ sơ và tham gia vào quy trình thi tuyển của công ty.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 2,
@@ -274,7 +274,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "n / g / h / p / v / ỏ / ấ / n",
         "hint": "Vòng đối thoại trực tiếp hoặc online để HR và ứng viên tìm hiểu, đánh giá mức độ phù hợp.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 3,
@@ -282,7 +282,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "ệ / h / t / ứ / v / c / i",
         "hint": "Giai đoạn thường kéo dài 2 tháng để cả hai bên kiểm chứng năng lực và văn hóa trước khi ký chính thức.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 4,
@@ -290,7 +290,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "ư / đ / s / g / ầ / n / u / n / ă / i / ờ",
         "hint": "Thuật ngữ dân dã nhưng quen thuộc chỉ nghề Headhunter - chuyên tìm kiếm nhân tài cấp cao.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 5,
@@ -298,7 +298,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "u / h / l / ỏ / n / t / ậ / a / ư / h / ơ / t / g / n",
         "hint": "Bước đàm phán quan trọng về thu nhập và phúc lợi trước khi chốt hợp đồng (hay gọi vui là \"deal lương\").",
-        "time": 60
+        "time": 50
       },
       {
         "id": 6,
@@ -306,7 +306,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "g / ư / t / ơ / h / n / l / ở / ư / g / n",
         "hint": "Yếu tố then chốt tạo động lực làm việc và giữ chân nhân tài cống hiến cho công ty.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 7,
@@ -314,7 +314,7 @@ window.QUESTION_SETS = {
         "words": 3,
         "scrambled": "n / ồ / c / â / n / u / h / ự / l / g / n / n",
         "hint": "Toàn bộ lực lượng lao động quý giá tạo nên sức mạnh nội tại của doanh nghiệp (viết tắt là HR).",
-        "time": 60
+        "time": 50
       },
       {
         "id": 8,
@@ -322,7 +322,7 @@ window.QUESTION_SETS = {
         "words": 2,
         "scrambled": "n / ú / y / t / g / ể / r / u / n / t",
         "hint": "Kết quả ngọt ngào mà bất kỳ ứng viên nào cũng mong ngóng nhận được qua email sau khi phỏng vấn.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 9,
@@ -330,7 +330,7 @@ window.QUESTION_SETS = {
         "words": 4,
         "scrambled": "ă / d / n / ó / h / p / a / v / o / h / ệ / g / h / a / i / n / n",
         "hint": "Tập hợp các giá trị, niềm tin và phong cách làm việc chung gắn kết mọi thành viên trong công ty.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 10,
@@ -338,7 +338,7 @@ window.QUESTION_SETS = {
         "words": 4,
         "scrambled": "i / ệ / h / ờ / n / ư / v / m / ậ / t / h / i / c / n",
         "hint": "Bản thông báo chính thức (Offer letter) ghi rõ mức lương, ngày bắt đầu và chế độ quyền lợi.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 11,
@@ -346,7 +346,7 @@ window.QUESTION_SETS = {
         "words": 4,
         "scrambled": "y / đ / à / u / l / n / đ / m / g / ầ / i / à",
         "hint": "Ngày đầu tiên bước chân vào môi trường mới (Onboarding), vừa háo hức vừa nhiều bỡ ngỡ.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 12,
@@ -354,7 +354,7 @@ window.QUESTION_SETS = {
         "words": 4,
         "scrambled": "â / h / g / i / n / c / à / n / ữ / t / i / â / h / n",
         "hint": "Bài toán chiến lược hàng đầu của các HR Manager và ban lãnh đạo công ty.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 13,
@@ -362,7 +362,7 @@ window.QUESTION_SETS = {
         "words": 4,
         "scrambled": "ú / đ / n / g / i / ờ / v / đ / n / ệ / g / ú / c / n / ư / g / i",
         "hint": "Nguyên tắc vàng trong tuyển dụng và bổ nhiệm nhân sự để phát huy tối đa thế mạnh của mỗi người.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 14,
@@ -370,7 +370,7 @@ window.QUESTION_SETS = {
         "words": 4,
         "scrambled": "h / ả / i / x / m / o / ã / b / ộ / h / ể / i",
         "hint": "Chế độ an sinh bắt buộc và quan trọng bậc nhất mà HR phải đăng ký đầy đủ cho người lao động.",
-        "time": 60
+        "time": 50
       },
       {
         "id": 15,
@@ -378,7 +378,7 @@ window.QUESTION_SETS = {
         "words": 4,
         "scrambled": "ờ / i / m / à / g / v / ư / c / t / n / ô / r / i / m / ệ / l",
         "hint": "Không gian và bầu không khí làm việc năng động, tích cực giúp nhân viên gắn bó lâu dài.",
-        "time": 60
+        "time": 50
       }
     ]
   }
