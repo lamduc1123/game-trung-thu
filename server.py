@@ -87,7 +87,7 @@ def load_questions():
             print(f"⚠️ Lỗi đọc questions.json: {e}")
     # Fallback mặc định nếu file lỗi
     return [
-        {"id": 1, "answer": "ĐÈN ÔNG SAO", "words": 3, "scrambled": "g / o / n / đ / s / è / n / ô / a", "hint": "Món đồ chơi Trung Thu truyền thống 5 cánh.", "time": 30}
+        {"id": 1, "name": "Mặt nạ ngủ môi Laneige Berry Mini 3g", "brand": "Laneige", "category": "Dưỡng Môi", "price": 110000, "hint1": "Giá khoảng 80k - 140k.", "hint2": "Số chẵn tròn chục nghìn, đuôi 11x.xxx.", "time": 30}
     ]
 
 QUESTIONS = load_questions()
