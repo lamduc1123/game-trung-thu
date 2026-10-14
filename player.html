@@ -24,7 +24,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 16px;
+            padding: 12px;
             position: relative;
             background-image: 
                 radial-gradient(rgba(244, 63, 94, 0.22) 1.5px, transparent 1.5px),
@@ -33,12 +33,9 @@
             background-position: 0 0, 12px 12px;
         }
 
+        /* NETWORK BAR - CHỈ HIỆN Ở SẢNH CHỜ */
         .network-bar {
-            position: fixed;
-            top: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
+            display: none;
             align-items: center;
             background: #23082d;
             border: 2px solid #ff4d8d;
@@ -47,7 +44,7 @@
             padding: 4px 12px;
             font-size: 0.75rem;
             font-weight: 800;
-            z-index: 100;
+            margin-bottom: 10px;
         }
         .network-dot {
             width: 8px;
@@ -69,7 +66,7 @@
             border: 3.5px solid #ff4d8d;
             box-shadow: 6px 6px 0px #000000, 0 15px 35px rgba(244, 63, 94, 0.25);
             border-radius: 26px;
-            padding: 24px 20px;
+            padding: 20px 18px;
             text-align: center;
             animation: popIn 0.25s ease-out;
             margin: auto;
@@ -77,7 +74,7 @@
         .card.active { display: block; }
 
         @keyframes popIn {
-            0% { transform: scale(0.94); opacity: 0; }
+            0% { transform: scale(0.95); opacity: 0; }
             100% { transform: scale(1); opacity: 1; }
         }
 
@@ -150,8 +147,36 @@
             margin-bottom: 14px;
             text-align: center;
         }
-        .input-box:focus {
-            box-shadow: 4px 4px 0px #fbbf24;
+
+        /* GỌN GÀNG CHO KHUNG NHẬP GIÁ MOBILE */
+        .price-input-wrapper {
+            background: #ffffff;
+            border: 3.5px solid #000000;
+            box-shadow: 4px 4px 0px #ff4d8d;
+            border-radius: 20px;
+            padding: 10px 14px;
+            margin: 10px 0 14px 0;
+            text-align: center;
+        }
+        .price-formatted-preview {
+            font-size: 2.2rem;
+            font-weight: 900;
+            color: #831843;
+            letter-spacing: 1px;
+            line-height: 1.2;
+            margin-bottom: 4px;
+        }
+        .input-box-clean {
+            width: 100%;
+            border: none;
+            border-top: 1.5px dashed #ff4d8d;
+            padding-top: 8px;
+            font-size: 1.05rem;
+            font-weight: 800;
+            color: #1e0a24;
+            outline: none;
+            text-align: center;
+            background: transparent;
         }
 
         /* BUTTONS */
@@ -182,17 +207,35 @@
             box-shadow: 2px 2px 0px #000;
         }
 
+        .btn-edit-answer {
+            background: #fbbf24;
+            color: #1e0a24;
+            border: 2.5px solid #000000;
+            box-shadow: 3px 3px 0px #000000;
+            border-radius: 16px;
+            padding: 10px 18px;
+            font-size: 0.95rem;
+            font-weight: 900;
+            cursor: pointer;
+            width: 100%;
+            text-transform: uppercase;
+            transition: all 0.1s ease;
+        }
+        .btn-edit-answer:active {
+            transform: translate(2px, 2px);
+            box-shadow: 1px 1px 0px #000000;
+        }
+
         .badge-status {
             background: #180322;
             border: 2px solid #ff4d8d;
             box-shadow: 3px 3px 0px #000000;
             border-radius: 16px;
-            padding: 8px 16px;
-            font-size: 0.95rem;
+            padding: 6px 14px;
+            font-size: 0.9rem;
             font-weight: 800;
             color: #fbcfe8;
             display: inline-block;
-            margin-bottom: 12px;
         }
 
         .badge-score {
@@ -205,7 +248,7 @@
             font-size: 1.1rem;
             font-weight: 900;
             display: inline-block;
-            margin-top: 14px;
+            margin-top: 12px;
         }
 
         /* TIMER BADGE MOBILE */
@@ -234,8 +277,8 @@
             border: 2.5px solid #3b1147;
             box-shadow: 4px 4px 0px #000000;
             border-radius: 20px;
-            padding: 12px;
-            margin: 12px 0;
+            padding: 10px;
+            margin: 10px 0;
             text-align: center;
         }
         .product-img-frame-m {
@@ -243,12 +286,12 @@
             border: 2.5px solid #000000;
             box-shadow: 3px 3px 0px #ff4d8d;
             border-radius: 14px;
-            padding: 8px;
+            padding: 6px;
             height: 180px;
             display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 10px;
+            margin-bottom: 8px;
         }
         .product-img-frame-m img {
             max-width: 100%;
@@ -260,7 +303,7 @@
             display: flex;
             justify-content: center;
             gap: 6px;
-            margin-bottom: 6px;
+            margin-bottom: 4px;
         }
         .tag-m {
             font-size: 0.75rem;
@@ -272,7 +315,7 @@
         .tag-brand { background: #fbbf24; color: #1e0a24; }
         .tag-cat { background: #ff4d8d; color: #fff; }
         .product-title-m {
-            font-size: 1.25rem;
+            font-size: 1.15rem;
             font-weight: 900;
             color: #fef08a;
             line-height: 1.35;
@@ -283,7 +326,7 @@
             display: flex;
             flex-direction: column;
             gap: 8px;
-            margin-bottom: 14px;
+            margin-bottom: 10px;
         }
         .hint-box-m {
             background: #15021e;
@@ -307,12 +350,12 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 4px;
+            margin-bottom: 3px;
             font-size: 0.75rem;
             font-weight: 900;
         }
         .hint-text-m {
-            font-size: 0.95rem;
+            font-size: 0.92rem;
             font-weight: 800;
             line-height: 1.4;
             color: #fdf2f8;
@@ -320,50 +363,6 @@
         .hint-box-m.locked .hint-text-m {
             color: #8c6e8e;
             font-style: italic;
-        }
-
-        /* PRICE DISPLAY & QUICK BUTTONS */
-        .price-display-box {
-            background: #ffffff;
-            border: 3.5px solid #000000;
-            box-shadow: 4px 4px 0px #ff4d8d;
-            border-radius: 18px;
-            padding: 10px 14px;
-            margin-bottom: 10px;
-            text-align: center;
-        }
-        .price-display-num {
-            font-size: 2.1rem;
-            font-weight: 900;
-            color: #1e0a24;
-            letter-spacing: 1px;
-        }
-        .quick-numpad-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 6px;
-            margin-bottom: 12px;
-        }
-        .btn-quick-price {
-            background: #180322;
-            border: 2px solid #ff4d8d;
-            box-shadow: 2px 2px 0px #000000;
-            border-radius: 12px;
-            color: #fce7f3;
-            font-size: 0.85rem;
-            font-weight: 900;
-            padding: 8px 4px;
-            cursor: pointer;
-            transition: all 0.1s;
-        }
-        .btn-quick-price:active {
-            transform: translate(2px, 2px);
-            box-shadow: 0px 0px 0px #000000;
-        }
-        .btn-quick-clear {
-            background: #e11d48;
-            color: #ffffff;
-            border-color: #000000;
         }
 
         /* REVEAL CARD MOBILE */
@@ -414,12 +413,13 @@
     </style>
 </head>
 <body>
+    <!-- Network Bar: Chỉ xuất hiện ở cardLogin và cardLobby để không che màn hình chơi -->
     <div class="network-bar" id="netBar">
         <div style="display:flex; align-items:center; gap:6px;">
             <div class="network-dot" id="netDot"></div>
-            <span id="netText">Đã kết nối</span>
+            <span id="netText">Đã vào phòng</span>
         </div>
-        <button id="btnExitRoom" style="display:none; background:#f43f5e; border:2px solid #000000; box-shadow:2px 2px 0px #000000; color:#ffffff; font-size:0.75rem; font-weight:900; cursor:pointer; padding:3px 8px; margin-left:8px; border-radius:10px;" onclick="resetProfile()">🚪 Đổi Tên</button>
+        <button id="btnExitRoom" style="background:#f43f5e; border:1.5px solid #000000; box-shadow:1.5px 1.5px 0px #000000; color:#ffffff; font-size:0.75rem; font-weight:900; cursor:pointer; padding:2px 8px; margin-left:8px; border-radius:8px;" onclick="resetProfile()">🚪 Đổi Tên</button>
     </div>
 
     <!-- CARD 1: LOGIN & AVATAR PICKER -->
@@ -471,18 +471,19 @@
         <div class="header-title">LUẬT CHƠI ĐẠI HỘI 20/10</div>
         <div class="badge-status">TOP 6 TỎA SÁNG NHẬN THƯỞNG 100K</div>
         <p style="font-size: 0.95rem; line-height: 1.6; color: #fdf2f8; margin-top: 10px; text-align: left; font-weight: 700;">
-            1. Mỗi vòng hiển thị 1 sản phẩm cho phái đẹp (thời gian <b>30 giây</b>).<br>
+            1. Mỗi vòng hiển thị 1 sản phẩm cho phái đẹp (thời gian <b>35 giây</b>).<br>
             2. <b>Sau 10s:</b> Mở Gợi ý 1 (Khoảng giá / Phân khúc).<br>
-            3. <b>Sau 20s:</b> Mở Gợi ý 2 (Đặc điểm chữ số, số đuôi).<br>
-            4. Đúng 100% nhận <b>100đ Bullseye!</b> Đoán càng sát giá điểm càng cao + Thưởng tốc độ tối đa <b>50đ</b>!
+            3. <b>Sau 22s:</b> Mở Gợi ý 2 (Đặc điểm chữ số, số đuôi).<br>
+            4. Đúng 100% nhận <b>100đ Bullseye!</b> Đoán càng sát giá điểm càng cao + Thưởng tốc độ tối đa <b>50đ</b>!<br>
+            5. Bạn có thể <b>chỉnh sửa lại giá</b> bất kỳ lúc nào nếu đồng hồ 35s vẫn còn!
         </p>
     </div>
 
     <!-- CARD 4: ACTIVE QUESTION (HÃY CHỌN GIÁ ĐÚNG) -->
     <div class="card" id="cardQuestion">
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
-            <span class="badge-status" id="qBadgeMobile" style="margin-bottom:0;">SẢN PHẨM 1 / 30</span>
-            <span class="badge-timer-mobile" id="qTimerMobile">⏱️ 30s</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:4px;">
+            <span class="badge-status" id="qBadgeMobile">SẢN PHẨM 1 / 30</span>
+            <span class="badge-timer-mobile" id="qTimerMobile">⏱️ 35s</span>
         </div>
 
         <!-- Product Presentation -->
@@ -508,29 +509,19 @@
             </div>
             <div class="hint-box-m locked" id="mHint2Box">
                 <div class="hint-hdr-m">
-                    <span style="color:#fbbf24;">⚡ GỢI Ý 2 (SAU 20S)</span>
+                    <span style="color:#fbbf24;">⚡ GỢI Ý 2 (SAU 22S)</span>
                     <span id="mHint2Status">🔒 Đang khóa</span>
                 </div>
-                <div class="hint-text-m" id="mHint2Text">Mở sau 20 giây...</div>
+                <div class="hint-text-m" id="mHint2Text">Mở sau 22 giây...</div>
             </div>
         </div>
 
-        <!-- Price Input & Quick Buttons -->
-        <div class="price-display-box">
+        <!-- Gọn Gàng: Khung Nhập Tiền Tự Format -->
+        <div class="price-input-wrapper">
             <div style="font-size:0.75rem; font-weight:800; color:#831843; text-transform:uppercase;">GIÁ BẠN DỰ ĐOÁN (VNĐ):</div>
-            <div class="price-display-num" id="displayGuessPrice">0 ₫</div>
+            <div class="price-formatted-preview" id="displayGuessPrice">0 ₫</div>
+            <input type="tel" class="input-box-clean" id="priceInputDirect" placeholder="Gõ số tiền dự đoán (VNĐ)..." oninput="handleDirectInput(this.value)">
         </div>
-
-        <div class="quick-numpad-grid">
-            <button class="btn-quick-price" onclick="addPrice(10000)">+10.000</button>
-            <button class="btn-quick-price" onclick="addPrice(50000)">+50.000</button>
-            <button class="btn-quick-price" onclick="addPrice(100000)">+100.000</button>
-            <button class="btn-quick-price" onclick="addPrice(500000)">+500.000</button>
-            <button class="btn-quick-price" onclick="addPrice(1000000)">+1 Triệu</button>
-            <button class="btn-quick-price btn-quick-clear" onclick="clearPrice()">⌫ Xóa</button>
-        </div>
-
-        <input type="tel" class="input-box" id="priceInputDirect" placeholder="HOẶC GÕ TRỰC TIẾP SỐ TIỀN..." oninput="handleDirectInput(this.value)">
 
         <button class="btn-submit" id="btnSubmitPrice" onclick="submitAnswer()">💖 CHỐT GIÁ NÀY!</button>
     </div>
@@ -541,10 +532,15 @@
         <div class="header-title" id="submittedTitle">ĐÃ CHỐT GIÁ!</div>
         <div class="badge-status" id="submittedDetailText">Nộp bài thành công!</div>
         
-        <div style="background:#180322; border:2.5px solid #ff4d8d; border-radius:18px; padding:14px; margin:14px 0;">
+        <div style="background:#180322; border:2.5px solid #ff4d8d; border-radius:18px; padding:14px; margin:12px 0;">
             <div style="font-size:0.85rem; color:#fbcfe8; font-weight:800;">GIÁ BẠN ĐÃ CHỐT:</div>
-            <div style="font-size:2.2rem; color:#fef08a; font-weight:900;" id="submittedPriceText">0 ₫</div>
+            <div style="font-size:2.3rem; color:#fef08a; font-weight:900;" id="submittedPriceText">0 ₫</div>
             <div style="font-size:0.85rem; color:#f472b6; font-weight:800; margin-top:4px;" id="submittedTimeText">Phản xạ: ...s</div>
+        </div>
+
+        <!-- Nút sửa đáp án nếu còn thời gian -->
+        <div id="editAnswerSection" style="margin: 10px 0;">
+            <button class="btn-edit-answer" id="btnEditAnswer" onclick="editSubmittedAnswer()">✏️ ĐỔI LẠI GIÁ KHÁC</button>
         </div>
 
         <p style="font-size: 0.95rem; line-height: 1.5; color: #fce7f3; font-weight: 700;">
@@ -624,6 +620,7 @@
         let currentGuessValue = 0;
         let hasUnlockedH1Mobile = false;
         let hasUnlockedH2Mobile = false;
+        let currentRoundPointsEarned = 0; // Để trừ đi nếu sửa lại giá
 
         let clientId = localStorage.getItem('tt_client_id');
         if (!clientId) {
@@ -653,9 +650,15 @@
             document.querySelectorAll('.card').forEach(c => c.classList.remove('active'));
             const target = document.getElementById(cardId);
             if (target) target.classList.add('active');
-            const exitBtn = document.getElementById('btnExitRoom');
-            if (exitBtn) {
-                exitBtn.style.display = (cardId === 'cardLogin') ? 'none' : 'inline-block';
+
+            // Ẩn thanh network-bar khi vào chơi để không che màn hình
+            const netBar = document.getElementById('netBar');
+            if (netBar) {
+                if (cardId === 'cardLogin' || cardId === 'cardLobby') {
+                    netBar.style.display = 'flex';
+                } else {
+                    netBar.style.display = 'none';
+                }
             }
         }
 
@@ -664,7 +667,7 @@
             const txt = document.getElementById('netText');
             if (online) {
                 dot.className = "network-dot";
-                txt.innerText = text || "Đã kết nối";
+                txt.innerText = text || "Đã vào phòng";
             } else {
                 dot.className = "network-dot offline";
                 txt.innerText = text || "Đang kết nối...";
@@ -686,24 +689,12 @@
             }
         }
 
-        // PRICE NUMPAD CONTROLS
+        // PRICE DIRECT INPUT
         function updatePriceDisplay() {
             const disp = document.getElementById('displayGuessPrice');
             if (disp) {
                 disp.innerText = currentGuessValue.toLocaleString('vi-VN') + ' ₫';
             }
-        }
-
-        function addPrice(amount) {
-            currentGuessValue += amount;
-            updatePriceDisplay();
-            document.getElementById('priceInputDirect').value = '';
-        }
-
-        function clearPrice() {
-            currentGuessValue = 0;
-            updatePriceDisplay();
-            document.getElementById('priceInputDirect').value = '';
         }
 
         function handleDirectInput(val) {
@@ -836,7 +827,7 @@
             showCard('cardLogin');
         }
 
-        // SUBMIT PRICE (HÃY CHỌN GIÁ ĐÚNG)
+        // SUBMIT OR UPDATE PRICE (HÃY CHỌN GIÁ ĐÚNG)
         function submitAnswer() {
             if (isTimeExpired) {
                 alert("⏱️ Đã hết thời gian chốt giá cho sản phẩm này!");
@@ -875,10 +866,11 @@
                 accuracyScore = 5; // Điểm an ủi tham gia
             }
 
-            // Điểm thưởng tốc độ (0 - 50) có nhân hệ số chính xác để chống spam đoán bừa
+            // Điểm thưởng tốc độ (0 - 50) có nhân hệ số chính xác:
+            // Hệ số thời gian = T_còn_lại / 35s
             const now = Date.now() + serverTimeOffset;
             const startTime = (typeof currentQStartTime === 'number' && currentQStartTime > 0) ? currentQStartTime : now;
-            const totalSec = currentQDuration || (currentQ.time || 30);
+            const totalSec = currentQDuration || (currentQ.time || 35);
             const totalMs = totalSec * 1000;
             const elapsedMs = Math.max(0, now - startTime);
             const remainingMs = Math.max(0, totalMs - elapsedMs);
@@ -894,46 +886,41 @@
 
             const qSubRef = db.ref('submissions/' + currentQIdx);
 
-            qSubRef.child(clientId).once('value').then(snap => {
-                if (snap.exists()) {
-                    alert("Bạn đã chốt giá cho sản phẩm này rồi!");
-                    return;
+            const subData = {
+                client_id: clientId,
+                player_name: currentPlayer ? currentPlayer.name : (savedName || 'Bóng hồng'),
+                player_avatar: currentPlayer ? currentPlayer.avatar : selectedAvatar,
+                guess_price: guessPrice,
+                real_price: realPrice,
+                diff_amount: diffAmount,
+                diff_percent: +(diffPercent),
+                error_ratio: +(errorRatio.toFixed(4)),
+                is_bullseye: isBullseye,
+                accuracy_score: accuracyScore,
+                speed_bonus: speedBonus,
+                points: totalRoundPoints,
+                elapsed_sec: +(elapsedSecStr),
+                submitted_at: firebase.database.ServerValue.TIMESTAMP
+            };
+
+            qSubRef.child(clientId).set(subData).then(() => {
+                hasSubmittedCurrentQ = true;
+
+                // Điều chỉnh điểm: trừ đi điểm cũ của vòng này (nếu là sửa lại) và cộng điểm mới
+                const pointsDelta = totalRoundPoints - currentRoundPointsEarned;
+                currentRoundPointsEarned = totalRoundPoints;
+
+                const playerRef = db.ref('players/' + clientId);
+                if (pointsDelta !== 0) {
+                    playerRef.child('score').transaction(currentScore => Math.max(0, (currentScore || 0) + pointsDelta));
                 }
+                playerRef.child('answers/' + currentQIdx).set(subData);
 
-                const subData = {
-                    client_id: clientId,
-                    player_name: currentPlayer ? currentPlayer.name : (savedName || 'Bóng hồng'),
-                    player_avatar: currentPlayer ? currentPlayer.avatar : selectedAvatar,
-                    guess_price: guessPrice,
-                    real_price: realPrice,
-                    diff_amount: diffAmount,
-                    diff_percent: +(diffPercent),
-                    error_ratio: +(errorRatio.toFixed(4)),
-                    is_bullseye: isBullseye,
-                    accuracy_score: accuracyScore,
-                    speed_bonus: speedBonus,
-                    points: totalRoundPoints,
-                    elapsed_sec: +(elapsedSecStr),
-                    submitted_at: firebase.database.ServerValue.TIMESTAMP
-                };
-
-                return qSubRef.child(clientId).set(subData).then(() => {
-                    hasSubmittedCurrentQ = true;
-                    if (playerTimerInterval) clearInterval(playerTimerInterval);
-
-                    const playerRef = db.ref('players/' + clientId);
-                    playerRef.child('score').transaction(currentScore => (currentScore || 0) + totalRoundPoints);
-                    if (accuracyScore >= 70) {
-                        playerRef.child('total_correct').transaction(c => (c || 0) + 1);
-                    }
-                    playerRef.child('answers/' + currentQIdx).set(subData);
-
-                    // Chuyển sang Card Submitted
-                    showCard('cardSubmitted');
-                    document.getElementById('submittedPriceText').innerText = guessPrice.toLocaleString('vi-VN') + ' ₫';
-                    document.getElementById('submittedTimeText').innerText = `⏱️ Phản xạ chốt giá: ${elapsedSecStr}s (còn lại ${(remainingMs/1000).toFixed(1)}s)`;
-                    document.getElementById('submittedDetailText').innerText = isBullseye ? '🎯 Trúng phóc 100%!' : 'Đã ghi nhận giá chốt!';
-                });
+                // Chuyển sang Card Submitted
+                showCard('cardSubmitted');
+                document.getElementById('submittedPriceText').innerText = guessPrice.toLocaleString('vi-VN') + ' ₫';
+                document.getElementById('submittedTimeText').innerText = `⏱️ Phản xạ chốt giá: ${elapsedSecStr}s (còn lại ${(remainingMs/1000).toFixed(1)}s)`;
+                document.getElementById('submittedDetailText').innerText = isBullseye ? '🎯 Trúng phóc 100%!' : 'Đã ghi nhận giá chốt!';
             }).catch(err => {
                 console.error("Lỗi khi gửi bài:", err);
                 btn.disabled = false;
@@ -941,7 +928,26 @@
             });
         }
 
-        // TIMER & HINTS MOBILE
+        // HÀM CHO PHÉP SỬA ĐÁP ÁN KHI VẪN CÒN THỜI GIAN
+        function editSubmittedAnswer() {
+            if (isTimeExpired) {
+                alert("⏱️ Đã hết thời gian 35s cho sản phẩm này, không thể chỉnh sửa nữa!");
+                return;
+            }
+            showCard('cardQuestion');
+            const btn = document.getElementById('btnSubmitPrice');
+            if (btn) {
+                btn.disabled = false;
+                btn.innerText = '🔄 CẬP NHẬT GIÁ MỚI';
+            }
+            const inp = document.getElementById('priceInputDirect');
+            if (inp && currentGuessValue > 0) {
+                inp.value = currentGuessValue;
+            }
+            updatePriceDisplay();
+        }
+
+        // TIMER & HINTS MOBILE (35s: 10s -> Gợi ý 1, 22s -> Gợi ý 2)
         function startPlayerQuestionTimer(duration, startTime) {
             if (playerTimerInterval) clearInterval(playerTimerInterval);
             playerTimerLastSec = -1;
@@ -951,10 +957,14 @@
 
             const badge = document.getElementById('qTimerMobile');
             const btnSubmit = document.getElementById('btnSubmitPrice');
+            const btnEdit = document.getElementById('btnEditAnswer');
             const currentQ = QUESTIONS[currentQIdx] || {};
 
             if (badge) badge.classList.remove('urgent');
-            if (btnSubmit) btnSubmit.disabled = false;
+            if (btnSubmit) {
+                btnSubmit.disabled = false;
+                btnSubmit.innerText = '💖 CHỐT GIÁ NÀY!';
+            }
 
             const h1Box = document.getElementById('mHint1Box');
             const h2Box = document.getElementById('mHint2Box');
@@ -966,9 +976,9 @@
             h1Box.className = 'hint-box-m locked';
             h2Box.className = 'hint-box-m locked';
             h1Status.innerText = '🔒 Mở sau 10s';
-            h2Status.innerText = '🔒 Mở sau 20s';
+            h2Status.innerText = '🔒 Mở sau 22s';
             h1Text.innerText = 'Gợi ý khoảng giá sẽ mở sau 10 giây...';
-            h2Text.innerText = 'Gợi ý chữ số cực sát sẽ mở sau 20 giây...';
+            h2Text.innerText = 'Gợi ý chữ số cực sát sẽ mở sau 22 giây...';
 
             const validStartTime = (typeof startTime === 'number') ? startTime : Date.now();
 
@@ -976,6 +986,11 @@
                 const now = Date.now() + serverTimeOffset;
                 const elapsed = Math.max(0, Math.floor((now - validStartTime) / 1000));
                 const timeLeft = Math.max(0, duration - elapsed);
+
+                // Cập nhật text đếm ngược trên nút sửa đáp án nếu đang ở cardSubmitted
+                if (btnEdit && !isTimeExpired) {
+                    btnEdit.innerText = `✏️ ĐỔI LẠI GIÁ KHÁC (CÒN ${timeLeft}s)`;
+                }
 
                 // Mở Gợi ý 1 tại giây thứ 10
                 if (elapsed >= 10 && !hasUnlockedH1Mobile) {
@@ -986,8 +1001,8 @@
                     if (navigator.vibrate) navigator.vibrate(80);
                 }
 
-                // Mở Gợi ý 2 tại giây thứ 20
-                if (elapsed >= 20 && !hasUnlockedH2Mobile) {
+                // Mở Gợi ý 2 tại giây thứ 22 (còn 13s)
+                if (elapsed >= 22 && !hasUnlockedH2Mobile) {
                     hasUnlockedH2Mobile = true;
                     h2Box.className = 'hint-box-m unlocked';
                     h2Status.innerText = '⚡ GỢI Ý VÀNG!';
@@ -1004,6 +1019,12 @@
                     }
                     if (btnSubmit && !hasSubmittedCurrentQ) {
                         btnSubmit.disabled = true;
+                    }
+                    if (btnEdit) {
+                        btnEdit.innerText = '🔒 ĐÃ HẾT GIỜ CHỐT GIÁ';
+                        btnEdit.disabled = true;
+                        btnEdit.style.background = '#475569';
+                        btnEdit.style.color = '#94a3b8';
                     }
                 } else {
                     if (badge) {
@@ -1054,17 +1075,18 @@
         }
 
         let currentQStartTime = 0;
-        let currentQDuration = 30;
+        let currentQDuration = 35;
 
         function handlePlayerGameState(state) {
             const status = state.status || 'LOBBY';
             const qIdx = state.current_q_idx || 0;
             currentQStartTime = state.q_start_time || 0;
-            currentQDuration = state.q_duration || 30;
+            currentQDuration = state.q_duration || 35;
 
             if (status === 'LOBBY') {
                 currentQIdx = -1;
                 hasSubmittedCurrentQ = false;
+                currentRoundPointsEarned = 0;
                 if (playerTimerInterval) clearInterval(playerTimerInterval);
                 if (currentPlayer) showCard('cardLobby');
                 else showCard('cardLogin');
@@ -1078,8 +1100,16 @@
                     currentQIdx = qIdx;
                     hasSubmittedCurrentQ = false;
                     currentGuessValue = 0;
+                    currentRoundPointsEarned = 0;
                     updatePriceDisplay();
                     document.getElementById('priceInputDirect').value = '';
+
+                    const btnEdit = document.getElementById('btnEditAnswer');
+                    if (btnEdit) {
+                        btnEdit.disabled = false;
+                        btnEdit.style.background = '#fbbf24';
+                        btnEdit.style.color = '#1e0a24';
+                    }
 
                     const currentQ = QUESTIONS[qIdx] || {};
                     document.getElementById('qBadgeMobile').innerText = `SẢN PHẨM ${qIdx + 1} / ${QUESTIONS.length}`;
@@ -1090,7 +1120,7 @@
                     const imgEl = document.getElementById('mProductImg');
                     imgEl.src = currentQ.image || '';
                     imgEl.onerror = function() {
-                        this.src = 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=80';
+                        this.src = 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80';
                     };
 
                     showCard('cardQuestion');
@@ -1107,7 +1137,6 @@
                 const currentQ = QUESTIONS[qIdx] || {};
                 const realPrice = currentQ.price || 0;
 
-                // Đọc kết quả bài nộp của chính mình để hiển thị lên điện thoại
                 db.ref('submissions/' + qIdx + '/' + clientId).once('value', snap => {
                     const mySub = snap.val();
                     showCard('cardReveal');

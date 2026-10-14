@@ -847,10 +847,10 @@
                 <b>1. Khám Phá Sản Phẩm:</b> Mỗi vòng hiển thị 1 món đồ phái đẹp yêu thích (Mỹ phẩm, Chăm sóc da, Chăm sóc tóc, Thời trang, Apple Watch...). Người chơi dự đoán Giá Niêm Yết Chính Hãng (VNĐ).
             </div>
             <div class="rule-item">
-                <b>2. Đếm Ngược 30 Giây & 2 Cấp Độ Gợi Ý:</b><br>
+                <b>2. Đếm Ngược 35 Giây & 2 Cấp Độ Gợi Ý:</b><br>
                 • <b>0s - 10s:</b> Vòng Bản Lĩnh (chốt giá sớm ăn trọn điểm tốc độ).<br>
                 • <b>Giây 10:</b> Tự động mở <b>Gợi Ý 1</b> (Khoảng giá / Phân khúc thị trường).<br>
-                • <b>Giây 20:</b> Tự động mở <b>Gợi Ý 2</b> (Đặc điểm chữ số, số đuôi may mắn).
+                • <b>Giây 22:</b> Tự động mở <b>Gợi Ý 2</b> (Đặc điểm chữ số, số đuôi may mắn).
             </div>
             <div class="rule-item">
                 <b>3. Công Thức Tính Điểm Độc Quyền:</b><br>
@@ -877,7 +877,7 @@
         <div class="q-app-container">
             <div class="top-bar-q">
                 <div class="q-badge" id="qBadgeTitle">SẢN PHẨM 1 / 30</div>
-                <div class="timer-badge" id="qTimerBadge">⏱️ 30s</div>
+                <div class="timer-badge" id="qTimerBadge">⏱️ 35s</div>
             </div>
 
             <!-- Product Card -->
@@ -906,10 +906,10 @@
                 </div>
                 <div class="hint-card-host locked" id="qHint2Box">
                     <div class="hint-hdr">
-                        <span class="hint-tag hint-tag-2">⚡ GỢI Ý 2 (SAU 20S)</span>
+                        <span class="hint-tag hint-tag-2">⚡ GỢI Ý 2 (SAU 22S)</span>
                         <span class="hint-status" id="qHint2Status">🔒 Đang khóa</span>
                     </div>
-                    <div class="hint-body" id="qHint2Text">Mở sau 20 giây...</div>
+                    <div class="hint-body" id="qHint2Text">Mở sau 22 giây...</div>
                 </div>
             </div>
 
@@ -1205,7 +1205,7 @@
                 db.ref('game_state').update({ status: 'RULES' });
             } else if (action === 'START_QUESTIONS') {
                 const currentQ = QUESTIONS[0] || {};
-                const qDuration = (currentQ && currentQ.time) ? currentQ.time : 30;
+                const qDuration = (currentQ && currentQ.time) ? currentQ.time : 35;
                 db.ref('game_state').update({
                     status: 'QUESTION',
                     current_q_idx: 0,
@@ -1216,7 +1216,7 @@
                 const nextIdx = (currentState.current_q_idx || 0) + 1;
                 if (nextIdx < QUESTIONS.length) {
                     const currentQ = QUESTIONS[nextIdx];
-                    const qDuration = (currentQ && currentQ.time) ? currentQ.time : 30;
+                    const qDuration = (currentQ && currentQ.time) ? currentQ.time : 35;
                     db.ref('game_state').update({
                         status: 'QUESTION',
                         current_q_idx: nextIdx,
@@ -1237,7 +1237,7 @@
             }
         }
 
-        // TIMER & HINTS LOGIC (30s: 10s -> Hint 1, 20s -> Hint 2)
+        // TIMER & HINTS LOGIC (35s: 10s -> Hint 1, 22s -> Hint 2)
         function startQuestionTimer(duration, startTime) {
             if (timerInterval) clearInterval(timerInterval);
             hostTimerLastSec = -1;
@@ -1261,9 +1261,9 @@
             h1Box.className = 'hint-card-host locked';
             h2Box.className = 'hint-card-host locked';
             h1Status.innerText = '🔒 Mở sau 10s';
-            h2Status.innerText = '🔒 Mở sau 20s';
+            h2Status.innerText = '🔒 Mở sau 22s';
             h1Text.innerText = 'Gợi ý khoảng giá sẽ mở sau 10 giây...';
-            h2Text.innerText = 'Gợi ý chữ số cực sát sẽ mở sau 20 giây...';
+            h2Text.innerText = 'Gợi ý chữ số cực sát sẽ mở sau 22 giây...';
 
             function tickHostTimer() {
                 const now = Date.now() + serverTimeOffset;
@@ -1279,8 +1279,8 @@
                     if (window.soundEngine) window.soundEngine.playCorrect();
                 }
 
-                // Mở Gợi ý 2 tại giây thứ 20 (elapsed >= 20)
-                if (elapsed >= 20 && !hasUnlockedHint2) {
+                // Mở Gợi ý 2 tại giây thứ 22 (elapsed >= 22)
+                if (elapsed >= 22 && !hasUnlockedHint2) {
                     hasUnlockedHint2 = true;
                     h2Box.className = 'hint-card-host unlocked urgent-unlock';
                     h2Status.innerText = '⚡ GỢI Ý VÀNG!';
@@ -1577,10 +1577,10 @@
                 const imgEl = document.getElementById('qProductImg');
                 imgEl.src = currentQ.image || '';
                 imgEl.onerror = function() {
-                    this.src = 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=80';
+                    this.src = 'https://images.unsplash.com/photo-1544816155-12df9643f363?w=600&auto=format&fit=crop&q=80';
                 };
 
-                const duration = state.q_duration || currentQ.time || 30;
+                const duration = state.q_duration || currentQ.time || 35;
                 startQuestionTimer(duration, state.q_start_time);
 
                 // Lắng nghe số lượng bài nộp cho câu này

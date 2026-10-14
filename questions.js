@@ -1,4 +1,4 @@
-// Ngân hàng sản phẩm: HÃY CHỌN GIÁ ĐÚNG (Phiên bản Đặc biệt 20/10 Phụ Nữ Việt Nam)
+// Ngân hàng sản phẩm: HÃY CHỌN GIÁ ĐÚNG (Phiên bản 20/10 - 35 Giây)
 window.QUESTION_SETS = {
   "set1": {
     "id": "set1",
@@ -10,10 +10,10 @@ window.QUESTION_SETS = {
         "brand": "Laneige",
         "category": "Dưỡng Môi",
         "price": 110000,
-        "image": "http://mitarobeauty.com/cdn/shop/files/3G.webp?v=1683494739",
+        "image": "https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-mat-na-ngu-moi-laneige-huong-qua-mong-3g-1698289410.jpg",
         "hint1": "Giá dao động trong khoảng từ 80.000đ - 140.000đ.",
         "hint2": "Là số chẵn tròn chục nghìn, 2 chữ số đầu giống hệt nhau (11x.xxx).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 2,
@@ -21,10 +21,10 @@ window.QUESTION_SETS = {
         "brand": "Simple",
         "category": "Chăm Sóc Da",
         "price": 141000,
-        "image": "https://cdn.bmstores.co.uk/images/hpcProductImage/imgDetail1150/325288-simple-refreshing-facial-wash-150ml.jpg",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-sua-rua-mat-simple-giup-da-sach-thoang-150ml-1707119565.jpg",
         "hint1": "Giá dao động trong khoảng từ 120.000đ - 160.000đ.",
         "hint2": "Tổng hai chữ số đầu cộng lại bằng 5, kết thúc hàng nghìn là số 1.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 3,
@@ -35,7 +35,7 @@ window.QUESTION_SETS = {
         "image": "https://product.hstatic.net/200000536035/product/nuoc-tay-trang-bi-dao-cocoon-winter-melon-micellar-water-140ml_91183488e7f04ad1b7eda45ae7cc4580.jpg",
         "hint1": "Nằm trong khoảng từ 130.000đ - 170.000đ.",
         "hint2": "Số hàng nghìn chia hết cho 5 (dạng đuôi 45.000đ), bằng tiền 3 cốc trà sữa vỉa hè.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 4,
@@ -46,7 +46,7 @@ window.QUESTION_SETS = {
         "image": "https://medias.watsons.com.ph/publishing/WTCPH-50048570-front-zoom.jpg?version=1734346071",
         "hint1": "Giá dao động trong khoảng từ 150.000đ - 210.000đ.",
         "hint2": "Số tròn chục nghìn, chữ số hàng chục nghìn là số phát tài (số 8).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 5,
@@ -54,10 +54,10 @@ window.QUESTION_SETS = {
         "brand": "Vaseline",
         "category": "Dưỡng Thể",
         "price": 195000,
-        "image": "https://i.ebayimg.com/images/g/2P4AAOSwWzNkP9D-/s-l1600.jpg",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-tinh-chat-duong-the-vaseline-gluta-hya-serum-burst-uv-lotion-flawless-glow-300ml-1696564619.jpg",
         "hint1": "Thuộc phân khúc dưới 250k và trên 160k.",
         "hint2": "Sát nút 200k (chỉ thiếu đúng 5.000đ là tròn 200.000đ).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 6,
@@ -65,10 +65,10 @@ window.QUESTION_SETS = {
         "brand": "Hatomugi",
         "category": "Chăm Sóc Cơ Thể",
         "price": 205000,
-        "image": "https://down-my.img.susercontent.com/file/my-11134207-7r991-ly08irymtsa242",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-sua-tam-duong-am-trang-da-hatomugi-800ml-1662972935.jpg",
         "hint1": "Dung tích khủng 800ml Nhật Bản, giá quanh mốc 180.000đ - 240.000đ.",
         "hint2": "Vừa vượt qua mốc 200.000đ một chút xíu, kết thúc bằng đuôi 5.000đ.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 7,
@@ -76,10 +76,10 @@ window.QUESTION_SETS = {
         "brand": "L’Oréal",
         "category": "Tẩy Trang",
         "price": 249000,
-        "image": "https://myphamcacdai.vn/upload/products/large/myphamcacdai-nuoc-tay-trang-tuoi-mat-l-oreal-3-in-1-danh-cho-da-dau-da-hon-hop-400ml.png",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-nuoc-tay-trang-l-oreal-paris-tuoi-mat-cho-da-dau-hon-hop-400ml-1681720846.jpg",
         "hint1": "Nằm trong khoảng từ 220.000đ - 280.000đ.",
         "hint2": "Thiếu đúng 1.000đ là tròn 250.000đ, số đuôi may mắn 49.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 8,
@@ -87,10 +87,10 @@ window.QUESTION_SETS = {
         "brand": "Black Rouge",
         "category": "Trang Điểm",
         "price": 298000,
-        "image": "https://myphamhanquocximiworld.com/wp-content/uploads/2023/08/3.jpg",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-son-kem-li-black-rouge-a12-dashed-brown-do-nau-gach-4-5g-1678873099.jpg",
         "hint1": "Màu son đỏ nâu quốc dân, giá dao động 260.000đ - 330.000đ.",
         "hint2": "Suýt soát 300k (chỉ kém 2.000đ là tròn 300.000đ).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 9,
@@ -98,10 +98,10 @@ window.QUESTION_SETS = {
         "brand": "The Saem",
         "category": "Trang Điểm",
         "price": 300000,
-        "image": "https://m.media-amazon.com/images/I/61Q2S7uGgHL._AC_.jpg",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-kem-che-khuyet-diem-the-saem-chong-nang-spf28-pa-6-5g-1681720335.jpg",
         "hint1": "Giá nằm trong khoảng từ 260.000đ - 350.000đ.",
         "hint2": "Con số cực tròn trĩnh: gồm một chữ số 3 và đúng năm số 0 phía sau.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 10,
@@ -112,7 +112,7 @@ window.QUESTION_SETS = {
         "image": "https://image.hsv-tech.io/0x1900/bbx/common/1db2d8ec-6f80-420f-90b0-65e09bc5d131.webp",
         "hint1": "Thương hiệu 3CE đình đám Hàn Quốc, giá trong khoảng 350.000đ - 450.000đ.",
         "hint2": "Kém đúng 2.000đ là chạm mốc 400.000đ (kết thúc bằng đuôi 98.000đ).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 11,
@@ -123,7 +123,7 @@ window.QUESTION_SETS = {
         "image": "https://image.hsv-tech.io/0x1900/bbx/common/f46617bf-519e-4adc-aab4-7c6f4bf5cefc.webp",
         "hint1": "Toner dịu nhẹ cho da nhạy cảm, giá trong khoảng 400.000đ - 480.000đ.",
         "hint2": "Ba chữ số đầu là 3 số lẻ tăng dần liên tiếp (3 - 4 - 5) hoặc đuôi 35.000đ.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 12,
@@ -131,10 +131,10 @@ window.QUESTION_SETS = {
         "brand": "Skin1004",
         "category": "Chống Nắng",
         "price": 495000,
-        "image": "https://down-my.img.susercontent.com/file/my-11134207-7rasa-m8lf2ar7a3kecb",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-kem-chong-nang-skin1004-chiet-xuat-rau-ma-spf50-pa-50ml-1681720499.jpg",
         "hint1": "Kem chống nắng rau má Madagascar, giá trong khoảng 460.000đ - 540.000đ.",
         "hint2": "Suýt chạm nửa triệu (chỉ thiếu đúng 5.000đ là tròn 500.000đ).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 13,
@@ -145,7 +145,7 @@ window.QUESTION_SETS = {
         "image": "https://bomcosmetic.vn/wp-content/uploads/2024/10/HINH-CHINH-DIEN-1.jpg",
         "hint1": "Vừa vượt mốc nửa triệu nhưng vẫn dưới 550.000đ.",
         "hint2": "Chữ số hàng chục nghìn là 0, chữ số hàng nghìn là số phát tài 8.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 14,
@@ -156,7 +156,7 @@ window.QUESTION_SETS = {
         "image": "https://tdoctor.net/fileUpload/product/1752071629_1610533080-a-ban-dem-naris-nature-whitening-cream-50g-(1).jpg",
         "hint1": "Kem dưỡng đêm thiên nhiên Nhật Bản, khoảng giá 500.000đ - 600.000đ.",
         "hint2": "Chữ số hàng trăm nghìn và hàng nghìn đều là 5 (dạng 545.xxx).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 15,
@@ -167,7 +167,7 @@ window.QUESTION_SETS = {
         "image": "https://lzd-img-global.slatic.net/g/p/abc1a8bdb530205a43a561e09b60ca6b.png_720x720q80.png",
         "hint1": "Chai to 500ml cho vũ công ballet Nhật, khoảng giá 550.000đ - 680.000đ.",
         "hint2": "Số tròn 6 vạn cực đẹp, gồm một chữ số 6 và đúng năm số 0.",
-        "time": 30
+        "time": 35
       }
     ]
   },
@@ -184,7 +184,7 @@ window.QUESTION_SETS = {
         "image": "https://bizweb.dktcdn.net/100/453/519/products/5-5-11zon-1b1c7ae0-3772-4121-a6ad-acd31eee7fa6.jpg?v=1747813859437",
         "hint1": "Hũ đất sét giải nhiệt da, giá từ 600.000đ - 720.000đ.",
         "hint2": "Hai chữ số đầu là 65, kết thúc hàng nghìn bằng số 8 phát tài phát lộc.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 17,
@@ -192,10 +192,10 @@ window.QUESTION_SETS = {
         "brand": "Panasonic",
         "category": "Chăm Sóc Tóc",
         "price": 670000,
-        "image": "https://www.panasonic.com/content/dam/pim/sg/en/EH/EH-ND3/EH-ND37/ast-1721316.png.pub.thumb.644.644.png",
+        "image": "https://cdnv2.tgdd.vn/mwg-static/dmx/Products/Images/1991/325783/panasonic-eh-nd37-k645-thumb-600x600.jpg",
         "hint1": "Máy sấy gấp gọn 1800W, giá dao động 620.000đ - 730.000đ.",
         "hint2": "Là số chẵn tròn chục nghìn, chữ số hàng chục nghìn là số 7.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 18,
@@ -206,7 +206,7 @@ window.QUESTION_SETS = {
         "image": "https://cdnv2.tgdd.vn/mwg-static/dmx/Products/Images/1991/230381/bluestone-hdb-1958-thumbksp-638967373728181794-600x600.jpg",
         "hint1": "Công suất lớn 2000W sấy ion, khoảng giá 630.000đ - 740.000đ.",
         "hint2": "Chênh lệch đúng 9.000đ so với mẫu Panasonic EH-ND37 (kết thúc đuôi 79.000đ).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 19,
@@ -214,10 +214,10 @@ window.QUESTION_SETS = {
         "brand": "Eucerin",
         "category": "Chăm Sóc Da",
         "price": 959000,
-        "image": "https://medias.watsons.com.my/publishing/WTCMY-87617-back-zoom.jpg?version=1741131087",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-kem-duong-sang-da-mo-tham-nam-eucerin-ban-dem-50ml-1698289410.jpg",
         "hint1": "Dược mỹ phẩm Đức trị thâm nám, giá cận 1 triệu (900.000đ - 1.000.000đ).",
         "hint2": "Chữ số hàng trăm nghìn và hàng nghìn đều là số 9 (dạng 959.xxx).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 20,
@@ -228,7 +228,7 @@ window.QUESTION_SETS = {
         "image": "https://product.hstatic.net/200000539781/product/3_5224b0733c404b6eb0b7e613f40c92a1.jpg",
         "hint1": "Bàn chải sóng âm chăm sóc nướu, phân khúc 800k - 1.2 triệu.",
         "hint2": "Bộ ba số 9 cực kỳ phong thủy (chỉ thiếu đúng 1.000đ là tròn 1 triệu).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 21,
@@ -236,10 +236,10 @@ window.QUESTION_SETS = {
         "brand": "Eucerin",
         "category": "Chăm Sóc Da",
         "price": 1472000,
-        "image": "https://images-1.eucerin.com/~/media/eucerin%20relaunch%20media/media-center-items/3/8/e/d235107c43a74817bdbe2b397e3adf13-screen.jpg?hash=6a8fb74c0c415c9928eb3c5d4f448097",
+        "image": "https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-tinh-chat-eucerin-sang-da-giam-tham-nam-30ml-1734582379.jpg",
         "hint1": "Tinh chất trị nám chuyên sâu, thuộc phân khúc 1.2 triệu - 1.7 triệu.",
         "hint2": "Ba chữ số đầu là 1 - 4 - 7, kết thúc hàng nghìn là số chẵn 2.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 22,
@@ -247,10 +247,10 @@ window.QUESTION_SETS = {
         "brand": "Charles & Keith",
         "category": "Thời Trang",
         "price": 1690000,
-        "image": "https://www.charleskeith.eu/on/demandware.static/-/Library-Sites-CharlesKeithEU/default/dw014f78ab/images/Muse/Spring23/spring-model-campaign/charles-keith-spring-23-campaign-blog-17.jpg",
+        "image": "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-ck-products/default/dw8374d615/images/hi-res/CK1-60361427_BLACK-01.jpg",
         "hint1": "Giày cao gót quai khóa thanh lịch C&K, khoảng giá 1.4tr - 1.9tr.",
         "hint2": "Chữ số hàng trăm nghìn là 6, kết thúc bằng đuôi 90.000đ.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 23,
@@ -261,7 +261,7 @@ window.QUESTION_SETS = {
         "image": "https://cdnv2.tgdd.vn/mwg-static/dmx/Products/Images/1991/325785/showsee-a18-gy-thumb-600x600.jpg",
         "hint1": "Động cơ tốc độ cao 110.000 vòng/phút, khoảng giá 1.5tr - 2.0tr.",
         "hint2": "Chữ số hàng trăm nghìn là 7, kết thúc bằng số đuôi 90.000đ.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 24,
@@ -272,7 +272,7 @@ window.QUESTION_SETS = {
         "image": "https://assets.adidas.com/images/w_1880,f_auto,q_auto/23932914ba854e9aa0b6b223ec384a7c_9366/IE1104_09_standard.jpg",
         "hint1": "Giày sneaker 3 sọc chính hãng Adidas, khoảng giá 1.7tr - 2.2tr.",
         "hint2": "Suýt soát 2 triệu (kém đúng 100.000đ là chạm mốc 2 triệu chẵn).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 25,
@@ -283,7 +283,7 @@ window.QUESTION_SETS = {
         "image": "https://assets.adidas.com/images/w_1880,f_auto,q_auto/a93a651339a34d269115af500104f641_9366/HQ8708_04_standard.jpg",
         "hint1": "Phiên bản cải tiến Grand Court 3.0, khoảng giá 1.8tr - 2.3tr.",
         "hint2": "Một con số tròn trĩnh hoàn hảo: đúng 2 triệu đồng chẵn (2.000.000đ).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 26,
@@ -291,10 +291,10 @@ window.QUESTION_SETS = {
         "brand": "Panasonic",
         "category": "Chăm Sóc Tóc",
         "price": 2610000,
-        "image": "https://www.panasonic.com/content/dam/pim/my/en/EH/EH-NE8/EH-NE8M-W/ast-3031676.png.pub.thumb.644.644.png",
+        "image": "https://cdn.tgdd.vn/Products/Images/1991/325784/panasonic-eh-ne8m-w442-1-600x600.jpg",
         "hint1": "Dòng máy sấy cao cấp ion âm gấp đôi, khoảng giá 2.3tr - 2.9tr.",
         "hint2": "Hơn 2.5 triệu một chút, số hàng chục nghìn là 1 (dạng 2.61x.xxx).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 27,
@@ -305,7 +305,7 @@ window.QUESTION_SETS = {
         "image": "https://cdnv2.tgdd.vn/mwg-static/dmx/Products/Images/1991/327702/panasonic-eh-ne9m-n442-thumb-600x600.jpg",
         "hint1": "Phiên bản flagship tối tân của Panasonic, khoảng giá 2.8tr - 3.5tr.",
         "hint2": "Chữ số hàng triệu là 3, số hàng trăm nghìn là 1 (dạng 3.15x.xxx).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 28,
@@ -316,7 +316,7 @@ window.QUESTION_SETS = {
         "image": "https://www.charleskeith.com/on/demandware.static/-/Library-Sites-CharlesKeith/default/dwc647b493/images/Muse/Summer23/gabine-edit/charles-keith-summer-23-gabine-blog-03.jpg",
         "hint1": "Dòng túi da thật phom dài sang trọng, khoảng giá 3.2tr - 4.0tr.",
         "hint2": "Chữ số hàng trăm nghìn là 5, kết thúc bằng số đuôi 90.000đ.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 29,
@@ -327,7 +327,7 @@ window.QUESTION_SETS = {
         "image": "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-ck-products/default/dw9e160a2b/images/hi-res/SL2-10681222_CHOCO-01.jpg",
         "hint1": "Túi phom yên ngựa da thật màu Chocolate đẳng cấp, khoảng 3.8tr - 4.5tr.",
         "hint2": "Vừa vượt mốc 4 triệu đúng 50.000đ (dạng 4.050.000đ).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 30,
@@ -335,10 +335,10 @@ window.QUESTION_SETS = {
         "brand": "Apple",
         "category": "Công Nghệ",
         "price": 11490000,
-        "image": "https://www.apple.com/newsroom/images/2024/09/introducing-apple-watch-series-10/article/Apple-Watch-Series-10-aluminum-jet-black-240909_inline.jpg.large_2x.jpg",
+        "image": "https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/7077/329149/apple-watch-s10-42mm-vien-nhom-day-vai-den-thumb-600x600.jpg",
         "hint1": "Đồng hồ thông minh Apple cao cấp, trên 10 triệu nhưng dưới 13 triệu.",
         "hint2": "Số hàng triệu là 11, kết thúc bằng đuôi 490.000đ.",
-        "time": 30
+        "time": 35
       }
     ]
   },
@@ -352,10 +352,10 @@ window.QUESTION_SETS = {
         "brand": "Laneige",
         "category": "Dưỡng Môi",
         "price": 110000,
-        "image": "http://mitarobeauty.com/cdn/shop/files/3G.webp?v=1683494739",
+        "image": "https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-mat-na-ngu-moi-laneige-huong-qua-mong-3g-1698289410.jpg",
         "hint1": "Giá dao động trong khoảng từ 80.000đ - 140.000đ.",
         "hint2": "Là số chẵn tròn chục nghìn, 2 chữ số đầu giống hệt nhau (11x.xxx).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 2,
@@ -363,10 +363,10 @@ window.QUESTION_SETS = {
         "brand": "Simple",
         "category": "Chăm Sóc Da",
         "price": 141000,
-        "image": "https://cdn.bmstores.co.uk/images/hpcProductImage/imgDetail1150/325288-simple-refreshing-facial-wash-150ml.jpg",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-sua-rua-mat-simple-giup-da-sach-thoang-150ml-1707119565.jpg",
         "hint1": "Giá dao động trong khoảng từ 120.000đ - 160.000đ.",
         "hint2": "Tổng hai chữ số đầu cộng lại bằng 5, kết thúc hàng nghìn là số 1.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 3,
@@ -377,7 +377,7 @@ window.QUESTION_SETS = {
         "image": "https://product.hstatic.net/200000536035/product/nuoc-tay-trang-bi-dao-cocoon-winter-melon-micellar-water-140ml_91183488e7f04ad1b7eda45ae7cc4580.jpg",
         "hint1": "Nằm trong khoảng từ 130.000đ - 170.000đ.",
         "hint2": "Số hàng nghìn chia hết cho 5 (dạng đuôi 45.000đ), bằng tiền 3 cốc trà sữa vỉa hè.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 4,
@@ -388,7 +388,7 @@ window.QUESTION_SETS = {
         "image": "https://medias.watsons.com.ph/publishing/WTCPH-50048570-front-zoom.jpg?version=1734346071",
         "hint1": "Giá dao động trong khoảng từ 150.000đ - 210.000đ.",
         "hint2": "Số tròn chục nghìn, chữ số hàng chục nghìn là số phát tài (số 8).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 5,
@@ -396,10 +396,10 @@ window.QUESTION_SETS = {
         "brand": "Vaseline",
         "category": "Dưỡng Thể",
         "price": 195000,
-        "image": "https://i.ebayimg.com/images/g/2P4AAOSwWzNkP9D-/s-l1600.jpg",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-tinh-chat-duong-the-vaseline-gluta-hya-serum-burst-uv-lotion-flawless-glow-300ml-1696564619.jpg",
         "hint1": "Thuộc phân khúc dưới 250k và trên 160k.",
         "hint2": "Sát nút 200k (chỉ thiếu đúng 5.000đ là tròn 200.000đ).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 6,
@@ -407,10 +407,10 @@ window.QUESTION_SETS = {
         "brand": "Hatomugi",
         "category": "Chăm Sóc Cơ Thể",
         "price": 205000,
-        "image": "https://down-my.img.susercontent.com/file/my-11134207-7r991-ly08irymtsa242",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-sua-tam-duong-am-trang-da-hatomugi-800ml-1662972935.jpg",
         "hint1": "Dung tích khủng 800ml Nhật Bản, giá quanh mốc 180.000đ - 240.000đ.",
         "hint2": "Vừa vượt qua mốc 200.000đ một chút xíu, kết thúc bằng đuôi 5.000đ.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 7,
@@ -418,10 +418,10 @@ window.QUESTION_SETS = {
         "brand": "L’Oréal",
         "category": "Tẩy Trang",
         "price": 249000,
-        "image": "https://myphamcacdai.vn/upload/products/large/myphamcacdai-nuoc-tay-trang-tuoi-mat-l-oreal-3-in-1-danh-cho-da-dau-da-hon-hop-400ml.png",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-nuoc-tay-trang-l-oreal-paris-tuoi-mat-cho-da-dau-hon-hop-400ml-1681720846.jpg",
         "hint1": "Nằm trong khoảng từ 220.000đ - 280.000đ.",
         "hint2": "Thiếu đúng 1.000đ là tròn 250.000đ, số đuôi may mắn 49.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 8,
@@ -429,10 +429,10 @@ window.QUESTION_SETS = {
         "brand": "Black Rouge",
         "category": "Trang Điểm",
         "price": 298000,
-        "image": "https://myphamhanquocximiworld.com/wp-content/uploads/2023/08/3.jpg",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-son-kem-li-black-rouge-a12-dashed-brown-do-nau-gach-4-5g-1678873099.jpg",
         "hint1": "Màu son đỏ nâu quốc dân, giá dao động 260.000đ - 330.000đ.",
         "hint2": "Suýt soát 300k (chỉ kém 2.000đ là tròn 300.000đ).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 9,
@@ -440,10 +440,10 @@ window.QUESTION_SETS = {
         "brand": "The Saem",
         "category": "Trang Điểm",
         "price": 300000,
-        "image": "https://m.media-amazon.com/images/I/61Q2S7uGgHL._AC_.jpg",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-kem-che-khuyet-diem-the-saem-chong-nang-spf28-pa-6-5g-1681720335.jpg",
         "hint1": "Giá nằm trong khoảng từ 260.000đ - 350.000đ.",
         "hint2": "Con số cực tròn trĩnh: gồm một chữ số 3 và đúng năm số 0 phía sau.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 10,
@@ -454,7 +454,7 @@ window.QUESTION_SETS = {
         "image": "https://image.hsv-tech.io/0x1900/bbx/common/1db2d8ec-6f80-420f-90b0-65e09bc5d131.webp",
         "hint1": "Thương hiệu 3CE đình đám Hàn Quốc, giá trong khoảng 350.000đ - 450.000đ.",
         "hint2": "Kém đúng 2.000đ là chạm mốc 400.000đ (kết thúc bằng đuôi 98.000đ).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 11,
@@ -465,7 +465,7 @@ window.QUESTION_SETS = {
         "image": "https://image.hsv-tech.io/0x1900/bbx/common/f46617bf-519e-4adc-aab4-7c6f4bf5cefc.webp",
         "hint1": "Toner dịu nhẹ cho da nhạy cảm, giá trong khoảng 400.000đ - 480.000đ.",
         "hint2": "Ba chữ số đầu là 3 số lẻ tăng dần liên tiếp (3 - 4 - 5) hoặc đuôi 35.000đ.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 12,
@@ -473,10 +473,10 @@ window.QUESTION_SETS = {
         "brand": "Skin1004",
         "category": "Chống Nắng",
         "price": 495000,
-        "image": "https://down-my.img.susercontent.com/file/my-11134207-7rasa-m8lf2ar7a3kecb",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-kem-chong-nang-skin1004-chiet-xuat-rau-ma-spf50-pa-50ml-1681720499.jpg",
         "hint1": "Kem chống nắng rau má Madagascar, giá trong khoảng 460.000đ - 540.000đ.",
         "hint2": "Suýt chạm nửa triệu (chỉ thiếu đúng 5.000đ là tròn 500.000đ).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 13,
@@ -487,7 +487,7 @@ window.QUESTION_SETS = {
         "image": "https://bomcosmetic.vn/wp-content/uploads/2024/10/HINH-CHINH-DIEN-1.jpg",
         "hint1": "Vừa vượt mốc nửa triệu nhưng vẫn dưới 550.000đ.",
         "hint2": "Chữ số hàng chục nghìn là 0, chữ số hàng nghìn là số phát tài 8.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 14,
@@ -498,7 +498,7 @@ window.QUESTION_SETS = {
         "image": "https://tdoctor.net/fileUpload/product/1752071629_1610533080-a-ban-dem-naris-nature-whitening-cream-50g-(1).jpg",
         "hint1": "Kem dưỡng đêm thiên nhiên Nhật Bản, khoảng giá 500.000đ - 600.000đ.",
         "hint2": "Chữ số hàng trăm nghìn và hàng nghìn đều là 5 (dạng 545.xxx).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 15,
@@ -509,7 +509,7 @@ window.QUESTION_SETS = {
         "image": "https://lzd-img-global.slatic.net/g/p/abc1a8bdb530205a43a561e09b60ca6b.png_720x720q80.png",
         "hint1": "Chai to 500ml cho vũ công ballet Nhật, khoảng giá 550.000đ - 680.000đ.",
         "hint2": "Số tròn 6 vạn cực đẹp, gồm một chữ số 6 và đúng năm số 0.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 16,
@@ -520,7 +520,7 @@ window.QUESTION_SETS = {
         "image": "https://bizweb.dktcdn.net/100/453/519/products/5-5-11zon-1b1c7ae0-3772-4121-a6ad-acd31eee7fa6.jpg?v=1747813859437",
         "hint1": "Hũ đất sét giải nhiệt da, giá từ 600.000đ - 720.000đ.",
         "hint2": "Hai chữ số đầu là 65, kết thúc hàng nghìn bằng số 8 phát tài phát lộc.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 17,
@@ -528,10 +528,10 @@ window.QUESTION_SETS = {
         "brand": "Panasonic",
         "category": "Chăm Sóc Tóc",
         "price": 670000,
-        "image": "https://www.panasonic.com/content/dam/pim/sg/en/EH/EH-ND3/EH-ND37/ast-1721316.png.pub.thumb.644.644.png",
+        "image": "https://cdnv2.tgdd.vn/mwg-static/dmx/Products/Images/1991/325783/panasonic-eh-nd37-k645-thumb-600x600.jpg",
         "hint1": "Máy sấy gấp gọn 1800W, giá dao động 620.000đ - 730.000đ.",
         "hint2": "Là số chẵn tròn chục nghìn, chữ số hàng chục nghìn là số 7.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 18,
@@ -542,7 +542,7 @@ window.QUESTION_SETS = {
         "image": "https://cdnv2.tgdd.vn/mwg-static/dmx/Products/Images/1991/230381/bluestone-hdb-1958-thumbksp-638967373728181794-600x600.jpg",
         "hint1": "Công suất lớn 2000W sấy ion, khoảng giá 630.000đ - 740.000đ.",
         "hint2": "Chênh lệch đúng 9.000đ so với mẫu Panasonic EH-ND37 (kết thúc đuôi 79.000đ).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 19,
@@ -550,10 +550,10 @@ window.QUESTION_SETS = {
         "brand": "Eucerin",
         "category": "Chăm Sóc Da",
         "price": 959000,
-        "image": "https://medias.watsons.com.my/publishing/WTCMY-87617-back-zoom.jpg?version=1741131087",
+        "image": "https://media.hcdn.vn/catalog/product/g/o/google-shopping-kem-duong-sang-da-mo-tham-nam-eucerin-ban-dem-50ml-1698289410.jpg",
         "hint1": "Dược mỹ phẩm Đức trị thâm nám, giá cận 1 triệu (900.000đ - 1.000.000đ).",
         "hint2": "Chữ số hàng trăm nghìn và hàng nghìn đều là số 9 (dạng 959.xxx).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 20,
@@ -564,7 +564,7 @@ window.QUESTION_SETS = {
         "image": "https://product.hstatic.net/200000539781/product/3_5224b0733c404b6eb0b7e613f40c92a1.jpg",
         "hint1": "Bàn chải sóng âm chăm sóc nướu, phân khúc 800k - 1.2 triệu.",
         "hint2": "Bộ ba số 9 cực kỳ phong thủy (chỉ thiếu đúng 1.000đ là tròn 1 triệu).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 21,
@@ -572,10 +572,10 @@ window.QUESTION_SETS = {
         "brand": "Eucerin",
         "category": "Chăm Sóc Da",
         "price": 1472000,
-        "image": "https://images-1.eucerin.com/~/media/eucerin%20relaunch%20media/media-center-items/3/8/e/d235107c43a74817bdbe2b397e3adf13-screen.jpg?hash=6a8fb74c0c415c9928eb3c5d4f448097",
+        "image": "https://media.hcdn.vn/catalog/product/f/a/facebook-dynamic-tinh-chat-eucerin-sang-da-giam-tham-nam-30ml-1734582379.jpg",
         "hint1": "Tinh chất trị nám chuyên sâu, thuộc phân khúc 1.2 triệu - 1.7 triệu.",
         "hint2": "Ba chữ số đầu là 1 - 4 - 7, kết thúc hàng nghìn là số chẵn 2.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 22,
@@ -583,10 +583,10 @@ window.QUESTION_SETS = {
         "brand": "Charles & Keith",
         "category": "Thời Trang",
         "price": 1690000,
-        "image": "https://www.charleskeith.eu/on/demandware.static/-/Library-Sites-CharlesKeithEU/default/dw014f78ab/images/Muse/Spring23/spring-model-campaign/charles-keith-spring-23-campaign-blog-17.jpg",
+        "image": "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-ck-products/default/dw8374d615/images/hi-res/CK1-60361427_BLACK-01.jpg",
         "hint1": "Giày cao gót quai khóa thanh lịch C&K, khoảng giá 1.4tr - 1.9tr.",
         "hint2": "Chữ số hàng trăm nghìn là 6, kết thúc bằng đuôi 90.000đ.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 23,
@@ -597,7 +597,7 @@ window.QUESTION_SETS = {
         "image": "https://cdnv2.tgdd.vn/mwg-static/dmx/Products/Images/1991/325785/showsee-a18-gy-thumb-600x600.jpg",
         "hint1": "Động cơ tốc độ cao 110.000 vòng/phút, khoảng giá 1.5tr - 2.0tr.",
         "hint2": "Chữ số hàng trăm nghìn là 7, kết thúc bằng số đuôi 90.000đ.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 24,
@@ -608,7 +608,7 @@ window.QUESTION_SETS = {
         "image": "https://assets.adidas.com/images/w_1880,f_auto,q_auto/23932914ba854e9aa0b6b223ec384a7c_9366/IE1104_09_standard.jpg",
         "hint1": "Giày sneaker 3 sọc chính hãng Adidas, khoảng giá 1.7tr - 2.2tr.",
         "hint2": "Suýt soát 2 triệu (kém đúng 100.000đ là chạm mốc 2 triệu chẵn).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 25,
@@ -619,7 +619,7 @@ window.QUESTION_SETS = {
         "image": "https://assets.adidas.com/images/w_1880,f_auto,q_auto/a93a651339a34d269115af500104f641_9366/HQ8708_04_standard.jpg",
         "hint1": "Phiên bản cải tiến Grand Court 3.0, khoảng giá 1.8tr - 2.3tr.",
         "hint2": "Một con số tròn trĩnh hoàn hảo: đúng 2 triệu đồng chẵn (2.000.000đ).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 26,
@@ -627,10 +627,10 @@ window.QUESTION_SETS = {
         "brand": "Panasonic",
         "category": "Chăm Sóc Tóc",
         "price": 2610000,
-        "image": "https://www.panasonic.com/content/dam/pim/my/en/EH/EH-NE8/EH-NE8M-W/ast-3031676.png.pub.thumb.644.644.png",
+        "image": "https://cdn.tgdd.vn/Products/Images/1991/325784/panasonic-eh-ne8m-w442-1-600x600.jpg",
         "hint1": "Dòng máy sấy cao cấp ion âm gấp đôi, khoảng giá 2.3tr - 2.9tr.",
         "hint2": "Hơn 2.5 triệu một chút, số hàng chục nghìn là 1 (dạng 2.61x.xxx).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 27,
@@ -641,7 +641,7 @@ window.QUESTION_SETS = {
         "image": "https://cdnv2.tgdd.vn/mwg-static/dmx/Products/Images/1991/327702/panasonic-eh-ne9m-n442-thumb-600x600.jpg",
         "hint1": "Phiên bản flagship tối tân của Panasonic, khoảng giá 2.8tr - 3.5tr.",
         "hint2": "Chữ số hàng triệu là 3, số hàng trăm nghìn là 1 (dạng 3.15x.xxx).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 28,
@@ -652,7 +652,7 @@ window.QUESTION_SETS = {
         "image": "https://www.charleskeith.com/on/demandware.static/-/Library-Sites-CharlesKeith/default/dwc647b493/images/Muse/Summer23/gabine-edit/charles-keith-summer-23-gabine-blog-03.jpg",
         "hint1": "Dòng túi da thật phom dài sang trọng, khoảng giá 3.2tr - 4.0tr.",
         "hint2": "Chữ số hàng trăm nghìn là 5, kết thúc bằng số đuôi 90.000đ.",
-        "time": 30
+        "time": 35
       },
       {
         "id": 29,
@@ -663,7 +663,7 @@ window.QUESTION_SETS = {
         "image": "https://www.charleskeith.vn/dw/image/v2/BCWJ_PRD/on/demandware.static/-/Sites-ck-products/default/dw9e160a2b/images/hi-res/SL2-10681222_CHOCO-01.jpg",
         "hint1": "Túi phom yên ngựa da thật màu Chocolate đẳng cấp, khoảng 3.8tr - 4.5tr.",
         "hint2": "Vừa vượt mốc 4 triệu đúng 50.000đ (dạng 4.050.000đ).",
-        "time": 30
+        "time": 35
       },
       {
         "id": 30,
@@ -671,10 +671,10 @@ window.QUESTION_SETS = {
         "brand": "Apple",
         "category": "Công Nghệ",
         "price": 11490000,
-        "image": "https://www.apple.com/newsroom/images/2024/09/introducing-apple-watch-series-10/article/Apple-Watch-Series-10-aluminum-jet-black-240909_inline.jpg.large_2x.jpg",
+        "image": "https://cdnv2.tgdd.vn/mwg-static/tgdd/Products/Images/7077/329149/apple-watch-s10-42mm-vien-nhom-day-vai-den-thumb-600x600.jpg",
         "hint1": "Đồng hồ thông minh Apple cao cấp, trên 10 triệu nhưng dưới 13 triệu.",
         "hint2": "Số hàng triệu là 11, kết thúc bằng đuôi 490.000đ.",
-        "time": 30
+        "time": 35
       }
     ]
   }

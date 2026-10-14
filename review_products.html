@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔍 KIỂM TRA ĐỐI SOÁT 30 SẢN PHẨM & HÌNH ẢNH • HÃY CHỌN GIÁ ĐÚNG 20/10</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
+        body { background: #13031a; color: #fdf2f8; padding: 25px; }
+        .header { text-align: center; margin-bottom: 30px; }
+        h1 { color: #fef08a; font-size: 2.2rem; text-shadow: 2px 2px 0 #f43f5e; margin-bottom: 8px; }
+        p { color: #fbcfe8; font-size: 1.05rem; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; max-width: 1300px; margin: 0 auto; }
+        .card { background: #23082d; border: 3px solid #ff4d8d; border-radius: 20px; padding: 16px; box-shadow: 5px 5px 0 #000; display: flex; flex-direction: column; }
+        .img-wrap { background: #fff; border: 2.5px solid #000; border-radius: 14px; height: 220px; display: flex; align-items: center; justify-content: center; padding: 10px; margin-bottom: 12px; position: relative; }
+        .img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
+        .badge-status { position: absolute; top: 8px; right: 8px; font-size: 0.75rem; font-weight: 900; padding: 3px 8px; border-radius: 8px; border: 1.5px solid #000; }
+        .badge-ok { background: #22c55e; color: #fff; }
+        .badge-err { background: #ef4444; color: #fff; }
+        .idx { font-size: 0.85rem; font-weight: 900; color: #ff4d8d; }
+        .name { font-size: 1.15rem; font-weight: 900; color: #fef08a; line-height: 1.35; margin: 4px 0 8px 0; min-height: 48px; }
+        .price { font-size: 1.35rem; font-weight: 900; color: #10b981; margin-bottom: 10px; }
+        .hint-block { background: #180322; border: 1.5px solid #3b1147; border-radius: 12px; padding: 8px 12px; margin-top: 6px; font-size: 0.85rem; line-height: 1.45; }
+        .hint-title { font-weight: 900; color: #fbbf24; margin-bottom: 2px; }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>🌸 BẢNG ĐỐI SOÁT 30 SẢN PHẨM & HÌNH ẢNH MINH HỌA</h1>
+        <p>Kiểm tra trực quan từng sản phẩm để đảm bảo hình ảnh hiển thị chuẩn xác 100% với tên & thương hiệu</p>
+    </div>
+    <div class="grid" id="productGrid"></div>
+
+    <script src="questions.js"></script>
+    <script>
+        const container = document.getElementById('productGrid');
+        const list = (window.QUESTION_SETS && window.QUESTION_SETS.set3) ? window.QUESTION_SETS.set3.questions : [];
+
+        list.forEach((p, idx) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+
+            card.innerHTML = `
+                <div class="img-wrap">
+                    <span class="badge-status badge-ok" id="badge-${p.id}">⏳ Đang tải ảnh...</span>
+                    <img src="${p.image}" alt="${p.name}" 
+                        onload="document.getElementById('badge-${p.id}').className='badge-status badge-ok'; document.getElementById('badge-${p.id}').innerText='✅ ĐÚNG ẢNH';"
+                        onerror="document.getElementById('badge-${p.id}').className='badge-status badge-err'; document.getElementById('badge-${p.id}').innerText='❌ LỖI TẢI ẢNH';">
+                </div>
+                <div class="idx">SẢN PHẨM #${p.id} • ${p.brand || ''} (${p.category || ''})</div>
+                <div class="name">${p.name}</div>
+                <div class="price">${(p.price || 0).toLocaleString('vi-VN')} VNĐ</div>
+                <div class="hint-block">
+                    <div class="hint-title">💡 Gợi ý 1 (Sau 10s):</div>
+                    <div>${p.hint1}</div>
+                </div>
+                <div class="hint-block">
+                    <div class="hint-title">⚡ Gợi ý 2 (Sau 20s):</div>
+                    <div>${p.hint2}</div>
+                </div>
+            `;
+            container.appendChild(card);
+        });
+    </script>
+</body>
+</html>
