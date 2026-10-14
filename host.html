@@ -3,26 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>🌸 VUA TIẾNG VIỆT • ĐẠI HỘI 20/10 TÔN VINH PHÁI ĐẸP 💖</title>
+    <title>🌸 HÃY CHỌN GIÁ ĐÚNG • ĐẠI HỘI 20/10 TÔN VINH PHÁI ĐẸP 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap');
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Montserrat', system-ui, -apple-system, sans-serif;
+            user-select: none;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
         }
 
         body {
             background-color: #13031a;
-            background-image: 
-                radial-gradient(rgba(244, 63, 94, 0.25) 1.5px, transparent 1.5px), 
-                radial-gradient(rgba(192, 132, 252, 0.2) 1.5px, #13031a 1.5px);
-            background-size: 28px 28px;
-            background-position: 0 0, 14px 14px;
             color: #fdf2f8;
             min-height: 100vh;
             display: flex;
@@ -31,52 +26,51 @@
             justify-content: center;
             overflow-x: hidden;
             position: relative;
-            user-select: none;
         }
 
         .ambient-bg {
             position: fixed;
-            top: 0; left: 0; width: 100vw; height: 100vh;
-            background: radial-gradient(circle at 50% 25%, rgba(244, 63, 94, 0.2) 0%, rgba(168, 85, 247, 0.12) 50%, transparent 75%);
-            pointer-events: none;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: #13031a;
+            background-image: 
+                radial-gradient(rgba(244, 63, 94, 0.22) 1.5px, transparent 1.5px),
+                radial-gradient(rgba(192, 132, 252, 0.18) 1.5px, #13031a 1.5px);
+            background-size: 32px 32px;
+            background-position: 0 0, 16px 16px;
             z-index: 1;
+            pointer-events: none;
         }
 
-        /* 2D Comic Floating Stickers - Chủ đề 20/10 Phái Đẹp */
+        /* 20/10 FEMININE STICKERS */
         .comic-sticker {
-            position: absolute;
+            position: fixed;
             padding: 8px 18px;
-            font-size: 0.95rem;
             font-weight: 900;
-            border-radius: 14px;
+            font-size: 0.95rem;
+            border-radius: 12px;
             border: 3px solid #000000;
             box-shadow: 4px 4px 0px #000000;
-            z-index: 4;
-            letter-spacing: 1px;
+            z-index: 2;
             text-transform: uppercase;
             pointer-events: none;
-            animation: comicFloat 3s ease-in-out infinite alternate;
+            letter-spacing: 0.5px;
         }
-        .sticker-1 { top: 25px; left: 3%; background: #ff4d8d; color: #ffffff; transform: rotate(-6deg); }
-        .sticker-2 { top: 35px; right: 3%; background: #fbbf24; color: #1e0a24; transform: rotate(5deg); animation-delay: 0.8s; }
-        .sticker-3 { bottom: 25px; left: 3%; background: #f43f5e; color: #ffffff; transform: rotate(4deg); animation-delay: 1.4s; }
-        .sticker-4 { bottom: 30px; right: 3%; background: #c084fc; color: #1e0a24; transform: rotate(-5deg); animation-delay: 2.1s; }
-        @keyframes comicFloat {
-            0% { transform: translateY(0) rotate(-6deg); }
-            100% { transform: translateY(-8px) rotate(-3deg); }
-        }
+        .sticker-1 { top: 25px; left: 25px; background: #ff4d8d; color: #ffffff; transform: rotate(-5deg); }
+        .sticker-2 { top: 25px; right: 260px; background: #fbbf24; color: #1e0a24; transform: rotate(4deg); }
+        .sticker-3 { bottom: 25px; left: 30px; background: #f43f5e; color: #ffffff; transform: rotate(3deg); }
+        .sticker-4 { bottom: 25px; right: 30px; background: #c084fc; color: #1e0a24; transform: rotate(-4deg); }
 
-        /* Header Audio & Reset Controls */
+        /* HEADER CONTROLS */
         .header-controls {
             position: fixed;
-            top: 18px;
+            top: 20px;
             right: 25px;
-            background: #250931;
+            background: #23082d;
             border: 3px solid #ff4d8d;
             box-shadow: 4px 4px 0px #000000;
+            padding: 8px 16px;
+            border-radius: 40px;
             color: #fdf2f8;
-            padding: 7px 16px;
-            border-radius: 20px;
             font-size: 0.95rem;
             font-weight: 800;
             z-index: 50;
@@ -104,8 +98,8 @@
         /* SCREENS CONTAINER */
         .screen {
             display: none;
-            width: 92%;
-            max-width: 1040px;
+            width: 94%;
+            max-width: 1080px;
             flex-direction: column;
             align-items: center;
             justify-content: center;
@@ -120,7 +114,7 @@
             to { opacity: 1; transform: scale(1); }
         }
 
-        /* 2D COMIC POP PANELS - THEME NỮ TÍNH 20/10 */
+        /* 20/10 POP PANELS */
         .lobby-box, .rules-box, .reveal-box, .leaderboard-box, .finale-box {
             background: #23082d;
             border: 4px solid #ff4d8d;
@@ -148,168 +142,134 @@
         }
 
         .lobby-title {
-            font-size: 3rem;
+            font-size: 3.2rem;
             color: #fef08a;
             font-weight: 900;
             text-transform: uppercase;
-            margin-bottom: 8px;
             text-shadow: 3px 3px 0px #f43f5e, 5px 5px 0px #000000;
+            margin-bottom: 8px;
             letter-spacing: 1.5px;
         }
 
-        .qr-section {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            margin: 10px auto;
-            width: 100%;
-            gap: 12px;
-        }
-        .qr-card {
-            background: #ffffff;
-            padding: 16px;
-            border-radius: 26px;
-            border: 5px solid #ff4d8d;
-            box-shadow: 8px 8px 0px #fb7185, 0 15px 35px rgba(0,0,0,0.5);
-            display: inline-block;
-        }
-        #qrContainer {
-            width: 360px;
-            height: 360px;
-            max-width: 85vw;
-            max-height: 85vw;
-            margin: 0 auto;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
-        #qrContainer canvas, #qrContainer img {
-            width: 360px !important;
-            height: 360px !important;
-            max-width: 85vw !important;
-            max-height: 85vw !important;
-            border-radius: 12px;
-            display: block;
-        }
-
-        .qr-url-text {
-            font-size: 1.05rem;
-            color: #fbcfe8;
-            font-weight: 800;
-            background: #180322;
-            padding: 8px 20px;
-            border-radius: 25px;
-            border: 2.5px solid #ff4d8d;
-            box-shadow: 3px 3px 0px #000000;
-            max-width: 90vw;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
-
-        /* Question Set Bar (3 Sets) */
+        /* QUESTION SET SELECTOR BAR */
         .question-set-bar {
             display: inline-flex;
-            align-items: center;
             background: #180322;
-            border: 3px solid #ff4d8d;
+            padding: 5px;
             border-radius: 30px;
-            padding: 6px;
-            gap: 8px;
+            border: 2.5px solid #ff4d8d;
             box-shadow: 4px 4px 0px #000000;
+            gap: 6px;
+            margin: 6px 0 14px 0;
             flex-wrap: wrap;
             justify-content: center;
         }
         .btn-qset {
             background: transparent;
-            border: 2px solid transparent;
+            border: none;
             color: #fbcfe8;
-            font-size: 0.95rem;
             font-weight: 800;
-            padding: 8px 20px;
-            border-radius: 22px;
+            font-size: 0.95rem;
+            padding: 8px 18px;
+            border-radius: 24px;
             cursor: pointer;
             transition: all 0.15s ease;
+        }
+        .btn-qset:hover {
+            color: #ffffff;
+            background: rgba(255, 77, 141, 0.2);
         }
         .btn-qset.active {
             background: linear-gradient(135deg, #ff4d8d, #f43f5e);
             color: #ffffff;
-            border-color: #000000;
-            box-shadow: 3px 3px 0px #9d174d;
-            font-weight: 900;
-        }
-        .btn-qset:hover:not(.active) {
-            background: rgba(244, 63, 94, 0.2);
-            color: #ffffff;
+            box-shadow: 2px 2px 0px #000000;
+            border: 1.5px solid #000000;
         }
 
-        .btn-small-gold {
-            background: #fbbf24;
-            color: #1e0a24;
-            border: 2.5px solid #000000;
-            box-shadow: 3px 3px 0px #000000;
-            padding: 8px 16px;
-            border-radius: 20px;
-            font-weight: 900;
-            font-size: 0.95rem;
-            cursor: pointer;
-            transition: transform 0.1s;
+        /* QR CODE SECTION */
+        .qr-section {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 12px 0;
         }
-        .btn-small-gold:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px #000000; }
+        .qr-card {
+            background: #ffffff;
+            border: 4.5px solid #000000;
+            border-radius: 24px;
+            padding: 16px;
+            box-shadow: 8px 8px 0px #ff4d8d, 0 15px 35px rgba(0,0,0,0.5);
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 320px;
+            min-height: 320px;
+        }
+        .qr-url-text {
+            background: #180322;
+            border: 2px solid #ff4d8d;
+            color: #fef08a;
+            padding: 8px 18px;
+            border-radius: 20px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            box-shadow: 2px 2px 0px #000000;
+        }
 
         .player-count-badge {
-            background: linear-gradient(135deg, #ff4d8d, #f43f5e);
-            color: #ffffff;
+            background: #fbbf24;
+            color: #1e0a24;
+            font-size: 1.15rem;
             font-weight: 900;
-            font-size: 1.35rem;
-            padding: 10px 32px;
+            padding: 8px 24px;
             border-radius: 25px;
-            box-shadow: 4px 4px 0px #000000;
-            border: 3px solid #000000;
             display: inline-block;
+            border: 2.5px solid #000000;
+            box-shadow: 3px 3px 0px #000000;
         }
 
         .players-avatar-grid {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 12px;
-            max-height: 180px;
+            gap: 10px;
+            max-height: 120px;
             overflow-y: auto;
-            margin: 18px 0;
             padding: 10px;
+            margin: 10px 0;
+            background: rgba(24, 3, 34, 0.6);
+            border: 2px dashed #ff4d8d;
+            border-radius: 20px;
         }
-        .player-chip {
-            background: #ffffff;
-            color: #831843;
-            border: 2.5px solid #000000;
-            border-radius: 18px;
-            box-shadow: 3px 3px 0px #ff4d8d;
-            padding: 6px 14px;
-            font-size: 1rem;
-            font-weight: 900;
-            display: flex;
+        .player-avatar-chip {
+            background: #23082d;
+            border: 2px solid #ff4d8d;
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.9rem;
+            font-weight: 800;
+            color: #fdf2f8;
+            box-shadow: 2px 2px 0px #000000;
+            display: inline-flex;
             align-items: center;
             gap: 6px;
-            animation: popIn 0.2s ease-out;
         }
 
-        /* 2D CHUNKY VIBRANT BUTTONS */
+        /* BUTTONS */
         .btn-gold {
             background: linear-gradient(135deg, #ff4d8d, #f43f5e 55%, #fb923c);
-            color: #ffffff;
-            font-size: 1.35rem;
-            font-weight: 900;
-            padding: 16px 40px;
-            border-radius: 35px;
             border: 3.5px solid #000000;
-            cursor: pointer;
             box-shadow: 5px 5px 0px #000000;
+            color: #ffffff;
+            font-size: 1.3rem;
+            font-weight: 900;
+            padding: 14px 34px;
+            border-radius: 35px;
+            cursor: pointer;
+            transition: all 0.15s ease;
             text-transform: uppercase;
             letter-spacing: 0.5px;
-            transition: all 0.1s ease;
-            margin-top: 10px;
         }
         .btn-gold:hover {
             transform: translate(-2px, -2px);
@@ -317,46 +277,57 @@
         }
         .btn-gold:active {
             transform: translate(3px, 3px);
-            box-shadow: 1px 1px 0px #000000;
+            box-shadow: 2px 2px 0px #000000;
+        }
+        .btn-small-gold {
+            background: #fbbf24;
+            border: 2px solid #000000;
+            box-shadow: 2px 2px 0px #000000;
+            color: #1e0a24;
+            font-size: 0.85rem;
+            font-weight: 900;
+            padding: 6px 14px;
+            border-radius: 18px;
+            cursor: pointer;
         }
 
-        /* RULES SCREEN */
+        /* RULES BOX */
         .rules-title {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             color: #fef08a;
-            text-align: center;
             font-weight: 900;
-            margin-bottom: 22px;
             text-transform: uppercase;
+            margin-bottom: 20px;
             text-shadow: 3px 3px 0px #f43f5e;
         }
         .rule-item {
             background: #180322;
-            border: 3px solid #3b1147;
+            border: 2.5px solid #3b1147;
             border-left: 6px solid #ff4d8d;
             box-shadow: 4px 4px 0px #000000;
-            padding: 16px 22px;
             border-radius: 16px;
-            font-size: 1.25rem;
-            line-height: 1.6;
-            margin-bottom: 14px;
-            color: #fdf2f8;
+            padding: 14px 20px;
+            margin-bottom: 12px;
             text-align: left;
+            font-size: 1.15rem;
+            line-height: 1.6;
+            color: #fce7f3;
         }
+        .rule-item b { color: #fef08a; }
         .prize-highlight {
-            background: linear-gradient(135deg, #ff4d8d, #fbbf24);
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
             color: #1e0a24;
-            padding: 16px 24px;
+            border: 3.5px solid #000000;
+            box-shadow: 6px 6px 0px #000000;
             border-radius: 20px;
             font-size: 1.35rem;
             font-weight: 900;
             text-align: center;
-            margin: 22px 0;
-            box-shadow: 6px 6px 0px #000000;
-            border: 3.5px solid #000000;
+            margin: 20px 0;
+            padding: 16px 20px;
         }
 
-        /* QUESTION SCREEN */
+        /* QUESTION SCREEN (HÃY CHỌN GIÁ ĐÚNG) */
         .q-app-container {
             width: 100%;
             text-align: center;
@@ -365,14 +336,16 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
+            margin-bottom: 16px;
+            flex-wrap: wrap;
+            gap: 12px;
         }
         .q-badge {
             background: linear-gradient(135deg, #ff4d8d, #f43f5e);
             color: #ffffff;
             font-weight: 900;
-            font-size: 1.35rem;
-            padding: 10px 28px;
+            font-size: 1.3rem;
+            padding: 10px 24px;
             border-radius: 24px;
             border: 3px solid #000000;
             box-shadow: 4px 4px 0px #000000;
@@ -395,33 +368,161 @@
             100% { transform: scale(1.08) rotate(1deg); }
         }
 
-        .scramble-box {
-            background: #ffffff;
-            border: 4px solid #000000;
-            border-radius: 24px;
-            padding: 24px 30px;
-            box-shadow: 8px 8px 0px #ff4d8d, 0 15px 40px rgba(0,0,0,0.6);
-            margin-bottom: 22px;
+        /* PRODUCT PRESENTATION CARD */
+        .product-card-host {
+            background: #23082d;
+            border: 4px solid #ff4d8d;
+            border-radius: 28px;
+            padding: 24px 28px;
+            box-shadow: 8px 8px 0px #000000, 0 15px 40px rgba(0,0,0,0.6);
+            margin-bottom: 20px;
+            display: flex;
+            gap: 28px;
+            align-items: center;
+            text-align: left;
         }
-        .scramble-text {
-            color: #831843;
-            font-size: 3.2rem;
+        @media (max-width: 768px) {
+            .product-card-host {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        .product-img-frame {
+            background: #ffffff;
+            border: 3.5px solid #000000;
+            box-shadow: 6px 6px 0px #ff4d8d;
+            border-radius: 20px;
+            padding: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 280px;
+            min-width: 280px;
+            height: 280px;
+        }
+        .product-img-frame img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 12px;
+        }
+        .product-details {
+            flex: 1;
+        }
+        .tag-row {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 12px;
+            flex-wrap: wrap;
+        }
+        .brand-tag {
+            background: #fbbf24;
+            color: #1e0a24;
+            font-size: 0.95rem;
             font-weight: 900;
-            letter-spacing: 4px;
+            padding: 5px 14px;
+            border-radius: 14px;
+            border: 2px solid #000000;
+            box-shadow: 2px 2px 0px #000000;
             text-transform: uppercase;
         }
-
-        .hint-box {
-            background: #180322;
-            border: 3.5px solid #fbbf24;
-            box-shadow: 5px 5px 0px #9d174d;
-            border-radius: 20px;
-            padding: 20px 28px;
-            font-size: 1.55rem;
-            line-height: 1.6;
-            color: #fdf2f8;
-            margin-bottom: 22px;
+        .category-tag {
+            background: #ff4d8d;
+            color: #ffffff;
+            font-size: 0.95rem;
+            font-weight: 900;
+            padding: 5px 14px;
+            border-radius: 14px;
+            border: 2px solid #000000;
+            box-shadow: 2px 2px 0px #000000;
+        }
+        .product-name-host {
+            font-size: 2.4rem;
+            color: #fef08a;
+            font-weight: 900;
+            line-height: 1.3;
+            margin-bottom: 12px;
+            text-shadow: 2px 2px 0px #000000;
+        }
+        .product-cta-text {
+            font-size: 1.15rem;
+            color: #fbcfe8;
             font-weight: 800;
+        }
+
+        /* 2-STAGE HINTS DUAL CONTAINER */
+        .hints-grid-host {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+            margin-bottom: 20px;
+        }
+        @media (max-width: 768px) {
+            .hints-grid-host {
+                grid-template-columns: 1fr;
+            }
+        }
+        .hint-card-host {
+            background: #180322;
+            border: 3px solid #3b1147;
+            border-radius: 20px;
+            padding: 16px 20px;
+            text-align: left;
+            box-shadow: 5px 5px 0px #000000;
+            transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        .hint-card-host.locked {
+            opacity: 0.7;
+            border-color: #4a1555;
+            background: #15021e;
+        }
+        .hint-card-host.unlocked {
+            opacity: 1;
+            border-color: #fbbf24;
+            box-shadow: 6px 6px 0px #ff4d8d;
+            animation: hintPop 0.4s ease-out;
+        }
+        @keyframes hintPop {
+            0% { transform: scale(0.95); }
+            50% { transform: scale(1.03); }
+            100% { transform: scale(1); }
+        }
+        .hint-card-host.urgent-unlock {
+            border-color: #f43f5e;
+            box-shadow: 6px 6px 0px #fbbf24;
+        }
+        .hint-hdr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+        .hint-tag {
+            font-size: 0.88rem;
+            font-weight: 900;
+            padding: 4px 12px;
+            border-radius: 12px;
+            border: 2px solid #000000;
+            box-shadow: 2px 2px 0px #000000;
+            text-transform: uppercase;
+        }
+        .hint-tag-1 { background: #ff4d8d; color: #ffffff; }
+        .hint-tag-2 { background: #fbbf24; color: #1e0a24; }
+        .hint-status {
+            font-size: 0.82rem;
+            font-weight: 800;
+            color: #fbcfe8;
+        }
+        .hint-body {
+            font-size: 1.2rem;
+            font-weight: 800;
+            line-height: 1.5;
+            color: #fdf2f8;
+        }
+        .hint-card-host.locked .hint-body {
+            color: #9d7b9f;
+            font-style: italic;
         }
 
         .live-submissions-bar {
@@ -429,14 +530,14 @@
             border: 2.5px solid #ff4d8d;
             box-shadow: 4px 4px 0px #000000;
             border-radius: 25px;
-            padding: 12px 28px;
-            font-size: 1.25rem;
+            padding: 10px 24px;
+            font-size: 1.2rem;
             font-weight: 900;
             color: #f472b6;
             display: inline-flex;
             align-items: center;
-            gap: 12px;
-            margin-bottom: 22px;
+            gap: 10px;
+            margin-bottom: 20px;
         }
 
         .btn-group {
@@ -446,31 +547,37 @@
             flex-wrap: wrap;
         }
 
-        /* REVEAL SCREEN */
+        /* REVEAL SCREEN (CÔNG BỐ GIÁ ĐÚNG) */
         .reveal-box {
             background: #23082d;
             border: 4px solid #ff4d8d;
             box-shadow: 8px 8px 0px #000000;
             border-radius: 28px;
-            padding: 40px 30px;
+            padding: 30px;
             width: 100%;
             text-align: center;
         }
-        .reveal-answer-title {
-            font-size: 1.4rem;
+        .reveal-price-banner {
+            background: linear-gradient(135deg, #180322, #2d053a);
+            border: 3.5px solid #fbbf24;
+            box-shadow: 6px 6px 0px #ff4d8d;
+            border-radius: 24px;
+            padding: 20px;
+            margin: 16px 0 24px 0;
+        }
+        .reveal-price-label {
+            font-size: 1.3rem;
             color: #fbcfe8;
             font-weight: 900;
-            margin-bottom: 15px;
             text-transform: uppercase;
             letter-spacing: 1px;
+            margin-bottom: 6px;
         }
-        .reveal-answer-text {
-            font-size: 3.8rem;
+        .reveal-price-num {
+            font-size: 4rem;
             color: #fef08a;
             font-weight: 900;
-            text-transform: uppercase;
             text-shadow: 4px 4px 0px #f43f5e, 6px 6px 0px #000000;
-            margin-bottom: 25px;
             letter-spacing: 2px;
             animation: bounceIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
@@ -479,7 +586,50 @@
             100% { transform: scale(1); opacity: 1; }
         }
 
-        /* LEADERBOARD SCREEN */
+        /* REVEAL SUBMISSIONS TABLE */
+        .subs-table-container {
+            max-height: 280px;
+            overflow-y: auto;
+            background: #180322;
+            border: 2.5px solid #3b1147;
+            border-radius: 18px;
+            padding: 12px;
+            margin-bottom: 22px;
+        }
+        .sub-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #23082d;
+            border: 2px solid #3b1147;
+            border-radius: 14px;
+            padding: 10px 16px;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+            font-weight: 800;
+        }
+        .sub-row.bullseye {
+            background: #fbbf24;
+            color: #1e0a24;
+            border-color: #000000;
+            box-shadow: 3px 3px 0px #ff4d8d;
+        }
+        .sub-row.bullseye * { color: #1e0a24 !important; }
+        .sub-row.top-tier {
+            border-color: #ff4d8d;
+            background: #33083d;
+        }
+        .sub-badge-pill {
+            font-size: 0.8rem;
+            font-weight: 900;
+            padding: 3px 8px;
+            border-radius: 8px;
+            border: 1.5px solid #000;
+        }
+        .badge-bullseye { background: #f43f5e; color: #fff; }
+        .badge-accurate { background: #10b981; color: #fff; }
+
+        /* LEADERBOARD & FINALE */
         .leaderboard-title {
             font-size: 2.8rem;
             color: #fef08a;
@@ -514,7 +664,6 @@
             color: #1e0a24 !important;
         }
 
-        /* FINALE SCREEN */
         .podium-container {
             display: flex;
             justify-content: center;
@@ -543,7 +692,7 @@
         .pillar-2 { height: 140px; background: #ff4d8d; color: #ffffff; }
         .pillar-3 { height: 110px; background: #c084fc; color: #1e0a24; }
 
-        /* Reset Host Button & Modal */
+        /* RESET MODAL */
         .btn-reset-host {
             background: #ef4444;
             border: 2.5px solid #0f172a;
@@ -558,9 +707,7 @@
             align-items: center;
             gap: 6px;
             height: 38px;
-            transition: all 0.1s;
         }
-        .btn-reset-host:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px #000; }
         .btn-gold-outline {
             background: #334155;
             border: 3px solid #0f172a;
@@ -571,19 +718,8 @@
             padding: 14px 28px;
             border-radius: 35px;
             cursor: pointer;
-            transition: all 0.15s;
             text-transform: uppercase;
         }
-        .btn-gold-outline:hover {
-            transform: translate(-2px, -2px);
-            box-shadow: 6px 6px 0px #000;
-        }
-        .btn-gold-outline:active {
-            transform: translate(2px, 2px);
-            box-shadow: 1px 1px 0px #000;
-        }
-
-        /* Modal Overlay & Card */
         .modal-overlay {
             position: fixed;
             top: 0; left: 0;
@@ -598,68 +734,41 @@
         .modal-card {
             background: #1e293b;
             border: 4px solid #0f172a;
-            box-shadow: 8px 8px 0px #000;
-            border-radius: 26px;
-            padding: 35px 30px;
-            max-width: 520px;
+            box-shadow: 8px 8px 0px #000000;
+            border-radius: 24px;
+            padding: 30px;
             width: 90%;
+            max-width: 520px;
             text-align: center;
-            animation: modalPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
-        @keyframes modalPop {
-            0% { transform: scale(0.85); opacity: 0; }
-            100% { transform: scale(1); opacity: 1; }
-        }
-        .modal-title {
-            font-size: 2rem;
-            color: #facc15;
-            font-weight: 900;
-            margin-bottom: 8px;
-            text-shadow: 2px 2px 0px #0284c7;
-        }
-        .modal-desc {
-            color: #cbd5e1;
-            font-size: 1.05rem;
-            line-height: 1.5;
-            margin-bottom: 20px;
-        }
+        .modal-title { font-size: 1.6rem; font-weight: 900; color: #f8fafc; margin-bottom: 8px; }
+        .modal-desc { font-size: 1rem; color: #94a3b8; line-height: 1.5; margin-bottom: 20px; font-weight: 700; }
         .btn-modal {
             width: 100%;
-            padding: 16px 20px;
-            border-radius: 18px;
-            cursor: pointer;
-            text-align: left;
-            transition: all 0.15s;
+            padding: 14px 18px;
+            border-radius: 16px;
+            font-weight: 900;
+            font-size: 1rem;
             border: 3px solid #0f172a;
             box-shadow: 4px 4px 0px #000;
+            cursor: pointer;
             display: flex;
             flex-direction: column;
             gap: 4px;
+            text-align: left;
         }
-        .btn-modal:active { transform: translate(2px, 2px); box-shadow: 1px 1px 0px #000; }
-        .btn-modal b { font-size: 1.08rem; }
-        .btn-modal small { font-size: 0.88rem; opacity: 0.9; }
-        .btn-modal-primary {
-            background: #facc15;
-            color: #0f172a;
-        }
-        .btn-modal-danger {
-            background: #ef4444;
-            color: #ffffff;
-        }
+        .btn-modal-primary { background: #3b82f6; color: #fff; }
+        .btn-modal-danger { background: #ef4444; color: #fff; }
         .btn-modal-cancel {
             background: transparent;
             border: none;
             color: #94a3b8;
-            font-size: 1rem;
             font-weight: 800;
             cursor: pointer;
-            padding: 10px 20px;
             margin-top: 10px;
+            padding: 6px;
         }
-        .btn-modal-cancel:hover { color: #fff; text-decoration: underline; }
 
-        /* Confetti Canvas */
         #confettiCanvas {
             position: fixed;
             top: 0; left: 0;
@@ -674,7 +783,7 @@
     <div class="comic-sticker sticker-1">🌸 PHÁI ĐẸP LÀ SỐ 1</div>
     <div class="comic-sticker sticker-2">👑 NỮ HOÀNG TỎA SÁNG</div>
     <div class="comic-sticker sticker-3">💖 20/10 RỰC RỠ</div>
-    <div class="comic-sticker sticker-4">✨ NỮ THẦN THÔNG THÁI</div>
+    <div class="comic-sticker sticker-4">✨ HÃY CHỌN GIÁ ĐÚNG</div>
     <canvas id="confettiCanvas"></canvas>
 
     <!-- Header Controls -->
@@ -690,17 +799,17 @@
     <div class="screen active" id="screenLobby">
         <div class="lobby-box">
             <div class="lobby-badge-pill">🌸 CHÀO MỪNG NGÀY PHỤ NỮ VIỆT NAM 20/10 💖</div>
-            <div class="lobby-title">VUA TIẾNG VIỆT</div>
-            <p style="font-size: 1.15rem; color: #94a3b8; margin-bottom: 12px; font-weight: 800; letter-spacing: 0.5px;">
-                QUÉT MÃ QR BẰNG CAMERA ĐIỆN THOẠI ĐỂ THAM GIA ĐOÁN CHỮ!
+            <div class="lobby-title">HÃY CHỌN GIÁ ĐÚNG</div>
+            <p style="font-size: 1.15rem; color: #fbcfe8; margin-bottom: 12px; font-weight: 800; letter-spacing: 0.5px;">
+                QUÉT MÃ QR BẰNG CAMERA ĐIỆN THOẠI ĐỂ THAM GIA ĐOÁN GIÁ SẢN PHẨM PHÁI ĐẸP!
             </p>
 
             <!-- Bộ Chọn Gói Câu Hỏi (Bộ 1 / Bộ 2 / Bộ 3) -->
             <div style="display:flex; justify-content:center; margin-bottom: 14px;">
                 <div class="question-set-bar">
-                    <button class="btn-qset" id="btnQSet1" onclick="switchQuestionSet('set1')">📚 Bộ 1 (Classic)</button>
-                    <button class="btn-qset" id="btnQSet2" onclick="switchQuestionSet('set2')">🔥 Bộ 2 (Thử Thách)</button>
-                    <button class="btn-qset active" id="btnQSet3" onclick="switchQuestionSet('set3')">💼 Bộ 3 (HR/Headhunt)</button>
+                    <button class="btn-qset" id="btnQSet1" onclick="switchQuestionSet('set1')">💄 Bộ 1 (15 Món Skincare)</button>
+                    <button class="btn-qset" id="btnQSet2" onclick="switchQuestionSet('set2')">👗 Bộ 2 (15 Món Đồ Dùng)</button>
+                    <button class="btn-qset active" id="btnQSet3" onclick="switchQuestionSet('set3')">👑 Bộ 3 (Đại Hội 30 Món)</button>
                 </div>
             </div>
 
@@ -718,14 +827,14 @@
             </div>
 
             <div style="margin: 10px 0 6px 0;">
-                <div class="player-count-badge" id="lobbyPlayerCount">👥 0 NGƯỜI ĐÃ THAM GIA</div>
+                <div class="player-count-badge" id="lobbyPlayerCount">👥 0 BÓNG HỒNG ĐÃ THAM GIA</div>
             </div>
 
             <div class="players-avatar-grid" id="lobbyPlayersGrid"></div>
 
             <div style="margin-top: 14px; display:flex; justify-content:center; gap:14px; flex-wrap:wrap;">
                 <button class="btn-gold" onclick="hostAction('START_GAME')">📜 XEM THỂ LỆ & BẮT ĐẦU</button>
-                <button class="btn-gold-outline" onclick="openResetModal()" title="Cài đặt lại trạng thái phòng chơi">⚙️ Tùy Chọn Reset</button>
+                <button class="btn-gold-outline" onclick="openResetModal()">⚙️ Tùy Chọn Reset</button>
             </div>
         </div>
     </div>
@@ -733,15 +842,24 @@
     <!-- SCREEN 2: RULES -->
     <div class="screen" id="screenRules">
         <div class="rules-box">
-            <div class="rules-title">🌸 THỂ LỆ ĐẠI HỘI 20/10 💖</div>
+            <div class="rules-title">🌸 THỂ LỆ HÃY CHỌN GIÁ ĐÚNG 💖</div>
             <div class="rule-item">
-                <b>1. Hình thức:</b> Màn hình lớn hiển thị các chữ cái bị đảo lộn ngẫu nhiên. Người chơi sử dụng điện thoại để sắp xếp thành cụm từ Tiếng Việt hoàn chỉnh có nghĩa.
+                <b>1. Khám Phá Sản Phẩm:</b> Mỗi vòng hiển thị 1 món đồ phái đẹp yêu thích (Mỹ phẩm, Chăm sóc da, Chăm sóc tóc, Thời trang, Apple Watch...). Người chơi dự đoán Giá Niêm Yết Chính Hãng (VNĐ).
             </div>
             <div class="rule-item">
-                <b>2. Thời gian:</b> Mỗi câu hỏi có tối đa <b>50 giây</b> đếm ngược. Khi mọi người chơi đã nộp bài xong, MC có thể bấm mở đáp án sớm bất kỳ lúc nào để chuyển câu tiếp theo.
+                <b>2. Đếm Ngược 30 Giây & 2 Cấp Độ Gợi Ý:</b><br>
+                • <b>0s - 10s:</b> Vòng Bản Lĩnh (chốt giá sớm ăn trọn điểm tốc độ).<br>
+                • <b>Giây 10:</b> Tự động mở <b>Gợi Ý 1</b> (Khoảng giá / Phân khúc thị trường).<br>
+                • <b>Giây 20:</b> Tự động mở <b>Gợi Ý 2</b> (Đặc điểm chữ số, số đuôi may mắn).
             </div>
             <div class="rule-item">
-                <b>3. Tính điểm thời gian thực:</b> Trả lời ĐÚNG nhận <b>100 điểm gốc</b> + <b>Điểm thời gian tối đa 50đ</b> tính theo từng khắc (mili-giây): <code>50 × (Thời gian còn lại / 50s)</code>. Nộp càng nhanh điểm càng cao!
+                <b>3. Công Thức Tính Điểm Độc Quyền:</b><br>
+                • Đoán trúng 100%: <b>100đ Bullseye!</b><br>
+                • Đoán sát (sai số trong 30%): Điểm tỷ lệ theo độ lệch (càng sát giá điểm càng cao).<br>
+                • Thưởng tốc độ tối đa <b>50đ</b>: Tính theo mili-giây và nhân với hệ số chính xác (chống spam đoán bừa).
+            </div>
+            <div class="rule-item">
+                <b>4. Cơ Cấu Giải Thưởng:</b> Top 6 Nữ Thần có tổng điểm tích lũy cao nhất sau các vòng sẽ được vinh danh!
             </div>
 
             <div class="prize-highlight">
@@ -749,38 +867,60 @@
             </div>
 
             <div style="text-align: center;">
-                <button class="btn-gold" onclick="hostAction('START_QUESTIONS')">🔥 BẮT ĐẦU CÂU HỎI 1</button>
+                <button class="btn-gold" onclick="hostAction('START_QUESTIONS')">🔥 BẮT ĐẦU SẢN PHẨM 1</button>
             </div>
         </div>
     </div>
 
-    <!-- SCREEN 3: QUESTION -->
+    <!-- SCREEN 3: QUESTION (HÃY CHỌN GIÁ ĐÚNG) -->
     <div class="screen" id="screenQuestion">
         <div class="q-app-container">
             <div class="top-bar-q">
-                <div class="q-badge" id="qBadgeTitle">CÂU HỎI 1 / 15 (3 TỪ)</div>
-                <div class="timer-badge" id="qTimerBadge">⏱️ 50s</div>
+                <div class="q-badge" id="qBadgeTitle">SẢN PHẨM 1 / 30</div>
+                <div class="timer-badge" id="qTimerBadge">⏱️ 30s</div>
             </div>
 
-            <div class="hint-box" id="qHintText">
-                💡 Gợi ý câu hỏi sẽ hiện tại đây
-            </div>
-
-            <div class="scramble-box">
-                <div style="font-size: 1.15rem; color: #831843; font-weight: 800; margin-bottom: 8px; text-transform: uppercase; letter-spacing: 1px;">
-                    🔀 CÁC CHỮ CÁI BỊ ĐẢO NGẪU NHIÊN:
+            <!-- Product Card -->
+            <div class="product-card-host">
+                <div class="product-img-frame">
+                    <img id="qProductImg" src="" alt="Sản phẩm minh họa">
                 </div>
-                <div class="scramble-text" id="qScrambleText">g / o / n / đ / s / è / n / ô / a</div>
+                <div class="product-details">
+                    <div class="tag-row">
+                        <span class="brand-tag" id="qBrandBadge">THƯƠNG HIỆU</span>
+                        <span class="category-tag" id="qCategoryBadge">PHÂN LOẠI</span>
+                    </div>
+                    <div class="product-name-host" id="qProductName">Tên sản phẩm</div>
+                    <div class="product-cta-text">✨ Hãy chốt giá niêm yết chính hãng trên điện thoại của bạn!</div>
+                </div>
+            </div>
+
+            <!-- 2-Stage Hints Dual Grid -->
+            <div class="hints-grid-host">
+                <div class="hint-card-host locked" id="qHint1Box">
+                    <div class="hint-hdr">
+                        <span class="hint-tag hint-tag-1">💡 GỢI Ý 1 (SAU 10S)</span>
+                        <span class="hint-status" id="qHint1Status">🔒 Đang khóa</span>
+                    </div>
+                    <div class="hint-body" id="qHint1Text">Mở sau 10 giây...</div>
+                </div>
+                <div class="hint-card-host locked" id="qHint2Box">
+                    <div class="hint-hdr">
+                        <span class="hint-tag hint-tag-2">⚡ GỢI Ý 2 (SAU 20S)</span>
+                        <span class="hint-status" id="qHint2Status">🔒 Đang khóa</span>
+                    </div>
+                    <div class="hint-body" id="qHint2Text">Mở sau 20 giây...</div>
+                </div>
             </div>
 
             <div>
                 <div class="live-submissions-bar" id="liveSubmissionsText">
-                    ⚡ ĐÃ CÓ 0 / 0 NGƯỜI NỘP BÀI
+                    ⚡ ĐÃ CÓ 0 / 0 BÓNG HỒNG CHỐT GIÁ
                 </div>
             </div>
 
             <div class="btn-group">
-                <button class="btn-gold" onclick="hostAction('REVEAL_ANSWER')">🔓 MỞ ĐÁP ÁN</button>
+                <button class="btn-gold" onclick="hostAction('REVEAL_ANSWER')">🔓 CÔNG BỐ GIÁ ĐÚNG</button>
                 <button class="btn-gold" style="background: linear-gradient(135deg, #a3081e, #61000f);" onclick="hostAction('NEXT_QUESTION')">⏭️ BỎ QUA</button>
             </div>
         </div>
@@ -789,16 +929,23 @@
     <!-- SCREEN 4: REVEAL -->
     <div class="screen" id="screenReveal">
         <div class="reveal-box">
-            <div class="reveal-answer-title">ĐÁP ÁN CHÍNH XÁC LÀ:</div>
-            <div class="reveal-answer-text" id="revealAnswerText">ĐÈN ÔNG SAO</div>
+            <div style="font-size: 1.25rem; color: #fbcfe8; font-weight: 800; margin-bottom: 6px;" id="revealProdTitle">SẢN PHẨM: ...</div>
+            <div class="reveal-price-banner">
+                <div class="reveal-price-label">🎉 GIÁ NIÊM YẾT CHÍNH HÃNG:</div>
+                <div class="reveal-price-num" id="revealPriceNum">0 ₫</div>
+            </div>
 
-            <div style="font-size: 1.3rem; color: #ffd700; margin-bottom: 25px;" id="revealStatsText">
-                ⚡ Đã có X người trả lời đúng!
+            <div style="font-size: 1.2rem; color: #fef08a; font-weight: 900; margin-bottom: 12px;" id="revealStatsSummary">
+                ⚡ BẢNG KẾT QUẢ ĐOÁN GIÁ CỦA CÁC BÓNG HỒNG:
+            </div>
+
+            <div class="subs-table-container" id="revealSubsContainer">
+                <div style="color:#94a3b8; padding: 20px;">Đang tổng hợp kết quả...</div>
             </div>
 
             <div class="btn-group">
                 <button class="btn-gold" onclick="hostAction('SHOW_LEADERBOARD')">📊 BẢNG XẾP HẠNG TOP 6</button>
-                <button class="btn-gold" onclick="hostAction('NEXT_QUESTION')">⏭️ CÂU TIẾP THEO</button>
+                <button class="btn-gold" onclick="hostAction('NEXT_QUESTION')">👉 SẢN PHẨM TIẾP THEO</button>
             </div>
         </div>
     </div>
@@ -810,7 +957,7 @@
             <div id="leaderboardContainer" style="margin-bottom: 30px;"></div>
 
             <div style="text-align: center;">
-                <button class="btn-gold" id="btnNextFromLb" onclick="hostAction('NEXT_QUESTION')">🚀 SANG CÂU TIẾP THEO</button>
+                <button class="btn-gold" id="btnNextFromLb" onclick="hostAction('NEXT_QUESTION')">🚀 SANG SẢN PHẨM TIẾP THEO</button>
             </div>
         </div>
     </div>
@@ -824,7 +971,6 @@
             </div>
 
             <div class="podium-container" id="podiumContainer"></div>
-
             <div id="top45Container" style="display:flex; justify-content:center; gap:20px; margin-bottom:25px; flex-wrap:wrap;"></div>
 
             <button class="btn-gold" onclick="openResetModal()">🔄 CHƠI LẠI TỪ ĐẦU</button>
@@ -853,7 +999,7 @@
         </div>
     </div>
 
-    <!-- Firebase Compat SDK (Chạy trực tiếp từ CDN, không cần cài đặt gì) -->
+    <!-- Firebase Compat SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
@@ -871,11 +1017,14 @@
         let timerInterval = null;
         let timeLeft = 0;
         let currentState = { status: 'LOBBY', current_q_idx: 0, question_set: 'set3' };
-        let currentSubmissionsRef = null;
         let activePlayerUrl = '';
         let prevPlayersCount = 0;
+        let serverTimeOffset = 0;
+        let hostTimerLastSec = -1;
+        let hasUnlockedHint1 = false;
+        let hasUnlockedHint2 = false;
+        let currentSubmissionsRef = null;
 
-        // 1. Khởi tạo Firebase Database
         const db = window.getFirebaseDB ? window.getFirebaseDB() : null;
 
         function switchQuestionSet(setId) {
@@ -911,18 +1060,16 @@
             }
         }
 
-        // Sound Engine UI Controls
+        // Sound Controls
         function toggleBGM() {
             if (window.soundEngine) {
                 const playing = window.soundEngine.toggleBGM();
                 document.getElementById('btnBgmToggle').innerText = playing ? '⏸️' : '🎵';
             }
         }
-
         function setBgmVolume(val) {
             if (window.soundEngine) window.soundEngine.setBgmVolume(parseFloat(val));
         }
-
         function toggleMute() {
             if (window.soundEngine) {
                 const muted = window.soundEngine.toggleMute();
@@ -930,11 +1077,10 @@
             }
         }
 
-        // Tạo mã QR Code trỏ thẳng về player.html trên GitHub Pages hoặc localhost
+        // QR Code
         function getPlayerPageUrl() {
             const loc = window.location;
             if (loc.protocol.startsWith('http')) {
-                // Tự động thay thế /host.html bằng /player.html trên GitHub Pages
                 return loc.origin + loc.pathname.replace(/\/host\.html.*$/, '/player.html');
             }
             return 'player.html';
@@ -949,7 +1095,6 @@
             const container = document.getElementById('qrContainer');
             if (!container) return;
 
-            // Kích thước 360x360 px (Tăng 150% so với 240px ban đầu)
             const primaryUrl = `https://api.qrserver.com/v1/create-qr-code/?size=360x360&data=${encodeURIComponent(url)}`;
             const fallback1 = `https://chart.googleapis.com/chart?cht=qr&chs=360x360&chl=${encodeURIComponent(url)}`;
             const fallback2 = `https://quickchart.io/qr?size=360&text=${encodeURIComponent(url)}`;
@@ -999,19 +1144,15 @@
             });
         }
 
-        // ====================================================================
-        // RESET MODAL CONTROLS & ACTIONS
-        // ====================================================================
+        // RESET GAME
         function openResetModal() {
             const modal = document.getElementById('resetModal');
             if (modal) modal.style.display = 'flex';
         }
-
         function closeResetModal() {
             const modal = document.getElementById('resetModal');
             if (modal) modal.style.display = 'none';
         }
-
         function confirmResetAction(type) {
             if (!db) {
                 alert("⚠️ Vui lòng dán cấu hình Firebase của bạn vào file firebase-config.js!");
@@ -1019,20 +1160,16 @@
                 return;
             }
             closeResetModal();
-
             if (timerInterval) clearInterval(timerInterval);
 
             if (type === 'NEW_ROUND') {
-                // Đưa trạng thái game về LOBBY, câu hỏi 0, giữ nguyên gói câu hỏi
                 db.ref('game_state').set({
                     status: 'LOBBY',
                     current_q_idx: 0,
                     q_start_time: 0,
                     question_set: currentSetId
                 });
-                // Xóa toàn bộ bài nộp
                 db.ref('submissions').remove();
-                // Đặt lại điểm số người chơi về 0
                 db.ref('players').once('value', snap => {
                     const pMap = snap.val() || {};
                     const updates = {};
@@ -1046,7 +1183,6 @@
                     }
                 });
             } else if (type === 'WIPE_ALL') {
-                // Xóa toàn bộ phòng: cả người chơi và bài nộp
                 db.ref('game_state').set({
                     status: 'LOBBY',
                     current_q_idx: 0,
@@ -1058,12 +1194,7 @@
             }
         }
 
-        // ====================================================================
-        // FIREBASE REALTIME GAME LOGIC
-        // ====================================================================
-        let serverTimeOffset = 0;
-        let hostTimerLastSec = -1;
-
+        // HOST ACTIONS
         function hostAction(action) {
             if (!db) {
                 alert("⚠️ Vui lòng dán cấu hình Firebase của bạn vào file firebase-config.js!");
@@ -1073,8 +1204,8 @@
             if (action === 'START_GAME') {
                 db.ref('game_state').update({ status: 'RULES' });
             } else if (action === 'START_QUESTIONS') {
-                const currentQ = QUESTIONS[0] || QUESTIONS[0];
-                const qDuration = (currentQ && currentQ.time) ? currentQ.time : 50;
+                const currentQ = QUESTIONS[0] || {};
+                const qDuration = (currentQ && currentQ.time) ? currentQ.time : 30;
                 db.ref('game_state').update({
                     status: 'QUESTION',
                     current_q_idx: 0,
@@ -1085,7 +1216,7 @@
                 const nextIdx = (currentState.current_q_idx || 0) + 1;
                 if (nextIdx < QUESTIONS.length) {
                     const currentQ = QUESTIONS[nextIdx];
-                    const qDuration = (currentQ && currentQ.time) ? currentQ.time : 50;
+                    const qDuration = (currentQ && currentQ.time) ? currentQ.time : 30;
                     db.ref('game_state').update({
                         status: 'QUESTION',
                         current_q_idx: nextIdx,
@@ -1106,18 +1237,56 @@
             }
         }
 
+        // TIMER & HINTS LOGIC (30s: 10s -> Hint 1, 20s -> Hint 2)
         function startQuestionTimer(duration, startTime) {
             if (timerInterval) clearInterval(timerInterval);
             hostTimerLastSec = -1;
+            hasUnlockedHint1 = false;
+            hasUnlockedHint2 = false;
+
             const badge = document.getElementById('qTimerBadge');
             badge.classList.remove('urgent');
 
             const validStartTime = (typeof startTime === 'number') ? startTime : Date.now();
+            const currentQ = QUESTIONS[currentState.current_q_idx || 0] || {};
+
+            // Đặt trạng thái ban đầu của 2 Hint về Locked
+            const h1Box = document.getElementById('qHint1Box');
+            const h2Box = document.getElementById('qHint2Box');
+            const h1Text = document.getElementById('qHint1Text');
+            const h2Text = document.getElementById('qHint2Text');
+            const h1Status = document.getElementById('qHint1Status');
+            const h2Status = document.getElementById('qHint2Status');
+
+            h1Box.className = 'hint-card-host locked';
+            h2Box.className = 'hint-card-host locked';
+            h1Status.innerText = '🔒 Mở sau 10s';
+            h2Status.innerText = '🔒 Mở sau 20s';
+            h1Text.innerText = 'Gợi ý khoảng giá sẽ mở sau 10 giây...';
+            h2Text.innerText = 'Gợi ý chữ số cực sát sẽ mở sau 20 giây...';
 
             function tickHostTimer() {
                 const now = Date.now() + serverTimeOffset;
                 const elapsed = Math.max(0, Math.floor((now - validStartTime) / 1000));
                 const timeLeft = Math.max(0, duration - elapsed);
+
+                // Mở Gợi ý 1 tại giây thứ 10 (elapsed >= 10)
+                if (elapsed >= 10 && !hasUnlockedHint1) {
+                    hasUnlockedHint1 = true;
+                    h1Box.className = 'hint-card-host unlocked';
+                    h1Status.innerText = '🔓 ĐÃ MỞ!';
+                    h1Text.innerText = currentQ.hint1 || 'Khoảng giá đang cập nhật...';
+                    if (window.soundEngine) window.soundEngine.playCorrect();
+                }
+
+                // Mở Gợi ý 2 tại giây thứ 20 (elapsed >= 20)
+                if (elapsed >= 20 && !hasUnlockedHint2) {
+                    hasUnlockedHint2 = true;
+                    h2Box.className = 'hint-card-host unlocked urgent-unlock';
+                    h2Status.innerText = '⚡ GỢI Ý VÀNG!';
+                    h2Text.innerText = currentQ.hint2 || 'Chi tiết chữ số đang cập nhật...';
+                    if (window.soundEngine) window.soundEngine.playCheer();
+                }
 
                 if (timeLeft <= 0) {
                     clearInterval(timerInterval);
@@ -1143,165 +1312,169 @@
             timerInterval = setInterval(tickHostTimer, 250);
         }
 
+        // LOBBY RENDERING
         function renderLobbyPlayers(players, totalCount) {
             const count = totalCount !== undefined ? totalCount : (players ? players.length : 0);
             const countEl = document.getElementById('lobbyPlayerCount');
-            if (countEl) countEl.innerText = `👥 ${count} NGƯỜI ĐÃ THAM GIA`;
+            if (countEl) countEl.innerText = `👥 ${count} BÓNG HỒNG ĐÃ THAM GIA`;
 
             const grid = document.getElementById('lobbyPlayersGrid');
             if (!grid) return;
             grid.innerHTML = '';
-            (players || []).forEach(p => {
-                const chip = document.createElement('div');
-                chip.className = 'player-chip';
-                chip.innerHTML = `<span>${p.avatar}</span> <span>${p.name}</span>`;
-                grid.appendChild(chip);
-            });
-        }
-
-        function handleStateUpdate(data) {
-            if (!data) return;
-            currentState = data;
-
-            // Đồng bộ gói câu hỏi đang chọn
-            if (data.question_set && data.question_set !== currentSetId && window.QUESTION_SETS && window.QUESTION_SETS[data.question_set]) {
-                currentSetId = data.question_set;
-                QUESTIONS = window.QUESTION_SETS[currentSetId].questions;
-                const btn1 = document.getElementById('btnQSet1');
-                const btn2 = document.getElementById('btnQSet2');
-                const btn3 = document.getElementById('btnQSet3');
-                if (btn1) btn1.classList.toggle('active', currentSetId === 'set1');
-                if (btn2) btn2.classList.toggle('active', currentSetId === 'set2');
-                if (btn3) btn3.classList.toggle('active', currentSetId === 'set3');
-            }
-
-            const qIdx = data.current_q_idx || 0;
-            const currentQ = QUESTIONS[qIdx] || QUESTIONS[0];
-
-            if (data.status === 'LOBBY') {
-                showScreen('screenLobby');
-            } else if (data.status === 'RULES') {
-                showScreen('screenRules');
-            } else if (data.status === 'QUESTION') {
-                showScreen('screenQuestion');
-                if (currentQ) {
-                    document.getElementById('qBadgeTitle').innerText = `CÂU HỎI ${currentQ.id} / ${QUESTIONS.length} (${currentQ.words} TỪ)`;
-                    const hintEl = document.getElementById('qHintText');
-                    if (hintEl) hintEl.innerText = `💡 Gợi ý: ${currentQ.hint || ''}`;
-                    document.getElementById('qScrambleText').innerText = currentQ.scrambled;
-                    const duration = data.q_duration || (currentQ ? (currentQ.time || 50) : 50);
-                    startQuestionTimer(duration, data.q_start_time);
-                }
-                listenSubmissions(qIdx);
-            } else if (data.status === 'REVEAL') {
-                if (timerInterval) clearInterval(timerInterval);
-                showScreen('screenReveal');
-                if (currentQ) {
-                    document.getElementById('revealAnswerText').innerText = currentQ.answer;
-                }
-                if (window.soundEngine) window.soundEngine.playReveal();
-                fireConfetti();
-            } else if (data.status === 'LEADERBOARD') {
-                showScreen('screenLeaderboard');
-                const isLastQuestion = (qIdx >= QUESTIONS.length - 1);
-                const btn = document.getElementById('btnNextFromLb');
-                if (isLastQuestion) {
-                    btn.innerText = '🏆 VINH DANH CHUNG CUỘC';
-                    btn.onclick = () => hostAction('FINALE');
-                } else {
-                    btn.innerText = '🚀 SANG CÂU TIẾP THEO';
-                    btn.onclick = () => hostAction('NEXT_QUESTION');
-                }
-                if (window.soundEngine) window.soundEngine.playCorrect();
-            } else if (data.status === 'FINALE') {
-                showScreen('screenFinale');
-                if (window.soundEngine) window.soundEngine.playFinale();
-                fireContinuousConfetti();
+            if (players && players.length > 0) {
+                players.forEach(p => {
+                    const chip = document.createElement('span');
+                    chip.className = 'player-avatar-chip';
+                    chip.innerHTML = `${p.avatar || '👑'} ${p.name || 'Bóng hồng'}`;
+                    grid.appendChild(chip);
+                });
+            } else {
+                grid.innerHTML = '<span style="color:#9d7b9f; font-size:0.95rem; font-weight:700;">Đang chờ các bóng hồng quét mã QR tham gia...</span>';
             }
         }
 
-        function listenSubmissions(qIdx) {
-            if (!db) return;
-            if (currentSubmissionsRef) currentSubmissionsRef.off();
-            currentSubmissionsRef = db.ref('submissions/' + qIdx);
-            currentSubmissionsRef.on('value', snap => {
-                const subs = snap.val() || {};
-                const totalSubs = Object.keys(subs).length;
-                const correctSubs = Object.values(subs).filter(s => s.is_correct).length;
-                document.getElementById('liveSubmissionsText').innerText = `⚡ ĐÃ CÓ ${totalSubs} / ${prevPlayersCount || 0} NGƯỜI NỘP BÀI`;
-                const revEl = document.getElementById('revealStatsText');
-                if (revEl) revEl.innerText = `⚡ Đã có ${correctSubs} người trả lời chính xác!`;
+        // REVEAL SUBMISSIONS RENDERING
+        function renderRevealSubmissions(qIdx, realPrice) {
+            const container = document.getElementById('revealSubsContainer');
+            if (!container || !db) return;
+
+            db.ref('submissions/' + qIdx).once('value', snap => {
+                const subsMap = snap.val() || {};
+                const subsList = Object.values(subsMap);
+
+                if (subsList.length === 0) {
+                    container.innerHTML = '<div style="color:#fce7f3; padding:15px; font-weight:800;">Chưa có bài nộp nào được ghi nhận cho sản phẩm này!</div>';
+                    return;
+                }
+
+                // Sắp xếp bài nộp theo độ lệch thấp nhất -> điểm cao nhất -> thời gian nhanh nhất
+                subsList.sort((a, b) => {
+                    const diffA = Math.abs((a.guess_price || 0) - realPrice);
+                    const diffB = Math.abs((b.guess_price || 0) - realPrice);
+                    if (diffA !== diffB) return diffA - diffB;
+                    return (b.points || 0) - (a.points || 0);
+                });
+
+                container.innerHTML = '';
+                subsList.forEach((sub, rank) => {
+                    const guess = sub.guess_price || 0;
+                    const diff = Math.abs(guess - realPrice);
+                    const diffPercent = ((diff / realPrice) * 100).toFixed(1);
+                    const isBullseye = (diff === 0);
+                    const isAccurate = (diff / realPrice <= 0.05);
+
+                    const row = document.createElement('div');
+                    row.className = 'sub-row' + (isBullseye ? ' bullseye' : (isAccurate ? ' top-tier' : ''));
+
+                    let badgeHtml = '';
+                    if (isBullseye) {
+                        badgeHtml = '<span class="sub-badge-pill badge-bullseye">🎯 BULLSEYE 100%</span>';
+                    } else if (isAccurate) {
+                        badgeHtml = '<span class="sub-badge-pill badge-accurate">⭐ TOP CHÍNH XÁC</span>';
+                    }
+
+                    row.innerHTML = `
+                        <div style="display:flex; align-items:center; gap:10px;">
+                            <span style="font-size:1.4rem;">${sub.player_avatar || '👑'}</span>
+                            <div>
+                                <div style="font-weight:900;">#${rank + 1}. ${sub.player_name || 'Người chơi'} ${badgeHtml}</div>
+                                <div style="font-size:0.85rem; color:#fbcfe8;">Phản xạ: ${sub.elapsed_sec || '?'}s | Điểm tốc độ: +${sub.speed_bonus || 0}đ</div>
+                            </div>
+                        </div>
+                        <div style="text-align:right;">
+                            <div style="font-weight:900; font-size:1.15rem;">Đoán: ${(guess).toLocaleString('vi-VN')} ₫</div>
+                            <div style="font-size:0.85rem; color:${isBullseye ? '#000' : (diff > 0 ? '#fbbf24' : '#10b981')};">
+                                Lệch: ${diff === 0 ? '0 ₫ (Tuyệt đối!)' : (guess > realPrice ? '+' : '-') + diff.toLocaleString('vi-VN') + ' ₫ (' + diffPercent + '%)'}
+                            </div>
+                            <div style="font-weight:900; color:#10b981;">+${sub.points || 0} ĐIỂM</div>
+                        </div>
+                    `;
+                    container.appendChild(row);
+                });
             });
         }
 
-        function renderLeaderboard(top6) {
+        // LEADERBOARD RENDERING (TOP 6)
+        function renderLeaderboard(players) {
             const container = document.getElementById('leaderboardContainer');
             if (!container) return;
             container.innerHTML = '';
+
+            const top6 = (players || []).slice(0, 6);
+            if (top6.length === 0) {
+                container.innerHTML = '<div style="color:#fce7f3; font-weight:800;">Đang chờ điểm số của các bóng hồng...</div>';
+                return;
+            }
+
             top6.forEach((p, idx) => {
                 const item = document.createElement('div');
                 item.className = 'lb-item' + (idx === 0 ? ' top-1' : '');
-                const medal = idx === 0 ? '🥇' : idx === 1 ? '🥈' : idx === 2 ? '🥉' : `#${idx + 1}`;
+                const medal = (idx === 0) ? '👑 #1' : ((idx === 1) ? '🥈 #2' : ((idx === 2) ? '🥉 #3' : `#${idx + 1}`));
                 item.innerHTML = `
-                    <div style="display:flex; align-items:center; gap:16px;">
-                        <span style="font-size:1.8rem;">${medal}</span>
-                        <span style="font-size:2rem;">${p.avatar}</span>
-                        <span style="font-size:1.4rem; color:#fff;">${p.name}</span>
+                    <div style="display:flex; align-items:center; gap:14px;">
+                        <span style="font-size:1.4rem; font-weight:900;">${medal}</span>
+                        <span style="font-size:1.8rem;">${p.avatar || '👑'}</span>
+                        <span style="font-weight:900;">${p.name || 'Người chơi'}</span>
                     </div>
-                    <div style="display:flex; align-items:center; gap:20px;">
-                        <span style="font-size:1.1rem; color:#fff5b7;">Đúng: ${p.total_correct || 0} câu</span>
-                        <span style="font-size:1.6rem; color:#ffd700; font-weight:900;">${p.score || 0}đ</span>
+                    <div style="font-weight:900; color:#fef08a; font-size:1.4rem;">
+                        ${p.score || 0} <span style="font-size:0.9rem;">ĐIỂM</span>
                     </div>
                 `;
                 container.appendChild(item);
             });
         }
 
-        function renderFinale(top6) {
+        // FINALE PODIUM RENDERING
+        function renderFinale(players) {
             const podium = document.getElementById('podiumContainer');
+            const top45 = document.getElementById('top45Container');
             if (!podium) return;
             podium.innerHTML = '';
-            const top45 = document.getElementById('top45Container');
             if (top45) top45.innerHTML = '';
 
-            const p1 = top6[0] || { name: '---', score: 0, avatar: '👑' };
-            const p2 = top6[1] || { name: '---', score: 0, avatar: '🌸' };
-            const p3 = top6[2] || { name: '---', score: 0, avatar: '🌹' };
+            const p1 = players[0] || { name: 'Nữ Hoàng 1', avatar: '👑', score: 0 };
+            const p2 = players[1] || { name: 'Á Hậu 1', avatar: '🌸', score: 0 };
+            const p3 = players[2] || { name: 'Á Hậu 2', avatar: '🌹', score: 0 };
 
-            const podiumOrder = [
-                { player: p2, rank: 2, pillarClass: 'pillar-2', medal: '🥈' },
-                { player: p1, rank: 1, pillarClass: 'pillar-1', medal: '👑' },
-                { player: p3, rank: 3, pillarClass: 'pillar-3', medal: '🥉' }
-            ];
-
-            podiumOrder.forEach(item => {
-                const slot = document.createElement('div');
-                slot.className = 'podium-slot';
-                slot.innerHTML = `
-                    <div style="font-size:2.2rem; margin-bottom:4px;">${item.medal}</div>
-                    <div style="font-size:2.6rem;">${item.player.avatar}</div>
-                    <div style="font-weight:900; font-size:1.15rem; color:#ffd700; margin:4px 0;">${item.player.name}</div>
-                    <div style="font-weight:800; font-size:1.05rem; color:#fff5b7; margin-bottom:8px;">${item.player.score || 0}đ</div>
-                    <div class="podium-pillar ${item.pillarClass}">#${item.rank}</div>
-                `;
-                podium.appendChild(slot);
-            });
+            podium.innerHTML = `
+                <div class="podium-slot">
+                    <div style="font-size:2.8rem; margin-bottom:6px;">${p2.avatar}</div>
+                    <div style="font-weight:900; font-size:1.1rem; color:#fbcfe8;">${p2.name}</div>
+                    <div style="color:#fef08a; font-weight:800; margin-bottom:8px;">${p2.score}đ</div>
+                    <div class="podium-pillar pillar-2">🥈 2</div>
+                </div>
+                <div class="podium-slot">
+                    <div style="font-size:3.5rem; margin-bottom:6px;">${p1.avatar}</div>
+                    <div style="font-weight:900; font-size:1.25rem; color:#fef08a;">👑 ${p1.name}</div>
+                    <div style="color:#fbbf24; font-weight:900; font-size:1.15rem; margin-bottom:8px;">${p1.score}đ</div>
+                    <div class="podium-pillar pillar-1">🥇 1</div>
+                </div>
+                <div class="podium-slot">
+                    <div style="font-size:2.8rem; margin-bottom:6px;">${p3.avatar}</div>
+                    <div style="font-weight:900; font-size:1.1rem; color:#fbcfe8;">${p3.name}</div>
+                    <div style="color:#fef08a; font-weight:800; margin-bottom:8px;">${p3.score}đ</div>
+                    <div class="podium-pillar pillar-3">🥉 3</div>
+                </div>
+            `;
 
             if (top45) {
-                for (let i = 3; i < Math.min(6, top6.length); i++) {
-                    const p = top6[i];
-                    const card = document.createElement('div');
-                    card.className = 'player-chip';
-                    card.style.fontSize = '1.2rem';
-                    card.style.padding = '10px 20px';
-                    card.innerHTML = `<b>#${i + 1}</b> <span>${p.avatar}</span> <span>${p.name}</span>: <b style="color:#ffd700">${p.score || 0}đ</b>`;
-                    top45.appendChild(card);
-                }
+                const restTop = players.slice(3, 6);
+                restTop.forEach((p, idx) => {
+                    const slot = document.createElement('div');
+                    slot.style.cssText = 'background:#180322; border:2.5px solid #ff4d8d; box-shadow:3px 3px 0px #000; border-radius:16px; padding:10px 18px; font-weight:800; display:inline-flex; align-items:center; gap:8px;';
+                    slot.innerHTML = `<span>#${idx + 4}</span> <span>${p.avatar}</span> <span>${p.name}</span> <span style="color:#fef08a;">${p.score}đ</span>`;
+                    top45.appendChild(slot);
+                });
             }
+
+            if (window.soundEngine) {
+                window.soundEngine.playCheer();
+            }
+            triggerConfetti();
         }
 
-        // Confetti Fireworks Generator
-        function fireConfetti() {
+        // CONFETTI CELEBRATION
+        function triggerConfetti() {
             const canvas = document.getElementById('confettiCanvas');
             if (!canvas) return;
             const ctx = canvas.getContext('2d');
@@ -1309,94 +1482,151 @@
             canvas.height = window.innerHeight;
 
             const particles = [];
-            const colors = ['#ff4d8d', '#fb7185', '#fef08a', '#ffffff', '#c084fc', '#f43f5e', '#fed7aa'];
+            const colors = ['#ff4d8d', '#fb7185', '#fef08a', '#fbbf24', '#c084fc', '#38bdf8', '#ffffff'];
 
-            for (let i = 0; i < 120; i++) {
+            for (let i = 0; i < 180; i++) {
                 particles.push({
-                    x: canvas.width / 2,
-                    y: canvas.height / 2,
-                    vx: (Math.random() - 0.5) * 16,
-                    vy: (Math.random() - 0.5) * 16 - 3,
+                    x: Math.random() * canvas.width,
+                    y: Math.random() * canvas.height - canvas.height,
                     size: Math.random() * 8 + 4,
                     color: colors[Math.floor(Math.random() * colors.length)],
-                    alpha: 1
+                    vx: Math.random() * 4 - 2,
+                    vy: Math.random() * 4 + 3,
+                    rot: Math.random() * 360,
+                    vrot: Math.random() * 6 - 3
                 });
             }
 
-            let frame = 0;
-            function animate() {
+            let animFrame;
+            function draw() {
                 ctx.clearRect(0, 0, canvas.width, canvas.height);
                 particles.forEach(p => {
                     p.x += p.vx;
                     p.y += p.vy;
-                    p.vy += 0.25;
-                    p.alpha -= 0.012;
+                    p.rot += p.vrot;
                     ctx.save();
-                    ctx.globalAlpha = Math.max(0, p.alpha);
+                    ctx.translate(p.x, p.y);
+                    ctx.rotate((p.rot * Math.PI) / 180);
                     ctx.fillStyle = p.color;
-                    ctx.fillRect(p.x, p.y, p.size, p.size);
+                    ctx.fillRect(-p.size / 2, -p.size / 2, p.size, p.size);
                     ctx.restore();
                 });
-                frame++;
-                if (frame < 90) requestAnimationFrame(animate);
-                else ctx.clearRect(0, 0, canvas.width, canvas.height);
+                animFrame = requestAnimationFrame(draw);
             }
-            animate();
+            draw();
+            setTimeout(() => {
+                cancelAnimationFrame(animFrame);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }, 6000);
         }
 
-        function fireContinuousConfetti() {
-            fireConfetti();
-            let count = 0;
-            const intv = setInterval(() => {
-                fireConfetti();
-                count++;
-                if (count >= 5) clearInterval(intv);
-            }, 1200);
-        }
+        // FIREBASE STATE LISTENER
+        function setupFirebaseListeners() {
+            if (!db) return;
 
-        // Khởi tạo hệ thống
-        renderQRCode(getPlayerPageUrl());
-
-        if (db) {
-            // Đồng bộ độ lệch thời gian với server Firebase
             db.ref('.info/serverTimeOffset').on('value', snap => {
                 serverTimeOffset = snap.val() || 0;
             });
 
             // Lắng nghe trạng thái game
             db.ref('game_state').on('value', snap => {
-                const state = snap.val();
-                if (!state) {
-                    // Tạo state mặc định lần đầu
-                    db.ref('game_state').set({
-                        status: 'LOBBY',
-                        current_q_idx: 0,
-                        q_start_time: 0,
-                        question_set: 'set3'
-                    });
-                } else {
-                    handleStateUpdate(state);
+                const state = snap.val() || {};
+                currentState = state;
+
+                if (state.question_set && state.question_set !== currentSetId) {
+                    switchQuestionSet(state.question_set);
                 }
+
+                handleStateUpdate(state);
             });
 
             // Lắng nghe người chơi
             db.ref('players').on('value', snap => {
-                const playersObj = snap.val() || {};
-                const playersList = Object.values(playersObj);
-                renderLobbyPlayers(playersList, playersList.length);
-                if (playersList.length > prevPlayersCount && window.soundEngine) {
-                    window.soundEngine.playJoin();
-                }
-                prevPlayersCount = playersList.length;
+                const pMap = snap.val() || {};
+                const pList = Object.values(pMap);
+                pList.sort((a, b) => (b.score || 0) - (a.score || 0));
 
-                // Sắp xếp Top 6
-                const sorted = [...playersList].sort((a, b) => (b.score || 0) - (a.score || 0));
-                renderLeaderboard(sorted.slice(0, 6));
-                renderFinale(sorted.slice(0, 6));
+                renderLobbyPlayers(pList, pList.length);
+                renderLeaderboard(pList);
+
+                if (currentState.status === 'FINALE') {
+                    renderFinale(pList);
+                }
             });
-        } else {
-            console.warn("Chưa cấu hình Firebase!");
         }
+
+        function handleStateUpdate(state) {
+            const status = state.status || 'LOBBY';
+            const qIdx = state.current_q_idx || 0;
+            const currentQ = QUESTIONS[qIdx] || {};
+
+            if (status === 'LOBBY') {
+                showScreen('screenLobby');
+                if (timerInterval) clearInterval(timerInterval);
+            } else if (status === 'RULES') {
+                showScreen('screenRules');
+                if (timerInterval) clearInterval(timerInterval);
+            } else if (status === 'QUESTION') {
+                showScreen('screenQuestion');
+
+                document.getElementById('qBadgeTitle').innerText = `SẢN PHẨM ${qIdx + 1} / ${QUESTIONS.length}`;
+                document.getElementById('qProductName').innerText = currentQ.name || 'Sản phẩm bí ẩn';
+                document.getElementById('qBrandBadge').innerText = currentQ.brand ? `🏷️ ${currentQ.brand}` : 'CHÍNH HÃNG';
+                document.getElementById('qCategoryBadge').innerText = currentQ.category ? `🌸 ${currentQ.category}` : 'LÀM ĐẸP';
+                
+                const imgEl = document.getElementById('qProductImg');
+                imgEl.src = currentQ.image || '';
+                imgEl.onerror = function() {
+                    this.src = 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=80';
+                };
+
+                const duration = state.q_duration || currentQ.time || 30;
+                startQuestionTimer(duration, state.q_start_time);
+
+                // Lắng nghe số lượng bài nộp cho câu này
+                if (currentSubmissionsRef) currentSubmissionsRef.off();
+                currentSubmissionsRef = db.ref('submissions/' + qIdx);
+                currentSubmissionsRef.on('value', sSnap => {
+                    const subs = sSnap.val() || {};
+                    const count = Object.keys(subs).length;
+                    document.getElementById('liveSubmissionsText').innerText = `⚡ ĐÃ CÓ ${count} BÓNG HỒNG CHỐT GIÁ`;
+                });
+            } else if (status === 'REVEAL') {
+                showScreen('screenReveal');
+                if (timerInterval) clearInterval(timerInterval);
+
+                document.getElementById('revealProdTitle').innerText = `SẢN PHẨM: ${currentQ.name || ''}`;
+                document.getElementById('revealPriceNum').innerText = `${(currentQ.price || 0).toLocaleString('vi-VN')} ₫`;
+
+                renderRevealSubmissions(qIdx, currentQ.price || 0);
+
+                if (window.soundEngine) {
+                    window.soundEngine.playCorrect();
+                }
+            } else if (status === 'LEADERBOARD') {
+                showScreen('screenLeaderboard');
+                if (timerInterval) clearInterval(timerInterval);
+
+                const btnNext = document.getElementById('btnNextFromLb');
+                if (btnNext) {
+                    if (qIdx + 1 >= QUESTIONS.length) {
+                        btnNext.innerText = '👑 XEM VINH DANH CHUNG CUỘC';
+                    } else {
+                        btnNext.innerText = '👉 SẢN PHẨM TIẾP THEO';
+                    }
+                }
+            } else if (status === 'FINALE') {
+                showScreen('screenFinale');
+                if (timerInterval) clearInterval(timerInterval);
+            }
+        }
+
+        // INITIALIZATION
+        window.addEventListener('DOMContentLoaded', () => {
+            const playerUrl = getPlayerPageUrl();
+            renderQRCode(playerUrl);
+            setupFirebaseListeners();
+        });
     </script>
 </body>
 </html>

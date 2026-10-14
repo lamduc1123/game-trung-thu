@@ -2,361 +2,383 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
-    <meta http-equiv="Pragma" content="no-cache">
-    <meta http-equiv="Expires" content="0">
-    <title>🌸 Vua Tiếng Việt • Đại Hội 20/10 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>🌸 Vua Tiếng Việt • Hãy Chọn Giá Đúng 20/10 💖</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap');
-
         * {
             box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Montserrat', sans-serif;
+            font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
             -webkit-tap-highlight-color: transparent;
         }
 
         body {
             background-color: #13031a;
-            background-image: 
-                radial-gradient(rgba(244, 63, 94, 0.25) 1.5px, transparent 1.5px), 
-                radial-gradient(rgba(192, 132, 252, 0.2) 1.5px, #13031a 1.5px);
-            background-size: 24px 24px;
-            background-position: 0 0, 12px 12px;
             color: #fdf2f8;
             min-height: 100vh;
-            min-height: -webkit-fill-available;
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             padding: 16px;
-            padding-top: calc(env(safe-area-inset-top, 16px) + 12px);
-            padding-bottom: calc(env(safe-area-inset-bottom, 16px) + 12px);
             position: relative;
-            overflow-x: hidden;
+            background-image: 
+                radial-gradient(rgba(244, 63, 94, 0.22) 1.5px, transparent 1.5px),
+                radial-gradient(rgba(192, 132, 252, 0.18) 1.5px, #13031a 1.5px);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
         }
 
-        /* Status Pill */
         .network-bar {
             position: fixed;
-            top: env(safe-area-inset-top, 10px);
-            font-size: 0.78rem;
-            font-weight: 800;
-            padding: 6px 14px;
-            border-radius: 20px;
-            background: #23082d;
-            border: 2.5px solid #000000;
-            box-shadow: 2px 2px 0px #000000;
-            color: #4ade80;
-            z-index: 100;
+            top: 10px;
+            left: 50%;
+            transform: translateX(-50%);
             display: flex;
             align-items: center;
-            gap: 6px;
+            background: #23082d;
+            border: 2px solid #ff4d8d;
+            box-shadow: 2px 2px 0px #000000;
+            border-radius: 20px;
+            padding: 4px 12px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            z-index: 100;
         }
         .network-dot {
             width: 8px;
             height: 8px;
             border-radius: 50%;
-            background: #4ade80;
-            box-shadow: 0 0 8px #4ade80;
+            background: #22c55e;
+            margin-right: 6px;
         }
         .network-dot.offline {
             background: #ef4444;
-            box-shadow: 0 0 8px #ef4444;
         }
 
-        /* CARDS CONTAINER - 2D GRAPHIC THEME 20/10 */
+        /* 2D POP CARDS - THEME NỮ TÍNH 20/10 */
         .card {
-            background: #23082d;
-            border: 3.5px solid #ff4d8d;
-            border-radius: 24px;
-            padding: 24px 18px;
+            display: none;
             width: 100%;
             max-width: 440px;
+            background: #23082d;
+            border: 3.5px solid #ff4d8d;
+            box-shadow: 6px 6px 0px #000000, 0 15px 35px rgba(244, 63, 94, 0.25);
+            border-radius: 26px;
+            padding: 24px 20px;
             text-align: center;
-            box-shadow: 6px 6px 0px #000000, 0 15px 35px rgba(244, 63, 94, 0.2);
-            z-index: 10;
-            position: relative;
-            display: none;
-            animation: comicPop 0.25s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: popIn 0.25s ease-out;
+            margin: auto;
         }
         .card.active { display: block; }
 
-        @keyframes comicPop {
-            from { opacity: 0; transform: scale(0.94) translateY(12px); }
-            to { opacity: 1; transform: scale(1) translateY(0); }
+        @keyframes popIn {
+            0% { transform: scale(0.94); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
         }
 
         .header-title {
-            font-size: 1.75rem;
-            color: #fef08a;
+            font-size: 1.85rem;
             font-weight: 900;
+            color: #fef08a;
             text-transform: uppercase;
-            margin-bottom: 6px;
-            text-shadow: 2px 2px 0px #f43f5e;
+            text-shadow: 2.5px 2.5px 0px #f43f5e, 4px 4px 0px #000000;
+            margin-bottom: 4px;
             letter-spacing: 0.5px;
         }
         .header-sub {
-            font-size: 0.92rem;
-            color: #f472b6;
-            margin-bottom: 18px;
+            font-size: 0.85rem;
+            color: #fbcfe8;
             font-weight: 800;
-            letter-spacing: 1px;
-            text-transform: uppercase;
-        }
-
-        /* AVATAR GRID - 20/10 NÀNG THƠ & PHÁI ĐẸP */
-        .avatar-label {
-            font-size: 0.9rem;
-            color: #fef08a;
-            font-weight: 900;
-            margin-bottom: 10px;
-            display: block;
+            margin-bottom: 16px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
+        }
+
+        /* AVATAR GRID */
+        .avatar-label {
+            font-size: 0.85rem;
+            color: #fce7f3;
+            margin-bottom: 8px;
+            display: block;
+            font-weight: 800;
+            text-transform: uppercase;
         }
         .avatar-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
-            margin-bottom: 20px;
+            gap: 8px;
+            margin-bottom: 18px;
         }
         .avatar-item {
             background: #180322;
             border: 2.5px solid #3b1147;
             box-shadow: 3px 3px 0px #000000;
             border-radius: 16px;
-            padding: 10px 0;
-            font-size: 2.2rem;
+            font-size: 2rem;
+            padding: 8px 0;
             cursor: pointer;
-            transition: transform 0.15s, background 0.15s, box-shadow 0.15s;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: all 0.1s;
         }
         .avatar-item:active {
             transform: translate(2px, 2px);
             box-shadow: 1px 1px 0px #000000;
         }
         .avatar-item.selected {
-            background: linear-gradient(135deg, #ff4d8d, #f43f5e);
+            background: #ff4d8d;
             border-color: #000000;
-            transform: translate(-2px, -2px);
-            box-shadow: 5px 5px 0px #000000;
+            box-shadow: 3px 3px 0px #000000;
+            transform: scale(1.05);
         }
 
+        /* INPUTS */
         .input-box {
             width: 100%;
-            padding: 15px;
-            border-radius: 18px;
-            border: 3px solid #000000;
-            background: #ffffff;
-            color: #1e0a24;
-            font-size: 1.15rem;
-            font-weight: 900;
-            text-align: center;
-            margin-bottom: 16px;
-            outline: none;
-            text-transform: uppercase;
-            box-shadow: 4px 4px 0px #000000;
-            transition: border-color 0.15s, box-shadow 0.15s;
-        }
-        .input-box:focus {
-            border-color: #ff4d8d;
-            box-shadow: 4px 4px 0px #ff4d8d;
-        }
-        .input-box::placeholder {
-            color: #9d174d;
-            opacity: 0.6;
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-
-        .btn-submit {
-            width: 100%;
-            padding: 16px;
-            border-radius: 18px;
-            border: 3px solid #000000;
-            background: linear-gradient(135deg, #ff4d8d, #f43f5e 55%, #fb923c);
-            color: #ffffff;
-            font-size: 1.2rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            cursor: pointer;
-            box-shadow: 5px 5px 0px #000000;
-            transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
-        }
-        .btn-submit:hover {
-            filter: brightness(1.08);
-        }
-        .btn-submit:active {
-            transform: translate(3px, 3px);
-            box-shadow: 2px 2px 0px #000000;
-        }
-
-        /* SCRAMBLE TILES */
-        .scramble-box-mobile {
             background: #ffffff;
             border: 3.5px solid #000000;
+            box-shadow: 4px 4px 0px #ff4d8d;
             border-radius: 18px;
-            padding: 14px 10px;
-            margin-bottom: 14px;
-            color: #831843;
-            font-size: 1.6rem;
+            padding: 14px 16px;
+            font-size: 1.15rem;
             font-weight: 900;
-            word-break: break-word;
-            letter-spacing: 2px;
-            box-shadow: 5px 5px 0px #ff4d8d;
+            color: #1e0a24;
+            outline: none;
+            margin-bottom: 14px;
+            text-align: center;
+        }
+        .input-box:focus {
+            box-shadow: 4px 4px 0px #fbbf24;
         }
 
-        .hint-box-mobile {
-            background: #180322;
-            border: 2.5px solid #fbbf24;
-            box-shadow: 3.5px 3.5px 0px #9d174d;
-            padding: 12px 14px;
-            border-radius: 16px;
-            font-size: 0.95rem;
-            color: #fdf2f8;
-            text-align: left;
-            margin-bottom: 14px;
-            line-height: 1.45;
-            font-weight: 800;
-        }
-        .scramble-header-mobile {
-            font-size: 0.85rem;
-            color: #fef08a;
+        /* BUTTONS */
+        .btn-submit {
+            width: 100%;
+            background: linear-gradient(135deg, #ff4d8d, #f43f5e 55%, #fb923c);
+            border: 3px solid #000000;
+            box-shadow: 4px 4px 0px #000000;
+            border-radius: 20px;
+            padding: 14px;
+            font-size: 1.15rem;
             font-weight: 900;
-            margin-bottom: 6px;
+            color: #ffffff;
+            cursor: pointer;
             text-transform: uppercase;
-            letter-spacing: 1px;
-            text-align: left;
-            padding-left: 4px;
+            letter-spacing: 0.5px;
+            transition: all 0.1s ease;
+        }
+        .btn-submit:active {
+            transform: translate(2px, 2px);
+            box-shadow: 2px 2px 0px #000000;
+        }
+        .btn-submit:disabled {
+            background: #475569;
+            color: #94a3b8;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: 2px 2px 0px #000;
         }
 
         .badge-status {
-            background: linear-gradient(135deg, #ff4d8d, #f43f5e);
-            border: 2.5px solid #000000;
+            background: #180322;
+            border: 2px solid #ff4d8d;
             box-shadow: 3px 3px 0px #000000;
-            color: #ffffff;
-            padding: 6px 14px;
-            border-radius: 14px;
-            font-size: 0.85rem;
-            font-weight: 900;
+            border-radius: 16px;
+            padding: 8px 16px;
+            font-size: 0.95rem;
+            font-weight: 800;
+            color: #fbcfe8;
             display: inline-block;
-            margin-bottom: 14px;
-            text-transform: uppercase;
+            margin-bottom: 12px;
         }
 
         .badge-score {
-            font-size: 1.6rem;
-            color: #fef08a;
+            background: #fbbf24;
+            color: #1e0a24;
+            border: 2.5px solid #000000;
+            box-shadow: 3px 3px 0px #000000;
+            border-radius: 16px;
+            padding: 6px 16px;
+            font-size: 1.1rem;
             font-weight: 900;
-            margin-top: 15px;
-            text-shadow: 2px 2px 0px #f43f5e;
+            display: inline-block;
+            margin-top: 14px;
         }
 
+        /* TIMER BADGE MOBILE */
         .badge-timer-mobile {
             background: #e11d48;
             color: #ffffff;
-            padding: 6px 14px;
-            border-radius: 14px;
-            font-size: 0.85rem;
-            font-weight: 900;
-            display: inline-block;
-            margin-left: 6px;
-            border: 2.5px solid #000000;
-            box-shadow: 3px 3px 0px #000000;
-            transition: all 0.2s ease;
-        }
-        .badge-timer-mobile.urgent {
-            background: #be123c;
-            animation: timerPulseMobile 0.6s infinite alternate;
-        }
-        @keyframes timerPulseMobile {
-            0% { transform: scale(1); }
-            100% { transform: scale(1.08); background: #9f1239; }
-        }
-
-        .player-timeout-banner {
-            display: none;
-            background: #e11d48;
-            border: 3px solid #000000;
+            border: 2px solid #000000;
+            box-shadow: 2.5px 2.5px 0px #000000;
             border-radius: 16px;
-            padding: 12px 14px;
-            margin-bottom: 14px;
-            color: #ffffff;
-            font-weight: 800;
-            font-size: 0.95rem;
-            line-height: 1.45;
-            text-align: center;
-            box-shadow: 4px 4px 0px #000000;
-            animation: comicPop 0.25s ease-out;
-        }
-
-        /* Leaderboard item inside player view */
-        .lb-mini-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px 14px;
-            margin-bottom: 8px;
-            border-radius: 14px;
-            background: #180322;
-            border: 2.5px solid #3b1147;
-            box-shadow: 3px 3px 0px #000000;
-            font-weight: 800;
-        }
-        .lb-mini-item.me {
-            background: #3b0724;
-            border-color: #ff4d8d;
-            box-shadow: 4px 4px 0px #ff4d8d;
-        }
-
-        .lobby-players-count-mobile {
-            background: linear-gradient(135deg, #ff4d8d, #f43f5e);
-            color: #ffffff;
-            padding: 8px 16px;
-            border-radius: 16px;
+            padding: 5px 14px;
             font-size: 1rem;
             font-weight: 900;
             display: inline-block;
-            margin: 12px 0 8px;
+        }
+        .badge-timer-mobile.urgent {
+            animation: timerPulseMobile 0.4s infinite alternate;
+        }
+        @keyframes timerPulseMobile {
+            0% { transform: scale(1); }
+            100% { transform: scale(1.1); }
+        }
+
+        /* PRODUCT PRESENTATION MOBILE */
+        .product-card-mobile {
+            background: #180322;
+            border: 2.5px solid #3b1147;
+            box-shadow: 4px 4px 0px #000000;
+            border-radius: 20px;
+            padding: 12px;
+            margin: 12px 0;
+            text-align: center;
+        }
+        .product-img-frame-m {
+            background: #ffffff;
             border: 2.5px solid #000000;
-            box-shadow: 3px 3px 0px #000000;
-        }
-        .lobby-players-chips-mobile {
+            box-shadow: 3px 3px 0px #ff4d8d;
+            border-radius: 14px;
+            padding: 8px;
+            height: 180px;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            max-height: 125px;
-            overflow-y: auto;
-            margin: 8px 0;
-            padding: 6px;
-        }
-        .mobile-player-chip {
-            background: #3b1147;
-            border: 2px solid #000000;
-            border-radius: 12px;
-            box-shadow: 2px 2px 0px #000000;
-            padding: 4px 10px;
-            font-size: 0.85rem;
-            font-weight: 800;
-            color: #fdf2f8;
-            display: inline-flex;
             align-items: center;
-            gap: 4px;
+            justify-content: center;
+            margin-bottom: 10px;
         }
-        .mobile-player-chip.me {
-            background: #ff4d8d;
-            color: #ffffff;
-            border-color: #000000;
-            box-shadow: 2px 2px 0px #000000;
+        .product-img-frame-m img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+            border-radius: 8px;
+        }
+        .tags-row-m {
+            display: flex;
+            justify-content: center;
+            gap: 6px;
+            margin-bottom: 6px;
+        }
+        .tag-m {
+            font-size: 0.75rem;
+            font-weight: 900;
+            padding: 3px 10px;
+            border-radius: 10px;
+            border: 1.5px solid #000;
+        }
+        .tag-brand { background: #fbbf24; color: #1e0a24; }
+        .tag-cat { background: #ff4d8d; color: #fff; }
+        .product-title-m {
+            font-size: 1.25rem;
+            font-weight: 900;
+            color: #fef08a;
+            line-height: 1.35;
+        }
+
+        /* HINTS MOBILE */
+        .hints-grid-m {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            margin-bottom: 14px;
+        }
+        .hint-box-m {
+            background: #15021e;
+            border: 2px solid #4a1555;
+            box-shadow: 3px 3px 0px #000000;
+            border-radius: 14px;
+            padding: 8px 12px;
+            text-align: left;
+            transition: all 0.3s ease;
+        }
+        .hint-box-m.locked {
+            opacity: 0.7;
+        }
+        .hint-box-m.unlocked {
+            opacity: 1;
+            border-color: #fbbf24;
+            background: #1e052a;
+            box-shadow: 4px 4px 0px #ff4d8d;
+        }
+        .hint-hdr-m {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 4px;
+            font-size: 0.75rem;
             font-weight: 900;
         }
+        .hint-text-m {
+            font-size: 0.95rem;
+            font-weight: 800;
+            line-height: 1.4;
+            color: #fdf2f8;
+        }
+        .hint-box-m.locked .hint-text-m {
+            color: #8c6e8e;
+            font-style: italic;
+        }
+
+        /* PRICE DISPLAY & QUICK BUTTONS */
+        .price-display-box {
+            background: #ffffff;
+            border: 3.5px solid #000000;
+            box-shadow: 4px 4px 0px #ff4d8d;
+            border-radius: 18px;
+            padding: 10px 14px;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+        .price-display-num {
+            font-size: 2.1rem;
+            font-weight: 900;
+            color: #1e0a24;
+            letter-spacing: 1px;
+        }
+        .quick-numpad-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .btn-quick-price {
+            background: #180322;
+            border: 2px solid #ff4d8d;
+            box-shadow: 2px 2px 0px #000000;
+            border-radius: 12px;
+            color: #fce7f3;
+            font-size: 0.85rem;
+            font-weight: 900;
+            padding: 8px 4px;
+            cursor: pointer;
+            transition: all 0.1s;
+        }
+        .btn-quick-price:active {
+            transform: translate(2px, 2px);
+            box-shadow: 0px 0px 0px #000000;
+        }
+        .btn-quick-clear {
+            background: #e11d48;
+            color: #ffffff;
+            border-color: #000000;
+        }
+
+        /* REVEAL CARD MOBILE */
+        .reveal-stat-box-m {
+            background: #180322;
+            border: 2.5px solid #3b1147;
+            border-radius: 16px;
+            padding: 14px;
+            margin: 12px 0;
+            text-align: left;
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+        .reveal-stat-box-m b { color: #fef08a; }
+
         .btn-change-profile {
             background: #180322;
             border: 2px solid #ff4d8d;
@@ -369,11 +391,25 @@
             cursor: pointer;
             margin-top: 14px;
             display: inline-block;
-            transition: all 0.1s ease;
         }
-        .btn-change-profile:active {
-            transform: translate(2px, 2px);
-            box-shadow: 0px 0px 0px #000000;
+        .mobile-player-chip {
+            background: #23082d;
+            border: 1.5px solid #ff4d8d;
+            box-shadow: 2px 2px 0px #000000;
+            border-radius: 16px;
+            padding: 4px 10px;
+            font-size: 0.8rem;
+            font-weight: 800;
+            color: #fdf2f8;
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            margin: 3px;
+        }
+        .mobile-player-chip.me {
+            background: #ff4d8d;
+            color: #ffffff;
+            border-color: #000000;
         }
     </style>
 </head>
@@ -388,7 +424,7 @@
 
     <!-- CARD 1: LOGIN & AVATAR PICKER -->
     <div class="card active" id="cardLogin">
-        <div class="header-title">🌸 VUA TIẾNG VIỆT 💖</div>
+        <div class="header-title">🌸 HÃY CHỌN GIÁ ĐÚNG 💖</div>
         <div class="header-sub">ĐẠI HỘI TÔN VINH PHÁI ĐẸP 20/10</div>
 
         <input type="text" class="input-box" id="playerNameInput" placeholder="NHẬP TÊN CỦA BẠN..." maxlength="20" autocomplete="off" autocapitalize="words">
@@ -413,15 +449,15 @@
     <div class="card" id="cardLobby">
         <div style="font-size: 4.2rem; margin-bottom: 8px;" id="displayAvatar">👑</div>
         <div class="header-title" id="displayName">TÊN BẠN</div>
-        <div class="badge-status">💖 ĐÃ SẴN SÀNG TỎA SÁNG</div>
+        <div class="badge-status">💖 ĐÃ SẴN SÀNG CHỐT GIÁ</div>
         
-        <div>
-            <div class="lobby-players-count-mobile" id="lobbyPlayerCountMobile">👥 ĐANG CẬP NHẬT CÁC BÓNG HỒNG...</div>
+        <div style="margin: 8px 0;">
+            <div style="font-size:0.9rem; color:#fbcfe8; font-weight:800;" id="lobbyPlayerCountMobile">👥 ĐANG CẬP NHẬT CÁC BÓNG HỒNG...</div>
         </div>
-        <div class="lobby-players-chips-mobile" id="lobbyPlayersChipsMobile"></div>
+        <div id="lobbyPlayersChipsMobile" style="max-height: 90px; overflow-y:auto; margin-bottom: 10px;"></div>
 
-        <p style="font-size: 0.95rem; line-height: 1.5; color: #fce7f3; margin-top: 12px; font-weight: 700;">
-            Hãy nhìn lên màn hình lớn máy chiếu.<br>Đại hội đoán chữ 20/10 sẽ bắt đầu ngay khi MC bấm nút!
+        <p style="font-size: 0.95rem; line-height: 1.5; color: #fce7f3; margin-top: 10px; font-weight: 700;">
+            Hãy nhìn lên màn hình lớn máy chiếu.<br>Game Hãy Chọn Giá Đúng sẽ bắt đầu khi MC bấm nút!
         </p>
 
         <div>
@@ -435,47 +471,114 @@
         <div class="header-title">LUẬT CHƠI ĐẠI HỘI 20/10</div>
         <div class="badge-status">TOP 6 TỎA SÁNG NHẬN THƯỞNG 100K</div>
         <p style="font-size: 0.95rem; line-height: 1.6; color: #fdf2f8; margin-top: 10px; text-align: left; font-weight: 700;">
-            1. MC mở từ khóa bí mật bị đảo lộn (thời gian tối đa <b>50 giây</b>).<br>
-            2. Gõ đáp án Tiếng Việt có dấu trên điện thoại và bấm gửi càng nhanh càng tốt.<br>
-            3. Đúng nhận <b>100đ gốc</b> + <b>Điểm thời gian tối đa 50đ</b> tính theo mili-giây: <code>50 × (Thời gian còn lại / 50s)</code>!
+            1. Mỗi vòng hiển thị 1 sản phẩm cho phái đẹp (thời gian <b>30 giây</b>).<br>
+            2. <b>Sau 10s:</b> Mở Gợi ý 1 (Khoảng giá / Phân khúc).<br>
+            3. <b>Sau 20s:</b> Mở Gợi ý 2 (Đặc điểm chữ số, số đuôi).<br>
+            4. Đúng 100% nhận <b>100đ Bullseye!</b> Đoán càng sát giá điểm càng cao + Thưởng tốc độ tối đa <b>50đ</b>!
         </p>
     </div>
 
-    <!-- CARD 4: ACTIVE QUESTION -->
+    <!-- CARD 4: ACTIVE QUESTION (HÃY CHỌN GIÁ ĐÚNG) -->
     <div class="card" id="cardQuestion">
-        <div>
-            <span class="badge-status" id="qBadgeMobile">CÂU 1 / 15</span>
-            <span class="badge-timer-mobile" id="qTimerMobile">⏱️ 50s</span>
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:6px;">
+            <span class="badge-status" id="qBadgeMobile" style="margin-bottom:0;">SẢN PHẨM 1 / 30</span>
+            <span class="badge-timer-mobile" id="qTimerMobile">⏱️ 30s</span>
         </div>
 
-        <div class="hint-box-mobile" id="hintMobile">Gợi ý câu hỏi sẽ hiện tại đây</div>
-
-        <div class="scramble-header-mobile">🔀 TỪ KHÓA BỊ ĐẢO CHỮ:</div>
-        <div class="scramble-box-mobile" id="scrambleMobile">...</div>
-
-        <!-- Thông báo Hết giờ cho người chơi -->
-        <div class="player-timeout-banner" id="playerTimeOutAlert">
-            <div style="font-size: 1.3rem; margin-bottom: 4px; font-weight: 900;">⏰ HẾT GIỜ NỘP BÀI!</div>
-            <div>Đã hết thời gian nộp bài cho câu này.<br>Hãy nhìn lên màn hình lớn để xem đáp án chính xác nhé!</div>
+        <!-- Product Presentation -->
+        <div class="product-card-mobile">
+            <div class="product-img-frame-m">
+                <img id="mProductImg" src="" alt="Sản phẩm minh họa">
+            </div>
+            <div class="tags-row-m">
+                <span class="tag-m tag-brand" id="mBrandBadge">THƯƠNG HIỆU</span>
+                <span class="tag-m tag-cat" id="mCategoryBadge">LÀM ĐẸP</span>
+            </div>
+            <div class="product-title-m" id="mProductName">Tên sản phẩm</div>
         </div>
 
-        <input type="text" class="input-box" id="answerInput" placeholder="GÕ ĐÁP ÁN TIẾNG VIỆT..." autocomplete="off" autocapitalize="characters">
+        <!-- 2-Stage Hints Mobile -->
+        <div class="hints-grid-m">
+            <div class="hint-box-m locked" id="mHint1Box">
+                <div class="hint-hdr-m">
+                    <span style="color:#ff4d8d;">💡 GỢI Ý 1 (SAU 10S)</span>
+                    <span id="mHint1Status">🔒 Đang khóa</span>
+                </div>
+                <div class="hint-text-m" id="mHint1Text">Mở sau 10 giây...</div>
+            </div>
+            <div class="hint-box-m locked" id="mHint2Box">
+                <div class="hint-hdr-m">
+                    <span style="color:#fbbf24;">⚡ GỢI Ý 2 (SAU 20S)</span>
+                    <span id="mHint2Status">🔒 Đang khóa</span>
+                </div>
+                <div class="hint-text-m" id="mHint2Text">Mở sau 20 giây...</div>
+            </div>
+        </div>
 
-        <button class="btn-submit" id="btnSubmitAnswer" onclick="submitAnswer()">🌸 GỬI ĐÁP ÁN TỎA SÁNG</button>
+        <!-- Price Input & Quick Buttons -->
+        <div class="price-display-box">
+            <div style="font-size:0.75rem; font-weight:800; color:#831843; text-transform:uppercase;">GIÁ BẠN DỰ ĐOÁN (VNĐ):</div>
+            <div class="price-display-num" id="displayGuessPrice">0 ₫</div>
+        </div>
+
+        <div class="quick-numpad-grid">
+            <button class="btn-quick-price" onclick="addPrice(10000)">+10.000</button>
+            <button class="btn-quick-price" onclick="addPrice(50000)">+50.000</button>
+            <button class="btn-quick-price" onclick="addPrice(100000)">+100.000</button>
+            <button class="btn-quick-price" onclick="addPrice(500000)">+500.000</button>
+            <button class="btn-quick-price" onclick="addPrice(1000000)">+1 Triệu</button>
+            <button class="btn-quick-price btn-quick-clear" onclick="clearPrice()">⌫ Xóa</button>
+        </div>
+
+        <input type="tel" class="input-box" id="priceInputDirect" placeholder="HOẶC GÕ TRỰC TIẾP SỐ TIỀN..." oninput="handleDirectInput(this.value)">
+
+        <button class="btn-submit" id="btnSubmitPrice" onclick="submitAnswer()">💖 CHỐT GIÁ NÀY!</button>
     </div>
 
     <!-- CARD 5: SUBMITTED WAIT -->
     <div class="card" id="cardSubmitted">
-        <div style="font-size: 3.5rem; margin-bottom: 10px;" id="submittedIcon">⚡</div>
-        <div class="header-title" id="submittedTitle">ĐÃ GỬI BÀI!</div>
+        <div style="font-size: 3.5rem; margin-bottom: 8px;" id="submittedIcon">✅</div>
+        <div class="header-title" id="submittedTitle">ĐÃ CHỐT GIÁ!</div>
         <div class="badge-status" id="submittedDetailText">Nộp bài thành công!</div>
-        <p style="font-size: 1rem; line-height: 1.6; color: #fce7f3; margin-top: 15px; font-weight: 700;">
-            Hãy theo dõi màn hình máy chiếu để xem đáp án & Bảng xếp hạng Top 6!
+        
+        <div style="background:#180322; border:2.5px solid #ff4d8d; border-radius:18px; padding:14px; margin:14px 0;">
+            <div style="font-size:0.85rem; color:#fbcfe8; font-weight:800;">GIÁ BẠN ĐÃ CHỐT:</div>
+            <div style="font-size:2.2rem; color:#fef08a; font-weight:900;" id="submittedPriceText">0 ₫</div>
+            <div style="font-size:0.85rem; color:#f472b6; font-weight:800; margin-top:4px;" id="submittedTimeText">Phản xạ: ...s</div>
+        </div>
+
+        <p style="font-size: 0.95rem; line-height: 1.5; color: #fce7f3; font-weight: 700;">
+            Hãy theo dõi màn hình máy chiếu.<br>MC chuẩn bị công bố Giá Niêm Yết Chính Hãng!
         </p>
-        <div class="badge-score" id="myCurrentScore">ĐIỂM: 0</div>
+        <div class="badge-score" id="myCurrentScore">TỔNG ĐIỂM CỦA BẠN: 0</div>
     </div>
 
-    <!-- CARD 6: LEADERBOARD SCREEN -->
+    <!-- CARD 6: REVEAL RESULT SCREEN (KẾT QUẢ VÒNG NÀY) -->
+    <div class="card" id="cardReveal">
+        <div style="font-size: 3.2rem; margin-bottom: 6px;" id="revealIcon">🎉</div>
+        <div class="header-title" id="revealTitle">KẾT QUẢ ĐOÁN GIÁ</div>
+        
+        <div class="reveal-stat-box-m">
+            <div>🎉 Giá chính hãng: <b id="revealRealPriceM" style="font-size:1.15rem; color:#fbbf24;">0 ₫</b></div>
+            <div>🏷️ Giá bạn đoán: <b id="revealMyPriceM">0 ₫</b></div>
+            <div>📊 Mức sai lệch: <b id="revealDiffM">0 ₫ (0%)</b></div>
+            <hr style="border:0; border-top:1px dashed #ff4d8d; margin:8px 0;">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span>Điểm chính xác: <b id="revealAccPointsM">+0đ</b></span>
+                <span>Thưởng tốc độ: <b id="revealSpeedPointsM">+0đ</b></span>
+            </div>
+            <div style="margin-top:6px; font-size:1.2rem; font-weight:900; color:#10b981; text-align:center;" id="revealTotalRoundPointsM">
+                VÒNG NÀY: +0 ĐIỂM
+            </div>
+        </div>
+
+        <div class="badge-score" id="revealMyTotalScoreM">TỔNG ĐIỂM HIỆN TẠI: 0</div>
+        <p style="font-size: 0.85rem; color:#fbcfe8; margin-top:10px; font-weight:700;">
+            Hãy nhìn lên màn hình lớn để xem Bảng Xếp Hạng Top 6!
+        </p>
+    </div>
+
+    <!-- CARD 7: LEADERBOARD SCREEN -->
     <div class="card" id="cardLeaderboard">
         <div style="font-size: 3.2rem; margin-bottom: 8px;">📊</div>
         <div class="header-title">BẢNG XẾP HẠNG TOP 6</div>
@@ -483,17 +586,17 @@
         <div class="badge-score" id="lbMyScore">ĐIỂM CỦA BẠN: 0</div>
     </div>
 
-    <!-- CARD 7: FINALE -->
+    <!-- CARD 8: FINALE -->
     <div class="card" id="cardFinale">
         <div style="font-size: 4rem; margin-bottom: 10px;">👑</div>
         <div class="header-title">VINH DANH NỮ THẦN 20/10</div>
         <p style="font-size: 1.05rem; line-height: 1.6; color: #fce7f3; margin: 15px 0; font-weight: 700;">
-            Chúc mừng tất cả các bóng hồng & phái đẹp đã tỏa sáng rực rỡ trong ngày hội!
+            Chúc mừng tất cả các bóng hồng đã tỏa sáng rực rỡ trong ngày hội Hãy Chọn Giá Đúng!
         </p>
         <div class="badge-score" id="finaleMyScore">TỔNG ĐIỂM: 0</div>
     </div>
 
-    <!-- Firebase Compat SDK (CDN - Không cần cài đặt gì) -->
+    <!-- Firebase Compat SDK -->
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
 
@@ -518,30 +621,24 @@
         let playerTimerInterval = null;
         let playerTimerLastSec = -1;
         let isTimeExpired = false;
-        let currentQStartTime = 0;
-        let currentQDuration = 50;
+        let currentGuessValue = 0;
+        let hasUnlockedH1Mobile = false;
+        let hasUnlockedH2Mobile = false;
 
-        // Định danh duy nhất cho điện thoại (lưu vĩnh viễn trên trình duyệt)
         let clientId = localStorage.getItem('tt_client_id');
         if (!clientId) {
-            clientId = 'c_' + Date.now() + '_' + Math.floor(Math.random() * 10000);
+            clientId = 'c_' + Math.random().toString(36).substring(2, 9) + Date.now().toString(36);
             localStorage.setItem('tt_client_id', clientId);
         }
 
-        // Khôi phục tên & avatar đã lưu
         const savedName = localStorage.getItem('tt_player_name');
-        const savedAvatar = localStorage.getItem('tt_player_avatar') || '👑';
-        if (savedName) {
-            document.getElementById('playerNameInput').value = savedName;
-        }
+        const savedAvatar = localStorage.getItem('tt_player_avatar');
+        if (savedName) document.getElementById('playerNameInput').value = savedName;
         if (savedAvatar) {
             selectedAvatar = savedAvatar;
             document.querySelectorAll('.avatar-item').forEach(item => {
-                if (item.innerText.trim() === savedAvatar) {
-                    item.classList.add('selected');
-                } else {
-                    item.classList.remove('selected');
-                }
+                if (item.innerText.trim() === savedAvatar) item.classList.add('selected');
+                else item.classList.remove('selected');
             });
         }
 
@@ -581,7 +678,6 @@
                 errEl.style.display = 'block';
             }
         }
-
         function clearJoinError() {
             const errEl = document.getElementById('loginErrorMsg');
             if (errEl) {
@@ -590,15 +686,37 @@
             }
         }
 
-        // Chuẩn hóa chuỗi tiếng Việt chống lệch bộ gõ
-        function normalizeVN(text) {
-            if (!text) return '';
-            return text.toString().trim().normalize('NFC').toUpperCase().replace(/\s+/g, ' ');
+        // PRICE NUMPAD CONTROLS
+        function updatePriceDisplay() {
+            const disp = document.getElementById('displayGuessPrice');
+            if (disp) {
+                disp.innerText = currentGuessValue.toLocaleString('vi-VN') + ' ₫';
+            }
         }
 
-        // ====================================================================
-        // THAM GIA PHÒNG CHƠI
-        // ====================================================================
+        function addPrice(amount) {
+            currentGuessValue += amount;
+            updatePriceDisplay();
+            document.getElementById('priceInputDirect').value = '';
+        }
+
+        function clearPrice() {
+            currentGuessValue = 0;
+            updatePriceDisplay();
+            document.getElementById('priceInputDirect').value = '';
+        }
+
+        function handleDirectInput(val) {
+            const cleanDigits = val.replace(/\D/g, '');
+            if (cleanDigits) {
+                currentGuessValue = parseInt(cleanDigits, 10);
+            } else {
+                currentGuessValue = 0;
+            }
+            updatePriceDisplay();
+        }
+
+        // JOIN GAME
         function joinGame() {
             clearJoinError();
             let name = document.getElementById('playerNameInput').value.trim();
@@ -641,7 +759,7 @@
                     myTotalScore = pData.score || 0;
                     document.getElementById('displayAvatar').innerText = pData.avatar;
                     document.getElementById('displayName').innerText = pData.name;
-                    document.getElementById('myCurrentScore').innerText = `ĐIỂM: ${myTotalScore}`;
+                    document.getElementById('myCurrentScore').innerText = `TỔNG ĐIỂM CỦA BẠN: ${myTotalScore}`;
 
                     if (btnJoin) {
                         btnJoin.disabled = false;
@@ -649,22 +767,22 @@
                     }
                     setNetworkStatus(true, "Đã vào phòng");
                     
-                    // Nếu game đang ở trạng thái nào thì chuyển tới trạng thái đó
                     if (!lastStateStatus || lastStateStatus === 'LOBBY') {
                         showCard('cardLobby');
                     }
 
-                    // Lắng nghe điểm của chính mình theo thời gian thực
                     playerRef.child('score').on('value', sSnap => {
                         const s = sSnap.val();
                         if (s !== null) {
                             myTotalScore = s;
                             const scEl = document.getElementById('myCurrentScore');
-                            if (scEl) scEl.innerText = `ĐIỂM: ${myTotalScore}`;
+                            if (scEl) scEl.innerText = `TỔNG ĐIỂM CỦA BẠN: ${myTotalScore}`;
                             const lbScEl = document.getElementById('lbMyScore');
                             if (lbScEl) lbScEl.innerText = `ĐIỂM CỦA BẠN: ${myTotalScore}`;
                             const fnScEl = document.getElementById('finaleMyScore');
                             if (fnScEl) fnScEl.innerText = `TỔNG ĐIỂM CỦA BẠN: ${myTotalScore}`;
+                            const revScEl = document.getElementById('revealMyTotalScoreM');
+                            if (revScEl) revScEl.innerText = `TỔNG ĐIỂM HIỆN TẠI: ${myTotalScore}`;
                         }
                     });
                 });
@@ -718,138 +836,139 @@
             showCard('cardLogin');
         }
 
-        // ====================================================================
-        // NỘP ĐÁP ÁN ĐOÁN CHỮ
-        // ====================================================================
+        // SUBMIT PRICE (HÃY CHỌN GIÁ ĐÚNG)
         function submitAnswer() {
             if (isTimeExpired) {
-                alert("⏱️ Đã hết thời gian nộp bài cho câu hỏi này!");
+                alert("⏱️ Đã hết thời gian chốt giá cho sản phẩm này!");
                 return;
             }
-            const input = document.getElementById('answerInput');
-            if (input.disabled) return;
-            const ans = input.value.trim();
-            if (!ans) return;
-
+            if (currentGuessValue <= 0) {
+                alert("⚠️ Vui lòng nhập giá dự đoán lớn hơn 0 đồng!");
+                return;
+            }
             if (!db) {
                 alert("Chưa kết nối máy chủ Firebase!");
                 return;
             }
-
             if (currentQIdx < 0 || !QUESTIONS[currentQIdx]) return;
 
-            const btn = document.getElementById('btnSubmitAnswer');
+            const btn = document.getElementById('btnSubmitPrice');
             btn.disabled = true;
 
-            showCard('cardSubmitted');
-            document.getElementById('submittedIcon').innerText = '⏳';
-            document.getElementById('submittedTitle').innerText = 'ĐÃ NỘP BÀI!';
-            document.getElementById('submittedDetailText').innerText = 'Đang kiểm tra kết quả...';
-
             const currentQ = QUESTIONS[currentQIdx];
-            const normalizedUserAns = normalizeVN(ans);
-            const normalizedCorrectAns = normalizeVN(currentQ.answer);
-            const isCorrect = (normalizedUserAns === normalizedCorrectAns);
+            const realPrice = currentQ.price || 0;
+            const guessPrice = currentGuessValue;
+
+            // Tính sai số tương đối (Relative Error Ratio)
+            const errorRatio = Math.abs(guessPrice - realPrice) / realPrice;
+            const diffAmount = Math.abs(guessPrice - realPrice);
+            const diffPercent = (errorRatio * 100).toFixed(1);
+            const isBullseye = (diffAmount === 0);
+
+            // Điểm độ chính xác (0 - 100)
+            let accuracyScore = 0;
+            if (isBullseye) {
+                accuracyScore = 100;
+            } else if (errorRatio <= 0.30) {
+                accuracyScore = Math.max(0, Math.round(100 * (1 - errorRatio / 0.30)));
+            } else {
+                accuracyScore = 5; // Điểm an ủi tham gia
+            }
+
+            // Điểm thưởng tốc độ (0 - 50) có nhân hệ số chính xác để chống spam đoán bừa
+            const now = Date.now() + serverTimeOffset;
+            const startTime = (typeof currentQStartTime === 'number' && currentQStartTime > 0) ? currentQStartTime : now;
+            const totalSec = currentQDuration || (currentQ.time || 30);
+            const totalMs = totalSec * 1000;
+            const elapsedMs = Math.max(0, now - startTime);
+            const remainingMs = Math.max(0, totalMs - elapsedMs);
+            const timeRatio = Math.min(1, Math.max(0, remainingMs / totalMs));
+            
+            let speedBonus = 0;
+            if (accuracyScore > 5) {
+                speedBonus = Math.round(50 * timeRatio * (accuracyScore / 100));
+            }
+
+            const totalRoundPoints = accuracyScore + speedBonus;
+            const elapsedSecStr = (elapsedMs / 1000).toFixed(1);
 
             const qSubRef = db.ref('submissions/' + currentQIdx);
 
-            // Kiểm tra xem đã nộp câu này chưa
             qSubRef.child(clientId).once('value').then(snap => {
                 if (snap.exists()) {
-                    document.getElementById('submittedDetailText').innerText = 'Bạn đã nộp bài cho câu này rồi!';
+                    alert("Bạn đã chốt giá cho sản phẩm này rồi!");
                     return;
                 }
 
-                // Đọc toàn bộ bài nộp hiện có của câu hỏi để tính thứ tự nộp đúng (Speed Ranking)
-                qSubRef.once('value').then(allSubsSnap => {
-                    const allSubs = allSubsSnap.val() || {};
-                    const correctSubs = Object.values(allSubs).filter(s => s.is_correct);
-                    const order = isCorrect ? (correctSubs.length + 1) : 0;
+                const subData = {
+                    client_id: clientId,
+                    player_name: currentPlayer ? currentPlayer.name : (savedName || 'Bóng hồng'),
+                    player_avatar: currentPlayer ? currentPlayer.avatar : selectedAvatar,
+                    guess_price: guessPrice,
+                    real_price: realPrice,
+                    diff_amount: diffAmount,
+                    diff_percent: +(diffPercent),
+                    error_ratio: +(errorRatio.toFixed(4)),
+                    is_bullseye: isBullseye,
+                    accuracy_score: accuracyScore,
+                    speed_bonus: speedBonus,
+                    points: totalRoundPoints,
+                    elapsed_sec: +(elapsedSecStr),
+                    submitted_at: firebase.database.ServerValue.TIMESTAMP
+                };
 
-                    // Tính điểm thời gian thực theo từng khắc (mili-giây):
-                    // Hệ số thời gian = T_còn_lại / Tổng_thời_gian (mặc định 50s = 50.000ms)
-                    // Điểm thưởng = 50 * Hệ số
-                    const now = Date.now() + serverTimeOffset;
-                    const startTime = (typeof currentQStartTime === 'number' && currentQStartTime > 0) ? currentQStartTime : now;
-                    const totalSec = currentQDuration || (currentQ.time || 50);
-                    const totalMs = totalSec * 1000;
-                    const elapsedMs = Math.max(0, now - startTime);
-                    const remainingMs = Math.max(0, totalMs - elapsedMs);
-                    const timeRatio = Math.min(1, Math.max(0, remainingMs / totalMs));
-                    const exactBonus = 50 * timeRatio;
-                    const speedBonus = isCorrect ? Math.round(exactBonus) : 0;
-                    const points = isCorrect ? (100 + speedBonus) : 0;
-                    const elapsedSecStr = (elapsedMs / 1000).toFixed(1);
+                return qSubRef.child(clientId).set(subData).then(() => {
+                    hasSubmittedCurrentQ = true;
+                    if (playerTimerInterval) clearInterval(playerTimerInterval);
 
-                    const subData = {
-                        client_id: clientId,
-                        player_name: currentPlayer ? currentPlayer.name : (savedName || 'Bóng hồng'),
-                        player_avatar: currentPlayer ? currentPlayer.avatar : selectedAvatar,
-                        answer: ans,
-                        is_correct: isCorrect,
-                        points: points,
-                        speed_bonus: speedBonus,
-                        elapsed_sec: +(elapsedSecStr),
-                        order: order,
-                        submitted_at: firebase.database.ServerValue.TIMESTAMP
-                    };
+                    const playerRef = db.ref('players/' + clientId);
+                    playerRef.child('score').transaction(currentScore => (currentScore || 0) + totalRoundPoints);
+                    if (accuracyScore >= 70) {
+                        playerRef.child('total_correct').transaction(c => (c || 0) + 1);
+                    }
+                    playerRef.child('answers/' + currentQIdx).set(subData);
 
-                    // Lưu bài nộp vào Firebase
-                    return qSubRef.child(clientId).set(subData).then(() => {
-                        hasSubmittedCurrentQ = true;
-                        if (playerTimerInterval) clearInterval(playerTimerInterval);
-                        const playerRef = db.ref('players/' + clientId);
-
-                        if (isCorrect) {
-                            playerRef.child('score').transaction(currentScore => (currentScore || 0) + points);
-                            playerRef.child('total_correct').transaction(c => (c || 0) + 1);
-                            playerRef.child('answers/' + currentQIdx).set(subData);
-
-                            document.getElementById('submittedIcon').innerText = '🎉';
-                            document.getElementById('submittedTitle').innerText = 'CHÍNH XÁC!';
-                            document.getElementById('submittedDetailText').innerText = `+${points}đ (Phản xạ: ${elapsedSecStr}s | Thưởng tốc độ: +${speedBonus}đ)`;
-                        } else {
-                            playerRef.child('answers/' + currentQIdx).set(subData);
-
-                            document.getElementById('submittedIcon').innerText = '❌';
-                            document.getElementById('submittedTitle').innerText = 'CHƯA CHÍNH XÁC';
-                            document.getElementById('submittedDetailText').innerText = 'Hãy cố gắng ở câu tiếp theo nhé!';
-                        }
-                    });
+                    // Chuyển sang Card Submitted
+                    showCard('cardSubmitted');
+                    document.getElementById('submittedPriceText').innerText = guessPrice.toLocaleString('vi-VN') + ' ₫';
+                    document.getElementById('submittedTimeText').innerText = `⏱️ Phản xạ chốt giá: ${elapsedSecStr}s (còn lại ${(remainingMs/1000).toFixed(1)}s)`;
+                    document.getElementById('submittedDetailText').innerText = isBullseye ? '🎯 Trúng phóc 100%!' : 'Đã ghi nhận giá chốt!';
                 });
             }).catch(err => {
                 console.error("Lỗi khi gửi bài:", err);
                 btn.disabled = false;
-                document.getElementById('submittedDetailText').innerText = 'Lỗi nộp bài! Vui lòng thử bấm nộp lại.';
+                alert("Lỗi chốt giá! Vui lòng thử lại.");
             });
         }
 
-        // Nhấn Enter để gửi đáp án nhanh
-        document.getElementById('answerInput').addEventListener('keydown', (e) => {
-            if (e.key === 'Enter') {
-                submitAnswer();
-            }
-        });
-
-        // ====================================================================
-        // ĐỒNG BỘ BỘ ĐẾM NGƯỢC THỜI GIAN VỚI HOST
-        // ====================================================================
+        // TIMER & HINTS MOBILE
         function startPlayerQuestionTimer(duration, startTime) {
             if (playerTimerInterval) clearInterval(playerTimerInterval);
             playerTimerLastSec = -1;
             isTimeExpired = false;
+            hasUnlockedH1Mobile = false;
+            hasUnlockedH2Mobile = false;
 
             const badge = document.getElementById('qTimerMobile');
-            const ansInput = document.getElementById('answerInput');
-            const btnSubmit = document.getElementById('btnSubmitAnswer');
-            const timeOutAlert = document.getElementById('playerTimeOutAlert');
+            const btnSubmit = document.getElementById('btnSubmitPrice');
+            const currentQ = QUESTIONS[currentQIdx] || {};
 
-            if (badge) {
-                badge.classList.remove('urgent');
-            }
-            if (timeOutAlert) {
-                timeOutAlert.style.display = 'none';
-            }
+            if (badge) badge.classList.remove('urgent');
+            if (btnSubmit) btnSubmit.disabled = false;
+
+            const h1Box = document.getElementById('mHint1Box');
+            const h2Box = document.getElementById('mHint2Box');
+            const h1Text = document.getElementById('mHint1Text');
+            const h2Text = document.getElementById('mHint2Text');
+            const h1Status = document.getElementById('mHint1Status');
+            const h2Status = document.getElementById('mHint2Status');
+
+            h1Box.className = 'hint-box-m locked';
+            h2Box.className = 'hint-box-m locked';
+            h1Status.innerText = '🔒 Mở sau 10s';
+            h2Status.innerText = '🔒 Mở sau 20s';
+            h1Text.innerText = 'Gợi ý khoảng giá sẽ mở sau 10 giây...';
+            h2Text.innerText = 'Gợi ý chữ số cực sát sẽ mở sau 20 giây...';
 
             const validStartTime = (typeof startTime === 'number') ? startTime : Date.now();
 
@@ -858,43 +977,40 @@
                 const elapsed = Math.max(0, Math.floor((now - validStartTime) / 1000));
                 const timeLeft = Math.max(0, duration - elapsed);
 
+                // Mở Gợi ý 1 tại giây thứ 10
+                if (elapsed >= 10 && !hasUnlockedH1Mobile) {
+                    hasUnlockedH1Mobile = true;
+                    h1Box.className = 'hint-box-m unlocked';
+                    h1Status.innerText = '🔓 ĐÃ MỞ!';
+                    h1Text.innerText = currentQ.hint1 || 'Khoảng giá đang cập nhật...';
+                    if (navigator.vibrate) navigator.vibrate(80);
+                }
+
+                // Mở Gợi ý 2 tại giây thứ 20
+                if (elapsed >= 20 && !hasUnlockedH2Mobile) {
+                    hasUnlockedH2Mobile = true;
+                    h2Box.className = 'hint-box-m unlocked';
+                    h2Status.innerText = '⚡ GỢI Ý VÀNG!';
+                    h2Text.innerText = currentQ.hint2 || 'Chi tiết chữ số đang cập nhật...';
+                    if (navigator.vibrate) navigator.vibrate([100, 50, 100]);
+                }
+
                 if (timeLeft <= 0) {
                     clearInterval(playerTimerInterval);
                     isTimeExpired = true;
-
                     if (badge) {
                         badge.innerText = `⏱️ HẾT GIỜ!`;
-                        badge.classList.add('urgent');
+                        badge.classList.remove('urgent');
                     }
-
-                    // Nếu người chơi chưa kịp nộp bài -> Khóa tính năng nhập & báo hết giờ
-                    if (!hasSubmittedCurrentQ) {
-                        if (ansInput) {
-                            ansInput.disabled = true;
-                            ansInput.placeholder = "ĐÃ HẾT GIỜ NỘP BÀI!";
-                            ansInput.blur();
-                        }
-                        if (btnSubmit) {
-                            btnSubmit.disabled = true;
-                            btnSubmit.innerText = "⏱️ HẾT GIỜ NỘP BÀI";
-                            btnSubmit.style.opacity = '0.6';
-                            btnSubmit.style.cursor = 'not-allowed';
-                        }
-                        if (timeOutAlert) {
-                            timeOutAlert.style.display = 'block';
-                        }
-                        if (navigator.vibrate) {
-                            try { navigator.vibrate([200, 100, 200]); } catch(e){}
-                        }
+                    if (btnSubmit && !hasSubmittedCurrentQ) {
+                        btnSubmit.disabled = true;
                     }
                 } else {
                     if (badge) {
                         badge.innerText = `⏱️ ${timeLeft}s`;
-                        if (timeLeft <= 10) {
-                            badge.classList.add('urgent');
-                        } else {
-                            badge.classList.remove('urgent');
-                        }
+                        const isUrgent = (timeLeft <= 10);
+                        if (isUrgent) badge.classList.add('urgent');
+                        else badge.classList.remove('urgent');
                     }
                 }
             }
@@ -903,205 +1019,170 @@
             playerTimerInterval = setInterval(tickPlayerTimer, 250);
         }
 
-        // ====================================================================
-        // ĐỒNG BỘ TRẠNG THÁI GAME TỪ FIREBASE
-        // ====================================================================
-        function handleStateUpdate(data) {
-            if (!data) return;
-            lastStateStatus = data.status;
+        // FIREBASE STATE LISTENER
+        function setupPlayerFirebaseListeners() {
+            if (!db) return;
 
-            // Đồng bộ bộ câu hỏi từ Host
-            if (data.question_set && data.question_set !== currentSetId && window.QUESTION_SETS && window.QUESTION_SETS[data.question_set]) {
-                currentSetId = data.question_set;
-                QUESTIONS = window.QUESTION_SETS[currentSetId].questions;
-            }
+            db.ref('.info/serverTimeOffset').on('value', snap => {
+                serverTimeOffset = snap.val() || 0;
+            });
 
-            if (data.status === 'LOBBY') {
-                if (playerTimerInterval) clearInterval(playerTimerInterval);
+            db.ref('players').on('value', snap => {
+                const pMap = snap.val() || {};
+                const pList = Object.values(pMap);
+                updateLobbyCount(pList.length);
+                renderMobileLobbyPlayers(pList);
+
+                pList.sort((a, b) => (b.score || 0) - (a.score || 0));
+                renderMobileLeaderboard(pList);
+            });
+
+            db.ref('game_state').on('value', snap => {
+                const state = snap.val();
+                if (!state) return;
+                lastStateStatus = state.status;
+
+                if (state.question_set && state.question_set !== currentSetId) {
+                    if (window.QUESTION_SETS && window.QUESTION_SETS[state.question_set]) {
+                        currentSetId = state.question_set;
+                        QUESTIONS = window.QUESTION_SETS[state.question_set].questions;
+                    }
+                }
+
+                handlePlayerGameState(state);
+            });
+        }
+
+        let currentQStartTime = 0;
+        let currentQDuration = 30;
+
+        function handlePlayerGameState(state) {
+            const status = state.status || 'LOBBY';
+            const qIdx = state.current_q_idx || 0;
+            currentQStartTime = state.q_start_time || 0;
+            currentQDuration = state.q_duration || 30;
+
+            if (status === 'LOBBY') {
                 currentQIdx = -1;
                 hasSubmittedCurrentQ = false;
-                isTimeExpired = false;
-
-                const ansInput = document.getElementById('answerInput');
-                if (ansInput) {
-                    ansInput.disabled = false;
-                    ansInput.value = '';
-                    ansInput.placeholder = "GÕ ĐÁP ÁN TIẾNG VIỆT...";
-                }
-                const btnSubmit = document.getElementById('btnSubmitAnswer');
-                if (btnSubmit) {
-                    btnSubmit.disabled = false;
-                    btnSubmit.innerText = "🌸 GỬI ĐÁP ÁN TỎA SÁNG";
-                    btnSubmit.style.opacity = '1';
-                    btnSubmit.style.cursor = 'pointer';
-                }
-                const timeOutAlert = document.getElementById('playerTimeOutAlert');
-                if (timeOutAlert) timeOutAlert.style.display = 'none';
-
+                if (playerTimerInterval) clearInterval(playerTimerInterval);
                 if (currentPlayer) showCard('cardLobby');
                 else showCard('cardLogin');
-            } else if (data.status === 'RULES') {
+            } else if (status === 'RULES') {
                 if (playerTimerInterval) clearInterval(playerTimerInterval);
-                showCard('cardRules');
-            } else if (data.status === 'QUESTION') {
-                const qIdx = data.current_q_idx || 0;
-                const currentQ = QUESTIONS[qIdx];
-                const duration = data.q_duration || (currentQ ? (currentQ.time || 50) : 50);
-
-                currentQStartTime = (typeof data.q_start_time === 'number') ? data.q_start_time : Date.now();
-                currentQDuration = duration;
+                if (currentPlayer) showCard('cardRules');
+            } else if (status === 'QUESTION') {
+                if (!currentPlayer) return;
 
                 if (currentQIdx !== qIdx) {
                     currentQIdx = qIdx;
                     hasSubmittedCurrentQ = false;
-                    isTimeExpired = false;
+                    currentGuessValue = 0;
+                    updatePriceDisplay();
+                    document.getElementById('priceInputDirect').value = '';
 
-                    const ansInput = document.getElementById('answerInput');
-                    if (ansInput) {
-                        ansInput.disabled = false;
-                        ansInput.value = '';
-                        ansInput.placeholder = "GÕ ĐÁP ÁN TIẾNG VIỆT...";
-                    }
-                    const btnSubmit = document.getElementById('btnSubmitAnswer');
-                    if (btnSubmit) {
-                        btnSubmit.disabled = false;
-                        btnSubmit.innerText = "🌸 GỬI ĐÁP ÁN TỎA SÁNG";
-                        btnSubmit.style.opacity = '1';
-                        btnSubmit.style.cursor = 'pointer';
-                    }
-                    const timeOutAlert = document.getElementById('playerTimeOutAlert');
-                    if (timeOutAlert) timeOutAlert.style.display = 'none';
+                    const currentQ = QUESTIONS[qIdx] || {};
+                    document.getElementById('qBadgeMobile').innerText = `SẢN PHẨM ${qIdx + 1} / ${QUESTIONS.length}`;
+                    document.getElementById('mProductName').innerText = currentQ.name || 'Sản phẩm bí ẩn';
+                    document.getElementById('mBrandBadge').innerText = currentQ.brand ? `🏷️ ${currentQ.brand}` : 'CHÍNH HÃNG';
+                    document.getElementById('mCategoryBadge').innerText = currentQ.category ? `🌸 ${currentQ.category}` : 'LÀM ĐẸP';
 
-                    // Kiểm tra xem người chơi này đã từng nộp câu này chưa (nếu reload trang)
-                    if (db) {
-                        db.ref('submissions/' + currentQIdx + '/' + clientId).once('value').then(snap => {
-                            if (snap.exists()) {
-                                hasSubmittedCurrentQ = true;
-                                if (playerTimerInterval) clearInterval(playerTimerInterval);
-                                const sub = snap.val();
-                                showCard('cardSubmitted');
-                                if (sub.is_correct) {
-                                    document.getElementById('submittedIcon').innerText = '🎉';
-                                    document.getElementById('submittedTitle').innerText = 'CHÍNH XÁC!';
-                                    const bonusText = sub.speed_bonus !== undefined ? ` | Thưởng tốc độ: +${sub.speed_bonus}đ` : '';
-                                    const timeText = sub.elapsed_sec !== undefined ? `Phản xạ: ${sub.elapsed_sec}s` : `Tốc độ thứ #${sub.order}`;
-                                    document.getElementById('submittedDetailText').innerText = `+${sub.points}đ (${timeText}${bonusText})`;
-                                } else {
-                                    document.getElementById('submittedIcon').innerText = '❌';
-                                    document.getElementById('submittedTitle').innerText = 'CHƯA CHÍNH XÁC';
-                                    document.getElementById('submittedDetailText').innerText = 'Đã nộp bài cho câu này';
-                                }
-                            }
-                        });
-                    }
-                }
+                    const imgEl = document.getElementById('mProductImg');
+                    imgEl.src = currentQ.image || '';
+                    imgEl.onerror = function() {
+                        this.src = 'https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?w=600&auto=format&fit=crop&q=80';
+                    };
 
-                if (!hasSubmittedCurrentQ && currentQ) {
-                    document.getElementById('qBadgeMobile').innerText = `CÂU ${currentQ.id} / ${QUESTIONS.length} (${currentQ.words} TỪ)`;
-                    document.getElementById('scrambleMobile').innerText = currentQ.scrambled;
-                    document.getElementById('hintMobile').innerText = '💡 ' + (currentQ.hint || '');
                     showCard('cardQuestion');
-                    startPlayerQuestionTimer(duration, data.q_start_time);
+                    startPlayerQuestionTimer(currentQDuration, currentQStartTime);
+                } else {
+                    if (!hasSubmittedCurrentQ) {
+                        showCard('cardQuestion');
+                    }
                 }
-            } else if (data.status === 'REVEAL') {
+            } else if (status === 'REVEAL') {
                 if (playerTimerInterval) clearInterval(playerTimerInterval);
-                showCard('cardSubmitted');
-                const currentQ = QUESTIONS[data.current_q_idx !== undefined ? data.current_q_idx : currentQIdx];
-                if (!hasSubmittedCurrentQ) {
-                    document.getElementById('submittedIcon').innerText = '⏰';
-                    document.getElementById('submittedTitle').innerText = 'HẾT GIỜ!';
-                    document.getElementById('submittedDetailText').innerText = currentQ ? `ĐÁP ÁN: ${currentQ.answer}` : 'Đã hết giờ nộp bài';
-                } else if (currentQ) {
-                    document.getElementById('submittedDetailText').innerText = `ĐÁP ÁN: ${currentQ.answer}`;
-                }
-            } else if (data.status === 'LEADERBOARD') {
+                if (!currentPlayer) return;
+
+                const currentQ = QUESTIONS[qIdx] || {};
+                const realPrice = currentQ.price || 0;
+
+                // Đọc kết quả bài nộp của chính mình để hiển thị lên điện thoại
+                db.ref('submissions/' + qIdx + '/' + clientId).once('value', snap => {
+                    const mySub = snap.val();
+                    showCard('cardReveal');
+
+                    document.getElementById('revealRealPriceM').innerText = realPrice.toLocaleString('vi-VN') + ' ₫';
+                    
+                    if (mySub) {
+                        const guess = mySub.guess_price || 0;
+                        const diff = Math.abs(guess - realPrice);
+                        const isBullseye = (diff === 0);
+
+                        document.getElementById('revealMyPriceM').innerText = guess.toLocaleString('vi-VN') + ' ₫';
+                        document.getElementById('revealDiffM').innerText = (diff === 0) ? '0 ₫ (Tuyệt đối 100%!)' : ((guess > realPrice ? '+' : '-') + diff.toLocaleString('vi-VN') + ` ₫ (${mySub.diff_percent || 0}%)`);
+                        document.getElementById('revealAccPointsM').innerText = `+${mySub.accuracy_score || 0}đ`;
+                        document.getElementById('revealSpeedPointsM').innerText = `+${mySub.speed_bonus || 0}đ`;
+                        document.getElementById('revealTotalRoundPointsM').innerText = `VÒNG NÀY: +${mySub.points || 0} ĐIỂM`;
+
+                        if (isBullseye) {
+                            document.getElementById('revealIcon').innerText = '🎯';
+                            document.getElementById('revealTitle').innerText = 'BULLSEYE! XUẤT SẮC!';
+                        } else if ((mySub.accuracy_score || 0) >= 80) {
+                            document.getElementById('revealIcon').innerText = '⭐';
+                            document.getElementById('revealTitle').innerText = 'ĐOÁN CỰC KỲ SÁT GIÁ!';
+                        } else {
+                            document.getElementById('revealIcon').innerText = '👏';
+                            document.getElementById('revealTitle').innerText = 'KẾT QUẢ ĐỊNH GIÁ';
+                        }
+                    } else {
+                        document.getElementById('revealMyPriceM').innerText = 'Chưa kịp chốt giá';
+                        document.getElementById('revealDiffM').innerText = 'Không có bài nộp';
+                        document.getElementById('revealAccPointsM').innerText = '+0đ';
+                        document.getElementById('revealSpeedPointsM').innerText = '+0đ';
+                        document.getElementById('revealTotalRoundPointsM').innerText = 'VÒNG NÀY: +0 ĐIỂM';
+                        document.getElementById('revealIcon').innerText = '⏰';
+                        document.getElementById('revealTitle').innerText = 'HẾT GIỜ CHỐT GIÁ';
+                    }
+                });
+            } else if (status === 'LEADERBOARD') {
                 if (playerTimerInterval) clearInterval(playerTimerInterval);
-                showCard('cardLeaderboard');
-            } else if (data.status === 'FINALE') {
+                if (currentPlayer) showCard('cardLeaderboard');
+            } else if (status === 'FINALE') {
                 if (playerTimerInterval) clearInterval(playerTimerInterval);
-                document.getElementById('finaleMyScore').innerText = `TỔNG ĐIỂM CỦA BẠN: ${myTotalScore}`;
-                showCard('cardFinale');
+                if (currentPlayer) showCard('cardFinale');
             }
         }
 
-        function renderLeaderboard(top6) {
+        function renderMobileLeaderboard(players) {
             const container = document.getElementById('leaderboardList');
             if (!container) return;
             container.innerHTML = '';
-            document.getElementById('lbMyScore').innerText = `ĐIỂM CỦA BẠN: ${myTotalScore}`;
 
+            const top6 = (players || []).slice(0, 6);
             top6.forEach((p, idx) => {
-                const isMe = (p.id === clientId || p.client_id === clientId);
                 const item = document.createElement('div');
-                item.className = 'lb-mini-item' + (isMe ? ' me' : '');
+                item.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:#180322; border:2px solid #3b1147; box-shadow:2px 2px 0px #000; border-radius:14px; padding:8px 12px; margin-bottom:8px; font-weight:800; font-size:0.95rem;';
+                if (idx === 0) {
+                    item.style.borderColor = '#fbbf24';
+                    item.style.background = '#2c1236';
+                }
+                const medal = (idx === 0) ? '👑' : ((idx === 1) ? '🥈' : ((idx === 2) ? '🥉' : `#${idx + 1}`));
                 item.innerHTML = `
                     <div style="display:flex; align-items:center; gap:8px;">
-                        <span style="font-size:1.1rem; color:#fef08a;">#${idx + 1}</span>
-                        <span style="font-size:1.4rem;">${p.avatar}</span>
-                        <span style="color:#ffffff; font-size:1rem;">${p.name}${isMe ? ' (Bạn)' : ''}</span>
+                        <span>${medal}</span>
+                        <span>${p.avatar}</span>
+                        <span style="color:#fdf2f8;">${p.name}${p.id === clientId ? ' (Bạn)' : ''}</span>
                     </div>
-                    <span style="color:#fef08a; font-weight:900; font-size:1.1rem;">${p.score || 0}đ</span>
+                    <div style="color:#fef08a; font-weight:900;">${p.score || 0}đ</div>
                 `;
                 container.appendChild(item);
             });
         }
 
-        // ====================================================================
-        // KHỞI TẠO FIREBASE LISTENERS
-        // ====================================================================
-        if (db) {
-            // Lắng nghe trạng thái kết nối
-            db.ref('.info/connected').on('value', snap => {
-                if (snap.val() === true) {
-                    setNetworkStatus(true, "Trực tiếp");
-                } else {
-                    setNetworkStatus(false, "Đang kết nối lại...");
-                }
-            });
-
-            // Đồng bộ độ lệch thời gian với server Firebase
-            db.ref('.info/serverTimeOffset').on('value', snap => {
-                serverTimeOffset = snap.val() || 0;
-            });
-
-            // Lắng nghe thay đổi trạng thái Game
-            db.ref('game_state').on('value', snap => {
-                const state = snap.val();
-                if (state) handleStateUpdate(state);
-            });
-
-            // Lắng nghe danh sách người chơi
-            db.ref('players').on('value', snap => {
-                const pObj = snap.val() || {};
-                const players = Object.values(pObj);
-                updateLobbyCount(players.length);
-                renderMobileLobbyPlayers(players);
-
-                // Nếu Host đã xóa phòng (WIPE_ALL) hoặc người chơi không còn tồn tại
-                if (currentPlayer && (!snap.exists() || !pObj[clientId])) {
-                    currentPlayer = null;
-                    myTotalScore = 0;
-                    currentQIdx = -1;
-                    hasSubmittedCurrentQ = false;
-                    localStorage.removeItem('tt_player_name');
-                    showCard('cardLogin');
-                    showJoinError("ℹ️ <b>MC đã làm mới phòng chơi!</b><br>Vui lòng nhập tên của bạn để tham gia vòng mới.");
-                    return;
-                }
-
-                // Cập nhật Top 6
-                const sorted = [...players].sort((a, b) => (b.score || 0) - (a.score || 0));
-                renderLeaderboard(sorted.slice(0, 6));
-            });
-
-            // Tự động vào phòng nếu đã có tên lưu trong máy
-            if (savedName) {
-                joinGame();
-            }
-        } else {
-            console.warn("Chưa cấu hình Firebase trong firebase-config.js");
-            setNetworkStatus(false, "Chưa cấu hình Firebase");
-        }
+        window.addEventListener('DOMContentLoaded', () => {
+            setupPlayerFirebaseListeners();
+        });
     </script>
 </body>
 </html>
