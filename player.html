@@ -1073,6 +1073,21 @@
 
                 handlePlayerGameState(state);
             });
+
+            // Lắng nghe sản phẩm tùy chỉnh từ review_products.html
+            db.ref('custom_products').on('value', snap => {
+                const custom = snap.val();
+                if (custom && Array.isArray(custom) && custom.length > 0) {
+                    if (window.QUESTION_SETS && window.QUESTION_SETS.set3) {
+                        window.QUESTION_SETS.set3.questions = custom;
+                    }
+                    window.GAME_QUESTIONS = custom;
+                    if (currentSetId === 'set3') {
+                        QUESTIONS = custom;
+                    }
+                    console.log('⚡ Player đã nhận danh sách sản phẩm tùy chỉnh từ Firebase:', custom.length);
+                }
+            });
         }
 
         let currentQStartTime = 0;

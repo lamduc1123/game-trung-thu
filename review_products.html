@@ -4,65 +4,818 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
-    <title>🔍 KIỂM TRA ĐỐI SOÁT 30 SẢN PHẨM & HÌNH ẢNH • HÃY CHỌN GIÁ ĐÚNG 20/10</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
+    <title>🌸 QUẢN LÝ & ĐỐI SOÁT SẢN PHẨM • HÃY CHỌN GIÁ ĐÚNG 20/10</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Plus Jakarta Sans', sans-serif; }
-        body { background: #13031a; color: #fdf2f8; padding: 25px; }
-        .header { text-align: center; margin-bottom: 30px; }
+        body { background: #13031a; color: #fdf2f8; padding: 20px; line-height: 1.5; }
+
+        .container { max-width: 1400px; margin: 0 auto; }
+
+        /* Header */
+        .header { text-align: center; margin-bottom: 25px; }
         h1 { color: #fef08a; font-size: 2.2rem; text-shadow: 2px 2px 0 #f43f5e; margin-bottom: 8px; }
-        p { color: #fbcfe8; font-size: 1.05rem; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; max-width: 1300px; margin: 0 auto; }
-        .card { background: #23082d; border: 3px solid #ff4d8d; border-radius: 20px; padding: 16px; box-shadow: 5px 5px 0 #000; display: flex; flex-direction: column; }
-        .img-wrap { background: #fff; border: 2.5px solid #000; border-radius: 14px; height: 220px; display: flex; align-items: center; justify-content: center; padding: 10px; margin-bottom: 12px; position: relative; }
-        .img-wrap img { max-width: 100%; max-height: 100%; object-fit: contain; }
-        .badge-status { position: absolute; top: 8px; right: 8px; font-size: 0.75rem; font-weight: 900; padding: 3px 8px; border-radius: 8px; border: 1.5px solid #000; }
+        .subtitle { color: #fbcfe8; font-size: 1.05rem; max-width: 800px; margin: 0 auto 15px; }
+
+        /* Toolbar */
+        .toolbar {
+            background: #23082d;
+            border: 3px solid #ff4d8d;
+            border-radius: 20px;
+            padding: 16px 20px;
+            margin-bottom: 25px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+        }
+
+        .tool-group { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+
+        .btn {
+            font-size: 0.95rem;
+            font-weight: 800;
+            padding: 10px 18px;
+            border-radius: 12px;
+            border: 2px solid #000;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.15s ease;
+            box-shadow: 3px 3px 0 #000;
+        }
+        .btn:hover { transform: translate(-2px, -2px); box-shadow: 5px 5px 0 #000; }
+        .btn:active { transform: translate(1px, 1px); box-shadow: 2px 2px 0 #000; }
+
+        .btn-add { background: #10b981; color: #fff; }
+        .btn-sync { background: #f59e0b; color: #1e0a24; }
+        .btn-ai { background: #ec4899; color: #fff; }
+        .btn-export { background: #3b82f6; color: #fff; }
+        .btn-reset { background: #64748b; color: #fff; }
+
+        .stats-badge {
+            background: #180322;
+            border: 2px solid #ff4d8d;
+            border-radius: 12px;
+            padding: 8px 14px;
+            font-weight: 800;
+            font-size: 0.9rem;
+            display: inline-flex;
+            gap: 12px;
+        }
+        .stat-ok { color: #34d399; }
+        .stat-err { color: #f87171; }
+        .stat-total { color: #fef08a; }
+
+        /* Grid */
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(330px, 1fr));
+            gap: 22px;
+        }
+
+        .card {
+            background: #23082d;
+            border: 3px solid #ff4d8d;
+            border-radius: 20px;
+            padding: 16px;
+            box-shadow: 5px 5px 0 #000;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+            transition: border-color 0.2s;
+        }
+        .card:hover { border-color: #fef08a; }
+
+        .img-wrap {
+            background: #fff;
+            border: 2.5px solid #000;
+            border-radius: 14px;
+            height: 220px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+            margin-bottom: 12px;
+            position: relative;
+            overflow: hidden;
+        }
+        .img-wrap img {
+            max-width: 100%;
+            max-height: 100%;
+            object-fit: contain;
+        }
+
+        .badge-status {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            font-size: 0.75rem;
+            font-weight: 900;
+            padding: 4px 10px;
+            border-radius: 8px;
+            border: 1.5px solid #000;
+            box-shadow: 2px 2px 0 #000;
+            z-index: 2;
+        }
         .badge-ok { background: #22c55e; color: #fff; }
         .badge-err { background: #ef4444; color: #fff; }
+        .badge-loading { background: #f59e0b; color: #000; }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
         .idx { font-size: 0.85rem; font-weight: 900; color: #ff4d8d; }
-        .name { font-size: 1.15rem; font-weight: 900; color: #fef08a; line-height: 1.35; margin: 4px 0 8px 0; min-height: 48px; }
-        .price { font-size: 1.35rem; font-weight: 900; color: #10b981; margin-bottom: 10px; }
-        .hint-block { background: #180322; border: 1.5px solid #3b1147; border-radius: 12px; padding: 8px 12px; margin-top: 6px; font-size: 0.85rem; line-height: 1.45; }
+        .brand-cat {
+            background: #3b1147;
+            padding: 3px 8px;
+            border-radius: 6px;
+            font-size: 0.75rem;
+            font-weight: 800;
+            color: #fbcfe8;
+        }
+
+        .name {
+            font-size: 1.15rem;
+            font-weight: 900;
+            color: #fef08a;
+            line-height: 1.35;
+            margin-bottom: 8px;
+            min-height: 48px;
+        }
+        .price {
+            font-size: 1.4rem;
+            font-weight: 900;
+            color: #10b981;
+            margin-bottom: 10px;
+        }
+
+        .hint-block {
+            background: #180322;
+            border: 1.5px solid #3b1147;
+            border-radius: 12px;
+            padding: 8px 12px;
+            margin-top: 6px;
+            font-size: 0.85rem;
+            line-height: 1.45;
+        }
         .hint-title { font-weight: 900; color: #fbbf24; margin-bottom: 2px; }
+
+        .web-link {
+            display: inline-block;
+            margin-top: 8px;
+            font-size: 0.8rem;
+            color: #60a5fa;
+            text-decoration: underline;
+            word-break: break-all;
+        }
+
+        .card-actions {
+            margin-top: auto;
+            padding-top: 14px;
+            display: flex;
+            gap: 8px;
+        }
+        .btn-card {
+            flex: 1;
+            font-size: 0.85rem;
+            font-weight: 800;
+            padding: 8px;
+            border-radius: 10px;
+            border: 2px solid #000;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 2px 2px 0 #000;
+        }
+        .btn-edit { background: #fef08a; color: #1e0a24; }
+        .btn-delete { background: #f43f5e; color: #fff; }
+
+        /* Modal Edit */
+        .modal-overlay {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.75);
+            backdrop-filter: blur(5px);
+            z-index: 1000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+            padding: 15px;
+        }
+        .modal-overlay.active { display: flex; }
+
+        .modal {
+            background: #23082d;
+            border: 3.5px solid #ff4d8d;
+            border-radius: 24px;
+            width: 100%;
+            max-width: 650px;
+            max-height: 90vh;
+            overflow-y: auto;
+            padding: 24px;
+            box-shadow: 8px 8px 0 #000;
+        }
+
+        .modal-hdr {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 18px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #3b1147;
+        }
+        .modal-title { font-size: 1.4rem; font-weight: 900; color: #fef08a; }
+        .modal-close {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: #fbcfe8;
+            cursor: pointer;
+        }
+
+        .form-group { margin-bottom: 14px; }
+        .form-label {
+            display: block;
+            font-weight: 800;
+            font-size: 0.9rem;
+            color: #fbcfe8;
+            margin-bottom: 6px;
+        }
+        .form-input, .form-textarea {
+            width: 100%;
+            background: #180322;
+            border: 2px solid #3b1147;
+            border-radius: 12px;
+            padding: 10px 14px;
+            color: #fff;
+            font-size: 0.95rem;
+            font-weight: 700;
+            outline: none;
+        }
+        .form-input:focus, .form-textarea:focus { border-color: #ff4d8d; }
+        .form-textarea { resize: vertical; min-height: 60px; }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        .preview-box {
+            background: #fff;
+            border: 2px solid #000;
+            border-radius: 12px;
+            height: 140px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 8px;
+            overflow: hidden;
+            padding: 6px;
+        }
+        .preview-box img { max-width: 100%; max-height: 100%; object-fit: contain; }
+
+        .modal-ftr {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+            padding-top: 14px;
+            border-top: 2px solid #3b1147;
+        }
+        .btn-modal-save { flex: 1; background: #10b981; color: #fff; }
+        .btn-modal-cancel { background: #64748b; color: #fff; }
+
+        /* Toast */
+        .toast {
+            position: fixed;
+            bottom: 25px;
+            right: 25px;
+            background: #10b981;
+            color: #fff;
+            font-weight: 800;
+            padding: 12px 20px;
+            border-radius: 14px;
+            border: 2px solid #000;
+            box-shadow: 4px 4px 0 #000;
+            z-index: 2000;
+            display: none;
+            animation: toastPop 0.3s ease-out;
+        }
+        @keyframes toastPop {
+            from { transform: translateY(20px); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+
+        /* AI Prompt Copy Modal */
+        .copy-box {
+            background: #180322;
+            border: 2px solid #ff4d8d;
+            border-radius: 12px;
+            padding: 12px;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #fef08a;
+            max-height: 250px;
+            overflow-y: auto;
+            white-space: pre-wrap;
+            word-break: break-all;
+            margin-bottom: 14px;
+        }
     </style>
 </head>
 <body>
-    <div class="header">
-        <h1>🌸 BẢNG ĐỐI SOÁT 30 SẢN PHẨM & HÌNH ẢNH MINH HỌA</h1>
-        <p>Kiểm tra trực quan từng sản phẩm để đảm bảo hình ảnh hiển thị chuẩn xác 100% với tên & thương hiệu</p>
+    <div class="container">
+        <div class="header">
+            <h1>🌸 QUẢN LÝ & ĐỐI SOÁT SẢN PHẨM 20/10</h1>
+            <p class="subtitle">Chỉnh sửa tên, giá niêm yết, đường dẫn ảnh, hoặc tải ảnh trực tiếp từ máy để đồng bộ tức thì vào Game và chia sẻ với trợ lý AI!</p>
+        </div>
+
+        <!-- Toolbar -->
+        <div class="toolbar">
+            <div class="tool-group">
+                <button class="btn btn-add" onclick="openAddModal()">➕ Thêm Sản Phẩm Mới</button>
+                <button class="btn btn-sync" onclick="syncToFirebase()">⚡ Đồng Bộ Vào Game Ngay (Firebase)</button>
+                <button class="btn btn-ai" onclick="openExportModal()">📋 Sao Chép Gửi Cho AI</button>
+            </div>
+            <div class="tool-group">
+                <button class="btn btn-export" onclick="downloadJSON()">📥 Tải File JSON</button>
+                <button class="btn btn-reset" onclick="resetToDefault()">🔄 Đặt Lại Mặc Định</button>
+                <div class="stats-badge">
+                    <span class="stat-total" id="statTotal">📦 0 SP</span>
+                    <span class="stat-ok" id="statOk">🟢 0 Đúng</span>
+                    <span class="stat-err" id="statErr">🔴 0 Lỗi</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Products Grid -->
+        <div class="grid" id="productGrid"></div>
     </div>
-    <div class="grid" id="productGrid"></div>
 
+    <!-- Edit / Add Modal -->
+    <div class="modal-overlay" id="modalEdit">
+        <div class="modal">
+            <div class="modal-hdr">
+                <div class="modal-title" id="modalEditTitle">✏️ Chỉnh Sửa Sản Phẩm</div>
+                <button class="modal-close" onclick="closeEditModal()">✕</button>
+            </div>
+
+            <input type="hidden" id="editId">
+
+            <div class="form-group">
+                <label class="form-label">Tên sản phẩm đầy đủ *</label>
+                <input class="form-input" id="editName" placeholder="Vd: Mặt nạ ngủ môi Laneige Berry Mini 3g">
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Thương hiệu *</label>
+                    <input class="form-input" id="editBrand" placeholder="Vd: Laneige">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Phân loại *</label>
+                    <input class="form-input" id="editCategory" placeholder="Vd: Dưỡng Môi">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label class="form-label">Giá niêm yết chính hãng (VNĐ) *</label>
+                    <input class="form-input" id="editPrice" type="number" step="1000" placeholder="Vd: 110000" oninput="updatePricePreview(this.value)">
+                    <div id="pricePreview" style="font-size:0.85rem; color:#34d399; font-weight:800; margin-top:4px;">0 VNĐ</div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Thời gian trả lời (Giây)</label>
+                    <input class="form-input" id="editTime" type="number" value="35">
+                </div>
+            </div>
+
+            <!-- Image Section -->
+            <div class="form-group">
+                <label class="form-label">Link hình ảnh trực tiếp (URL)</label>
+                <input class="form-input" id="editImage" placeholder="https://..." oninput="previewModalImg(this.value)">
+                
+                <div style="margin-top:8px; font-size:0.85rem; color:#fbcfe8;">Hoặc tải ảnh từ thiết bị của bạn:</div>
+                <input type="file" id="editFile" accept="image/*" style="margin-top:4px; font-size:0.85rem;" onchange="handleFileUpload(event)">
+
+                <div class="preview-box">
+                    <img id="modalPreviewImg" src="" alt="Xem trước ảnh" referrerpolicy="no-referrer"
+                        onload="document.getElementById('modalImgStatus').innerText='🟢 Ảnh hiển thị tốt';"
+                        onerror="document.getElementById('modalImgStatus').innerText='🔴 Không tải được ảnh, vui lòng kiểm tra link!';">
+                </div>
+                <div id="modalImgStatus" style="font-size:0.8rem; font-weight:800; text-align:center; margin-top:4px; color:#fef08a;"></div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">Link website gốc / Nguồn tham khảo (Tùy chọn)</label>
+                <input class="form-input" id="editSourceUrl" placeholder="https://hasaki.vn/...">
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">💡 Gợi ý 1 (Sau 10s - Khoảng giá / Phân khúc) *</label>
+                <textarea class="form-textarea" id="editHint1" placeholder="Vd: Giá dao động trong khoảng từ 80.000đ - 140.000đ."></textarea>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label">⚡ Gợi ý 2 (Sau 22s - Đặc điểm chữ số / Đuôi số) *</label>
+                <textarea class="form-textarea" id="editHint2" placeholder="Vd: Là số chẵn tròn chục nghìn, 2 chữ số đầu giống hệt nhau (11x.xxx)."></textarea>
+            </div>
+
+            <div class="modal-ftr">
+                <button class="btn btn-modal-save" onclick="saveProduct()">💾 Lưu Sản Phẩm</button>
+                <button class="btn btn-modal-cancel" onclick="closeEditModal()">Hủy</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- AI Export Modal -->
+    <div class="modal-overlay" id="modalExport">
+        <div class="modal">
+            <div class="modal-hdr">
+                <div class="modal-title">📋 Sao Chép Cấu Hình Gửi Cho AI</div>
+                <button class="modal-close" onclick="closeExportModal()">✕</button>
+            </div>
+
+            <p style="color:#fbcfe8; font-size:0.95rem; margin-bottom:12px;">
+                Đoạn tin nhắn dưới đây đã được định dạng sẵn. Bạn chỉ cần bấm <b>"Sao Chép Tất Cả"</b> rồi dán trực tiếp vào khung chat với trợ lý AI để AI lưu vĩnh viễn vào mã nguồn GitHub:
+            </p>
+
+            <div class="copy-box" id="aiExportText"></div>
+
+            <div class="modal-ftr">
+                <button class="btn btn-modal-save" onclick="copyAIText()">📋 Sao Chép Nội Dung Gửi AI</button>
+                <button class="btn btn-modal-cancel" onclick="closeExportModal()">Đóng</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification -->
+    <div class="toast" id="toastMsg">Thông báo</div>
+
+    <!-- Firebase Compat SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
+    <script src="firebase-config.js"></script>
+
+    <!-- Default Questions Source -->
     <script src="questions.js"></script>
+
     <script>
-        const container = document.getElementById('productGrid');
-        const list = (window.QUESTION_SETS && window.QUESTION_SETS.set3) ? window.QUESTION_SETS.set3.questions : [];
+        const LOCAL_STORAGE_KEY = 'hãy_chọn_giá_đúng_products_v1';
+        let products = [];
+        let okCount = 0;
+        let errCount = 0;
 
-        list.forEach((p, idx) => {
-            const card = document.createElement('div');
-            card.className = 'card';
+        const db = window.getFirebaseDB ? window.getFirebaseDB() : null;
 
-            card.innerHTML = `
-                <div class="img-wrap">
-                    <span class="badge-status badge-ok" id="badge-${p.id}">⏳ Đang tải ảnh...</span>
-                    <img src="${p.image}" alt="${p.name}" referrerpolicy="no-referrer"
-                        onload="document.getElementById('badge-${p.id}').className='badge-status badge-ok'; document.getElementById('badge-${p.id}').innerText='✅ ĐÚNG ẢNH';"
-                        onerror="document.getElementById('badge-${p.id}').className='badge-status badge-err'; document.getElementById('badge-${p.id}').innerText='❌ LỖI TẢI ẢNH';">
-                </div>
-                <div class="idx">SẢN PHẨM #${p.id} • ${p.brand || ''} (${p.category || ''})</div>
-                <div class="name">${p.name}</div>
-                <div class="price">${(p.price || 0).toLocaleString('vi-VN')} VNĐ</div>
-                <div class="hint-block">
-                    <div class="hint-title">💡 Gợi ý 1 (Sau 10s):</div>
-                    <div>${p.hint1}</div>
-                </div>
-                <div class="hint-block">
-                    <div class="hint-title">⚡ Gợi ý 2 (Sau 20s):</div>
-                    <div>${p.hint2}</div>
-                </div>
-            `;
-            container.appendChild(card);
-        });
+        // Khởi tạo danh sách sản phẩm (ưu tiên localStorage -> questions.js)
+        function initProducts() {
+            const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
+            if (saved) {
+                try {
+                    products = JSON.parse(saved);
+                } catch(e) {
+                    console.warn('Lỗi đọc localStorage:', e);
+                }
+            }
+
+            if (!products || products.length === 0) {
+                if (window.QUESTION_SETS && window.QUESTION_SETS.set3) {
+                    products = JSON.parse(JSON.stringify(window.QUESTION_SETS.set3.questions));
+                } else if (window.GAME_QUESTIONS) {
+                    products = JSON.parse(JSON.stringify(window.GAME_QUESTIONS));
+                }
+            }
+
+            renderGrid();
+        }
+
+        // Lưu vào localStorage
+        function saveToStorage() {
+            localStorage.setItem(LOCAL_STORAGE_KEY, JSON.stringify(products));
+        }
+
+        // Hiển thị toast
+        function showToast(msg, bg = '#10b981') {
+            const t = document.getElementById('toastMsg');
+            t.innerText = msg;
+            t.style.background = bg;
+            t.style.display = 'block';
+            setTimeout(() => { t.style.display = 'none'; }, 3500);
+        }
+
+        // Render toàn bộ Grid
+        function renderGrid() {
+            const grid = document.getElementById('productGrid');
+            grid.innerHTML = '';
+            okCount = 0;
+            errCount = 0;
+
+            document.getElementById('statTotal').innerText = `📦 ${products.length} SP`;
+            document.getElementById('statOk').innerText = `🟢 0 Đúng`;
+            document.getElementById('statErr').innerText = `🔴 0 Lỗi`;
+
+            products.forEach((p, idx) => {
+                p.id = idx + 1; // Luôn đảm bảo ID tăng dần
+
+                const card = document.createElement('div');
+                card.className = 'card';
+                card.id = `card-${p.id}`;
+
+                const priceStr = Number(p.price || 0).toLocaleString('vi-VN') + ' VNĐ';
+                const sourceHtml = p.sourceUrl ? `<a href="${p.sourceUrl}" target="_blank" class="web-link">🔗 Nguồn: ${p.sourceUrl.substring(0, 45)}...</a>` : '';
+
+                card.innerHTML = `
+                    <div class="img-wrap">
+                        <span class="badge-status badge-loading" id="badge-${p.id}">⏳ Đang kiểm tra...</span>
+                        <img src="${p.image || ''}" alt="${p.name}" referrerpolicy="no-referrer"
+                            onload="onImgLoad(${p.id})"
+                            onerror="onImgError(${p.id})">
+                    </div>
+                    <div class="card-top">
+                        <span class="idx">SẢN PHẨM #${p.id}</span>
+                        <span class="brand-cat">${p.brand || 'CHÍNH HÃNG'} • ${p.category || 'LÀM ĐẸP'}</span>
+                    </div>
+                    <div class="name">${p.name}</div>
+                    <div class="price">${priceStr}</div>
+                    <div class="hint-block">
+                        <div class="hint-title">💡 Gợi ý 1 (Sau 10s):</div>
+                        <div>${p.hint1 || 'Chưa có gợi ý'}</div>
+                    </div>
+                    <div class="hint-block">
+                        <div class="hint-title">⚡ Gợi ý 2 (Sau 22s):</div>
+                        <div>${p.hint2 || 'Chưa có gợi ý'}</div>
+                    </div>
+                    ${sourceHtml}
+                    <div class="card-actions">
+                        <button class="btn-card btn-edit" onclick="openEditModal(${p.id})">✏️ Sửa</button>
+                        <button class="btn-card btn-delete" onclick="deleteProduct(${p.id})">🗑️ Xóa</button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        function onImgLoad(id) {
+            const b = document.getElementById(`badge-${id}`);
+            if (b) {
+                b.className = 'badge-status badge-ok';
+                b.innerText = '✅ ĐÚNG ẢNH';
+            }
+            okCount++;
+            document.getElementById('statOk').innerText = `🟢 ${okCount} Đúng`;
+        }
+
+        function onImgError(id) {
+            const b = document.getElementById(`badge-${id}`);
+            if (b) {
+                b.className = 'badge-status badge-err';
+                b.innerText = '❌ LỖI TẢI ẢNH';
+            }
+            errCount++;
+            document.getElementById('statErr').innerText = `🔴 ${errCount} Lỗi`;
+        }
+
+        // Mở Modal Sửa
+        function openEditModal(id) {
+            const p = products.find(item => item.id === id);
+            if (!p) return;
+
+            document.getElementById('modalEditTitle').innerText = `✏️ Chỉnh Sửa Sản Phẩm #${p.id}`;
+            document.getElementById('editId').value = p.id;
+            document.getElementById('editName').value = p.name || '';
+            document.getElementById('editBrand').value = p.brand || '';
+            document.getElementById('editCategory').value = p.category || '';
+            document.getElementById('editPrice').value = p.price || 0;
+            document.getElementById('editTime').value = p.time || 35;
+            document.getElementById('editImage').value = p.image || '';
+            document.getElementById('editSourceUrl').value = p.sourceUrl || '';
+            document.getElementById('editHint1').value = p.hint1 || '';
+            document.getElementById('editHint2').value = p.hint2 || '';
+
+            updatePricePreview(p.price || 0);
+            previewModalImg(p.image || '');
+
+            document.getElementById('modalEdit').classList.add('active');
+        }
+
+        // Mở Modal Thêm mới
+        function openAddModal() {
+            document.getElementById('modalEditTitle').innerText = `➕ Thêm Sản Phẩm Mới`;
+            document.getElementById('editId').value = '';
+            document.getElementById('editName').value = '';
+            document.getElementById('editBrand').value = '';
+            document.getElementById('editCategory').value = '';
+            document.getElementById('editPrice').value = '';
+            document.getElementById('editTime').value = '35';
+            document.getElementById('editImage').value = '';
+            document.getElementById('editSourceUrl').value = '';
+            document.getElementById('editHint1').value = '';
+            document.getElementById('editHint2').value = '';
+
+            updatePricePreview(0);
+            previewModalImg('');
+
+            document.getElementById('modalEdit').classList.add('active');
+        }
+
+        function closeEditModal() {
+            document.getElementById('modalEdit').classList.remove('active');
+        }
+
+        function updatePricePreview(val) {
+            const num = Number(val) || 0;
+            document.getElementById('pricePreview').innerText = num.toLocaleString('vi-VN') + ' VNĐ';
+        }
+
+        function previewModalImg(url) {
+            const img = document.getElementById('modalPreviewImg');
+            img.src = url || '';
+            if (!url) {
+                document.getElementById('modalImgStatus').innerText = 'Chưa có ảnh';
+            }
+        }
+
+        // Xử lý upload ảnh từ máy (Base64)
+        function handleFileUpload(event) {
+            const file = event.target.files[0];
+            if (!file) return;
+
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const dataUrl = e.target.result;
+                document.getElementById('editImage').value = dataUrl;
+                previewModalImg(dataUrl);
+            };
+            reader.readAsDataURL(file);
+        }
+
+        // Lưu sản phẩm
+        function saveProduct() {
+            const idVal = document.getElementById('editId').value;
+            const name = document.getElementById('editName').value.trim();
+            const brand = document.getElementById('editBrand').value.trim();
+            const category = document.getElementById('editCategory').value.trim();
+            const price = Number(document.getElementById('editPrice').value) || 0;
+            const time = Number(document.getElementById('editTime').value) || 35;
+            const image = document.getElementById('editImage').value.trim();
+            const sourceUrl = document.getElementById('editSourceUrl').value.trim();
+            const hint1 = document.getElementById('editHint1').value.trim();
+            const hint2 = document.getElementById('editHint2').value.trim();
+
+            if (!name) {
+                alert('Vui lòng nhập tên sản phẩm!');
+                return;
+            }
+
+            if (idVal) {
+                // Sửa
+                const p = products.find(item => item.id == idVal);
+                if (p) {
+                    p.name = name;
+                    p.brand = brand;
+                    p.category = category;
+                    p.price = price;
+                    p.time = time;
+                    p.image = image;
+                    p.sourceUrl = sourceUrl;
+                    p.hint1 = hint1;
+                    p.hint2 = hint2;
+                }
+                showToast(`✅ Đã lưu cập nhật #${idVal}!`);
+            } else {
+                // Thêm mới
+                const newP = {
+                    id: products.length + 1,
+                    name, brand, category, price, time, image, sourceUrl, hint1, hint2
+                };
+                products.push(newP);
+                showToast(`✅ Đã thêm sản phẩm mới!`);
+            }
+
+            saveToStorage();
+            closeEditModal();
+            renderGrid();
+        }
+
+        // Xóa sản phẩm
+        function deleteProduct(id) {
+            const p = products.find(item => item.id === id);
+            if (!p) return;
+
+            if (confirm(`Bạn có chắc chắn muốn xóa sản phẩm #${id}: "${p.name}"?`)) {
+                products = products.filter(item => item.id !== id);
+                saveToStorage();
+                renderGrid();
+                showToast(`🗑️ Đã xóa sản phẩm #${id}!`, '#f43f5e');
+            }
+        }
+
+        // Đồng bộ lên Firebase (Host & Player tự động cập nhật)
+        function syncToFirebase() {
+            if (!db) {
+                alert('Không thể kết nối Firebase! Vui lòng kiểm tra kết nối mạng.');
+                return;
+            }
+
+            const cleanProducts = products.map((p, idx) => ({
+                id: idx + 1,
+                name: p.name || '',
+                brand: p.brand || '',
+                category: p.category || '',
+                price: Number(p.price) || 0,
+                time: Number(p.time) || 35,
+                image: p.image || '',
+                sourceUrl: p.sourceUrl || '',
+                hint1: p.hint1 || '',
+                hint2: p.hint2 || ''
+            }));
+
+            db.ref('custom_products').set(cleanProducts)
+                .then(() => {
+                    showToast('⚡ ĐÃ ĐỒNG BỘ LÊN FIREBASE THÀNH CÔNG! Game đã nhận bộ câu hỏi mới.');
+                })
+                .catch(err => {
+                    alert('Lỗi đồng bộ Firebase: ' + err.message);
+                });
+        }
+
+        // Mở Modal Xuất cho AI
+        function openExportModal() {
+            const cleanProducts = products.map((p, idx) => ({
+                id: idx + 1,
+                name: p.name,
+                brand: p.brand,
+                category: p.category,
+                price: p.price,
+                image: p.image,
+                sourceUrl: p.sourceUrl,
+                hint1: p.hint1,
+                hint2: p.hint2,
+                time: p.time || 35
+            }));
+
+            const text = `Tôi vừa chỉnh sửa và cập nhật danh sách sản phẩm cho game Hãy Chọn Giá Đúng 20/10 trên review_products.html.
+Bạn hãy cập nhật danh sách này vào các file products.json, questions.js, questions.json và commit lên git giúp tôi nhé!
+
+\`\`\`json
+${JSON.stringify(cleanProducts, null, 2)}
+\`\`\``;
+
+            document.getElementById('aiExportText').innerText = text;
+            document.getElementById('modalExport').classList.add('active');
+        }
+
+        function closeExportModal() {
+            document.getElementById('modalExport').classList.remove('active');
+        }
+
+        function copyAIText() {
+            const text = document.getElementById('aiExportText').innerText;
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('📋 ĐÃ SAO CHÉP! Hãy dán vào khung chat với AI nhé.');
+                closeExportModal();
+            }).catch(() => {
+                alert('Vui lòng chọn và sao chép thủ công từ khung văn bản.');
+            });
+        }
+
+        // Tải file JSON
+        function downloadJSON() {
+            const dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(products, null, 2));
+            const dlAnchor = document.createElement('a');
+            dlAnchor.setAttribute("href", dataStr);
+            dlAnchor.setAttribute("download", "products.json");
+            document.body.appendChild(dlAnchor);
+            dlAnchor.click();
+            dlAnchor.remove();
+            showToast('📥 Đã tải file products.json!');
+        }
+
+        // Reset về mặc định
+        function resetToDefault() {
+            if (confirm('Bạn có muốn đặt lại danh sách về 30 sản phẩm gốc ban đầu? Các thay đổi chưa lưu lên AI/Git sẽ bị xóa.')) {
+                localStorage.removeItem(LOCAL_STORAGE_KEY);
+                if (window.QUESTION_SETS && window.QUESTION_SETS.set3) {
+                    products = JSON.parse(JSON.stringify(window.QUESTION_SETS.set3.questions));
+                } else if (window.GAME_QUESTIONS) {
+                    products = JSON.parse(JSON.stringify(window.GAME_QUESTIONS));
+                }
+                renderGrid();
+                showToast('🔄 Đã khôi phục về danh sách 30 sản phẩm gốc!');
+            }
+        }
+
+        // Chạy khởi tạo
+        window.addEventListener('DOMContentLoaded', initProducts);
     </script>
 </body>
 </html>
