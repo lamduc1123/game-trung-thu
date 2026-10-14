@@ -6,7 +6,7 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    <title>Vua Tiếng Việt - Phiên Bản HR & Headhunt</title>
+    <title>🌸 Vua Tiếng Việt • Đại Hội 20/10 💖</title>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700;800;900&display=swap');
 
@@ -19,12 +19,13 @@
         }
 
         body {
-            background-color: #0b0f19;
+            background-color: #13031a;
             background-image: 
-                radial-gradient(#1e293b 2px, transparent 2px),
-                radial-gradient(circle at 50% 20%, rgba(56, 189, 248, 0.12) 0%, transparent 60%);
-            background-size: 24px 24px, 100% 100%;
-            color: #f8fafc;
+                radial-gradient(rgba(244, 63, 94, 0.25) 1.5px, transparent 1.5px), 
+                radial-gradient(rgba(192, 132, 252, 0.2) 1.5px, #13031a 1.5px);
+            background-size: 24px 24px;
+            background-position: 0 0, 12px 12px;
+            color: #fdf2f8;
             min-height: 100vh;
             min-height: -webkit-fill-available;
             display: flex;
@@ -46,7 +47,7 @@
             font-weight: 800;
             padding: 6px 14px;
             border-radius: 20px;
-            background: #1e293b;
+            background: #23082d;
             border: 2.5px solid #000000;
             box-shadow: 2px 2px 0px #000000;
             color: #4ade80;
@@ -67,16 +68,16 @@
             box-shadow: 0 0 8px #ef4444;
         }
 
-        /* CARDS CONTAINER - 2D GRAPHIC COMIC STYLE */
+        /* CARDS CONTAINER - 2D GRAPHIC THEME 20/10 */
         .card {
-            background: #1e293b;
-            border: 3.5px solid #000000;
+            background: #23082d;
+            border: 3.5px solid #ff4d8d;
             border-radius: 24px;
             padding: 24px 18px;
             width: 100%;
             max-width: 440px;
             text-align: center;
-            box-shadow: 6px 6px 0px #000000;
+            box-shadow: 6px 6px 0px #000000, 0 15px 35px rgba(244, 63, 94, 0.2);
             z-index: 10;
             position: relative;
             display: none;
@@ -91,26 +92,26 @@
 
         .header-title {
             font-size: 1.75rem;
-            color: #facc15;
+            color: #fef08a;
             font-weight: 900;
             text-transform: uppercase;
             margin-bottom: 6px;
-            text-shadow: 2px 2px 0px #000000;
+            text-shadow: 2px 2px 0px #f43f5e;
             letter-spacing: 0.5px;
         }
         .header-sub {
             font-size: 0.92rem;
-            color: #38bdf8;
+            color: #f472b6;
             margin-bottom: 18px;
             font-weight: 800;
             letter-spacing: 1px;
             text-transform: uppercase;
         }
 
-        /* AVATAR GRID - HR / HEADHUNT THEME */
+        /* AVATAR GRID - 20/10 NÀNG THƠ & PHÁI ĐẸP */
         .avatar-label {
             font-size: 0.9rem;
-            color: #facc15;
+            color: #fef08a;
             font-weight: 900;
             margin-bottom: 10px;
             display: block;
@@ -124,8 +125,8 @@
             margin-bottom: 20px;
         }
         .avatar-item {
-            background: #0f172a;
-            border: 2.5px solid #000000;
+            background: #180322;
+            border: 2.5px solid #3b1147;
             box-shadow: 3px 3px 0px #000000;
             border-radius: 16px;
             padding: 10px 0;
@@ -141,7 +142,7 @@
             box-shadow: 1px 1px 0px #000000;
         }
         .avatar-item.selected {
-            background: #facc15;
+            background: linear-gradient(135deg, #ff4d8d, #f43f5e);
             border-color: #000000;
             transform: translate(-2px, -2px);
             box-shadow: 5px 5px 0px #000000;
@@ -153,7 +154,7 @@
             border-radius: 18px;
             border: 3px solid #000000;
             background: #ffffff;
-            color: #0f172a;
+            color: #1e0a24;
             font-size: 1.15rem;
             font-weight: 900;
             text-align: center;
@@ -164,11 +165,12 @@
             transition: border-color 0.15s, box-shadow 0.15s;
         }
         .input-box:focus {
-            border-color: #38bdf8;
-            box-shadow: 4px 4px 0px #38bdf8;
+            border-color: #ff4d8d;
+            box-shadow: 4px 4px 0px #ff4d8d;
         }
         .input-box::placeholder {
-            color: #64748b;
+            color: #9d174d;
+            opacity: 0.6;
             font-weight: 700;
             font-size: 0.95rem;
         }
@@ -178,8 +180,8 @@
             padding: 16px;
             border-radius: 18px;
             border: 3px solid #000000;
-            background: #facc15;
-            color: #000000;
+            background: linear-gradient(135deg, #ff4d8d, #f43f5e 55%, #fb923c);
+            color: #ffffff;
             font-size: 1.2rem;
             font-weight: 900;
             text-transform: uppercase;
@@ -188,7 +190,7 @@
             transition: transform 0.1s, box-shadow 0.1s, background 0.15s;
         }
         .btn-submit:hover {
-            background: #fde047;
+            filter: brightness(1.08);
         }
         .btn-submit:active {
             transform: translate(3px, 3px);
@@ -202,22 +204,22 @@
             border-radius: 18px;
             padding: 14px 10px;
             margin-bottom: 14px;
-            color: #0284c7;
+            color: #831843;
             font-size: 1.6rem;
             font-weight: 900;
             word-break: break-word;
             letter-spacing: 2px;
-            box-shadow: 5px 5px 0px #000000;
+            box-shadow: 5px 5px 0px #ff4d8d;
         }
 
         .hint-box-mobile {
-            background: #0284c7;
-            border: 2.5px solid #000000;
-            box-shadow: 3.5px 3.5px 0px #000000;
+            background: #180322;
+            border: 2.5px solid #fbbf24;
+            box-shadow: 3.5px 3.5px 0px #9d174d;
             padding: 12px 14px;
             border-radius: 16px;
             font-size: 0.95rem;
-            color: #ffffff;
+            color: #fdf2f8;
             text-align: left;
             margin-bottom: 14px;
             line-height: 1.45;
@@ -225,7 +227,7 @@
         }
         .scramble-header-mobile {
             font-size: 0.85rem;
-            color: #facc15;
+            color: #fef08a;
             font-weight: 900;
             margin-bottom: 6px;
             text-transform: uppercase;
@@ -235,10 +237,10 @@
         }
 
         .badge-status {
-            background: #facc15;
+            background: linear-gradient(135deg, #ff4d8d, #f43f5e);
             border: 2.5px solid #000000;
             box-shadow: 3px 3px 0px #000000;
-            color: #000000;
+            color: #ffffff;
             padding: 6px 14px;
             border-radius: 14px;
             font-size: 0.85rem;
@@ -250,14 +252,14 @@
 
         .badge-score {
             font-size: 1.6rem;
-            color: #facc15;
+            color: #fef08a;
             font-weight: 900;
             margin-top: 15px;
-            text-shadow: 2px 2px 0px #000000;
+            text-shadow: 2px 2px 0px #f43f5e;
         }
 
         .badge-timer-mobile {
-            background: #f43f5e;
+            background: #e11d48;
             color: #ffffff;
             padding: 6px 14px;
             border-radius: 14px;
@@ -270,17 +272,17 @@
             transition: all 0.2s ease;
         }
         .badge-timer-mobile.urgent {
-            background: #e11d48;
+            background: #be123c;
             animation: timerPulseMobile 0.6s infinite alternate;
         }
         @keyframes timerPulseMobile {
             0% { transform: scale(1); }
-            100% { transform: scale(1.08); background: #be123c; }
+            100% { transform: scale(1.08); background: #9f1239; }
         }
 
         .player-timeout-banner {
             display: none;
-            background: #f43f5e;
+            background: #e11d48;
             border: 3px solid #000000;
             border-radius: 16px;
             padding: 12px 14px;
@@ -302,20 +304,20 @@
             padding: 10px 14px;
             margin-bottom: 8px;
             border-radius: 14px;
-            background: #0f172a;
-            border: 2.5px solid #000000;
+            background: #180322;
+            border: 2.5px solid #3b1147;
             box-shadow: 3px 3px 0px #000000;
             font-weight: 800;
         }
         .lb-mini-item.me {
-            background: #1e3a8a;
-            border-color: #38bdf8;
-            box-shadow: 4px 4px 0px #38bdf8;
+            background: #3b0724;
+            border-color: #ff4d8d;
+            box-shadow: 4px 4px 0px #ff4d8d;
         }
 
         .lobby-players-count-mobile {
-            background: #38bdf8;
-            color: #000000;
+            background: linear-gradient(135deg, #ff4d8d, #f43f5e);
+            color: #ffffff;
             padding: 8px 16px;
             border-radius: 16px;
             font-size: 1rem;
@@ -336,30 +338,30 @@
             padding: 6px;
         }
         .mobile-player-chip {
-            background: #334155;
+            background: #3b1147;
             border: 2px solid #000000;
             border-radius: 12px;
             box-shadow: 2px 2px 0px #000000;
             padding: 4px 10px;
             font-size: 0.85rem;
             font-weight: 800;
-            color: #f8fafc;
+            color: #fdf2f8;
             display: inline-flex;
             align-items: center;
             gap: 4px;
         }
         .mobile-player-chip.me {
-            background: #facc15;
-            color: #000000;
+            background: #ff4d8d;
+            color: #ffffff;
             border-color: #000000;
             box-shadow: 2px 2px 0px #000000;
             font-weight: 900;
         }
         .btn-change-profile {
-            background: #0f172a;
-            border: 2px solid #000000;
+            background: #180322;
+            border: 2px solid #ff4d8d;
             box-shadow: 2px 2px 0px #000000;
-            color: #facc15;
+            color: #fbcfe8;
             padding: 7px 16px;
             border-radius: 16px;
             font-size: 0.85rem;
@@ -386,54 +388,54 @@
 
     <!-- CARD 1: LOGIN & AVATAR PICKER -->
     <div class="card active" id="cardLogin">
-        <div class="header-title">⚡ VUA TIẾNG VIỆT 🎯</div>
-        <div class="header-sub">PHIÊN BẢN HR & HEADHUNT</div>
+        <div class="header-title">🌸 VUA TIẾNG VIỆT 💖</div>
+        <div class="header-sub">ĐẠI HỘI TÔN VINH PHÁI ĐẸP 20/10</div>
 
         <input type="text" class="input-box" id="playerNameInput" placeholder="NHẬP TÊN CỦA BẠN..." maxlength="20" autocomplete="off" autocapitalize="words">
 
-        <span class="avatar-label">CHỌN AVATAR NHÂN SỰ:</span>
+        <span class="avatar-label">CHỌN AVATAR NÀNG THƠ:</span>
         <div class="avatar-grid" id="avatarGrid">
-            <div class="avatar-item selected" onclick="selectAvatar('💼', this)">💼</div>
-            <div class="avatar-item" onclick="selectAvatar('🎯', this)">🎯</div>
-            <div class="avatar-item" onclick="selectAvatar('🚀', this)">🚀</div>
-            <div class="avatar-item" onclick="selectAvatar('💻', this)">💻</div>
-            <div class="avatar-item" onclick="selectAvatar('👔', this)">👔</div>
+            <div class="avatar-item selected" onclick="selectAvatar('👑', this)">👑</div>
+            <div class="avatar-item" onclick="selectAvatar('🌸', this)">🌸</div>
+            <div class="avatar-item" onclick="selectAvatar('🌹', this)">🌹</div>
+            <div class="avatar-item" onclick="selectAvatar('💃', this)">💃</div>
+            <div class="avatar-item" onclick="selectAvatar('💄', this)">💄</div>
+            <div class="avatar-item" onclick="selectAvatar('✨', this)">✨</div>
+            <div class="avatar-item" onclick="selectAvatar('🎀', this)">🎀</div>
             <div class="avatar-item" onclick="selectAvatar('☕', this)">☕</div>
-            <div class="avatar-item" onclick="selectAvatar('📈', this)">📈</div>
-            <div class="avatar-item" onclick="selectAvatar('🕵️‍♂️', this)">🕵️‍♂️</div>
         </div>
 
-        <button class="btn-submit" id="btnJoinGame" onclick="joinGame()">🚀 THAM GIA DEAL VIỆC</button>
-        <div id="loginErrorMsg" style="display:none; color:#ffffff; background:#f43f5e; border:3px solid #000000; box-shadow:4px 4px 0px #000000; padding:12px 16px; border-radius:16px; margin-top:14px; font-weight:800; font-size:0.95rem; line-height:1.45; text-align:left;"></div>
+        <button class="btn-submit" id="btnJoinGame" onclick="joinGame()">💖 THAM GIA ĐẠI HỘI 20/10</button>
+        <div id="loginErrorMsg" style="display:none; color:#ffffff; background:#e11d48; border:3px solid #000000; box-shadow:4px 4px 0px #000000; padding:12px 16px; border-radius:16px; margin-top:14px; font-weight:800; font-size:0.95rem; line-height:1.45; text-align:left;"></div>
     </div>
 
     <!-- CARD 2: WAITING LOBBY -->
     <div class="card" id="cardLobby">
-        <div style="font-size: 4.2rem; margin-bottom: 8px;" id="displayAvatar">💼</div>
+        <div style="font-size: 4.2rem; margin-bottom: 8px;" id="displayAvatar">👑</div>
         <div class="header-title" id="displayName">TÊN BẠN</div>
-        <div class="badge-status">✅ ĐÃ SẴN SÀNG VÀO PHÒNG</div>
+        <div class="badge-status">💖 ĐÃ SẴN SÀNG TỎA SÁNG</div>
         
         <div>
-            <div class="lobby-players-count-mobile" id="lobbyPlayerCountMobile">👥 ĐANG CẬP NHẬT ỨNG VIÊN...</div>
+            <div class="lobby-players-count-mobile" id="lobbyPlayerCountMobile">👥 ĐANG CẬP NHẬT CÁC BÓNG HỒNG...</div>
         </div>
         <div class="lobby-players-chips-mobile" id="lobbyPlayersChipsMobile"></div>
 
-        <p style="font-size: 0.95rem; line-height: 1.5; color: #cbd5e1; margin-top: 12px; font-weight: 700;">
-            Hãy nhìn lên màn hình lớn máy chiếu.<br>Game săn đầu người sẽ bắt đầu ngay khi MC bấm nút!
+        <p style="font-size: 0.95rem; line-height: 1.5; color: #fce7f3; margin-top: 12px; font-weight: 700;">
+            Hãy nhìn lên màn hình lớn máy chiếu.<br>Đại hội đoán chữ 20/10 sẽ bắt đầu ngay khi MC bấm nút!
         </p>
 
         <div>
-            <button class="btn-change-profile" onclick="resetProfile()">✏️ Đổi Tên / Chọn Lại Avatar</button>
+            <button class="btn-change-profile" onclick="resetProfile()">✏️ Đổi Tên / Chọn Lại Nàng Thơ</button>
         </div>
     </div>
 
     <!-- CARD 3: RULES SCREEN -->
     <div class="card" id="cardRules">
-        <div style="font-size: 3.5rem; margin-bottom: 8px;">🎯</div>
-        <div class="header-title">LUẬT CHƠI SĂN TALENT</div>
-        <div class="badge-status">TOP 6 CHIẾN THẦN NHẬN THƯỞNG 100K</div>
-        <p style="font-size: 0.95rem; line-height: 1.6; color: #f8fafc; margin-top: 10px; text-align: left; font-weight: 700;">
-            1. MC mở từ khóa nghề nghiệp / tuyển dụng bị đảo lộn (thời gian tối đa <b>50 giây</b>).<br>
+        <div style="font-size: 3.5rem; margin-bottom: 8px;">👑</div>
+        <div class="header-title">LUẬT CHƠI ĐẠI HỘI 20/10</div>
+        <div class="badge-status">TOP 6 TỎA SÁNG NHẬN THƯỞNG 100K</div>
+        <p style="font-size: 0.95rem; line-height: 1.6; color: #fdf2f8; margin-top: 10px; text-align: left; font-weight: 700;">
+            1. MC mở từ khóa bí mật bị đảo lộn (thời gian tối đa <b>50 giây</b>).<br>
             2. Gõ đáp án Tiếng Việt có dấu trên điện thoại và bấm gửi càng nhanh càng tốt.<br>
             3. Đúng nhận <b>100đ gốc</b> + <b>Điểm thời gian tối đa 50đ</b> tính theo mili-giây: <code>50 × (Thời gian còn lại / 50s)</code>!
         </p>
@@ -446,7 +448,7 @@
             <span class="badge-timer-mobile" id="qTimerMobile">⏱️ 50s</span>
         </div>
 
-        <div class="hint-box-mobile" id="hintMobile">Gợi ý thuật ngữ sẽ hiện tại đây</div>
+        <div class="hint-box-mobile" id="hintMobile">Gợi ý câu hỏi sẽ hiện tại đây</div>
 
         <div class="scramble-header-mobile">🔀 TỪ KHÓA BỊ ĐẢO CHỮ:</div>
         <div class="scramble-box-mobile" id="scrambleMobile">...</div>
@@ -459,7 +461,7 @@
 
         <input type="text" class="input-box" id="answerInput" placeholder="GÕ ĐÁP ÁN TIẾNG VIỆT..." autocomplete="off" autocapitalize="characters">
 
-        <button class="btn-submit" id="btnSubmitAnswer" onclick="submitAnswer()">🚀 GỬI ĐÁP ÁN DEAL VIỆC</button>
+        <button class="btn-submit" id="btnSubmitAnswer" onclick="submitAnswer()">🌸 GỬI ĐÁP ÁN TỎA SÁNG</button>
     </div>
 
     <!-- CARD 5: SUBMITTED WAIT -->
@@ -467,7 +469,7 @@
         <div style="font-size: 3.5rem; margin-bottom: 10px;" id="submittedIcon">⚡</div>
         <div class="header-title" id="submittedTitle">ĐÃ GỬI BÀI!</div>
         <div class="badge-status" id="submittedDetailText">Nộp bài thành công!</div>
-        <p style="font-size: 1rem; line-height: 1.6; color: #cbd5e1; margin-top: 15px; font-weight: 700;">
+        <p style="font-size: 1rem; line-height: 1.6; color: #fce7f3; margin-top: 15px; font-weight: 700;">
             Hãy theo dõi màn hình máy chiếu để xem đáp án & Bảng xếp hạng Top 6!
         </p>
         <div class="badge-score" id="myCurrentScore">ĐIỂM: 0</div>
@@ -483,10 +485,10 @@
 
     <!-- CARD 7: FINALE -->
     <div class="card" id="cardFinale">
-        <div style="font-size: 4rem; margin-bottom: 10px;">🏆</div>
-        <div class="header-title">VINH DANH CHIẾN THẦN NHÂN SỰ</div>
-        <p style="font-size: 1.05rem; line-height: 1.6; color: #cbd5e1; margin: 15px 0; font-weight: 700;">
-            Chúc mừng tất cả ứng viên & chuyên gia Headhunt đã hoàn thành xuất sắc ngày hội!
+        <div style="font-size: 4rem; margin-bottom: 10px;">👑</div>
+        <div class="header-title">VINH DANH NỮ THẦN 20/10</div>
+        <p style="font-size: 1.05rem; line-height: 1.6; color: #fce7f3; margin: 15px 0; font-weight: 700;">
+            Chúc mừng tất cả các bóng hồng & phái đẹp đã tỏa sáng rực rỡ trong ngày hội!
         </p>
         <div class="badge-score" id="finaleMyScore">TỔNG ĐIỂM: 0</div>
     </div>
@@ -506,7 +508,7 @@
             : (window.GAME_QUESTIONS || []);
         const db = window.getFirebaseDB ? window.getFirebaseDB() : null;
 
-        let selectedAvatar = '💼';
+        let selectedAvatar = '👑';
         let currentPlayer = null;
         let myTotalScore = 0;
         let currentQIdx = -1;
@@ -528,7 +530,7 @@
 
         // Khôi phục tên & avatar đã lưu
         const savedName = localStorage.getItem('tt_player_name');
-        const savedAvatar = localStorage.getItem('tt_player_avatar') || '💼';
+        const savedAvatar = localStorage.getItem('tt_player_avatar') || '👑';
         if (savedName) {
             document.getElementById('playerNameInput').value = savedName;
         }
@@ -600,12 +602,12 @@
         function joinGame() {
             clearJoinError();
             let name = document.getElementById('playerNameInput').value.trim();
-            if (!name) name = "Ứng viên " + Math.floor(Math.random() * 100 + 1);
+            if (!name) name = "Bóng hồng " + Math.floor(Math.random() * 100 + 1);
 
             const btnJoin = document.getElementById('btnJoinGame');
             if (btnJoin) {
                 btnJoin.disabled = true;
-                btnJoin.innerText = "⏳ ĐANG VÀO PHÒNG...";
+                btnJoin.innerText = "⏳ ĐANG VÀO ĐẠI HỘI...";
             }
 
             localStorage.setItem('tt_player_name', name);
@@ -614,7 +616,7 @@
             if (!db) {
                 if (btnJoin) {
                     btnJoin.disabled = false;
-                    btnJoin.innerText = "🚀 THAM GIA DEAL VIỆC";
+                    btnJoin.innerText = "💖 THAM GIA ĐẠI HỘI 20/10";
                 }
                 showJoinError("⚠️ <b>Chưa cấu hình Firebase!</b><br>Vui lòng mở file <code>firebase-config.js</code> và dán mã cấu hình Firebase của bạn.");
                 return;
@@ -643,7 +645,7 @@
 
                     if (btnJoin) {
                         btnJoin.disabled = false;
-                        btnJoin.innerText = "🚀 THAM GIA DEAL VIỆC";
+                        btnJoin.innerText = "💖 THAM GIA ĐẠI HỘI 20/10";
                     }
                     setNetworkStatus(true, "Đã vào phòng");
                     
@@ -680,7 +682,7 @@
         function updateLobbyCount(count) {
             const countEl = document.getElementById('lobbyPlayerCountMobile');
             if (countEl) {
-                countEl.innerText = `👥 ĐANG CÓ ${count} ỨNG VIÊN TRONG PHÒNG`;
+                countEl.innerText = `👥 ĐANG CÓ ${count} BÓNG HỒNG TRONG PHÒNG`;
             }
         }
 
@@ -703,9 +705,9 @@
             }
             localStorage.removeItem('tt_player_name');
             localStorage.removeItem('tt_player_avatar');
-            selectedAvatar = '💼';
+            selectedAvatar = '👑';
             document.querySelectorAll('.avatar-item').forEach(item => {
-                if (item.innerText.trim() === '💼') item.classList.add('selected');
+                if (item.innerText.trim() === '👑') item.classList.add('selected');
                 else item.classList.remove('selected');
             });
             document.getElementById('playerNameInput').value = '';
@@ -781,7 +783,7 @@
 
                     const subData = {
                         client_id: clientId,
-                        player_name: currentPlayer ? currentPlayer.name : (savedName || 'Ứng viên'),
+                        player_name: currentPlayer ? currentPlayer.name : (savedName || 'Bóng hồng'),
                         player_avatar: currentPlayer ? currentPlayer.avatar : selectedAvatar,
                         answer: ans,
                         is_correct: isCorrect,
@@ -929,7 +931,7 @@
                 const btnSubmit = document.getElementById('btnSubmitAnswer');
                 if (btnSubmit) {
                     btnSubmit.disabled = false;
-                    btnSubmit.innerText = "🚀 GỬI ĐÁP ÁN DEAL VIỆC";
+                    btnSubmit.innerText = "🌸 GỬI ĐÁP ÁN TỎA SÁNG";
                     btnSubmit.style.opacity = '1';
                     btnSubmit.style.cursor = 'pointer';
                 }
@@ -963,7 +965,7 @@
                     const btnSubmit = document.getElementById('btnSubmitAnswer');
                     if (btnSubmit) {
                         btnSubmit.disabled = false;
-                        btnSubmit.innerText = "🚀 GỬI ĐÁP ÁN DEAL VIỆC";
+                        btnSubmit.innerText = "🌸 GỬI ĐÁP ÁN TỎA SÁNG";
                         btnSubmit.style.opacity = '1';
                         btnSubmit.style.cursor = 'pointer';
                     }
@@ -1034,11 +1036,11 @@
                 item.className = 'lb-mini-item' + (isMe ? ' me' : '');
                 item.innerHTML = `
                     <div style="display:flex; align-items:center; gap:8px;">
-                        <span style="font-size:1.1rem; color:#facc15;">#${idx + 1}</span>
+                        <span style="font-size:1.1rem; color:#fef08a;">#${idx + 1}</span>
                         <span style="font-size:1.4rem;">${p.avatar}</span>
                         <span style="color:#ffffff; font-size:1rem;">${p.name}${isMe ? ' (Bạn)' : ''}</span>
                     </div>
-                    <span style="color:#facc15; font-weight:900; font-size:1.1rem;">${p.score || 0}đ</span>
+                    <span style="color:#fef08a; font-weight:900; font-size:1.1rem;">${p.score || 0}đ</span>
                 `;
                 container.appendChild(item);
             });
