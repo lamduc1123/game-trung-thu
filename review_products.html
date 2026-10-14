@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="referrer" content="no-referrer">
     <title>🔍 KIỂM TRA ĐỐI SOÁT 30 SẢN PHẨM & HÌNH ẢNH • HÃY CHỌN GIÁ ĐÚNG 20/10</title>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@700;800;900&display=swap" rel="stylesheet">
     <style>
@@ -44,7 +45,7 @@
             card.innerHTML = `
                 <div class="img-wrap">
                     <span class="badge-status badge-ok" id="badge-${p.id}">⏳ Đang tải ảnh...</span>
-                    <img src="${p.image}" alt="${p.name}" 
+                    <img src="${p.image}" alt="${p.name}" referrerpolicy="no-referrer"
                         onload="document.getElementById('badge-${p.id}').className='badge-status badge-ok'; document.getElementById('badge-${p.id}').innerText='✅ ĐÚNG ẢNH';"
                         onerror="document.getElementById('badge-${p.id}').className='badge-status badge-err'; document.getElementById('badge-${p.id}').innerText='❌ LỖI TẢI ẢNH';">
                 </div>
