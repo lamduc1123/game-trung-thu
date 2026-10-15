@@ -1211,7 +1211,20 @@
                     status: 'QUESTION',
                     current_q_idx: 0,
                     q_start_time: firebase.database.ServerValue.TIMESTAMP,
-                    q_duration: qDuration
+                    q_duration: qDuration,
+                    question_set: currentSetId,
+                    total_questions: QUESTIONS.length,
+                    current_question: {
+                        id: currentQ.id || 1,
+                        name: currentQ.name || '',
+                        brand: currentQ.brand || '',
+                        category: currentQ.category || '',
+                        image: currentQ.image || '',
+                        hint1: currentQ.hint1 || '',
+                        hint2: currentQ.hint2 || '',
+                        price: currentQ.price || 0,
+                        time: qDuration
+                    }
                 });
             } else if (action === 'NEXT_QUESTION') {
                 const nextIdx = (currentState.current_q_idx || 0) + 1;
@@ -1222,13 +1235,30 @@
                         status: 'QUESTION',
                         current_q_idx: nextIdx,
                         q_start_time: firebase.database.ServerValue.TIMESTAMP,
-                        q_duration: qDuration
+                        q_duration: qDuration,
+                        question_set: currentSetId,
+                        total_questions: QUESTIONS.length,
+                        current_question: {
+                            id: currentQ.id || (nextIdx + 1),
+                            name: currentQ.name || '',
+                            brand: currentQ.brand || '',
+                            category: currentQ.category || '',
+                            image: currentQ.image || '',
+                            hint1: currentQ.hint1 || '',
+                            hint2: currentQ.hint2 || '',
+                            price: currentQ.price || 0,
+                            time: qDuration
+                        }
                     });
                 } else {
                     db.ref('game_state').update({ status: 'FINALE' });
                 }
             } else if (action === 'REVEAL_ANSWER') {
-                db.ref('game_state').update({ status: 'REVEAL' });
+                const currentQ = (currentState && currentState.current_question) || QUESTIONS[currentState.current_q_idx || 0] || {};
+                db.ref('game_state').update({
+                    status: 'REVEAL',
+                    reveal_price: currentQ.price || 0
+                });
             } else if (action === 'SHOW_LEADERBOARD') {
                 db.ref('game_state').update({ status: 'LEADERBOARD' });
             } else if (action === 'FINALE') {
@@ -1249,7 +1279,7 @@
             badge.classList.remove('urgent');
 
             const validStartTime = (typeof startTime === 'number') ? startTime : Date.now();
-            const currentQ = QUESTIONS[currentState.current_q_idx || 0] || {};
+            const currentQ = (currentState && currentState.current_question) || QUESTIONS[currentState.current_q_idx || 0] || {};
 
             // Đặt trạng thái ban đầu của 2 Hint về Locked
             const h1Box = document.getElementById('qHint1Box');
@@ -1574,7 +1604,8 @@
         function handleStateUpdate(state) {
             const status = state.status || 'LOBBY';
             const qIdx = state.current_q_idx || 0;
-            const currentQ = QUESTIONS[qIdx] || {};
+            const currentQ = state.current_question || QUESTIONS[qIdx] || {};
+            const totalQ = state.total_questions || QUESTIONS.length;
 
             if (status === 'LOBBY') {
                 showScreen('screenLobby');
@@ -1585,7 +1616,7 @@
             } else if (status === 'QUESTION') {
                 showScreen('screenQuestion');
 
-                document.getElementById('qBadgeTitle').innerText = `SẢN PHẨM ${qIdx + 1} / ${QUESTIONS.length}`;
+                document.getElementById('qBadgeTitle').innerText = `SẢN PHẨM ${qIdx + 1} / ${totalQ}`;
                 document.getElementById('qProductName').innerText = currentQ.name || 'Sản phẩm bí ẩn';
                 document.getElementById('qBrandBadge').innerText = currentQ.brand ? `🏷️ ${currentQ.brand}` : 'CHÍNH HÃNG';
                 document.getElementById('qCategoryBadge').innerText = currentQ.category ? `🌸 ${currentQ.category}` : 'LÀM ĐẸP';

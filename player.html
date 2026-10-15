@@ -614,6 +614,7 @@
         let currentQIdx = -1;
         let hasSubmittedCurrentQ = false;
         let lastStateStatus = null;
+        let currentState = {};
         let serverTimeOffset = 0;
         let playerTimerInterval = null;
         let playerTimerLastSec = -1;
@@ -842,13 +843,13 @@
                 alert("Chưa kết nối máy chủ Firebase!");
                 return;
             }
-            if (currentQIdx < 0 || !QUESTIONS[currentQIdx]) return;
+            const currentQ = (currentState && currentState.current_question) || (QUESTIONS && QUESTIONS[currentQIdx]) || {};
+            if (!currentQ || !currentQ.name) return;
 
             const btn = document.getElementById('btnSubmitPrice');
-            btn.disabled = true;
+            if (btn) btn.disabled = true;
 
-            const currentQ = QUESTIONS[currentQIdx];
-            const realPrice = currentQ.price || 0;
+            const realPrice = (typeof currentQ.price === 'number') ? currentQ.price : 0;
             const guessPrice = currentGuessValue;
 
             // Tính sai số tương đối (Relative Error Ratio)
@@ -959,7 +960,7 @@
             const badge = document.getElementById('qTimerMobile');
             const btnSubmit = document.getElementById('btnSubmitPrice');
             const btnEdit = document.getElementById('btnEditAnswer');
-            const currentQ = QUESTIONS[currentQIdx] || {};
+            const currentQ = (currentState && currentState.current_question) || QUESTIONS[currentQIdx] || {};
 
             if (badge) badge.classList.remove('urgent');
             if (btnSubmit) {
@@ -1063,6 +1064,7 @@
                 const state = snap.val();
                 if (!state) return;
                 lastStateStatus = state.status;
+                currentState = state;
 
                 if (state.question_set && state.question_set !== currentSetId) {
                     if (window.QUESTION_SETS && window.QUESTION_SETS[state.question_set]) {
@@ -1127,8 +1129,9 @@
                         btnEdit.style.color = '#1e0a24';
                     }
 
-                    const currentQ = QUESTIONS[qIdx] || {};
-                    document.getElementById('qBadgeMobile').innerText = `SẢN PHẨM ${qIdx + 1} / ${QUESTIONS.length}`;
+                    const currentQ = state.current_question || (QUESTIONS && QUESTIONS[qIdx]) || {};
+                    const totalQ = state.total_questions || (QUESTIONS ? QUESTIONS.length : 30);
+                    document.getElementById('qBadgeMobile').innerText = `SẢN PHẨM ${qIdx + 1} / ${totalQ}`;
                     document.getElementById('mProductName').innerText = currentQ.name || 'Sản phẩm bí ẩn';
                     document.getElementById('mBrandBadge').innerText = currentQ.brand ? `🏷️ ${currentQ.brand}` : 'CHÍNH HÃNG';
                     document.getElementById('mCategoryBadge').innerText = currentQ.category ? `🌸 ${currentQ.category}` : 'LÀM ĐẸP';
@@ -1150,8 +1153,8 @@
                 if (playerTimerInterval) clearInterval(playerTimerInterval);
                 if (!currentPlayer) return;
 
-                const currentQ = QUESTIONS[qIdx] || {};
-                const realPrice = currentQ.price || 0;
+                const currentQ = state.current_question || (QUESTIONS && QUESTIONS[qIdx]) || {};
+                const realPrice = (typeof state.reveal_price === 'number') ? state.reveal_price : (currentQ.price || 0);
 
                 db.ref('submissions/' + qIdx + '/' + clientId).once('value', snap => {
                     const mySub = snap.val();
