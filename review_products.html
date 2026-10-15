@@ -466,36 +466,58 @@
     <script src="firebase-config.js"></script>
 
     <!-- Default Questions Source -->
-    <script src="questions.js"></script>
+    <script src="questions.js?v=20261020_v3"></script>
 
     <script>
-        const LOCAL_STORAGE_KEY = 'hãy_chọn_giá_đúng_products_v1';
+        const LOCAL_STORAGE_KEY = 'hãy_chọn_giá_đúng_products_v3';
         let products = [];
         let okCount = 0;
         let errCount = 0;
 
         const db = window.getFirebaseDB ? window.getFirebaseDB() : null;
 
-        // Khởi tạo danh sách sản phẩm (ưu tiên localStorage -> questions.js)
+        // Khởi tạo danh sách sản phẩm (đồng bộ từ Firebase -> questions.js)
         function initProducts() {
+            // Xóa cache cũ nếu còn v1 hoặc v2
+            try {
+                localStorage.removeItem('hãy_chọn_giá_đúng_products_v1');
+                localStorage.removeItem('hãy_chọn_giá_đúng_products_v2');
+            } catch(e) {}
+
+            // Mặc định nạp từ questions.js mới nhất
+            if (window.QUESTION_SETS && window.QUESTION_SETS.set3) {
+                products = JSON.parse(JSON.stringify(window.QUESTION_SETS.set3.questions));
+            } else if (window.GAME_QUESTIONS) {
+                products = JSON.parse(JSON.stringify(window.GAME_QUESTIONS));
+            }
+
             const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
             if (saved) {
                 try {
-                    products = JSON.parse(saved);
+                    const parsed = JSON.parse(saved);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        products = parsed;
+                    }
                 } catch(e) {
                     console.warn('Lỗi đọc localStorage:', e);
                 }
             }
 
-            if (!products || products.length === 0) {
-                if (window.QUESTION_SETS && window.QUESTION_SETS.set3) {
-                    products = JSON.parse(JSON.stringify(window.QUESTION_SETS.set3.questions));
-                } else if (window.GAME_QUESTIONS) {
-                    products = JSON.parse(JSON.stringify(window.GAME_QUESTIONS));
-                }
-            }
-
             renderGrid();
+
+            // Tự động kéo dữ liệu mới nhất từ Firebase Realtime Database
+            if (db) {
+                db.ref('custom_products').once('value', snap => {
+                    const custom = snap.val();
+                    if (custom && Array.isArray(custom) && custom.length > 0) {
+                        products = custom;
+                        saveToStorage();
+                        renderGrid();
+                    }
+                }).catch(err => {
+                    console.warn('Lỗi tải từ Firebase:', err);
+                });
+            }
         }
 
         // Lưu vào localStorage
@@ -802,15 +824,18 @@ ${JSON.stringify(cleanProducts, null, 2)}
 
         // Reset về mặc định
         function resetToDefault() {
-            if (confirm('Bạn có muốn đặt lại danh sách về 47 sản phẩm gốc ban đầu? Các thay đổi chưa lưu lên AI/Git sẽ bị xóa.')) {
+            if (confirm('Bạn có muốn đặt lại danh sách về 47 sản phẩm gốc mới nhất? Các thay đổi trên trình duyệt sẽ được làm mới từ mã nguồn.')) {
                 localStorage.removeItem(LOCAL_STORAGE_KEY);
+                localStorage.removeItem('hãy_chọn_giá_đúng_products_v1');
+                localStorage.removeItem('hãy_chọn_giá_đúng_products_v2');
                 if (window.QUESTION_SETS && window.QUESTION_SETS.set3) {
                     products = JSON.parse(JSON.stringify(window.QUESTION_SETS.set3.questions));
                 } else if (window.GAME_QUESTIONS) {
                     products = JSON.parse(JSON.stringify(window.GAME_QUESTIONS));
                 }
+                saveToStorage();
                 renderGrid();
-                showToast('🔄 Đã khôi phục về danh sách 47 sản phẩm gốc!');
+                showToast('🔄 Đã tải lại 47 sản phẩm mới nhất!');
             }
         }
 
