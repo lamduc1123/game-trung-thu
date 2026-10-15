@@ -425,8 +425,8 @@
             </div>
 
             <div class="form-group">
-                <label class="form-label">⚡ Gợi ý 2 (Sau 22s - Đặc điểm chữ số / Đuôi số) *</label>
-                <textarea class="form-textarea" id="editHint2" placeholder="Vd: Là số chẵn tròn chục nghìn, 2 chữ số đầu giống hệt nhau (11x.xxx)."></textarea>
+                <label class="form-label">⚡ Gợi ý 2 (Sau 22s - Chi tiết đặc điểm / Độ khó Trung Bình) *</label>
+                <textarea class="form-textarea" id="editHint2" placeholder="Vd: Mức giá tròn chục nghìn, hai chữ số đầu tiên hoàn toàn giống nhau."></textarea>
             </div>
 
             <div class="modal-ftr">
@@ -802,7 +802,7 @@ ${JSON.stringify(cleanProducts, null, 2)}
 
         // Reset về mặc định
         function resetToDefault() {
-            if (confirm('Bạn có muốn đặt lại danh sách về 30 sản phẩm gốc ban đầu? Các thay đổi chưa lưu lên AI/Git sẽ bị xóa.')) {
+            if (confirm('Bạn có muốn đặt lại danh sách về 47 sản phẩm gốc ban đầu? Các thay đổi chưa lưu lên AI/Git sẽ bị xóa.')) {
                 localStorage.removeItem(LOCAL_STORAGE_KEY);
                 if (window.QUESTION_SETS && window.QUESTION_SETS.set3) {
                     products = JSON.parse(JSON.stringify(window.QUESTION_SETS.set3.questions));
@@ -810,7 +810,7 @@ ${JSON.stringify(cleanProducts, null, 2)}
                     products = JSON.parse(JSON.stringify(window.GAME_QUESTIONS));
                 }
                 renderGrid();
-                showToast('🔄 Đã khôi phục về danh sách 30 sản phẩm gốc!');
+                showToast('🔄 Đã khôi phục về danh sách 47 sản phẩm gốc!');
             }
         }
 
