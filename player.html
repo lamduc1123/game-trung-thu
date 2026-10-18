@@ -1114,11 +1114,17 @@
                 lastStateStatus = state.status;
                 currentState = state;
 
-                if (state.question_set && state.question_set !== currentSetId) {
-                    if (window.QUESTION_SETS && window.QUESTION_SETS[state.question_set]) {
-                        currentSetId = state.question_set;
-                        QUESTIONS = window.QUESTION_SETS[state.question_set].questions;
+                if (state.question_set) {
+                    currentSetId = state.question_set;
+                }
+
+                if (state.active_questions && Array.isArray(state.active_questions) && state.active_questions.length > 0) {
+                    QUESTIONS = state.active_questions;
+                    if (window.QUESTION_SETS && window.QUESTION_SETS[currentSetId]) {
+                        window.QUESTION_SETS[currentSetId].questions = state.active_questions;
                     }
+                } else if (state.question_set && window.QUESTION_SETS && window.QUESTION_SETS[state.question_set]) {
+                    QUESTIONS = window.QUESTION_SETS[state.question_set].questions;
                 }
 
                 handlePlayerGameState(state);

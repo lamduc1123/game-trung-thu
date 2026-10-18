@@ -1126,3 +1126,87 @@ window.QUESTION_SETS = {
 
 // Danh sách mặc định: Bộ 3 (Toàn bộ 47 sản phẩm)
 window.GAME_QUESTIONS = window.QUESTION_SETS.set3.questions;
+
+// Thuật toán chọn tập câu hỏi ngẫu nhiên tối ưu (Stratified Sampling + Brand Diversity)
+window.generateOptimalQuestionSet = function(setId) {
+    let pool = [];
+    if (window.QUESTION_SETS && window.QUESTION_SETS.set3 && Array.isArray(window.QUESTION_SETS.set3.questions) && window.QUESTION_SETS.set3.questions.length > 0) {
+        pool = JSON.parse(JSON.stringify(window.QUESTION_SETS.set3.questions));
+    } else if (window.GAME_QUESTIONS && Array.isArray(window.GAME_QUESTIONS) && window.GAME_QUESTIONS.length > 0) {
+        pool = JSON.parse(JSON.stringify(window.GAME_QUESTIONS));
+    }
+
+    if (!pool || pool.length === 0) return [];
+
+    let count = pool.length;
+    if (setId === 'set1') count = Math.min(15, pool.length);
+    else if (setId === 'set2') count = Math.min(30, pool.length);
+    else count = pool.length;
+
+    // Nếu chọn Bộ 3 (Full)
+    if (count >= pool.length) {
+        return pool;
+    }
+
+    // Phân loại phân khúc giá để cân đối trải nghiệm
+    const tier1 = pool.filter(p => (p.price || 0) < 300000); // Bình dân (<300k)
+    const tier2 = pool.filter(p => (p.price || 0) >= 300000 && (p.price || 0) <= 1500000); // Tầm trung (300k - 1.5tr)
+    const tier3 = pool.filter(p => (p.price || 0) > 1500000); // Cao cấp & Công nghệ (>1.5tr)
+
+    let target1 = 6, target2 = 6, target3 = 3;
+    if (count === 30) {
+        target1 = 11;
+        target2 = 12;
+        target3 = 7;
+    } else if (count !== 15) {
+        target1 = Math.round(count * 0.4);
+        target2 = Math.round(count * 0.4);
+        target3 = count - target1 - target2;
+    }
+
+    const usedBrands = new Set();
+
+    function sampleTier(tier, needed) {
+        const shuffled = [...tier].sort(() => Math.random() - 0.5);
+        const picked = [];
+        // Lượt 1: Ưu tiên thương hiệu chưa xuất hiện
+        for (const p of shuffled) {
+            if (picked.length >= needed) break;
+            const b = p.brand ? p.brand.trim().toLowerCase() : '';
+            if (b && !usedBrands.has(b)) {
+                picked.push(p);
+                usedBrands.add(b);
+            }
+        }
+        // Lượt 2: Nếu chưa đủ chỉ tiêu thì lấy thêm trong tier
+        if (picked.length < needed) {
+            for (const p of shuffled) {
+                if (picked.length >= needed) break;
+                if (!picked.includes(p)) {
+                    picked.push(p);
+                }
+            }
+        }
+        return picked;
+    }
+
+    const p1 = sampleTier(tier1, target1);
+    const p2 = sampleTier(tier2, target2);
+    const p3 = sampleTier(tier3, target3);
+    let selected = [...p1, ...p2, ...p3];
+
+    // Bù trừ nếu tier nào thiếu do danh mục sản phẩm thay đổi
+    if (selected.length < count) {
+        const remaining = pool.filter(p => !selected.some(s => s.id === p.id));
+        remaining.sort(() => Math.random() - 0.5);
+        selected = selected.concat(remaining.slice(0, count - selected.length));
+    }
+
+    // Xáo trộn ngẫu nhiên thứ tự các câu hỏi (Fisher-Yates shuffle)
+    for (let i = selected.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [selected[i], selected[j]] = [selected[j], selected[i]];
+    }
+
+    return selected;
+};

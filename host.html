@@ -808,12 +808,14 @@
             </p>
 
             <!-- Bộ Chọn Gói Câu Hỏi (Bộ 1 / Bộ 2 / Bộ 3) -->
-            <div style="display:flex; justify-content:center; margin-bottom: 14px;">
+            <div style="display:flex; flex-direction:column; align-items:center; margin-bottom: 12px;">
                 <div class="question-set-bar">
-                    <button class="btn-qset" id="btnQSet1" onclick="switchQuestionSet('set1')">🎲 Bộ 1 (15 Món Ngẫu Nhiên)</button>
-                    <button class="btn-qset" id="btnQSet2" onclick="switchQuestionSet('set2')">✨ Bộ 2 (30 Món Ngẫu Nhiên)</button>
+                    <button class="btn-qset" id="btnQSet1" onclick="switchQuestionSet('set1')">🎲 Bộ 1 (15 Món)</button>
+                    <button class="btn-qset" id="btnQSet2" onclick="switchQuestionSet('set2')">✨ Bộ 2 (30 Món)</button>
                     <button class="btn-qset active" id="btnQSet3" onclick="switchQuestionSet('set3')">👑 Bộ 3 (Full 47 Món)</button>
+                    <button class="btn-qset" id="btnReshuffleQSet" onclick="reshuffleCurrentSet()" style="background:#fbbf24; color:#1e0a24; border:1.5px solid #000; box-shadow:2px 2px 0px #000;" title="Bốc ngẫu nhiên một bộ đề mới từ 47 sản phẩm">🔄 Bốc Bộ Mới</button>
                 </div>
+                <div id="qSetInfoBadge" style="font-size:0.88rem; font-weight:800; color:#fbcfe8; margin-top:-2px;">👑 Đang chọn: Bộ 3 (Toàn bộ 47 sản phẩm chính hãng)</div>
             </div>
 
             <div class="qr-section">
@@ -1035,22 +1037,92 @@
 
         const db = window.getFirebaseDB ? window.getFirebaseDB() : null;
 
-        function switchQuestionSet(setId) {
-            if (!window.QUESTION_SETS || !window.QUESTION_SETS[setId]) return;
-            currentSetId = setId;
-            QUESTIONS = window.QUESTION_SETS[setId].questions;
-            
+        function updateSetButtonsUI(setId) {
             const btn1 = document.getElementById('btnQSet1');
             const btn2 = document.getElementById('btnQSet2');
             const btn3 = document.getElementById('btnQSet3');
             if (btn1) btn1.classList.toggle('active', setId === 'set1');
             if (btn2) btn2.classList.toggle('active', setId === 'set2');
             if (btn3) btn3.classList.toggle('active', setId === 'set3');
+        }
+
+        function updateSetBadgeUI(setId, count) {
+            const badge = document.getElementById('qSetInfoBadge');
+            if (!badge) return;
+            if (setId === 'set1') {
+                badge.innerHTML = `🎲 Đang chọn: <b>Bộ 1</b> (${count || 15} món ngẫu nhiên tối ưu)`;
+            } else if (setId === 'set2') {
+                badge.innerHTML = `✨ Đang chọn: <b>Bộ 2</b> (${count || 30} món ngẫu nhiên tối ưu)`;
+            } else {
+                badge.innerHTML = `👑 Đang chọn: <b>Bộ 3</b> (Toàn bộ ${count || 47} món chính hãng)`;
+            }
+        }
+
+        function switchQuestionSet(setId, isFromFirebase) {
+            if (!window.QUESTION_SETS || !window.QUESTION_SETS[setId]) return;
+            currentSetId = setId;
+            updateSetButtonsUI(setId);
+
+            if (isFromFirebase) return;
+
+            let newQuestions = [];
+            if (setId === 'set1' || setId === 'set2') {
+                newQuestions = window.generateOptimalQuestionSet 
+                    ? window.generateOptimalQuestionSet(setId) 
+                    : window.QUESTION_SETS[setId].questions;
+            } else {
+                newQuestions = (window.QUESTION_SETS.set3 && window.QUESTION_SETS.set3.questions) || window.GAME_QUESTIONS || [];
+            }
+
+            QUESTIONS = newQuestions;
+            if (window.QUESTION_SETS[setId]) {
+                window.QUESTION_SETS[setId].questions = newQuestions;
+            }
+
+            updateSetBadgeUI(setId, newQuestions.length);
 
             if (db) {
                 db.ref('game_state').update({
-                    question_set: setId
+                    question_set: setId,
+                    active_questions: newQuestions,
+                    total_questions: newQuestions.length,
+                    current_q_idx: 0
                 });
+            }
+        }
+
+        function reshuffleCurrentSet() {
+            let newQuestions = [];
+            if (currentSetId === 'set1' || currentSetId === 'set2') {
+                newQuestions = window.generateOptimalQuestionSet 
+                    ? window.generateOptimalQuestionSet(currentSetId) 
+                    : window.QUESTION_SETS[currentSetId].questions;
+            } else {
+                const pool = (window.QUESTION_SETS.set3 && window.QUESTION_SETS.set3.questions) || window.GAME_QUESTIONS || [];
+                newQuestions = [...pool].sort(() => Math.random() - 0.5);
+            }
+
+            QUESTIONS = newQuestions;
+            if (window.QUESTION_SETS && window.QUESTION_SETS[currentSetId]) {
+                window.QUESTION_SETS[currentSetId].questions = newQuestions;
+            }
+
+            updateSetBadgeUI(currentSetId, newQuestions.length);
+
+            if (db) {
+                db.ref('game_state').update({
+                    question_set: currentSetId,
+                    active_questions: newQuestions,
+                    total_questions: newQuestions.length,
+                    current_q_idx: 0
+                });
+            }
+
+            const badge = document.getElementById('qSetInfoBadge');
+            if (badge) {
+                const orig = badge.innerHTML;
+                badge.innerHTML = `<span style="color:#fbbf24;">🎲 ĐÃ BỐC BỘ MỚI THÀNH CÔNG (${newQuestions.length} MÓN TỐI ƯU)!</span>`;
+                setTimeout(() => { badge.innerHTML = orig; }, 1800);
             }
         }
 
@@ -1170,12 +1242,29 @@
             closeResetModal();
             if (timerInterval) clearInterval(timerInterval);
 
+            // Bốc ngẫu nhiên một bộ đề mới cho lượt chơi này nếu đang chọn set1 hoặc set2
+            let resetQuestions = [];
+            if (currentSetId === 'set1' || currentSetId === 'set2') {
+                resetQuestions = window.generateOptimalQuestionSet 
+                    ? window.generateOptimalQuestionSet(currentSetId) 
+                    : (window.QUESTION_SETS[currentSetId] ? window.QUESTION_SETS[currentSetId].questions : []);
+            } else {
+                resetQuestions = (window.QUESTION_SETS.set3 && window.QUESTION_SETS.set3.questions) || window.GAME_QUESTIONS || [];
+            }
+            QUESTIONS = resetQuestions;
+            if (window.QUESTION_SETS && window.QUESTION_SETS[currentSetId]) {
+                window.QUESTION_SETS[currentSetId].questions = resetQuestions;
+            }
+            updateSetBadgeUI(currentSetId, resetQuestions.length);
+
             if (type === 'NEW_ROUND') {
                 db.ref('game_state').set({
                     status: 'LOBBY',
                     current_q_idx: 0,
                     q_start_time: 0,
-                    question_set: currentSetId
+                    question_set: currentSetId,
+                    active_questions: resetQuestions,
+                    total_questions: resetQuestions.length
                 });
                 db.ref('submissions').remove();
                 db.ref('players').once('value', snap => {
@@ -1195,7 +1284,9 @@
                     status: 'LOBBY',
                     current_q_idx: 0,
                     q_start_time: 0,
-                    question_set: currentSetId
+                    question_set: currentSetId,
+                    active_questions: resetQuestions,
+                    total_questions: resetQuestions.length
                 });
                 db.ref('submissions').remove();
                 db.ref('players').remove();
@@ -1212,6 +1303,11 @@
             if (action === 'START_GAME') {
                 db.ref('game_state').update({ status: 'RULES' });
             } else if (action === 'START_QUESTIONS') {
+                if (!QUESTIONS || QUESTIONS.length === 0) {
+                    QUESTIONS = window.generateOptimalQuestionSet 
+                        ? window.generateOptimalQuestionSet(currentSetId) 
+                        : (window.QUESTION_SETS[currentSetId] ? window.QUESTION_SETS[currentSetId].questions : []);
+                }
                 const currentQ = QUESTIONS[0] || {};
                 const qDuration = (currentQ && currentQ.time) ? currentQ.time : 35;
                 db.ref('game_state').update({
@@ -1220,6 +1316,7 @@
                     q_start_time: firebase.database.ServerValue.TIMESTAMP,
                     q_duration: qDuration,
                     question_set: currentSetId,
+                    active_questions: QUESTIONS,
                     total_questions: QUESTIONS.length,
                     current_question: {
                         id: currentQ.id || 1,
@@ -1599,7 +1696,18 @@
                 currentState = state;
 
                 if (state.question_set && state.question_set !== currentSetId) {
-                    switchQuestionSet(state.question_set);
+                    currentSetId = state.question_set;
+                    updateSetButtonsUI(state.question_set);
+                }
+
+                if (state.active_questions && Array.isArray(state.active_questions) && state.active_questions.length > 0) {
+                    QUESTIONS = state.active_questions;
+                    if (window.QUESTION_SETS && window.QUESTION_SETS[currentSetId]) {
+                        window.QUESTION_SETS[currentSetId].questions = state.active_questions;
+                    }
+                    updateSetBadgeUI(currentSetId, state.active_questions.length);
+                } else if (state.question_set) {
+                    updateSetBadgeUI(state.question_set, QUESTIONS.length);
                 }
 
                 handleStateUpdate(state);
