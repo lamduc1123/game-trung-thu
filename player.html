@@ -518,10 +518,14 @@
         </div>
 
         <!-- Gọn Gàng: Khung Nhập Tiền Tự Format -->
-        <div class="price-input-wrapper">
-            <div style="font-size:0.75rem; font-weight:800; color:#831843; text-transform:uppercase;">GIÁ BẠN DỰ ĐOÁN (VNĐ):</div>
+        <div class="price-input-wrapper" onclick="focusPriceInput()">
+            <div style="display:flex; justify-content:space-between; align-items:center;">
+                <span style="font-size:0.75rem; font-weight:800; color:#831843; text-transform:uppercase;">GIÁ BẠN DỰ ĐOÁN (VNĐ):</span>
+                <span id="btnClearPrice" style="font-size:0.75rem; font-weight:800; color:#ef4444; cursor:pointer; padding:2px 6px; background:#ffe4e6; border-radius:8px;" onclick="clearPriceInput(event)">✕ XÓA GÕ LẠI</span>
+            </div>
+            <div id="prevGuessBadge" style="display:none; font-size:0.8rem; color:#f43f5e; font-weight:800; margin-top:4px;"></div>
             <div class="price-formatted-preview" id="displayGuessPrice">0 ₫</div>
-            <input type="tel" class="input-box-clean" id="priceInputDirect" placeholder="Gõ số tiền dự đoán (VNĐ)..." oninput="handleDirectInput(this.value)">
+            <input type="tel" class="input-box-clean" id="priceInputDirect" placeholder="Gõ số tiền dự đoán (VNĐ)..." oninput="handleDirectInput(this.value)" onclick="this.select()" onfocus="this.select()">
         </div>
 
         <button class="btn-submit" id="btnSubmitPrice" onclick="submitAnswer()">💖 CHỐT GIÁ NÀY!</button>
@@ -585,12 +589,22 @@
 
     <!-- CARD 8: FINALE -->
     <div class="card" id="cardFinale">
-        <div style="font-size: 4rem; margin-bottom: 10px;">👑</div>
+        <div style="font-size: 3.8rem; margin-bottom: 8px;">👑</div>
         <div class="header-title">VINH DANH NỮ THẦN 20/10</div>
-        <p style="font-size: 1.05rem; line-height: 1.6; color: #fce7f3; margin: 15px 0; font-weight: 700;">
+
+        <div id="finaleWinnerBanner" style="display:none; background:linear-gradient(135deg, #fbbf24, #f59e0b); color:#1e0a24; font-weight:900; padding:12px; border-radius:16px; margin:10px 0; border:2.5px solid #000; box-shadow:3px 3px 0 #ff4d8d; font-size:1.05rem; line-height:1.4;">
+            🎉 CHÚC MỪNG BẠN ĐÃ ĐOẠT GIẢI THƯỞNG 100.000 VNĐ 💖
+        </div>
+
+        <p style="font-size: 0.95rem; line-height: 1.5; color: #fce7f3; margin: 10px 0; font-weight: 700;">
             Chúc mừng tất cả các bóng hồng đã tỏa sáng rực rỡ trong ngày hội Hãy Chọn Giá Đúng!
         </p>
-        <div class="badge-score" id="finaleMyScore">TỔNG ĐIỂM: 0</div>
+        <div class="badge-score" id="finaleMyScore">TỔNG ĐIỂM CỦA BẠN: 0</div>
+
+        <div style="margin-top:14px; text-align:left;">
+            <div style="font-size:0.95rem; font-weight:900; color:#fbbf24; margin-bottom:8px;">🏆 BẢNG VINH DANH TOP 6 NỮ THẦN:</div>
+            <div id="finaleMobileList"></div>
+        </div>
     </div>
 
     <!-- Firebase Compat SDK -->
@@ -707,6 +721,24 @@
                 currentGuessValue = 0;
             }
             updatePriceDisplay();
+        }
+
+        function focusPriceInput() {
+            const inp = document.getElementById('priceInputDirect');
+            if (inp) {
+                inp.focus();
+            }
+        }
+
+        function clearPriceInput(e) {
+            if (e) e.stopPropagation();
+            const inp = document.getElementById('priceInputDirect');
+            if (inp) {
+                inp.value = '';
+                currentGuessValue = 0;
+                updatePriceDisplay();
+                inp.focus();
+            }
         }
 
         // JOIN GAME
@@ -936,17 +968,32 @@
                 alert("⏱️ Đã hết thời gian 35s cho sản phẩm này, không thể chỉnh sửa nữa!");
                 return;
             }
+            hasSubmittedCurrentQ = false;
             showCard('cardQuestion');
+
             const btn = document.getElementById('btnSubmitPrice');
             if (btn) {
                 btn.disabled = false;
                 btn.innerText = '🔄 CẬP NHẬT GIÁ MỚI';
             }
-            const inp = document.getElementById('priceInputDirect');
-            if (inp && currentGuessValue > 0) {
-                inp.value = currentGuessValue;
+
+            const prevBadge = document.getElementById('prevGuessBadge');
+            if (prevBadge && currentGuessValue > 0) {
+                prevBadge.style.display = 'block';
+                prevBadge.innerText = `Giá cũ: ${currentGuessValue.toLocaleString('vi-VN')} ₫ (Hãy gõ số mới)`;
             }
-            updatePriceDisplay();
+
+            const inp = document.getElementById('priceInputDirect');
+            if (inp) {
+                inp.disabled = false;
+                inp.readOnly = false;
+                inp.value = '';
+                currentGuessValue = 0;
+                updatePriceDisplay();
+                setTimeout(() => {
+                    inp.focus();
+                }, 100);
+            }
         }
 
         // TIMER & HINTS MOBILE (35s: 10s -> Gợi ý 1, 22s -> Gợi ý 2)
@@ -1058,6 +1105,7 @@
 
                 pList.sort((a, b) => (b.score || 0) - (a.score || 0));
                 renderMobileLeaderboard(pList);
+                renderMobileFinale(pList);
             });
 
             db.ref('game_state').on('value', snap => {
@@ -1121,6 +1169,9 @@
                     currentRoundPointsEarned = 0;
                     updatePriceDisplay();
                     document.getElementById('priceInputDirect').value = '';
+
+                    const prevBadge = document.getElementById('prevGuessBadge');
+                    if (prevBadge) prevBadge.style.display = 'none';
 
                     const btnEdit = document.getElementById('btnEditAnswer');
                     if (btnEdit) {
@@ -1198,7 +1249,15 @@
                 if (currentPlayer) showCard('cardLeaderboard');
             } else if (status === 'FINALE') {
                 if (playerTimerInterval) clearInterval(playerTimerInterval);
-                if (currentPlayer) showCard('cardFinale');
+                if (currentPlayer) {
+                    showCard('cardFinale');
+                    db.ref('players').once('value', snap => {
+                        const pMap = snap.val() || {};
+                        const pList = Object.values(pMap);
+                        pList.sort((a, b) => (b.score || 0) - (a.score || 0));
+                        renderMobileFinale(pList);
+                    });
+                }
             }
         }
 
@@ -1219,12 +1278,66 @@
                 item.innerHTML = `
                     <div style="display:flex; align-items:center; gap:8px;">
                         <span>${medal}</span>
-                        <span>${p.avatar}</span>
-                        <span style="color:#fdf2f8;">${p.name}${p.id === clientId ? ' (Bạn)' : ''}</span>
+                        <span>${p.avatar || '👑'}</span>
+                        <span style="color:#fdf2f8;">${p.name || 'Bóng hồng'}${p.id === clientId ? ' (Bạn)' : ''}</span>
                     </div>
                     <div style="color:#fef08a; font-weight:900;">${p.score || 0}đ</div>
                 `;
                 container.appendChild(item);
+            });
+        }
+
+        function renderMobileFinale(players) {
+            const pList = players || [];
+            const myPlayer = pList.find(p => p.id === clientId) || currentPlayer;
+            const myScoreEl = document.getElementById('finaleMyScore');
+            if (myScoreEl) {
+                myScoreEl.innerText = `TỔNG ĐIỂM CỦA BẠN: ${(myPlayer && myPlayer.score) ? myPlayer.score : 0} ĐIỂM`;
+            }
+
+            const top6 = pList.slice(0, 6);
+            const isWinner = top6.some(p => p.id === clientId);
+
+            const winnerBanner = document.getElementById('finaleWinnerBanner');
+            if (winnerBanner) {
+                if (isWinner) {
+                    winnerBanner.style.display = 'block';
+                    winnerBanner.innerHTML = '🎉 CHÚC MỪNG BẠN NẰM TRONG TOP 6 VÀ ĐOẠT GIẢI THƯỞNG 100.000 VNĐ 💖';
+                } else {
+                    winnerBanner.style.display = 'none';
+                }
+            }
+
+            const listEl = document.getElementById('finaleMobileList');
+            if (!listEl) return;
+            listEl.innerHTML = '';
+
+            if (top6.length === 0) {
+                listEl.innerHTML = '<div style="color:#fbcfe8; font-style:italic;">Đang cập nhật danh sách...</div>';
+                return;
+            }
+
+            top6.forEach((p, idx) => {
+                const item = document.createElement('div');
+                item.style.cssText = 'display:flex; justify-content:space-between; align-items:center; background:#180322; border:2px solid #ff4d8d; box-shadow:2px 2px 0px #000; border-radius:14px; padding:10px 14px; margin-bottom:8px; font-weight:800; font-size:0.95rem;';
+                if (idx === 0) {
+                    item.style.borderColor = '#fbbf24';
+                    item.style.background = '#2c1236';
+                }
+                const medal = (idx === 0) ? '👑' : ((idx === 1) ? '🥈' : ((idx === 2) ? '🥉' : `#${idx + 1}`));
+                const isMe = (p.id === clientId);
+                item.innerHTML = `
+                    <div style="display:flex; align-items:center; gap:8px;">
+                        <span>${medal}</span>
+                        <span>${p.avatar || '👑'}</span>
+                        <span style="color:#fdf2f8;">${p.name || 'Bóng hồng'}${isMe ? ' <span style="color:#fbbf24;">(Bạn)</span>' : ''}</span>
+                    </div>
+                    <div style="text-align:right;">
+                        <div style="color:#fef08a; font-weight:900;">${p.score || 0}đ</div>
+                        <div style="font-size:0.75rem; color:#f472b6; font-weight:700;">🎁 100.000đ</div>
+                    </div>
+                `;
+                listEl.appendChild(item);
             });
         }
 

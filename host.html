@@ -790,6 +790,8 @@
     <!-- Header Controls -->
     <div class="header-controls">
         <button class="btn-control btn-reset-host" title="Cài đặt lại Game / Về Sảnh Chờ" onclick="openResetModal()">🔄 Reset Game</button>
+        <button class="btn-control" style="background: linear-gradient(135deg, #7c3aed, #4f46e5); color:#fff; font-weight:900;" title="Xem Bảng Xếp Hạng Top 6 Bất Kỳ Lúc Nào" onclick="hostAction('SHOW_LEADERBOARD')">📊 BXH</button>
+        <button class="btn-control" style="background: linear-gradient(135deg, #f59e0b, #d97706); color:#fff; font-weight:900;" title="Kết Thúc Game & Vinh Danh Nữ Thần" onclick="hostAction('FINALE')">👑 Vinh Danh</button>
         <button class="btn-control" id="btnBgmToggle" title="Bật/Tắt Nhạc Nền" onclick="toggleBGM()">🎵</button>
         <input type="range" class="volume-slider" id="bgmVolumeSlider" min="0" max="1" step="0.05" value="0.35" onchange="setBgmVolume(this.value)">
         <button class="btn-control" id="btnMuteToggle" title="Tắt Toàn Bộ Âm Thanh" onclick="toggleMute()">🔊</button>
@@ -922,6 +924,7 @@
 
             <div class="btn-group">
                 <button class="btn-gold" onclick="hostAction('REVEAL_ANSWER')">🔓 CÔNG BỐ GIÁ ĐÚNG</button>
+                <button class="btn-gold" style="background: linear-gradient(135deg, #7c3aed, #4f46e5);" onclick="hostAction('SHOW_LEADERBOARD')">📊 XEM BXH</button>
                 <button class="btn-gold" style="background: linear-gradient(135deg, #a3081e, #61000f);" onclick="hostAction('NEXT_QUESTION')">⏭️ BỎ QUA</button>
             </div>
         </div>
@@ -947,6 +950,7 @@
             <div class="btn-group">
                 <button class="btn-gold" onclick="hostAction('SHOW_LEADERBOARD')">📊 BẢNG XẾP HẠNG TOP 6</button>
                 <button class="btn-gold" onclick="hostAction('NEXT_QUESTION')">👉 SẢN PHẨM TIẾP THEO</button>
+                <button class="btn-gold" style="background: linear-gradient(135deg, #f59e0b, #d97706);" onclick="hostAction('FINALE')">👑 KẾT THÚC GAME</button>
             </div>
         </div>
     </div>
@@ -957,8 +961,10 @@
             <div class="leaderboard-title">🏆 BẢNG XẾP HẠNG TOP 6</div>
             <div id="leaderboardContainer" style="margin-bottom: 30px;"></div>
 
-            <div style="text-align: center;">
-                <button class="btn-gold" id="btnNextFromLb" onclick="hostAction('NEXT_QUESTION')">🚀 SANG SẢN PHẨM TIẾP THEO</button>
+            <div class="btn-group">
+                <button class="btn-gold" id="btnBackFromLb" style="background: linear-gradient(135deg, #475569, #334155);" onclick="hostAction('BACK_TO_PREV')">🔙 QUAY LẠI VÒNG CHƠI</button>
+                <button class="btn-gold" id="btnNextFromLb" onclick="hostAction('NEXT_QUESTION')">👉 SẢN PHẨM TIẾP THEO</button>
+                <button class="btn-gold" id="btnFinaleFromLb" style="background: linear-gradient(135deg, #f59e0b, #d97706);" onclick="hostAction('FINALE')">👑 VINH DANH CHUNG CUỘC</button>
             </div>
         </div>
     </div>
@@ -1025,6 +1031,7 @@
         let hasUnlockedHint1 = false;
         let hasUnlockedHint2 = false;
         let currentSubmissionsRef = null;
+        let currentPlayersList = [];
 
         const db = window.getFirebaseDB ? window.getFirebaseDB() : null;
 
@@ -1260,7 +1267,16 @@
                     reveal_price: currentQ.price || 0
                 });
             } else if (action === 'SHOW_LEADERBOARD') {
-                db.ref('game_state').update({ status: 'LEADERBOARD' });
+                const prev = (currentState && currentState.status && currentState.status !== 'LEADERBOARD') 
+                    ? currentState.status 
+                    : 'QUESTION';
+                db.ref('game_state').update({ 
+                    status: 'LEADERBOARD',
+                    prev_status: prev
+                });
+            } else if (action === 'BACK_TO_PREV') {
+                const prev = (currentState && currentState.prev_status) || 'QUESTION';
+                db.ref('game_state').update({ status: prev });
             } else if (action === 'FINALE') {
                 db.ref('game_state').update({ status: 'FINALE' });
             } else if (action === 'RESET_GAME') {
@@ -1463,37 +1479,55 @@
             podium.innerHTML = '';
             if (top45) top45.innerHTML = '';
 
-            const p1 = players[0] || { name: 'Nữ Hoàng 1', avatar: '👑', score: 0 };
-            const p2 = players[1] || { name: 'Á Hậu 1', avatar: '🌸', score: 0 };
-            const p3 = players[2] || { name: 'Á Hậu 2', avatar: '🌹', score: 0 };
+            if (!players || players.length === 0) {
+                podium.innerHTML = '<div style="color:#fbcfe8; font-size:1.3rem; font-weight:800; padding:20px;">Đang tải kết quả vinh danh...</div>';
+                return;
+            }
 
-            podium.innerHTML = `
+            const p1 = players[0];
+            const p2 = players[1];
+            const p3 = players[2];
+
+            let html = '';
+
+            if (p2) {
+                html += `
                 <div class="podium-slot">
-                    <div style="font-size:2.8rem; margin-bottom:6px;">${p2.avatar}</div>
-                    <div style="font-weight:900; font-size:1.1rem; color:#fbcfe8;">${p2.name}</div>
-                    <div style="color:#fef08a; font-weight:800; margin-bottom:8px;">${p2.score}đ</div>
+                    <div style="font-size:2.8rem; margin-bottom:6px;">${p2.avatar || '🌸'}</div>
+                    <div style="font-weight:900; font-size:1.1rem; color:#fbcfe8;">${p2.name || 'Á Hậu 1'}</div>
+                    <div style="color:#fef08a; font-weight:800; margin-bottom:8px;">${p2.score || 0}đ</div>
                     <div class="podium-pillar pillar-2">🥈 2</div>
-                </div>
+                </div>`;
+            }
+
+            if (p1) {
+                html += `
                 <div class="podium-slot">
-                    <div style="font-size:3.5rem; margin-bottom:6px;">${p1.avatar}</div>
-                    <div style="font-weight:900; font-size:1.25rem; color:#fef08a;">👑 ${p1.name}</div>
-                    <div style="color:#fbbf24; font-weight:900; font-size:1.15rem; margin-bottom:8px;">${p1.score}đ</div>
+                    <div style="font-size:3.5rem; margin-bottom:6px;">${p1.avatar || '👑'}</div>
+                    <div style="font-weight:900; font-size:1.25rem; color:#fef08a;">👑 ${p1.name || 'Nữ Hoàng'}</div>
+                    <div style="color:#fbbf24; font-weight:900; font-size:1.15rem; margin-bottom:8px;">${p1.score || 0}đ</div>
                     <div class="podium-pillar pillar-1">🥇 1</div>
-                </div>
+                </div>`;
+            }
+
+            if (p3) {
+                html += `
                 <div class="podium-slot">
-                    <div style="font-size:2.8rem; margin-bottom:6px;">${p3.avatar}</div>
-                    <div style="font-weight:900; font-size:1.1rem; color:#fbcfe8;">${p3.name}</div>
-                    <div style="color:#fef08a; font-weight:800; margin-bottom:8px;">${p3.score}đ</div>
+                    <div style="font-size:2.8rem; margin-bottom:6px;">${p3.avatar || '🌹'}</div>
+                    <div style="font-weight:900; font-size:1.1rem; color:#fbcfe8;">${p3.name || 'Á Hậu 2'}</div>
+                    <div style="color:#fef08a; font-weight:800; margin-bottom:8px;">${p3.score || 0}đ</div>
                     <div class="podium-pillar pillar-3">🥉 3</div>
-                </div>
-            `;
+                </div>`;
+            }
+
+            podium.innerHTML = html;
 
             if (top45) {
                 const restTop = players.slice(3, 6);
                 restTop.forEach((p, idx) => {
                     const slot = document.createElement('div');
                     slot.style.cssText = 'background:#180322; border:2.5px solid #ff4d8d; box-shadow:3px 3px 0px #000; border-radius:16px; padding:10px 18px; font-weight:800; display:inline-flex; align-items:center; gap:8px;';
-                    slot.innerHTML = `<span>#${idx + 4}</span> <span>${p.avatar}</span> <span>${p.name}</span> <span style="color:#fef08a;">${p.score}đ</span>`;
+                    slot.innerHTML = `<span>#${idx + 4}</span> <span>${p.avatar || '👑'}</span> <span>${p.name || 'Bóng hồng'}</span> <span style="color:#fef08a;">${p.score || 0}đ</span>`;
                     top45.appendChild(slot);
                 });
             }
@@ -1576,11 +1610,12 @@
                 const pMap = snap.val() || {};
                 const pList = Object.values(pMap);
                 pList.sort((a, b) => (b.score || 0) - (a.score || 0));
+                currentPlayersList = pList;
 
                 renderLobbyPlayers(pList, pList.length);
                 renderLeaderboard(pList);
 
-                if (currentState.status === 'FINALE') {
+                if (currentState && currentState.status === 'FINALE') {
                     renderFinale(pList);
                 }
             });
@@ -1654,6 +1689,15 @@
                 showScreen('screenLeaderboard');
                 if (timerInterval) clearInterval(timerInterval);
 
+                renderLeaderboard(currentPlayersList);
+                db.ref('players').once('value', snap => {
+                    const pMap = snap.val() || {};
+                    const pList = Object.values(pMap);
+                    pList.sort((a, b) => (b.score || 0) - (a.score || 0));
+                    currentPlayersList = pList;
+                    renderLeaderboard(pList);
+                });
+
                 const btnNext = document.getElementById('btnNextFromLb');
                 if (btnNext) {
                     if (qIdx + 1 >= QUESTIONS.length) {
@@ -1665,6 +1709,15 @@
             } else if (status === 'FINALE') {
                 showScreen('screenFinale');
                 if (timerInterval) clearInterval(timerInterval);
+
+                renderFinale(currentPlayersList);
+                db.ref('players').once('value', snap => {
+                    const pMap = snap.val() || {};
+                    const pList = Object.values(pMap);
+                    pList.sort((a, b) => (b.score || 0) - (a.score || 0));
+                    currentPlayersList = pList;
+                    renderFinale(pList);
+                });
             }
         }
 
