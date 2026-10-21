@@ -1,8 +1,8 @@
 /**
- * Sound Engine for Hãy Chọn Giá Đúng (The Price Is Right) - Đại Hội 20/10 Phụ Nữ Việt Nam 🌸💖
+ * Sound Engine for Hãy Chọn Giá Đúng (The Price Is Right) - Halloween Spooky Edition 🎃👻🦇
  * - Pure Web Audio API synthesis: zero external audio files, zero latency, runs offline.
- * - Upbeat, sparkling, celebratory Pop / Dance BGM tailored for Women's Day party.
- * - Full SFX suite: Player join pop, countdown tick/urgent, correct chime, wrong buzzer, reveal fanfare, finale fireworks.
+ * - Catchy, playful, spooky Halloween Dance/Carnival BGM (D Minor spooky groove).
+ * - Full Halloween SFX suite: Ghostly join woo, haunted clock tick, potion chime, dungeon buzzer, witch cheer fanfare.
  */
 
 class SoundEngine {
@@ -43,9 +43,9 @@ class SoundEngine {
         this.sfxVolume = Math.max(0, Math.min(1, val));
     }
 
-    // --- SFX SUITE ---
+    // --- HALLOWEEN SFX SUITE ---
 
-    // Pop sound when a player joins room
+    // Ghostly playful "Woo-hoo!" pop when player enters room
     playJoin() {
         if (this.isMuted) return;
         this.init();
@@ -54,103 +54,113 @@ class SoundEngine {
         const gain = this.ctx.createGain();
 
         osc.type = 'sine';
-        osc.frequency.setValueAtTime(523.25, now);
-        osc.frequency.exponentialRampToValueAtTime(1046.50, now + 0.12);
+        // Ghostly sweep: 440Hz -> 880Hz -> 660Hz
+        osc.frequency.setValueAtTime(440, now);
+        osc.frequency.exponentialRampToValueAtTime(880, now + 0.1);
+        osc.frequency.exponentialRampToValueAtTime(659.25, now + 0.22);
 
-        gain.gain.setValueAtTime(this.sfxVolume * 0.4, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
+        gain.gain.setValueAtTime(0.001, now);
+        gain.gain.linearRampToValueAtTime(this.sfxVolume * 0.45, now + 0.03);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.25);
 
         osc.connect(gain);
         gain.connect(this.ctx.destination);
 
         osc.start(now);
-        osc.stop(now + 0.12);
+        osc.stop(now + 0.25);
     }
 
-    // Clock tick for countdown
+    // Clock tick in a haunted mansion (bone-click / hollow tick)
     playTick(isUrgent = false) {
         if (this.isMuted) return;
         this.init();
         const now = this.ctx.currentTime;
+
+        // Woodblock / bone click tone
         const osc = this.ctx.createOscillator();
         const gain = this.ctx.createGain();
 
-        osc.type = 'sine';
-        osc.frequency.setValueAtTime(isUrgent ? 987.77 : 587.33, now); // B5 or D5
-        osc.frequency.exponentialRampToValueAtTime(isUrgent ? 493.88 : 293.66, now + 0.05);
+        osc.type = isUrgent ? 'sawtooth' : 'triangle';
+        osc.frequency.setValueAtTime(isUrgent ? 880 : 587.33, now); // A5 or D5
+        osc.frequency.exponentialRampToValueAtTime(isUrgent ? 300 : 220, now + 0.05);
 
-        gain.gain.setValueAtTime(this.sfxVolume * (isUrgent ? 0.35 : 0.2), now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.05);
+        gain.gain.setValueAtTime(this.sfxVolume * (isUrgent ? 0.38 : 0.22), now);
+        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.055);
 
         osc.connect(gain);
         gain.connect(this.ctx.destination);
 
         osc.start(now);
-        osc.stop(now + 0.05);
+        osc.stop(now + 0.055);
     }
 
-    // Correct Answer / Bullseye Chime
+    // Magical Witch's Cauldron / Bullseye Chime
     playCorrect() {
         if (this.isMuted) return;
         this.init();
         const now = this.ctx.currentTime;
-        const notes = [523.25, 659.25, 783.99, 1046.50, 1318.51]; // C5, E5, G5, C6, E6
+        // Spooky mystical whole-tone / major-minor arpeggio (D5, F#5, A5, C6, D6, F#6)
+        const notes = [587.33, 739.99, 880.00, 1046.50, 1174.66, 1479.98];
 
         notes.forEach((freq, idx) => {
             const osc = this.ctx.createOscillator();
             const gain = this.ctx.createGain();
 
             osc.type = 'triangle';
-            osc.frequency.setValueAtTime(freq, now + idx * 0.08);
+            osc.frequency.setValueAtTime(freq, now + idx * 0.07);
 
-            gain.gain.setValueAtTime(0.001, now + idx * 0.08);
-            gain.gain.linearRampToValueAtTime(this.sfxVolume * 0.45, now + idx * 0.08 + 0.02);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.45);
+            gain.gain.setValueAtTime(0.001, now + idx * 0.07);
+            gain.gain.linearRampToValueAtTime(this.sfxVolume * 0.45, now + idx * 0.07 + 0.02);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.07 + 0.5);
 
             osc.connect(gain);
             gain.connect(this.ctx.destination);
 
-            osc.start(now + idx * 0.08);
-            osc.stop(now + idx * 0.08 + 0.45);
+            osc.start(now + idx * 0.07);
+            osc.stop(now + idx * 0.07 + 0.5);
         });
     }
 
-    // Wrong / Time-out Buzzer
+    // Spooky Dungeon / Phantom Organ Wrong Buzzer
     playWrong() {
         if (this.isMuted) return;
         this.init();
         const now = this.ctx.currentTime;
-        const osc = this.ctx.createOscillator();
-        const gain = this.ctx.createGain();
 
-        osc.type = 'sawtooth';
-        osc.frequency.setValueAtTime(220, now);
-        osc.frequency.linearRampToValueAtTime(140, now + 0.3);
+        // Dissonant minor second chord (Eb + D) to sound like a creepy pipe organ!
+        [155.56, 146.83, 73.42].forEach((freq) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
 
-        gain.gain.setValueAtTime(this.sfxVolume * 0.4, now);
-        gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(freq, now);
+            osc.frequency.linearRampToValueAtTime(freq * 0.85, now + 0.38);
 
-        osc.connect(gain);
-        gain.connect(this.ctx.destination);
+            gain.gain.setValueAtTime(this.sfxVolume * 0.35, now);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + 0.38);
 
-        osc.start(now);
-        osc.stop(now + 0.3);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+
+            osc.start(now);
+            osc.stop(now + 0.38);
+        });
     }
 
-    // Grand Cheer & Confetti Fireworks
+    // Spooky Carnival Fanfare & Jack-o'-Lantern Fireworks
     playCheer() {
         if (this.isMuted) return;
         this.init();
         const now = this.ctx.currentTime;
 
-        // Fanfare Arpeggio
+        // Halloween Grand Fanfare: D Minor into triumphant D Major
         const fanfare = [
-            { f: 523.25, t: 0.0 },
-            { f: 659.25, t: 0.1 },
-            { f: 783.99, t: 0.2 },
-            { f: 1046.50, t: 0.3 },
-            { f: 1318.51, t: 0.45 },
-            { f: 1567.98, t: 0.6 }
+            { f: 293.66, t: 0.0 },   // D4
+            { f: 369.99, t: 0.12 },  // F#4
+            { f: 440.00, t: 0.24 },  // A4
+            { f: 587.33, t: 0.36 },  // D5
+            { f: 739.99, t: 0.50 },  // F#5
+            { f: 880.00, t: 0.65 }   // A5
         ];
 
         fanfare.forEach(item => {
@@ -162,55 +172,92 @@ class SoundEngine {
 
             gain.gain.setValueAtTime(0.001, now + item.t);
             gain.gain.linearRampToValueAtTime(this.sfxVolume * 0.5, now + item.t + 0.03);
-            gain.gain.exponentialRampToValueAtTime(0.001, now + item.t + 0.7);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + item.t + 0.75);
 
             osc.connect(gain);
             gain.connect(this.ctx.destination);
 
             osc.start(now + item.t);
-            osc.stop(now + item.t + 0.7);
+            osc.stop(now + item.t + 0.75);
         });
     }
 
-    // --- UPBEAT & JOYFUL WOMEN'S DAY 20/10 BGM SYNTHESIZER ---
+    // Playful Witch Cackle / Spooky Sound
+    playWitchLaugh() {
+        if (this.isMuted) return;
+        this.init();
+        const now = this.ctx.currentTime;
+        const freqs = [600, 750, 620, 800, 650, 850, 700];
+
+        freqs.forEach((f, i) => {
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+
+            osc.type = 'sawtooth';
+            osc.frequency.setValueAtTime(f, now + i * 0.06);
+
+            gain.gain.setValueAtTime(this.sfxVolume * 0.25, now + i * 0.06);
+            gain.gain.exponentialRampToValueAtTime(0.001, now + i * 0.06 + 0.055);
+
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+
+            osc.start(now + i * 0.06);
+            osc.stop(now + i * 0.06 + 0.055);
+        });
+    }
+
+    // --- CATCHY & PLAYFUL HALLOWEEN GROOVE BGM (D MINOR SPOOKY CARNIVAL) ---
     startBGM() {
         if (this.isBgmPlaying) return;
         this.init();
         this.isBgmPlaying = true;
         this.stepIndex = 0;
 
-        // Melodic Pop Progression: C Major -> G Major -> A Minor -> F Major (Vui tươi, rạng rỡ, tràn đầy năng lượng)
-        // 32-step 16th-note loop
+        // Spooky music-box / xylophone melody (32-step loop in D Minor)
+        // Danse Macabre & Addams Family mysterious, catchy dance vibe:
         const melody = [
-            523.25, 659.25, 783.99, 1046.50, // C5 E5 G5 C6 (C Major arpeggio)
-            783.99, 659.25, 880.00, 783.99,  // G5 E5 A5 G5
-            392.00, 587.33, 783.99, 987.77,  // G4 D5 G5 B5 (G Major)
-            783.99, 587.33, 659.25, 587.33,  // G5 D5 E5 D5
-            440.00, 523.25, 659.25, 880.00,  // A4 C5 E5 A5 (Am)
-            659.25, 523.25, 783.99, 659.25,  // E5 C5 G5 E5
-            349.23, 440.00, 523.25, 698.46,  // F4 A4 C5 F5 (F Major)
-            659.25, 587.33, 523.25, 587.33   // E5 D5 C5 D5
+            587.33, 0,      698.46, 880.00,  // D5 . F5 A5
+            1174.66, 1108.73, 880.00, 830.61,// D6 C#6 A5 G#5 (Spooky tritone!)
+            587.33, 0,      698.46, 880.00,  // D5 . F5 A5
+            1046.50, 987.77, 880.00, 739.99, // C6 B5 A5 F#5
+            783.99, 0,      932.33, 1174.66, // G5 . Bb5 D6
+            1108.73, 987.77, 880.00, 783.99, // C#6 B5 A5 G5
+            880.00, 0,      1108.73, 1318.51,// A5 . C#6 E6
+            1174.66, 1046.50, 932.33, 880.00 // D6 C6 Bb5 A5
         ];
 
-        // Bouncy disco pop bassline
+        // Ghostly theremin / eerie whistle glide on select measures
+        const eerieWhistle = [
+            0,      0,      0,      1174.66,
+            0,      0,      1108.73, 0,
+            0,      0,      0,      1046.50,
+            0,      0,      987.77,  0,
+            0,      0,      0,      1174.66,
+            0,      0,      1108.73, 0,
+            0,      0,      0,      1318.51,
+            0,      0,      1174.66, 0
+        ];
+
+        // Bouncing gothic bassline (D minor -> G minor -> A major -> D minor)
         const bassline = [
-            130.81, 130.81, 196.00, 261.63,  // C3 C3 G3 C4
-            98.00,  98.00,  146.83, 196.00,  // G2 G2 D3 G3
-            110.00, 110.00, 164.81, 220.00,  // A2 A2 E3 A3
-            87.31,  87.31,  130.81, 174.61   // F2 F2 C3 F3
+            146.83, 146.83, 220.00, 146.83,  // D3 D3 A3 D3
+            146.83, 174.61, 207.65, 220.00,  // D3 F3 G#3 A3
+            196.00, 196.00, 293.66, 196.00,  // G3 G3 D4 G3
+            220.00, 277.18, 329.63, 220.00   // A3 C#4 E4 A3
         ];
 
-        const bpm = 126; // Chuẩn tempo Dance-Pop sôi động
-        const stepTime = (60 / bpm) / 4; // 16th note timing
+        const bpm = 126; // High-energy Spooky Dance Tempo
+        const stepTime = (60 / bpm) / 4; // 16th note step
 
         const scheduleBeat = () => {
             if (!this.isBgmPlaying) return;
             const now = this.ctx.currentTime;
             const step = this.stepIndex % 32;
 
-            // 1. Sparkling Marimba / Synth Melody
+            // 1. Spooky Staccato Skeleton Marimba / Harpsichord Melody
             const noteFreq = melody[step];
-            if (noteFreq && (step % 2 === 0 || step === 7 || step === 15 || step === 23 || step === 31) && !this.isMuted) {
+            if (noteFreq && !this.isMuted) {
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
 
@@ -218,45 +265,67 @@ class SoundEngine {
                 osc.frequency.setValueAtTime(noteFreq, now);
 
                 gain.gain.setValueAtTime(0.001, now);
-                gain.gain.linearRampToValueAtTime(this.bgmVolume * 0.28, now + 0.015);
-                gain.gain.exponentialRampToValueAtTime(0.001, now + stepTime * 1.8);
+                gain.gain.linearRampToValueAtTime(this.bgmVolume * 0.32, now + 0.012);
+                gain.gain.exponentialRampToValueAtTime(0.001, now + stepTime * 1.6);
 
                 osc.connect(gain);
                 gain.connect(this.ctx.destination);
 
                 osc.start(now);
-                osc.stop(now + stepTime * 1.8);
+                osc.stop(now + stepTime * 1.6);
             }
 
-            // 2. Groovy Pop Bass
+            // 2. Ghostly Theremin / Whistle Sound (every 4th step when present)
+            const whistleFreq = eerieWhistle[step];
+            if (whistleFreq && !this.isMuted) {
+                const wOsc = this.ctx.createOscillator();
+                const wGain = this.ctx.createGain();
+
+                wOsc.type = 'sine';
+                wOsc.frequency.setValueAtTime(whistleFreq, now);
+                wOsc.frequency.linearRampToValueAtTime(whistleFreq * 1.02, now + stepTime * 2);
+
+                wGain.gain.setValueAtTime(0.001, now);
+                wGain.gain.linearRampToValueAtTime(this.bgmVolume * 0.15, now + 0.04);
+                wGain.gain.exponentialRampToValueAtTime(0.001, now + stepTime * 3.5);
+
+                wOsc.connect(wGain);
+                wGain.connect(this.ctx.destination);
+
+                wOsc.start(now);
+                wOsc.stop(now + stepTime * 3.5);
+            }
+
+            // 3. Groovy Spooky Bassline
             const bassIdx = Math.floor(step / 2) % bassline.length;
             const bassFreq = bassline[bassIdx];
             if (bassFreq && (step % 2 === 0) && !this.isMuted) {
                 const bOsc = this.ctx.createOscillator();
                 const bGain = this.ctx.createGain();
 
-                bOsc.type = 'sine';
+                bOsc.type = 'sawtooth';
                 bOsc.frequency.setValueAtTime(bassFreq, now);
 
+                // Low-pass feel
                 bGain.gain.setValueAtTime(0.001, now);
-                bGain.gain.linearRampToValueAtTime(this.bgmVolume * 0.4, now + 0.02);
-                bGain.gain.exponentialRampToValueAtTime(0.001, now + stepTime * 1.9);
+                bGain.gain.linearRampToValueAtTime(this.bgmVolume * 0.38, now + 0.02);
+                bGain.gain.exponentialRampToValueAtTime(0.001, now + stepTime * 1.8);
 
                 bOsc.connect(bGain);
                 bGain.connect(this.ctx.destination);
 
                 bOsc.start(now);
-                bOsc.stop(now + stepTime * 1.9);
+                bOsc.stop(now + stepTime * 1.8);
             }
 
-            // 3. Four-on-the-Floor Pop Kick (Beats 1, 2, 3, 4)
+            // 4. Punchy Haunted Kick (Beats 1, 2, 3, 4)
             if (step % 4 === 0 && !this.isMuted) {
                 const kOsc = this.ctx.createOscillator();
                 const kGain = this.ctx.createGain();
 
                 kOsc.type = 'sine';
-                kOsc.frequency.setValueAtTime(150, now);
-                kOsc.frequency.exponentialRampToValueAtTime(45, now + 0.12);
+                kOsc.frequency.setValueAtTime(140, now);
+                kOsc.frequency.exponentialRampToValueAtTime(42, now + 0.12);
 
                 kGain.gain.setValueAtTime(this.bgmVolume * 0.55, now);
                 kGain.gain.exponentialRampToValueAtTime(0.001, now + 0.12);
@@ -268,14 +337,14 @@ class SoundEngine {
                 kOsc.stop(now + 0.12);
             }
 
-            // 4. Pop Snare / Hand Clap on beats 2 & 4 (steps 4, 12, 20, 28)
+            // 5. Crisp Skeleton Bone Snare / Clap on beats 2 & 4 (steps 4, 12, 20, 28)
             if ((step % 8 === 4) && !this.isMuted) {
                 const sOsc = this.ctx.createOscillator();
                 const sGain = this.ctx.createGain();
 
                 sOsc.type = 'triangle';
-                sOsc.frequency.setValueAtTime(420, now);
-                sOsc.frequency.exponentialRampToValueAtTime(180, now + 0.09);
+                sOsc.frequency.setValueAtTime(550, now);
+                sOsc.frequency.exponentialRampToValueAtTime(190, now + 0.09);
 
                 sGain.gain.setValueAtTime(this.bgmVolume * 0.38, now);
                 sGain.gain.exponentialRampToValueAtTime(0.001, now + 0.09);
@@ -287,13 +356,13 @@ class SoundEngine {
                 sOsc.stop(now + 0.09);
             }
 
-            // 5. Crisp Hi-Hat Ticks on offbeats (steps 2, 6, 10, 14, 18, 22, 26, 30)
+            // 6. Cobweb Hi-Hat Ticks on offbeats
             if ((step % 2 === 1) && !this.isMuted) {
                 const hOsc = this.ctx.createOscillator();
                 const hGain = this.ctx.createGain();
 
                 hOsc.type = 'square';
-                hOsc.frequency.setValueAtTime(1800, now);
+                hOsc.frequency.setValueAtTime(2200, now);
 
                 hGain.gain.setValueAtTime(this.bgmVolume * 0.08, now);
                 hGain.gain.exponentialRampToValueAtTime(0.001, now + 0.035);
