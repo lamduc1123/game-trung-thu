@@ -21,7 +21,18 @@ Tài liệu này hướng dẫn chi tiết từng bước để đưa game lên 
 3. Tại menu bên trái, tìm mục **Build** -> Chọn **Realtime Database**:
    - Bấm nút **Create Database**.
    - **Database location**: Chọn `Singapore (asia-southeast1)` (để máy chủ ở gần Việt Nam nhất, tốc độ phản hồi dưới 30ms). Bấm **Next**.
-   - **Security rules**: Chọn **Start in test mode** (cho phép người chơi đọc/ghi dữ liệu thi đấu không cần đăng nhập tài khoản) -> Bấm **Enable**.
+   - **Security rules**: Chọn **Start in test mode** -> Bấm **Enable**.
+   - > ⚠️ **LƯU Ý QUAN TRỌNG ĐỂ KHÔNG BỊ HẾT HẠN SAU 30 NGÀY**:
+     > Vào tab **Rules** trong Realtime Database, sửa nội dung thành:
+     > ```json
+     > {
+     >   "rules": {
+     >     ".read": true,
+     >     ".write": true
+     >   }
+     > }
+     > ```
+     > Sau đó bấm **Publish** để game hoạt động ổn định vĩnh viễn, người chơi quét QR đăng nhập bất kỳ lúc nào.
 4. Lấy mã cấu hình kết nối:
    - Bấm vào biểu tượng **Bánh răng Cài đặt** (Project settings) ở góc trên bên trái (cạnh mục Project Overview).
    - Cuộn xuống dưới cùng mục **"Your apps"**, bấm vào biểu tượng Web `</>`.

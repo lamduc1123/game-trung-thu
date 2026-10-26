@@ -822,7 +822,12 @@
                     btnJoin.innerText = "🔄 THỬ VÀO LẠI";
                 }
                 setNetworkStatus(false, "Mất kết nối server");
-                showJoinError("⚠️ <b>Không thể kết nối Firebase!</b><br>Vui lòng kiểm tra lại mạng hoặc cấu hình trong <code>firebase-config.js</code>.");
+                const errStr = (err && (err.code || err.message)) ? (err.code || err.message) : '';
+                if (errStr.includes('PERMISSION_DENIED') || errStr.includes('Permission denied')) {
+                    showJoinError("⚠️ <b>Quyền truy cập Firebase đã hết hạn (PERMISSION_DENIED)!</b><br>Chế độ dùng thử (Test Mode) 30 ngày của Firebase đã kết thúc.<br>👉 MC chỉ cần mở <b>Firebase Console &gt; Realtime Database &gt; Rules</b>, đổi thành <code>{ \".read\": true, \".write\": true }</code> rồi bấm <b>Publish</b> là vào được ngay!");
+                } else {
+                    showJoinError(`⚠️ <b>Không thể kết nối Firebase!</b><br>${errStr ? errStr : 'Vui lòng kiểm tra lại mạng hoặc cấu hình trong firebase-config.js.'}`);
+                }
             });
         }
 
