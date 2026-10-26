@@ -1211,49 +1211,12 @@ window.generateOptimalQuestionSet = function(setId) {
     return selected;
 };
 
-
 // ==========================================
-// BỘ ĐỀ MỚI: 44 MÓN SIÊU MIX (TỪ HẢO HẢO ĐẾN PORSCHE)
+// BỘ ĐỀ MỚI: 44 MÓN SIÊU MIX (TỪ MIXUE ĐẾN PORSCHE)
 // ==========================================
 window.GAME_QUESTIONS_V2 = [
   {
     "id": 1,
-    "name": "Bút bi Thiên Long TL-027 (Mực xanh)",
-    "brand": "Thiên Long",
-    "category": "Văn Phòng Phẩm",
-    "price": 5000,
-    "image": "images/products/v2_thienlong.jpg",
-    "sourceUrl": "https://thienlonggroup.com/",
-    "hint1": "Giá bán lẻ một cây chỉ trong khoảng từ 3.000đ đến 8.000đ.",
-    "hint2": "Cây bút quốc dân của học sinh Việt Nam, giá đúng bằng một đồng tiền xu mệnh giá lớn nhất thời xưa.",
-    "time": 35
-  },
-  {
-    "id": 2,
-    "name": "Mì Hảo Hảo tôm chua cay 75g",
-    "brand": "Acecook",
-    "category": "Thực Phẩm",
-    "price": 4500,
-    "image": "images/products/v2_haohao.jpg",
-    "sourceUrl": "https://acecookvietnam.vn/",
-    "hint1": "Mức giá gói mì quốc dân rơi vào tầm 3.500đ - 7.000đ.",
-    "hint2": "Rẻ hơn một ly trà đá vỉa hè, số hàng trăm là số chẵn bằng một nửa số hàng nghìn (dạng x.500đ).",
-    "time": 35
-  },
-  {
-    "id": 3,
-    "name": "Nước khoáng thiên nhiên La Vie 500ml",
-    "brand": "La Vie",
-    "category": "Đồ Uống",
-    "price": 6000,
-    "image": "images/products/v2_lavie.png",
-    "sourceUrl": "https://www.laviewater.com/",
-    "hint1": "Giá bán lẻ tại các cửa hàng tiện lợi dao động từ 4.000đ - 9.000đ.",
-    "hint2": "Số tròn nghìn chẵn, là số lộc phát quen thuộc trong quan niệm dân gian.",
-    "time": 35
-  },
-  {
-    "id": 4,
     "name": "Kem ốc quế Mixue",
     "brand": "Mixue",
     "category": "Tráng Miệng",
@@ -1265,7 +1228,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 5,
+    "id": 2,
     "name": "1 miếng gà rán giòn cay KFC",
     "brand": "KFC",
     "category": "Đồ Ăn Nhanh",
@@ -1277,7 +1240,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 6,
+    "id": 3,
     "name": "Cà phê Phin sữa đá Highlands Coffee (Size M)",
     "brand": "Highlands Coffee",
     "category": "Đồ Uống",
@@ -1289,7 +1252,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 7,
+    "id": 4,
     "name": "Mặt nạ giấy Mediheal Teatree Essential Mask 24ml",
     "brand": "Mediheal",
     "category": "Chăm Sóc Da",
@@ -1301,7 +1264,31 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 8,
+    "id": 5,
+    "name": "Hộp 20 cây Bút bi Thiên Long TL-027 (Mực xanh)",
+    "brand": "Thiên Long",
+    "category": "Văn Phòng Phẩm",
+    "price": 95000,
+    "image": "images/products/v2_thienlong_hop.jpg",
+    "sourceUrl": "https://thienlonggroup.com/",
+    "hint1": "Giá một hộp nguyên gồm 20 cây bút dao động trong khoảng từ 75.000đ - 115.000đ.",
+    "hint2": "Gần chạm mốc 100k, hai chữ số đầu là hai số lẻ lớn nhất có một chữ số (9 và 5).",
+    "time": 35
+  },
+  {
+    "id": 6,
+    "name": "Thùng 24 chai Nước khoáng thiên nhiên La Vie 500ml",
+    "brand": "La Vie",
+    "category": "Đồ Uống",
+    "price": 98000,
+    "image": "images/products/v2_lavie_thung.jpg",
+    "sourceUrl": "https://www.laviewater.com/",
+    "hint1": "Giá nguyên một thùng 24 chai dao động trong khoảng từ 80.000đ - 120.000đ.",
+    "hint2": "Chưa tới một trăm nghìn đồng (thiếu đúng 2.000đ là tròn), chữ số hàng chục nghìn là số 9.",
+    "time": 35
+  },
+  {
+    "id": 7,
     "name": "Chì kẻ chân mày Innisfree Auto Eyebrow Pencil 0.3g",
     "brand": "Innisfree",
     "category": "Trang Điểm",
@@ -1313,7 +1300,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 9,
+    "id": 8,
     "name": "Mặt nạ ngủ môi Laneige Berry Mini 3g",
     "brand": "Laneige",
     "category": "Dưỡng Môi",
@@ -1322,6 +1309,18 @@ window.GAME_QUESTIONS_V2 = [
     "sourceUrl": "https://www.laneige.com/",
     "hint1": "Giá dao động trong khoảng từ 90.000đ - 220.000đ.",
     "hint2": "Mức giá tròn chục nghìn, hai chữ số đầu tiên hoàn toàn giống nhau.",
+    "time": 35
+  },
+  {
+    "id": 9,
+    "name": "Thùng 30 gói Mì Hảo Hảo tôm chua cay 75g",
+    "brand": "Acecook",
+    "category": "Thực Phẩm",
+    "price": 125000,
+    "image": "images/products/v2_haohao_thung.jpg",
+    "sourceUrl": "https://acecookvietnam.vn/",
+    "hint1": "Giá mua nguyên một thùng 30 gói nằm trong khoảng từ 105.000đ đến 155.000đ.",
+    "hint2": "Mức giá hơn một trăm nghìn một chút, hai chữ số đầu là số tự nhiên lẻ và chẵn (1 và 2), kết thúc hàng nghìn bằng số 5.",
     "time": 35
   },
   {
@@ -1749,7 +1748,7 @@ window.GAME_QUESTIONS_V2 = [
 if (window.QUESTION_SETS) {
     window.QUESTION_SETS['set4'] = {
         id: 'set4',
-        name: 'Bộ 4: 44 Món Siêu Mix (Từ Hảo Hảo đến Porsche)',
+        name: 'Bộ 4: 44 Món Siêu Mix (Từ Mixue đến Porsche)',
         questions: window.GAME_QUESTIONS_V2
     };
 }

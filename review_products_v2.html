@@ -352,7 +352,7 @@
         <div class="header">
             <h1>🔥 ĐỐI SOÁT & QUẢN LÝ BỘ 44 SẢN PHẨM MỚI 🔥</h1>
             <p class="subtitle">
-                Bộ sưu tập mix mới đa phân khúc: Từ hàng ngày siêu bình dân (Mì Hảo Hảo 4.5k, Nước La Vie 6k, Mixue 10k) 
+                Bộ sưu tập mix mới đa phân khúc: Từ tiêu dùng, ăn uống quen thuộc (Kem Mixue 10k, Gà KFC 35k, Thùng La Vie 98k, Thùng Mì Hảo Hảo 125k) 
                 đến thời trang, mỹ phẩm, đồ công nghệ & siêu xe (AirPods Pro, PS5, iPhone, SH 160i, VinFast VF 3, Rolex, Porsche 3.35 Tỷ).
             </p>
             <div class="nav-links">
@@ -384,8 +384,8 @@
             <div class="filter-row">
                 <span class="filter-label">Phân khúc:</span>
                 <button class="tier-btn active" onclick="filterTier('all', this)">Tất cả (44)</button>
-                <button class="tier-btn" onclick="filterTier('tier1', this)">🍜 Cấp 1: &lt;50k (7)</button>
-                <button class="tier-btn" onclick="filterTier('tier2', this)">💄 Cấp 2: 100k-500k (12)</button>
+                <button class="tier-btn" onclick="filterTier('tier1', this)">🍦 Cấp 1: &lt;100k (6)</button>
+                <button class="tier-btn" onclick="filterTier('tier2', this)">💄 Cấp 2: 100k-500k (13)</button>
                 <button class="tier-btn" onclick="filterTier('tier3', this)">☕ Cấp 3: 500k-2tr (10)</button>
                 <button class="tier-btn" onclick="filterTier('tier4', this)">🎧 Cấp 4: 2tr-15tr (8)</button>
                 <button class="tier-btn" onclick="filterTier('tier5', this)">🚗 Cấp 5: &gt;30tr (7)</button>
@@ -584,7 +584,7 @@
 
         // Xác định phân khúc theo giá
         function getProductTier(price) {
-            if (price < 50000) return 'tier1';
+            if (price < 100000) return 'tier1';
             if (price <= 500000) return 'tier2';
             if (price <= 2000000) return 'tier3';
             if (price <= 15000000) return 'tier4';
