@@ -1134,7 +1134,7 @@
                 handlePlayerGameState(state);
             });
 
-            // Lắng nghe sản phẩm tùy chỉnh từ review_products.html
+            // Lắng nghe sản phẩm tùy chỉnh từ review_products.html (Bộ 20/10)
             db.ref('custom_products').on('value', snap => {
                 const custom = snap.val();
                 if (custom && Array.isArray(custom) && custom.length > 0) {
@@ -1146,6 +1146,21 @@
                         QUESTIONS = custom;
                     }
                     console.log('⚡ Player đã nhận danh sách sản phẩm tùy chỉnh từ Firebase:', custom.length);
+                }
+            });
+
+            // Lắng nghe sản phẩm tùy chỉnh từ review_products_v2.html (Bộ 44 Món Mix)
+            db.ref('custom_products_v2').on('value', snap => {
+                const custom = snap.val();
+                if (custom && Array.isArray(custom) && custom.length > 0) {
+                    if (window.QUESTION_SETS && window.QUESTION_SETS.set4) {
+                        window.QUESTION_SETS.set4.questions = custom;
+                    }
+                    window.GAME_QUESTIONS_V2 = custom;
+                    if (currentSetId === 'set4') {
+                        QUESTIONS = custom;
+                    }
+                    console.log('⚡ Player đã nhận danh sách sản phẩm mix v2 từ Firebase:', custom.length);
                 }
             });
         }

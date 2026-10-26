@@ -810,15 +810,16 @@
                 QUÉT MÃ QR BẰNG CAMERA ĐIỆN THOẠI ĐỂ NHẬP TIỆC ĐOÁN GIÁ BẢO VẬT MA THUẬT!
             </p>
 
-            <!-- Bộ Chọn Gói Câu Hỏi (Bộ 1 / Bộ 2 / Bộ 3) -->
+            <!-- Bộ Chọn Gói Câu Hỏi (Bộ 1 / Bộ 2 / Bộ 3 / Bộ 4) -->
             <div style="display:flex; flex-direction:column; align-items:center; margin-bottom: 12px;">
                 <div class="question-set-bar">
-                    <button class="btn-qset" id="btnQSet1" onclick="switchQuestionSet('set1')">🎲 Bộ 1 (15 Món Bí Ngô)</button>
-                    <button class="btn-qset" id="btnQSet2" onclick="switchQuestionSet('set2')">✨ Bộ 2 (30 Món Ma Quái)</button>
-                    <button class="btn-qset active" id="btnQSet3" onclick="switchQuestionSet('set3')">👑 Bộ 3 (Full 47 Bảo Vật)</button>
-                    <button class="btn-qset" id="btnReshuffleQSet" onclick="reshuffleCurrentSet()" style="background:#fbbf24; color:#1e0a24; border:1.5px solid #000; box-shadow:2px 2px 0px #000;" title="Bốc ngẫu nhiên một bộ đề mới từ 47 sản phẩm">🔄 Bốc Bộ Mới</button>
+                    <button class="btn-qset" id="btnQSet1" onclick="switchQuestionSet('set1')">🎲 Bộ 1 (15 Món)</button>
+                    <button class="btn-qset" id="btnQSet2" onclick="switchQuestionSet('set2')">✨ Bộ 2 (30 Món)</button>
+                    <button class="btn-qset" id="btnQSet3" onclick="switchQuestionSet('set3')">👑 Bộ 3 (47 Món Cũ)</button>
+                    <button class="btn-qset active" id="btnQSet4" onclick="switchQuestionSet('set4')">🔥 Bộ 4 (Mix 44 Món Mới)</button>
+                    <button class="btn-qset" id="btnReshuffleQSet" onclick="reshuffleCurrentSet()" style="background:#fbbf24; color:#1e0a24; border:1.5px solid #000; box-shadow:2px 2px 0px #000;" title="Bốc ngẫu nhiên một bộ đề mới">🔄 Bốc Bộ Mới</button>
                 </div>
-                <div id="qSetInfoBadge" style="font-size:0.88rem; font-weight:800; color:#fed7aa; margin-top:-2px;">👑 Đang chọn: Bộ 3 (Toàn bộ 47 bảo vật chính hãng)</div>
+                <div id="qSetInfoBadge" style="font-size:0.88rem; font-weight:800; color:#fed7aa; margin-top:-2px;">🔥 Đang chọn: Bộ 4 (44 món siêu mix từ Hảo Hảo đến Porsche)</div>
             </div>
 
             <div class="qr-section">
@@ -1021,14 +1022,14 @@
     <script src="audio.js"></script>
 
     <script>
-        let currentSetId = 'set3';
+        let currentSetId = 'set4';
         let QUESTIONS = (window.QUESTION_SETS && window.QUESTION_SETS[currentSetId]) 
             ? window.QUESTION_SETS[currentSetId].questions 
-            : (window.GAME_QUESTIONS || []);
+            : (window.GAME_QUESTIONS_V2 || window.GAME_QUESTIONS || []);
 
         let timerInterval = null;
         let timeLeft = 0;
-        let currentState = { status: 'LOBBY', current_q_idx: 0, question_set: 'set3' };
+        let currentState = { status: 'LOBBY', current_q_idx: 0, question_set: 'set4' };
         let activePlayerUrl = '';
         let prevPlayersCount = 0;
         let serverTimeOffset = 0;
@@ -1044,9 +1045,11 @@
             const btn1 = document.getElementById('btnQSet1');
             const btn2 = document.getElementById('btnQSet2');
             const btn3 = document.getElementById('btnQSet3');
+            const btn4 = document.getElementById('btnQSet4');
             if (btn1) btn1.classList.toggle('active', setId === 'set1');
             if (btn2) btn2.classList.toggle('active', setId === 'set2');
             if (btn3) btn3.classList.toggle('active', setId === 'set3');
+            if (btn4) btn4.classList.toggle('active', setId === 'set4');
         }
 
         function updateSetBadgeUI(setId, count) {
@@ -1056,8 +1059,10 @@
                 badge.innerHTML = `🎲 Đang chọn: <b>Bộ 1</b> (${count || 15} món ngẫu nhiên tối ưu)`;
             } else if (setId === 'set2') {
                 badge.innerHTML = `✨ Đang chọn: <b>Bộ 2</b> (${count || 30} món ngẫu nhiên tối ưu)`;
+            } else if (setId === 'set4') {
+                badge.innerHTML = `🔥 Đang chọn: <b>Bộ 4</b> (${count || 44} món mix siêu hấp dẫn từ Hảo Hảo đến Porsche)`;
             } else {
-                badge.innerHTML = `👑 Đang chọn: <b>Bộ 3</b> (Toàn bộ ${count || 47} món chính hãng)`;
+                badge.innerHTML = `👑 Đang chọn: <b>Bộ 3</b> (Toàn bộ ${count || 47} bảo vật 20/10)`;
             }
         }
 
@@ -1073,6 +1078,8 @@
                 newQuestions = window.generateOptimalQuestionSet 
                     ? window.generateOptimalQuestionSet(setId) 
                     : window.QUESTION_SETS[setId].questions;
+            } else if (setId === 'set4') {
+                newQuestions = (window.QUESTION_SETS.set4 && window.QUESTION_SETS.set4.questions) || window.GAME_QUESTIONS_V2 || [];
             } else {
                 newQuestions = (window.QUESTION_SETS.set3 && window.QUESTION_SETS.set3.questions) || window.GAME_QUESTIONS || [];
             }
@@ -1100,6 +1107,9 @@
                 newQuestions = window.generateOptimalQuestionSet 
                     ? window.generateOptimalQuestionSet(currentSetId) 
                     : window.QUESTION_SETS[currentSetId].questions;
+            } else if (currentSetId === 'set4') {
+                const pool = (window.QUESTION_SETS.set4 && window.QUESTION_SETS.set4.questions) || window.GAME_QUESTIONS_V2 || [];
+                newQuestions = [...pool].sort(() => Math.random() - 0.5);
             } else {
                 const pool = (window.QUESTION_SETS.set3 && window.QUESTION_SETS.set3.questions) || window.GAME_QUESTIONS || [];
                 newQuestions = [...pool].sort(() => Math.random() - 0.5);
@@ -1251,6 +1261,8 @@
                 resetQuestions = window.generateOptimalQuestionSet 
                     ? window.generateOptimalQuestionSet(currentSetId) 
                     : (window.QUESTION_SETS[currentSetId] ? window.QUESTION_SETS[currentSetId].questions : []);
+            } else if (currentSetId === 'set4') {
+                resetQuestions = (window.QUESTION_SETS.set4 && window.QUESTION_SETS.set4.questions) || window.GAME_QUESTIONS_V2 || [];
             } else {
                 resetQuestions = (window.QUESTION_SETS.set3 && window.QUESTION_SETS.set3.questions) || window.GAME_QUESTIONS || [];
             }
@@ -1731,7 +1743,7 @@
                 }
             });
 
-            // Lắng nghe sản phẩm tùy chỉnh từ review_products.html
+            // Lắng nghe sản phẩm tùy chỉnh từ review_products.html (Bộ 20/10)
             db.ref('custom_products').on('value', snap => {
                 const custom = snap.val();
                 if (custom && Array.isArray(custom) && custom.length > 0) {
@@ -1743,6 +1755,21 @@
                         QUESTIONS = custom;
                     }
                     console.log('⚡ Host đã nhận danh sách sản phẩm tùy chỉnh từ Firebase:', custom.length);
+                }
+            });
+
+            // Lắng nghe sản phẩm tùy chỉnh từ review_products_v2.html (Bộ 44 Món Mix)
+            db.ref('custom_products_v2').on('value', snap => {
+                const custom = snap.val();
+                if (custom && Array.isArray(custom) && custom.length > 0) {
+                    if (window.QUESTION_SETS && window.QUESTION_SETS.set4) {
+                        window.QUESTION_SETS.set4.questions = custom;
+                    }
+                    window.GAME_QUESTIONS_V2 = custom;
+                    if (currentSetId === 'set4') {
+                        QUESTIONS = custom;
+                    }
+                    console.log('⚡ Host đã nhận danh sách sản phẩm mix v2 từ Firebase:', custom.length);
                 }
             });
         }
