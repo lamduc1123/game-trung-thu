@@ -819,7 +819,7 @@
                     <button class="btn-qset active" id="btnQSet4" onclick="switchQuestionSet('set4')">🔥 Bộ 4 (Mix 44 Món Mới)</button>
                     <button class="btn-qset" id="btnReshuffleQSet" onclick="reshuffleCurrentSet()" style="background:#fbbf24; color:#1e0a24; border:1.5px solid #000; box-shadow:2px 2px 0px #000;" title="Bốc ngẫu nhiên một bộ đề mới">🔄 Bốc Bộ Mới</button>
                 </div>
-                <div id="qSetInfoBadge" style="font-size:0.88rem; font-weight:800; color:#fed7aa; margin-top:-2px;">🔥 Đang chọn: Bộ 4 (44 món siêu mix từ KFC đến Chanel Classic Flap)</div>
+                <div id="qSetInfoBadge" style="font-size:0.88rem; font-weight:800; color:#fed7aa; margin-top:-2px;">🔥 Đang chọn: Bộ 4 (44 món siêu mix đa dạng từ KFC đến SH 160i)</div>
             </div>
 
             <div class="qr-section">
@@ -1018,7 +1018,7 @@
 
     <!-- Game Scripts -->
     <script src="firebase-config.js"></script>
-    <script src="questions.js?v=20261026_v5"></script>
+    <script src="questions.js?v=20261026_v6"></script>
     <script src="audio.js"></script>
 
     <script>
@@ -1060,7 +1060,7 @@
             } else if (setId === 'set2') {
                 badge.innerHTML = `✨ Đang chọn: <b>Bộ 2</b> (${count || 30} món ngẫu nhiên tối ưu)`;
             } else if (setId === 'set4') {
-                badge.innerHTML = `🔥 Đang chọn: <b>Bộ 4</b> (${count || 44} món mix siêu hấp dẫn từ KFC đến Chanel)`;
+                badge.innerHTML = `🔥 Đang chọn: <b>Bộ 4</b> (${count || 44} món siêu mix đa dạng từ KFC đến SH 160i)`;
             } else {
                 badge.innerHTML = `👑 Đang chọn: <b>Bộ 3</b> (Toàn bộ ${count || 47} bảo vật 20/10)`;
             }

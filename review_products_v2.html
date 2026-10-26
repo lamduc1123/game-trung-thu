@@ -352,8 +352,7 @@
         <div class="header">
             <h1>🔥 ĐỐI SOÁT & QUẢN LÝ BỘ 44 SẢN PHẨM MỚI 🔥</h1>
             <p class="subtitle">
-                Bộ sưu tập mix mới đa phân khúc: Từ tiêu dùng, ăn uống quen thuộc (Gà KFC 35k, Highlands 39k, Thùng La Vie 98k, Thùng Mì Hảo Hảo 125k) 
-                đến thời trang, mỹ phẩm, đồ công nghệ & túi xách xa xỉ (AirPods Pro, PS5, iPhone 16 Pro Max, SH 160i, VinFast VF 3, Chanel Classic Flap).
+                Bộ sưu tập 44 sản phẩm siêu mix đa dạng cho cả nam và nữ: từ đồ ăn nhanh (KFC), đồ uống (Highlands, Thùng Bia Tiger), văn phòng phẩm (Thiên Long), đồ dùng & thời trang nam (Gillette, Sáp Volcanic Clay, Áo Polo Uniqlo, Máy cạo râu Philips, Chuột Logitech, Casio G-Shock, Nước hoa Dior Sauvage) đến công nghệ & xe tay ga (AirPods Pro, Nintendo Switch, PS5, iPhone 16 Pro Max, SH 160i).
             </p>
             <div class="nav-links">
                 <a href="review_products.html" class="nav-btn">🌸 Xem Bộ 20/10 (47 SP Cũ)</a>
@@ -490,10 +489,10 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
     <script src="firebase-config.js"></script>
-    <script src="questions.js?v=20261026_v5"></script>
+    <script src="questions.js?v=20261026_v6"></script>
 
     <script>
-        const LOCAL_STORAGE_KEY = 'hay_chon_gia_dung_products_v2_44';
+        const LOCAL_STORAGE_KEY = 'hay_chon_gia_dung_products_v2_44_v6';
         let products = [];
         let okCount = 0;
         let errCount = 0;
@@ -507,6 +506,7 @@
             // Xóa cache cũ nếu còn tồn tại
             try {
                 localStorage.removeItem('hay_chon_gia_dung_products_v2');
+                localStorage.removeItem('hay_chon_gia_dung_products_v2_44');
             } catch(e) {}
 
             // 1. Kiểm tra localStorage
@@ -943,6 +943,7 @@ ${JSON.stringify(cleanProducts, null, 2)}
             if (confirm('Bạn có muốn đặt lại danh sách về 44 sản phẩm gốc của bộ Mix mới? Mọi thay đổi trong trình duyệt sẽ được khôi phục.')) {
                 localStorage.removeItem(LOCAL_STORAGE_KEY);
                 localStorage.removeItem('hay_chon_gia_dung_products_v2');
+                localStorage.removeItem('hay_chon_gia_dung_products_v2_44');
                 if (window.GAME_QUESTIONS_V2) {
                     products = JSON.parse(JSON.stringify(window.GAME_QUESTIONS_V2));
                 } else if (window.QUESTION_SETS && window.QUESTION_SETS.set4) {
