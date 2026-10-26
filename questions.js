@@ -1212,23 +1212,11 @@ window.generateOptimalQuestionSet = function(setId) {
 };
 
 // ==========================================
-// BỘ ĐỀ MỚI: 44 MÓN SIÊU MIX (TỪ MIXUE ĐẾN PORSCHE)
+// BỘ ĐỀ MỚI: 44 MÓN SIÊU MIX (TỪ KFC ĐẾN CHANEL)
 // ==========================================
 window.GAME_QUESTIONS_V2 = [
   {
     "id": 1,
-    "name": "Kem ốc quế Mixue",
-    "brand": "Mixue",
-    "category": "Tráng Miệng",
-    "price": 10000,
-    "image": "images/products/v2_mixue.jpg",
-    "sourceUrl": "https://mixuevietnam.net/",
-    "hint1": "Cây kem siêu to khổng lồ có giá từ 8.000đ - 18.000đ.",
-    "hint2": "Giá tròn trĩnh đúng bằng mệnh giá của tờ tiền polymer màu vàng nâu quen thuộc nhất.",
-    "time": 35
-  },
-  {
-    "id": 2,
     "name": "1 miếng gà rán giòn cay KFC",
     "brand": "KFC",
     "category": "Đồ Ăn Nhanh",
@@ -1240,7 +1228,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 3,
+    "id": 2,
     "name": "Cà phê Phin sữa đá Highlands Coffee (Size M)",
     "brand": "Highlands Coffee",
     "category": "Đồ Uống",
@@ -1252,19 +1240,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 4,
-    "name": "Mặt nạ giấy Mediheal Teatree Essential Mask 24ml",
-    "brand": "Mediheal",
-    "category": "Chăm Sóc Da",
-    "price": 40000,
-    "image": "https://bizweb.dktcdn.net/thumb/large/100/348/157/products/mat-na-tram-tra-mediheal-tea-tree-essential-mask-24ml1-1678174542361.jpg",
-    "sourceUrl": "https://mediheal.vn/",
-    "hint1": "Giá lẻ một miếng mặt nạ dao động từ 32.000đ - 65.000đ.",
-    "hint2": "Mức giá tròn chục nghìn, chữ số đầu tiên là số chẵn nhỏ nhất chia hết cho cả 2 và 4.",
-    "time": 35
-  },
-  {
-    "id": 5,
+    "id": 3,
     "name": "Hộp 20 cây Bút bi Thiên Long TL-027 (Mực xanh)",
     "brand": "Thiên Long",
     "category": "Văn Phòng Phẩm",
@@ -1276,7 +1252,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 6,
+    "id": 4,
     "name": "Thùng 24 chai Nước khoáng thiên nhiên La Vie 500ml",
     "brand": "La Vie",
     "category": "Đồ Uống",
@@ -1288,7 +1264,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 7,
+    "id": 5,
     "name": "Chì kẻ chân mày Innisfree Auto Eyebrow Pencil 0.3g",
     "brand": "Innisfree",
     "category": "Trang Điểm",
@@ -1300,7 +1276,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 8,
+    "id": 6,
     "name": "Mặt nạ ngủ môi Laneige Berry Mini 3g",
     "brand": "Laneige",
     "category": "Dưỡng Môi",
@@ -1312,7 +1288,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 9,
+    "id": 7,
     "name": "Thùng 30 gói Mì Hảo Hảo tôm chua cay 75g",
     "brand": "Acecook",
     "category": "Thực Phẩm",
@@ -1324,7 +1300,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 10,
+    "id": 8,
     "name": "Sữa rửa mặt Simple Refreshing Facial Wash 150ml",
     "brand": "Simple",
     "category": "Chăm Sóc Da",
@@ -1336,7 +1312,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 11,
+    "id": 9,
     "name": "Nước tẩy trang Cocoon Bí Đao 140ml",
     "brand": "Cocoon",
     "category": "Tẩy Trang",
@@ -1348,7 +1324,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 12,
+    "id": 10,
     "name": "Sữa dưỡng thể Vaseline Gluta-Hya 300ml",
     "brand": "Vaseline",
     "category": "Dưỡng Thể",
@@ -1360,7 +1336,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 13,
+    "id": 11,
     "name": "Sữa tắm Hatomugi Ý Dĩ 800ml",
     "brand": "Hatomugi",
     "category": "Chăm Sóc Cơ Thể",
@@ -1372,19 +1348,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 14,
-    "name": "Mascara Maybelline Lash Sensational Sky High 6ml",
-    "brand": "Maybelline",
-    "category": "Trang Điểm",
-    "price": 239000,
-    "image": "https://down-vn.img.susercontent.com/file/vn-11134207-7qukw-ljg9c67sz070de",
-    "sourceUrl": "https://www.maybelline.vn/",
-    "hint1": "Thuộc phân khúc tầm giá từ 190.000đ - 370.000đ.",
-    "hint2": "Mức giá mỹ phẩm bình dân dưới 250k, kết thúc bằng chữ số hàng nghìn là số lẻ lớn nhất có một chữ số.",
-    "time": 35
-  },
-  {
-    "id": 15,
+    "id": 12,
     "name": "Nước tẩy trang L’Oréal cho da dầu 400ml",
     "brand": "L’Oréal",
     "category": "Tẩy Trang",
@@ -1396,19 +1360,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 16,
-    "name": "Son kem lì Maybelline Superstay Vinyl Ink 4.2ml",
-    "brand": "Maybelline",
-    "category": "Trang Điểm",
-    "price": 279000,
-    "image": "https://down-vn.img.susercontent.com/file/vn-11134207-7r98o-lo2c6g4e42h168",
-    "sourceUrl": "https://www.maybelline.vn/",
-    "hint1": "Dòng son bóng bền màu 16h, giá dao động trong khoảng từ 230.000đ - 360.000đ.",
-    "hint2": "Chữ số hàng chục nghìn là số may mắn 7, kết thúc ở hàng nghìn bằng chữ số 9.",
-    "time": 35
-  },
-  {
-    "id": 17,
+    "id": 13,
     "name": "Son kem lì Black Rouge Air Fit Velvet A12 4.5g",
     "brand": "Black Rouge",
     "category": "Trang Điểm",
@@ -1420,7 +1372,19 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 18,
+    "name": "Kem che khuyết điểm The Saem Tip 9.5g",
+    "brand": "The Saem",
+    "category": "Trang Điểm",
+    "price": 300000,
+    "image": "images/products/p9.jpg",
+    "sourceUrl": "",
+    "hint1": "Khoảng giá tham khảo từ 220.000đ - 460.000đ.",
+    "hint2": "Mức giá tròn trĩnh nguyên trăm nghìn, chữ số đầu tiên là một số nguyên tố lẻ.",
+    "time": 35,
+    "id": 14
+  },
+  {
+    "id": 15,
     "name": "Phấn má hồng 3CE Mood Recipe 5.5g",
     "brand": "3CE",
     "category": "Trang Điểm",
@@ -1432,7 +1396,19 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 19,
+    "name": "Toner Klairs Supple Preparation Unscented 180ml",
+    "brand": "Klairs",
+    "category": "Chăm Sóc Da",
+    "price": 435000,
+    "image": "images/products/custom_p11.png",
+    "sourceUrl": "https://beautybox.com.vn/products/nuoc-hoa-hong-cho-da-nhay-cam-klairs-supple-preparation-unscented-toner-180ml",
+    "hint1": "Giá dao động trong khoảng từ 360.000đ - 620.000đ.",
+    "hint2": "Mức giá có chữ số hàng chục nghìn là số lẻ, kết thúc hàng nghìn chia hết cho 5.",
+    "time": 35,
+    "id": 16
+  },
+  {
+    "id": 17,
     "name": "Kem chống nắng Skin1004 Centella SPF50+ 50ml",
     "brand": "Skin1004",
     "category": "Chống Nắng",
@@ -1444,7 +1420,19 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 20,
+    "name": "Kem dưỡng da B.O.M Peptide Power Cream 50g",
+    "brand": "B.O.M",
+    "category": "Chăm Sóc Da",
+    "price": 508000,
+    "image": "images/products/p13.jpg",
+    "sourceUrl": "",
+    "hint1": "Giá nằm trong khoảng từ 450.000đ - 750.000đ.",
+    "hint2": "Vừa vượt mốc 500.000đ không xa, chữ số hàng chục nghìn bằng 0 và hàng nghìn là số phát tài.",
+    "time": 35,
+    "id": 18
+  },
+  {
+    "id": 19,
     "name": "Kem chống nắng Anessa Perfect UV Sunscreen Skincare Milk 60ml",
     "brand": "Anessa",
     "category": "Chăm Sóc Da",
@@ -1456,7 +1444,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 21,
+    "id": 20,
     "name": "Nước hoa nữ Zara Gardenia EDP 100ml",
     "brand": "Zara",
     "category": "Nước Hoa",
@@ -1468,7 +1456,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 22,
+    "id": 21,
     "name": "Son thỏi MAC Matte Lipstick 3g",
     "brand": "MAC",
     "category": "Trang Điểm",
@@ -1478,6 +1466,18 @@ window.GAME_QUESTIONS_V2 = [
     "hint1": "Cây son hình viên đạn huyền thoại của Mỹ, giá trong khoảng từ 500.000đ - 850.000đ.",
     "hint2": "Giá tròn chục nghìn, chữ số hàng trăm nghìn và hàng chục nghìn là 2 số liên tiếp tăng dần 6 và 5.",
     "time": 35
+  },
+  {
+    "name": "Máy sấy tóc Panasonic EH-ND37-P645 1800W (Hồng)",
+    "brand": "Panasonic",
+    "category": "Chăm Sóc Tóc",
+    "price": 670000,
+    "image": "images/products/p14.jpg",
+    "sourceUrl": "",
+    "hint1": "Khoảng giá tham khảo từ 480.000đ đến 750.000đ.",
+    "hint2": "Là mức giá tròn chục nghìn, chữ số hàng chục nghìn là số nguyên tố lớn hơn 5.",
+    "time": 35,
+    "id": 22
   },
   {
     "id": 23,
@@ -1504,7 +1504,19 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 25,
+    "name": "Kem dưỡng đêm Eucerin Spotless Brightening 50ml",
+    "brand": "Eucerin",
+    "category": "Chăm Sóc Da",
+    "price": 959000,
+    "image": "images/products/p15.jpg",
+    "sourceUrl": "",
+    "hint1": "Mức giá niêm yết rơi vào tầm 800.000đ - 1.450.000đ.",
+    "hint2": "Dược mỹ phẩm cao cấp của Đức với giá sát mốc triệu đồng, hàng trăm nghìn và hàng nghìn cùng mang chữ số 9.",
+    "time": 35,
+    "id": 25
+  },
+  {
+    "id": 26,
     "name": "Son dưỡng Dior Addict Lip Glow 3.2g",
     "brand": "Dior",
     "category": "Dưỡng Môi",
@@ -1513,18 +1525,6 @@ window.GAME_QUESTIONS_V2 = [
     "sourceUrl": "https://www.dior.com/",
     "hint1": "Mức giá niêm yết rơi vào tầm 850.000đ - 1.600.000đ.",
     "hint2": "Vừa chạm mốc triệu đồng xa xỉ, số tiền lẻ thêm vào chỉ tương đương một ly cà phê Highlands (50.000đ).",
-    "time": 35
-  },
-  {
-    "id": 26,
-    "name": "Son thỏi Chanel Rouge Allure Luminous Intense",
-    "brand": "Chanel",
-    "category": "Trang Điểm",
-    "price": 1350000,
-    "image": "images/products/p26.jpg",
-    "sourceUrl": "https://www.chanel.com/",
-    "hint1": "Giá dao động trong khoảng từ 900.000đ đến 1.800.000đ.",
-    "hint2": "Thuộc hàng son môi thượng lưu của Pháp, chữ số hàng trăm nghìn và chục nghìn đều là các số lẻ tăng dần (3 và 5).",
     "time": 35
   },
   {
@@ -1540,7 +1540,19 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 28,
+    "name": "Giày cao gót Charles & Keith Patent Buckled đen",
+    "brand": "Charles & Keith",
+    "category": "Thời Trang",
+    "price": 1690000,
+    "image": "images/products/p17.jpg",
+    "sourceUrl": "",
+    "hint1": "Thuộc phân khúc tầm giá từ 1.400.000đ - 2.600.000đ.",
+    "hint2": "Phân khúc giày công sở cao cấp C&K, mức giá tròn chục nghìn và chữ số hàng trăm nghìn là số chẵn chia hết cho 3.",
+    "time": 35,
+    "id": 28
+  },
+  {
+    "id": 29,
     "name": "Nồi chiên không dầu Philips Airfryer 4.1L (HD9252)",
     "brand": "Philips",
     "category": "Gia Dụng",
@@ -1552,7 +1564,19 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 29,
+    "name": "Kem nền YSL All Hours Foundation Luminous Matte 25ml",
+    "brand": "YSL",
+    "category": "Trang Điểm",
+    "price": 1850000,
+    "image": "images/products/p33.jpg",
+    "sourceUrl": "https://www.yslbeauty.com/",
+    "hint1": "Giá nằm trong khoảng từ 1.500.000đ - 2.700.000đ.",
+    "hint2": "Kem nền che phủ đỉnh cao của YSL, nằm dưới mốc 2 triệu với chữ số hàng trăm nghìn là số chẵn chia hết cho 4.",
+    "time": 35,
+    "id": 30
+  },
+  {
+    "id": 31,
     "name": "Giày thể thao adidas Grand Court 3.0 nữ",
     "brand": "Adidas",
     "category": "Thời Trang",
@@ -1564,7 +1588,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 30,
+    "id": 32,
     "name": "Giày sneaker Nike Air Force 1 '07",
     "brand": "Nike",
     "category": "Giày Dép",
@@ -1576,7 +1600,19 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 31,
+    "name": "Túi xách Charles & Keith Gabine Leather Elongated",
+    "brand": "Charles & Keith",
+    "category": "Túi Xách",
+    "price": 3590000,
+    "image": "images/products/p21.jpg",
+    "sourceUrl": "",
+    "hint1": "Giá dao động trong khoảng từ 3.000.000đ - 5.500.000đ.",
+    "hint2": "Chất liệu da thật cao cấp của C&K, mức giá tròn chục nghìn với chữ số hàng trăm nghìn là số 5.",
+    "time": 35,
+    "id": 33
+  },
+  {
+    "id": 34,
     "name": "Dây chuyền Swarovski Dazzling Swan đính pha lê",
     "brand": "Swarovski",
     "category": "Trang Sức",
@@ -1588,7 +1624,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 32,
+    "id": 35,
     "name": "Lắc tay vàng 18K PNJ đính đá sang trọng",
     "brand": "PNJ",
     "category": "Trang Sức",
@@ -1600,7 +1636,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 33,
+    "id": 36,
     "name": "Tai nghe Apple AirPods Pro 2 (USB-C)",
     "brand": "Apple",
     "category": "Công Nghệ",
@@ -1612,19 +1648,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 34,
-    "name": "Nước hoa Kilian Good Girl Gone Bad EDP 50ml",
-    "brand": "Kilian",
-    "category": "Nước Hoa",
-    "price": 6500000,
-    "image": "https://product.hstatic.net/200000259653/product/good-girl-gone-bad-edp-50ml_f8b1dbb28cba47e8b61c778cecaee3da_grande.jpg",
-    "sourceUrl": "https://www.bykilian.com/",
-    "hint1": "Nước hoa 'rắn trắng' xa xỉ của Pháp, giá dao động trong khoảng từ 5.200.000đ - 8.200.000đ.",
-    "hint2": "Con số tròn trĩnh bằng đúng sáu triệu rưỡi.",
-    "time": 35
-  },
-  {
-    "id": 35,
+    "id": 37,
     "name": "Apple Watch Series 10 GPS 42mm Viền Nhôm",
     "brand": "Apple",
     "category": "Công Nghệ",
@@ -1636,7 +1660,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 36,
+    "id": 38,
     "name": "Máy sấy tóc Dyson Supersonic HD15",
     "brand": "Dyson",
     "category": "Chăm Sóc Tóc",
@@ -1648,7 +1672,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 37,
+    "id": 39,
     "name": "Máy chơi game Sony PlayStation 5 Slim",
     "brand": "Sony",
     "category": "Công Nghệ",
@@ -1660,7 +1684,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 38,
+    "id": 40,
     "name": "Điện thoại iPhone 16 Pro Max 256GB",
     "brand": "Apple",
     "category": "Điện Thoại",
@@ -1672,7 +1696,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 39,
+    "id": 41,
     "name": "Laptop Apple MacBook Pro 14 inch M3",
     "brand": "Apple",
     "category": "Máy Tính",
@@ -1684,7 +1708,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 40,
+    "id": 42,
     "name": "Xe tay ga cao cấp Honda SH 160i (Bản Tiêu Chuẩn)",
     "brand": "Honda",
     "category": "Xe Máy",
@@ -1696,7 +1720,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 41,
+    "id": 43,
     "name": "Xe ô tô điện thông minh VinFast VF 3",
     "brand": "VinFast",
     "category": "Ô Tô",
@@ -1708,7 +1732,7 @@ window.GAME_QUESTIONS_V2 = [
     "time": 35
   },
   {
-    "id": 42,
+    "id": 44,
     "name": "Túi xách Chanel Classic Flap Medium",
     "brand": "Chanel",
     "category": "Túi Xách",
@@ -1718,37 +1742,13 @@ window.GAME_QUESTIONS_V2 = [
     "hint1": "Chiếc túi xách quả trám đắt đỏ bậc nhất hành tinh, giá hãng dao động từ 220.000.000đ - 340.000.000đ.",
     "hint2": "Bằng tiền mua một chiếc ô tô cỡ nhỏ, mức giá lẻ chục triệu chia hết cho 5 (dạng 275 triệu).",
     "time": 35
-  },
-  {
-    "id": 43,
-    "name": "Đồng hồ xa xỉ Rolex Submariner Date (126610LN)",
-    "brand": "Rolex",
-    "category": "Đồng Hồ",
-    "price": 277000000,
-    "image": "images/products/v2_rolex.jpg",
-    "sourceUrl": "https://www.rolex.com/",
-    "hint1": "Biểu tượng đồng hồ thợ lặn danh giá của Thụy Sĩ, giá niêm yết hãng từ 230.000.000đ - 350.000.000đ.",
-    "hint2": "Mức giá hơn 270 triệu, có hai chữ số 7 may mắn đứng liền kề nhau.",
-    "time": 35
-  },
-  {
-    "id": 44,
-    "name": "Xe ô tô hạng sang Porsche Macan (Tiêu chuẩn)",
-    "brand": "Porsche",
-    "category": "Ô Tô",
-    "price": 3350000000,
-    "image": "images/products/v2_porsche.jpg",
-    "sourceUrl": "https://www.porsche.com/vietnam/",
-    "hint1": "Mẫu SUV hạng sang thể thao danh tiếng của Đức, giá niêm yết từ 2,8 tỷ đến 4,2 tỷ đồng.",
-    "hint2": "Đứng đầu bảng giá trong game với mức giá hơn 3 tỷ, số lẻ phía sau là ba trăm năm mươi triệu đồng.",
-    "time": 35
   }
 ];
 
 if (window.QUESTION_SETS) {
     window.QUESTION_SETS['set4'] = {
         id: 'set4',
-        name: 'Bộ 4: 44 Món Siêu Mix (Từ Mixue đến Porsche)',
+        name: 'Bộ 4: 44 Món Siêu Mix (Từ KFC đến Chanel)',
         questions: window.GAME_QUESTIONS_V2
     };
 }

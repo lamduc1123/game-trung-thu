@@ -819,7 +819,7 @@
                     <button class="btn-qset active" id="btnQSet4" onclick="switchQuestionSet('set4')">🔥 Bộ 4 (Mix 44 Món Mới)</button>
                     <button class="btn-qset" id="btnReshuffleQSet" onclick="reshuffleCurrentSet()" style="background:#fbbf24; color:#1e0a24; border:1.5px solid #000; box-shadow:2px 2px 0px #000;" title="Bốc ngẫu nhiên một bộ đề mới">🔄 Bốc Bộ Mới</button>
                 </div>
-                <div id="qSetInfoBadge" style="font-size:0.88rem; font-weight:800; color:#fed7aa; margin-top:-2px;">🔥 Đang chọn: Bộ 4 (44 món siêu mix từ Hảo Hảo đến Porsche)</div>
+                <div id="qSetInfoBadge" style="font-size:0.88rem; font-weight:800; color:#fed7aa; margin-top:-2px;">🔥 Đang chọn: Bộ 4 (44 món siêu mix từ KFC đến Chanel Classic Flap)</div>
             </div>
 
             <div class="qr-section">
@@ -1018,7 +1018,7 @@
 
     <!-- Game Scripts -->
     <script src="firebase-config.js"></script>
-    <script src="questions.js?v=20261020_v3"></script>
+    <script src="questions.js?v=20261026_v5"></script>
     <script src="audio.js"></script>
 
     <script>
@@ -1060,7 +1060,7 @@
             } else if (setId === 'set2') {
                 badge.innerHTML = `✨ Đang chọn: <b>Bộ 2</b> (${count || 30} món ngẫu nhiên tối ưu)`;
             } else if (setId === 'set4') {
-                badge.innerHTML = `🔥 Đang chọn: <b>Bộ 4</b> (${count || 44} món mix siêu hấp dẫn từ Hảo Hảo đến Porsche)`;
+                badge.innerHTML = `🔥 Đang chọn: <b>Bộ 4</b> (${count || 44} món mix siêu hấp dẫn từ KFC đến Chanel)`;
             } else {
                 badge.innerHTML = `👑 Đang chọn: <b>Bộ 3</b> (Toàn bộ ${count || 47} bảo vật 20/10)`;
             }
@@ -1743,18 +1743,29 @@
                 }
             });
 
-            // Lắng nghe sản phẩm tùy chỉnh từ review_products.html (Bộ 20/10)
+            // Lắng nghe sản phẩm tùy chỉnh từ review_products (Bộ 20/10 hoặc Bộ Mix v2)
             db.ref('custom_products').on('value', snap => {
                 const custom = snap.val();
                 if (custom && Array.isArray(custom) && custom.length > 0) {
-                    if (window.QUESTION_SETS && window.QUESTION_SETS.set3) {
-                        window.QUESTION_SETS.set3.questions = custom;
+                    if (custom.length === 44 || (custom[0] && custom[0].name && custom[0].name.includes('KFC'))) {
+                        if (window.QUESTION_SETS && window.QUESTION_SETS.set4) {
+                            window.QUESTION_SETS.set4.questions = custom;
+                        }
+                        window.GAME_QUESTIONS_V2 = custom;
+                        if (currentSetId === 'set4') {
+                            QUESTIONS = custom;
+                        }
+                        console.log('⚡ Host đã nhận danh sách sản phẩm mix v2 từ custom_products:', custom.length);
+                    } else {
+                        if (window.QUESTION_SETS && window.QUESTION_SETS.set3) {
+                            window.QUESTION_SETS.set3.questions = custom;
+                        }
+                        window.GAME_QUESTIONS = custom;
+                        if (currentSetId === 'set3') {
+                            QUESTIONS = custom;
+                        }
+                        console.log('⚡ Host đã nhận danh sách sản phẩm tùy chỉnh từ Firebase:', custom.length);
                     }
-                    window.GAME_QUESTIONS = custom;
-                    if (currentSetId === 'set3') {
-                        QUESTIONS = custom;
-                    }
-                    console.log('⚡ Host đã nhận danh sách sản phẩm tùy chỉnh từ Firebase:', custom.length);
                 }
             });
 

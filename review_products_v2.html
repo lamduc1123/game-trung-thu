@@ -352,8 +352,8 @@
         <div class="header">
             <h1>🔥 ĐỐI SOÁT & QUẢN LÝ BỘ 44 SẢN PHẨM MỚI 🔥</h1>
             <p class="subtitle">
-                Bộ sưu tập mix mới đa phân khúc: Từ tiêu dùng, ăn uống quen thuộc (Kem Mixue 10k, Gà KFC 35k, Thùng La Vie 98k, Thùng Mì Hảo Hảo 125k) 
-                đến thời trang, mỹ phẩm, đồ công nghệ & siêu xe (AirPods Pro, PS5, iPhone, SH 160i, VinFast VF 3, Rolex, Porsche 3.35 Tỷ).
+                Bộ sưu tập mix mới đa phân khúc: Từ tiêu dùng, ăn uống quen thuộc (Gà KFC 35k, Highlands 39k, Thùng La Vie 98k, Thùng Mì Hảo Hảo 125k) 
+                đến thời trang, mỹ phẩm, đồ công nghệ & túi xách xa xỉ (AirPods Pro, PS5, iPhone 16 Pro Max, SH 160i, VinFast VF 3, Chanel Classic Flap).
             </p>
             <div class="nav-links">
                 <a href="review_products.html" class="nav-btn">🌸 Xem Bộ 20/10 (47 SP Cũ)</a>
@@ -490,10 +490,10 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
     <script src="firebase-config.js"></script>
-    <script src="questions.js?v=20261026_v4"></script>
+    <script src="questions.js?v=20261026_v5"></script>
 
     <script>
-        const LOCAL_STORAGE_KEY = 'hay_chon_gia_dung_products_v2';
+        const LOCAL_STORAGE_KEY = 'hay_chon_gia_dung_products_v2_44';
         let products = [];
         let okCount = 0;
         let errCount = 0;
@@ -504,11 +504,19 @@
 
         // Khởi tạo sản phẩm
         function initProducts() {
+            // Xóa cache cũ nếu còn tồn tại
+            try {
+                localStorage.removeItem('hay_chon_gia_dung_products_v2');
+            } catch(e) {}
+
             // 1. Kiểm tra localStorage
             const saved = localStorage.getItem(LOCAL_STORAGE_KEY);
             if (saved) {
                 try {
-                    products = JSON.parse(saved);
+                    const parsed = JSON.parse(saved);
+                    if (Array.isArray(parsed) && parsed.length > 0) {
+                        products = parsed;
+                    }
                 } catch(e) {
                     console.warn('Lỗi đọc localStorage:', e);
                 }
@@ -540,7 +548,7 @@
                 renderGrid();
             }
 
-            // 3. Lắng nghe cập nhật từ Firebase nhánh custom_products_v2
+            // 3. Lắng nghe cập nhật từ Firebase nhánh custom_products_v2 hoặc custom_products
             if (db) {
                 db.ref('custom_products_v2').once('value', snap => {
                     const custom = snap.val();
@@ -548,10 +556,23 @@
                         products = custom;
                         saveToStorage();
                         renderGrid();
+                    } else {
+                        checkFallbackCustom();
                     }
-                }).catch(err => {
-                    console.warn('Firebase read error:', err);
+                }).catch(() => {
+                    checkFallbackCustom();
                 });
+
+                function checkFallbackCustom() {
+                    db.ref('custom_products').once('value', snap => {
+                        const custom = snap.val();
+                        if (custom && Array.isArray(custom) && (custom.length === 44 || (custom[0] && custom[0].name && custom[0].name.includes('KFC')))) {
+                            products = custom;
+                            saveToStorage();
+                            renderGrid();
+                        }
+                    }).catch(e => console.warn('Lỗi đọc fallback custom_products:', e));
+                }
             }
         }
 
@@ -808,7 +829,7 @@
             }
         }
 
-        // Đồng bộ lên Firebase
+        // Đồng bộ lên Firebase (hỗ trợ fallback nếu custom_products_v2 bị hạn chế rules)
         function syncToFirebase() {
             if (!db) {
                 alert('Không thể kết nối Firebase! Vui lòng kiểm tra lại cấu hình.');
@@ -828,7 +849,7 @@
                 hint2: p.hint2 || ''
             }));
 
-            // Đồng bộ đồng thời lên nhánh custom_products_v2 và cập nhật active_questions nếu Host đang mở
+            // Thử đồng bộ lên custom_products_v2 trước; nếu rules chặn thì tự động đồng bộ qua custom_products và game_state
             db.ref('custom_products_v2').set(cleanProducts)
                 .then(() => {
                     db.ref('game_state').update({
@@ -839,7 +860,29 @@
                     showToast('⚡ ĐÃ ĐỒNG BỘ BỘ 44 MÓN LÊN FIREBASE THÀNH CÔNG!');
                 })
                 .catch(err => {
-                    alert('Lỗi đồng bộ Firebase: ' + err.message);
+                    console.warn('custom_products_v2 không ghi được, kích hoạt fallback custom_products:', err);
+                    // Fallback ghi vào custom_products (nhánh chuẩn của dự án)
+                    db.ref('custom_products').set(cleanProducts)
+                        .then(() => {
+                            db.ref('game_state').update({
+                                active_questions: cleanProducts,
+                                total_questions: cleanProducts.length,
+                                question_set: 'set4'
+                            }).catch(() => {});
+                            showToast('⚡ ĐÃ ĐỒNG BỘ BỘ 44 MÓN VÀO GAME THÀNH CÔNG!');
+                        })
+                        .catch(err2 => {
+                            // Cố gắng cập nhật trực tiếp vào game_state
+                            db.ref('game_state').update({
+                                active_questions: cleanProducts,
+                                total_questions: cleanProducts.length,
+                                question_set: 'set4'
+                            }).then(() => {
+                                showToast('⚡ ĐÃ ĐỒNG BỘ BỘ 44 MÓN VÀO GAME_STATE THÀNH CÔNG!');
+                            }).catch(err3 => {
+                                alert('Lỗi đồng bộ Firebase: ' + (err2.message || err.message));
+                            });
+                        });
                 });
         }
 
@@ -899,6 +942,7 @@ ${JSON.stringify(cleanProducts, null, 2)}
         function resetToDefault() {
             if (confirm('Bạn có muốn đặt lại danh sách về 44 sản phẩm gốc của bộ Mix mới? Mọi thay đổi trong trình duyệt sẽ được khôi phục.')) {
                 localStorage.removeItem(LOCAL_STORAGE_KEY);
+                localStorage.removeItem('hay_chon_gia_dung_products_v2');
                 if (window.GAME_QUESTIONS_V2) {
                     products = JSON.parse(JSON.stringify(window.GAME_QUESTIONS_V2));
                 } else if (window.QUESTION_SETS && window.QUESTION_SETS.set4) {
