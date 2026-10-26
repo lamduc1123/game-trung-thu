@@ -534,7 +534,10 @@ window.GAME_QUESTIONS_V2 = [
   }
 ];
 
-// Thuật toán chọn tập câu hỏi ngẫu nhiên tối ưu (Stratified Sampling + Brand Diversity)
+// Danh sách các ID thuộc ngành hàng mỹ phẩm / làm đẹp nữ để cân đối tỷ lệ
+const FEMALE_BEAUTY_IDS = new Set([5, 6, 8, 9, 11, 12, 13, 15, 17, 19, 20, 21, 22, 26, 27, 29, 31, 35, 40]);
+
+// Thuật toán chọn tập câu hỏi ngẫu nhiên cân đối Nam - Nữ - Công nghệ
 window.generateOptimalQuestionSet = function(setId, customPool) {
     let pool = customPool;
     if (!pool || pool.length === 0) {
@@ -546,66 +549,77 @@ window.generateOptimalQuestionSet = function(setId, customPool) {
     }
 
     if (!pool || pool.length === 0) return [];
+    if (setId === "set4" || setId === "set3") return pool;
 
-    let count = pool.length;
-    if (setId === "set1") count = Math.min(15, pool.length);
-    else if (setId === "set2") count = Math.min(30, pool.length);
-    else return pool;
+    const count = (setId === "set1") ? 15 : 30;
 
-    // Phân loại phân khúc giá để cân đối trải nghiệm
-    const tier1 = pool.filter(p => (p.price || 0) < 300000); // Bình dân (<300k)
-    const tier2 = pool.filter(p => (p.price || 0) >= 300000 && (p.price || 0) <= 2000000); // Tầm trung (300k - 2tr)
-    const tier3 = pool.filter(p => (p.price || 0) > 2000000); // Cao cấp & Công nghệ (>2tr)
+    // Tách riêng nhóm Mỹ phẩm nữ và nhóm Nam giới / Đồ ăn / Công nghệ / Tiêu dùng chung
+    const femaleItems = pool.filter(p => FEMALE_BEAUTY_IDS.has(p.id));
+    const maleAndGeneralItems = pool.filter(p => !FEMALE_BEAUTY_IDS.has(p.id));
 
-    let target1 = 5, target2 = 6, target3 = 4;
-    if (count === 30) {
-        target1 = 10;
-        target2 = 13;
-        target3 = 7;
-    }
+    // Mục tiêu tỷ lệ cân bằng vàng: Ưu tiên mạnh đồ nam, đồ ăn uống, gaming & công nghệ
+    let fCount = (count === 15) ? 4 : 9;
+    let mgCount = count - fCount;
+
+    // Phân tầng giá cho nhóm Nam & Tiêu dùng chung
+    const mgLow = maleAndGeneralItems.filter(p => p.price < 300000);
+    const mgMid = maleAndGeneralItems.filter(p => p.price >= 300000 && p.price <= 2000000);
+    const mgHigh = maleAndGeneralItems.filter(p => p.price > 2000000);
+
+    // Phân tầng giá cho nhóm Nữ
+    const fLow = femaleItems.filter(p => p.price < 300000);
+    const fMidHigh = femaleItems.filter(p => p.price >= 300000);
 
     const usedBrands = new Set();
-
-    function sampleTier(tier, needed) {
+    function pickSample(tier, needed) {
         const shuffled = [...tier].sort(() => Math.random() - 0.5);
-        const picked = [];
-        // Lượt 1: Ưu tiên thương hiệu chưa xuất hiện
+        const res = [];
         for (const p of shuffled) {
-            if (picked.length >= needed) break;
-            const b = p.brand ? p.brand.trim().toLowerCase() : "";
+            if (res.length >= needed) break;
+            const b = (p.brand || "").trim().toLowerCase();
             if (b && !usedBrands.has(b)) {
-                picked.push(p);
+                res.push(p);
                 usedBrands.add(b);
             }
         }
-        // Lượt 2: Nếu chưa đủ chỉ tiêu thì lấy thêm trong tier
-        if (picked.length < needed) {
+        if (res.length < needed) {
             for (const p of shuffled) {
-                if (picked.length >= needed) break;
-                if (!picked.includes(p)) {
-                    picked.push(p);
-                }
+                if (res.length >= needed) break;
+                if (!res.includes(p)) res.push(p);
             }
         }
-        return picked;
+        return res;
     }
 
-    const p1 = sampleTier(tier1, target1);
-    const p2 = sampleTier(tier2, target2);
-    const p3 = sampleTier(tier3, target3);
-    let selected = [...p1, ...p2, ...p3];
+    let sel = [];
+    if (count === 15) {
+        sel = [
+            ...pickSample(mgLow, 4),
+            ...pickSample(mgMid, 4),
+            ...pickSample(mgHigh, 3),
+            ...pickSample(fLow, 2),
+            ...pickSample(fMidHigh, 2)
+        ];
+    } else {
+        sel = [
+            ...pickSample(mgLow, 6),
+            ...pickSample(mgMid, 9),
+            ...pickSample(mgHigh, 6),
+            ...pickSample(fLow, 4),
+            ...pickSample(fMidHigh, 5)
+        ];
+    }
 
-    // Bù trừ nếu tier nào thiếu
-    if (selected.length < count) {
-        const remaining = pool.filter(p => !selected.some(s => s.id === p.id));
+    // Bù trừ nếu thiếu
+    if (sel.length < count) {
+        const remaining = pool.filter(p => !sel.some(s => s.id === p.id));
         remaining.sort(() => Math.random() - 0.5);
-        selected = selected.concat(remaining.slice(0, count - selected.length));
+        sel = sel.concat(remaining.slice(0, count - sel.length));
     }
 
-    // Sắp xếp thứ tự giá tăng dần để cuộc chơi ngày càng kịch tính
-    selected.sort((a, b) => a.price - b.price);
-
-    return selected;
+    // Sắp xếp thứ tự giá tăng dần để hồi hộp kịch tính
+    sel.sort((a, b) => a.price - b.price);
+    return sel;
 };
 
 // ==========================================
@@ -614,7 +628,7 @@ window.generateOptimalQuestionSet = function(setId, customPool) {
 window.QUESTION_SETS = {
   "set1": {
     "id": "set1",
-    "name": "Bộ 1: 15 Món Ngẫu Nhiên Cân Bằng (Mix 15/44 Món Mới)",
+    "name": "Bộ 1: 15 Món Ngẫu Nhiên Cân Bằng (Mix Nam Nữ & Công Nghệ)",
     "questions": [
   {
     "id": 1,
@@ -641,28 +655,40 @@ window.QUESTION_SETS = {
     "time": 35
   },
   {
-    "id": 5,
-    "name": "Chì kẻ chân mày Innisfree Auto Eyebrow Pencil 0.3g",
-    "brand": "Innisfree",
-    "category": "Trang Điểm",
-    "price": 100000,
-    "image": "https://bizweb.dktcdn.net/thumb/grande/100/351/461/products/chi-ke-may-innisfree-auto-eyebrow-pencil-1.jpg",
-    "sourceUrl": "https://vn.innisfree.com/",
-    "hint1": "Giá dao động trong khoảng từ 80.000đ - 170.000đ.",
-    "hint2": "Món mỹ phẩm quốc dân siêu vừa túi tiền, giá tròn trĩnh bằng đúng mệnh giá một tờ tiền polymer màu đỏ.",
+    "id": 4,
+    "name": "Thùng 24 chai Nước khoáng thiên nhiên La Vie 500ml",
+    "brand": "La Vie",
+    "category": "Đồ Uống",
+    "price": 98000,
+    "image": "images/products/v2_lavie_thung.jpg",
+    "sourceUrl": "https://www.laviewater.com/",
+    "hint1": "Giá nguyên một thùng 24 chai dao động trong khoảng từ 80.000đ - 120.000đ.",
+    "hint2": "Chưa tới một trăm nghìn đồng (thiếu đúng 2.000đ là tròn), chữ số hàng chục nghìn là số 9.",
     "time": 35
   },
   {
-    "id": 7,
-    "name": "Thùng 30 gói Mì Hảo Hảo tôm chua cay 75g",
-    "brand": "Acecook",
-    "category": "Thực Phẩm",
-    "price": 125000,
-    "image": "images/products/v2_haohao_thung.jpg",
-    "sourceUrl": "https://acecookvietnam.vn/",
-    "hint1": "Giá mua nguyên một thùng 30 gói nằm trong khoảng từ 105.000đ đến 155.000đ.",
-    "hint2": "Mức giá hơn một trăm nghìn một chút, hai chữ số đầu là số tự nhiên lẻ và chẵn (1 và 2), kết thúc hàng nghìn bằng số 5.",
+    "id": 9,
+    "name": "Nước tẩy trang Cocoon Bí Đao 140ml",
+    "brand": "Cocoon",
+    "category": "Tẩy Trang",
+    "price": 145000,
+    "image": "images/products/p3.jpg",
+    "sourceUrl": "https://cocoonvietnam.com/",
+    "hint1": "Mỹ phẩm thuần chay Việt Nam, giá nằm trong khoảng từ 120.000đ - 210.000đ.",
+    "hint2": "Chữ số hàng chục nghìn là số chẵn, chữ số hàng nghìn chia hết cho 5 (dạng đuôi 45k).",
     "time": 35
+  },
+  {
+    "name": "Dao cạo râu Gillette Mach 3 Turbo (1 thân + 1 đầu cạo)",
+    "brand": "Gillette",
+    "category": "Chăm Sóc Nam",
+    "price": 169000,
+    "image": "images/products/v2_gillette.jpg",
+    "sourceUrl": "https://www.gillette.com/",
+    "hint1": "Dao cạo 3 lưỡi đàn hồi quốc dân cho nam giới, giá từ 135.000đ - 220.000đ.",
+    "hint2": "Mức giá hơn một trăm nghìn đồng, chữ số hàng chục nghìn là số chia hết cho 3 và hàng nghìn là số 9 may mắn.",
+    "time": 35,
+    "id": 10
   },
   {
     "id": 12,
@@ -677,42 +703,6 @@ window.QUESTION_SETS = {
     "time": 35
   },
   {
-    "name": "Sáp vuốt tóc nam Apestomen Volcanic Clay 80g",
-    "brand": "Apestomen",
-    "category": "Tạo Kiểu Tóc",
-    "price": 340000,
-    "image": "images/products/v2_volcanic_clay.jpg",
-    "sourceUrl": "https://apestomen.com/",
-    "hint1": "Sáp vuốt tóc nam nắp nhôm bán chạy số 1 Việt Nam, giá từ 260.000đ - 420.000đ.",
-    "hint2": "Mức giá tròn chục nghìn, hai chữ số đầu cộng lại bằng 7 (chữ số hàng chục nghìn là số 4).",
-    "time": 35,
-    "id": 14
-  },
-  {
-    "id": 15,
-    "name": "Phấn má hồng 3CE Mood Recipe 5.5g",
-    "brand": "3CE",
-    "category": "Trang Điểm",
-    "price": 398000,
-    "image": "images/products/custom_p10.png",
-    "sourceUrl": "https://beautybox.com.vn/",
-    "hint1": "Thương hiệu 3CE đình đám Hàn Quốc, giá trong khoảng từ 310.000đ - 460.000đ.",
-    "hint2": "Kém đúng 2.000đ là tròn mốc 400.000đ, hai chữ số đầu là hai số tự nhiên liên tiếp.",
-    "time": 35
-  },
-  {
-    "name": "Áo Polo nam Uniqlo Dry Pique ngắn tay",
-    "brand": "Uniqlo",
-    "category": "Thời Trang Nam",
-    "price": 490000,
-    "image": "images/products/v2_uniqlo_polo.jpg",
-    "sourceUrl": "https://www.uniqlo.com/vn/",
-    "hint1": "Mẫu áo polo công sở quốc dân của Uniqlo Nhật Bản, giá niêm yết từ 380.000đ - 650.000đ.",
-    "hint2": "Sát nút chạm mốc nửa triệu đồng (thiếu đúng 10.000đ là tròn 500k).",
-    "time": 35,
-    "id": 18
-  },
-  {
     "id": 20,
     "name": "Kem chống nắng Anessa Perfect UV Sunscreen Skincare Milk 60ml",
     "brand": "Anessa",
@@ -725,52 +715,52 @@ window.QUESTION_SETS = {
     "time": 35
   },
   {
-    "name": "Máy cạo râu điện Philips S1103/02 chống nước",
-    "brand": "Philips",
-    "category": "Chăm Sóc Nam",
-    "price": 790000,
-    "image": "images/products/v2_philips_shaver.jpg",
-    "sourceUrl": "https://www.philips.com.vn/",
-    "hint1": "Máy cạo râu 3 đầu xoay không dây chính hãng Hà Lan, giá từ 620.000đ - 980.000đ.",
-    "hint2": "Dưới mốc 800k một chút, hai chữ số đầu là hai số lẻ liên tiếp tăng dần 7 và 9.",
+    "name": "Chuột gaming không dây Logitech G304 Lightspeed",
+    "brand": "Logitech",
+    "category": "Phụ Kiện Gaming",
+    "price": 890000,
+    "image": "images/products/v2_logitech_g304.jpg",
+    "sourceUrl": "https://www.logitechg.com/",
+    "hint1": "Chú chuột gaming không dây quốc dân của anh em game thủ, giá từ 700.000đ - 1.150.000đ.",
+    "hint2": "Chưa tới chín trăm nghìn, hai chữ số đầu là 8 và 9 (số tự nhiên liên tiếp lớn nhất có một chữ số).",
     "time": 35,
-    "id": 23
+    "id": 25
   },
   {
-    "id": 31,
-    "name": "Kem nền YSL All Hours Foundation Luminous Matte 25ml",
-    "brand": "YSL",
-    "category": "Trang Điểm",
-    "price": 1850000,
-    "image": "images/products/p33.jpg",
-    "sourceUrl": "https://www.yslbeauty.com/",
-    "hint1": "Giá nằm trong khoảng từ 1.500.000đ - 2.700.000đ.",
-    "hint2": "Kem nền che phủ đỉnh cao của YSL, nằm dưới mốc 2 triệu với chữ số hàng trăm nghìn là số chẵn chia hết cho 4.",
-    "time": 35
-  },
-  {
-    "id": 33,
-    "name": "Giày sneaker Nike Air Force 1 '07",
-    "brand": "Nike",
+    "id": 28,
+    "name": "Dép quai hậu Crocs Classic Clog",
+    "brand": "Crocs",
     "category": "Giày Dép",
-    "price": 2929000,
-    "image": "https://static.nike.com/a/images/t_web_pdp_936_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/f094af40-f82f-4fb9-a246-e031bf6fc411/WMNS+AIR+FORCE+1+%2707.png",
-    "sourceUrl": "https://www.nike.com/vn/",
-    "hint1": "Giá dao động trong khoảng từ 2.000.000đ đến 3.500.000đ.",
-    "hint2": "Đôi giày quốc dân của Nike suýt soát chạm ngưỡng 3 triệu, cấu tạo bởi cụm số 2 chữ số 29 lặp lại 2 lần liên tiếp.",
+    "price": 1395000,
+    "image": "images/products/v2_crocs.png",
+    "sourceUrl": "https://crocs.com.vn/",
+    "hint1": "Đôi dép lỗ quốc dân chính hãng Supersports, giá trong khoảng từ 1.100.000đ - 1.800.000đ.",
+    "hint2": "Mức giá suýt soát 1,4 triệu, cấu tạo bởi số 1 ở đầu và 3 chữ số lẻ liên tiếp nhau phía sau.",
     "time": 35
   },
   {
-    "name": "Đồng hồ thể thao nam Casio G-Shock GA-2100 (Bát giác CasiOak)",
-    "brand": "Casio G-Shock",
-    "category": "Đồng Hồ Nam",
-    "price": 3150000,
-    "image": "images/products/v2_gshock_ga2100.jpg",
-    "sourceUrl": "https://www.casio.com/vn/",
-    "hint1": "Mẫu đồng hồ G-Shock bát giác siêu bền bỉ hot nhất của Casio, giá từ 2.400.000đ - 3.900.000đ.",
-    "hint2": "Hơn 3 triệu đồng, chữ số hàng trăm nghìn là số 1 và hàng chục nghìn là số 5 tròn trĩnh.",
-    "time": 35,
-    "id": 34
+    "id": 30,
+    "name": "Nồi chiên không dầu Philips Airfryer 4.1L (HD9252)",
+    "brand": "Philips",
+    "category": "Gia Dụng",
+    "price": 1790000,
+    "image": "images/products/v2_philips.jpg",
+    "sourceUrl": "https://www.philips.com.vn/",
+    "hint1": "Gia dụng nhà bếp hàng đầu Hà Lan, giá dao động trong khoảng từ 1.300.000đ - 2.400.000đ.",
+    "hint2": "Dưới 2 triệu đồng, hai chữ số hàng trăm nghìn và chục nghìn là hai số lẻ liên tiếp tăng dần 7 và 9.",
+    "time": 35
+  },
+  {
+    "id": 32,
+    "name": "Giày thể thao adidas Grand Court 3.0 nữ",
+    "brand": "Adidas",
+    "category": "Thời Trang",
+    "price": 2000000,
+    "image": "images/products/custom_p19.png",
+    "sourceUrl": "https://www.adidas.com.vn/",
+    "hint1": "Đôi giày 3 sọc thể thao kinh điển, giá nằm trong khoảng từ 1.600.000đ - 2.800.000đ.",
+    "hint2": "Con số tuyệt đối tròn trĩnh với 6 chữ số 0 phía sau chữ số 2.",
+    "time": 35
   },
   {
     "id": 35,
@@ -795,12 +785,36 @@ window.QUESTION_SETS = {
     "hint2": "Gần chạm mốc 4 triệu đồng, cụm chữ số sau hàng triệu là 950 (đuôi chín trăm năm mươi nghìn).",
     "time": 35,
     "id": 36
+  },
+  {
+    "name": "Máy chơi game cầm tay Nintendo Switch OLED",
+    "brand": "Nintendo",
+    "category": "Máy Chơi Game",
+    "price": 7490000,
+    "image": "images/products/v2_nintendo_switch.jpg",
+    "sourceUrl": "https://www.nintendo.com/",
+    "hint1": "Cỗ máy chơi game gia đình thế hệ màn OLED của Nintendo, giá tham khảo từ 6.300.000đ - 8.900.000đ.",
+    "hint2": "Hơn 7 triệu đồng, chữ số hàng trăm nghìn là số chẵn 4 và đuôi là 90.000đ quen thuộc.",
+    "time": 35,
+    "id": 38
+  },
+  {
+    "id": 39,
+    "name": "Apple Watch Series 10 GPS 42mm Viền Nhôm",
+    "brand": "Apple",
+    "category": "Công Nghệ",
+    "price": 10990000,
+    "image": "images/products/p23.png",
+    "sourceUrl": "https://www.apple.com/vn/apple-watch-series-10/",
+    "hint1": "Đồng hồ thông minh thế hệ mới nhất của Apple, giá trong khoảng từ 9.200.000đ - 13.500.000đ.",
+    "hint2": "Vừa vượt mốc 10 triệu đồng, thiếu đúng 10.000đ là tròn 11 triệu.",
+    "time": 35
   }
 ]
   },
   "set2": {
     "id": "set2",
-    "name": "Bộ 2: 30 Món Ngẫu Nhiên Cân Bằng (Mix 30/44 Món Mới)",
+    "name": "Bộ 2: 30 Món Ngẫu Nhiên Cân Bằng (Mix Nam Nữ & Công Nghệ)",
     "questions": [
   {
     "id": 1,
@@ -851,15 +865,15 @@ window.QUESTION_SETS = {
     "time": 35
   },
   {
-    "id": 5,
-    "name": "Chì kẻ chân mày Innisfree Auto Eyebrow Pencil 0.3g",
-    "brand": "Innisfree",
-    "category": "Trang Điểm",
-    "price": 100000,
-    "image": "https://bizweb.dktcdn.net/thumb/grande/100/351/461/products/chi-ke-may-innisfree-auto-eyebrow-pencil-1.jpg",
-    "sourceUrl": "https://vn.innisfree.com/",
-    "hint1": "Giá dao động trong khoảng từ 80.000đ - 170.000đ.",
-    "hint2": "Món mỹ phẩm quốc dân siêu vừa túi tiền, giá tròn trĩnh bằng đúng mệnh giá một tờ tiền polymer màu đỏ.",
+    "id": 6,
+    "name": "Mặt nạ ngủ môi Laneige Berry Mini 3g",
+    "brand": "Laneige",
+    "category": "Dưỡng Môi",
+    "price": 110000,
+    "image": "images/products/p1.jpg",
+    "sourceUrl": "https://www.laneige.com/",
+    "hint1": "Giá dao động trong khoảng từ 90.000đ - 220.000đ.",
+    "hint2": "Mức giá tròn chục nghìn, hai chữ số đầu tiên hoàn toàn giống nhau.",
     "time": 35
   },
   {
@@ -899,15 +913,15 @@ window.QUESTION_SETS = {
     "id": 10
   },
   {
-    "id": 12,
-    "name": "Nước tẩy trang L’Oréal cho da dầu 400ml",
-    "brand": "L’Oréal",
-    "category": "Tẩy Trang",
-    "price": 249000,
-    "image": "images/products/p7.png",
-    "sourceUrl": "https://www.lorealparis.com.vn/",
-    "hint1": "Chai lớn 400ml của Pháp, giá niêm yết trong khoảng từ 210.000đ - 330.000đ.",
-    "hint2": "Mức giá tâm lý quen thuộc của các hãng lớn, chỉ thiếu đúng 1.000đ là tròn 250.000đ.",
+    "id": 11,
+    "name": "Sữa dưỡng thể Vaseline Gluta-Hya 300ml",
+    "brand": "Vaseline",
+    "category": "Dưỡng Thể",
+    "price": 195000,
+    "image": "https://assets.unileversolutions.com/v1/146561209.png",
+    "sourceUrl": "https://www.vaseline.com/",
+    "hint1": "Thuộc phân khúc giá từ 150.000đ đến 270.000đ.",
+    "hint2": "Sát nút chạm mốc 200k, chỉ thiếu đúng 5.000đ là tròn hai trăm nghìn.",
     "time": 35
   },
   {
@@ -923,6 +937,18 @@ window.QUESTION_SETS = {
     "time": 35
   },
   {
+    "name": "Sáp vuốt tóc nam Apestomen Volcanic Clay 80g",
+    "brand": "Apestomen",
+    "category": "Tạo Kiểu Tóc",
+    "price": 340000,
+    "image": "images/products/v2_volcanic_clay.jpg",
+    "sourceUrl": "https://apestomen.com/",
+    "hint1": "Sáp vuốt tóc nam nắp nhôm bán chạy số 1 Việt Nam, giá từ 260.000đ - 420.000đ.",
+    "hint2": "Mức giá tròn chục nghìn, hai chữ số đầu cộng lại bằng 7 (chữ số hàng chục nghìn là số 4).",
+    "time": 35,
+    "id": 14
+  },
+  {
     "id": 15,
     "name": "Phấn má hồng 3CE Mood Recipe 5.5g",
     "brand": "3CE",
@@ -935,27 +961,39 @@ window.QUESTION_SETS = {
     "time": 35
   },
   {
-    "id": 17,
-    "name": "Toner Klairs Supple Preparation Unscented 180ml",
-    "brand": "Klairs",
-    "category": "Chăm Sóc Da",
-    "price": 435000,
-    "image": "images/products/custom_p11.png",
-    "sourceUrl": "https://beautybox.com.vn/products/nuoc-hoa-hong-cho-da-nhay-cam-klairs-supple-preparation-unscented-toner-180ml",
-    "hint1": "Giá dao động trong khoảng từ 360.000đ - 620.000đ.",
-    "hint2": "Mức giá có chữ số hàng chục nghìn là số lẻ, kết thúc hàng nghìn chia hết cho 5.",
-    "time": 35
+    "name": "Thùng 24 lon Bia Tiger Crystal 330ml",
+    "brand": "Tiger",
+    "category": "Đồ Uống",
+    "price": 415000,
+    "image": "images/products/v2_tiger_crystal.jpg",
+    "sourceUrl": "https://tigerbeer.com.vn/",
+    "hint1": "Giá nguyên thùng 24 lon bia bạc tiệc tùng của phái mạnh, dao động từ 360.000đ - 480.000đ.",
+    "hint2": "Hơn bốn trăm nghìn một chút, hai chữ số sau hàng trăm nghìn là số 1 và 5.",
+    "time": 35,
+    "id": 16
   },
   {
-    "id": 21,
-    "name": "Nước hoa nữ Zara Gardenia EDP 100ml",
-    "brand": "Zara",
-    "category": "Nước Hoa",
-    "price": 629000,
-    "image": "images/products/p32.jpg",
-    "sourceUrl": "https://www.zara.com/vn/",
-    "hint1": "Chai nước hoa Tây Ban Nha 100ml, giá dao động trong khoảng từ 450.000đ - 780.000đ.",
-    "hint2": "Mức giá hơn 600k một chút, chữ số hàng nghìn là số bình phương của 3.",
+    "name": "Áo Polo nam Uniqlo Dry Pique ngắn tay",
+    "brand": "Uniqlo",
+    "category": "Thời Trang Nam",
+    "price": 490000,
+    "image": "images/products/v2_uniqlo_polo.jpg",
+    "sourceUrl": "https://www.uniqlo.com/vn/",
+    "hint1": "Mẫu áo polo công sở quốc dân của Uniqlo Nhật Bản, giá niêm yết từ 380.000đ - 650.000đ.",
+    "hint2": "Sát nút chạm mốc nửa triệu đồng (thiếu đúng 10.000đ là tròn 500k).",
+    "time": 35,
+    "id": 18
+  },
+  {
+    "id": 20,
+    "name": "Kem chống nắng Anessa Perfect UV Sunscreen Skincare Milk 60ml",
+    "brand": "Anessa",
+    "category": "Chăm Sóc Da",
+    "price": 615000,
+    "image": "https://production-cdn.pharmacity.io/digital/828x828/plain/e-com/images/product/20261008121124-0-P10576_19.png",
+    "sourceUrl": "https://anessa.vn/",
+    "hint1": "Giá nằm trong khoảng từ 500.000đ - 920.000đ.",
+    "hint2": "Sữa chống nắng vương miện số 1 Nhật Bản, mức giá hơn 600k với chữ số hàng nghìn chia hết cho 5.",
     "time": 35
   },
   {
@@ -983,18 +1021,6 @@ window.QUESTION_SETS = {
     "id": 23
   },
   {
-    "name": "Chuột gaming không dây Logitech G304 Lightspeed",
-    "brand": "Logitech",
-    "category": "Phụ Kiện Gaming",
-    "price": 890000,
-    "image": "images/products/v2_logitech_g304.jpg",
-    "sourceUrl": "https://www.logitechg.com/",
-    "hint1": "Chú chuột gaming không dây quốc dân của anh em game thủ, giá từ 700.000đ - 1.150.000đ.",
-    "hint2": "Chưa tới chín trăm nghìn, hai chữ số đầu là 8 và 9 (số tự nhiên liên tiếp lớn nhất có một chữ số).",
-    "time": 35,
-    "id": 25
-  },
-  {
     "id": 24,
     "name": "Mũ lưỡi trai MLB Korea New York Yankees Ball Cap",
     "brand": "MLB",
@@ -1007,28 +1033,16 @@ window.QUESTION_SETS = {
     "time": 35
   },
   {
-    "id": 26,
-    "name": "Kem dưỡng đêm Eucerin Spotless Brightening 50ml",
-    "brand": "Eucerin",
-    "category": "Chăm Sóc Da",
-    "price": 959000,
-    "image": "images/products/p15.jpg",
-    "sourceUrl": "",
-    "hint1": "Mức giá niêm yết rơi vào tầm 800.000đ - 1.450.000đ.",
-    "hint2": "Dược mỹ phẩm cao cấp của Đức với giá sát mốc triệu đồng, hàng trăm nghìn và hàng nghìn cùng mang chữ số 9.",
-    "time": 35
-  },
-  {
-    "id": 27,
-    "name": "Son dưỡng Dior Addict Lip Glow 3.2g",
-    "brand": "Dior",
-    "category": "Dưỡng Môi",
-    "price": 1050000,
-    "image": "https://product.hstatic.net/1000025647/product/son-duong-dior-001-pink_grande.png",
-    "sourceUrl": "https://www.dior.com/",
-    "hint1": "Mức giá niêm yết rơi vào tầm 850.000đ - 1.600.000đ.",
-    "hint2": "Vừa chạm mốc triệu đồng xa xỉ, số tiền lẻ thêm vào chỉ tương đương một ly cà phê Highlands (50.000đ).",
-    "time": 35
+    "name": "Chuột gaming không dây Logitech G304 Lightspeed",
+    "brand": "Logitech",
+    "category": "Phụ Kiện Gaming",
+    "price": 890000,
+    "image": "images/products/v2_logitech_g304.jpg",
+    "sourceUrl": "https://www.logitechg.com/",
+    "hint1": "Chú chuột gaming không dây quốc dân của anh em game thủ, giá từ 700.000đ - 1.150.000đ.",
+    "hint2": "Chưa tới chín trăm nghìn, hai chữ số đầu là 8 và 9 (số tự nhiên liên tiếp lớn nhất có một chữ số).",
+    "time": 35,
+    "id": 25
   },
   {
     "id": 28,
@@ -1043,15 +1057,15 @@ window.QUESTION_SETS = {
     "time": 35
   },
   {
-    "id": 29,
-    "name": "Giày cao gót Charles & Keith Patent Buckled đen",
-    "brand": "Charles & Keith",
-    "category": "Thời Trang",
-    "price": 1690000,
-    "image": "images/products/p17.jpg",
-    "sourceUrl": "",
-    "hint1": "Thuộc phân khúc tầm giá từ 1.400.000đ - 2.600.000đ.",
-    "hint2": "Phân khúc giày công sở cao cấp C&K, mức giá tròn chục nghìn và chữ số hàng trăm nghìn là số chẵn chia hết cho 3.",
+    "id": 30,
+    "name": "Nồi chiên không dầu Philips Airfryer 4.1L (HD9252)",
+    "brand": "Philips",
+    "category": "Gia Dụng",
+    "price": 1790000,
+    "image": "images/products/v2_philips.jpg",
+    "sourceUrl": "https://www.philips.com.vn/",
+    "hint1": "Gia dụng nhà bếp hàng đầu Hà Lan, giá dao động trong khoảng từ 1.300.000đ - 2.400.000đ.",
+    "hint2": "Dưới 2 triệu đồng, hai chữ số hàng trăm nghìn và chục nghìn là hai số lẻ liên tiếp tăng dần 7 và 9.",
     "time": 35
   },
   {
@@ -1079,6 +1093,18 @@ window.QUESTION_SETS = {
     "time": 35
   },
   {
+    "id": 33,
+    "name": "Giày sneaker Nike Air Force 1 '07",
+    "brand": "Nike",
+    "category": "Giày Dép",
+    "price": 2929000,
+    "image": "https://static.nike.com/a/images/t_web_pdp_936_v2/f_auto,u_9ddf04c7-2a9a-4d76-add1-d15af8f0263d,c_scale,fl_relative,w_1.0,h_1.0,fl_layer_apply/f094af40-f82f-4fb9-a246-e031bf6fc411/WMNS+AIR+FORCE+1+%2707.png",
+    "sourceUrl": "https://www.nike.com/vn/",
+    "hint1": "Giá dao động trong khoảng từ 2.000.000đ đến 3.500.000đ.",
+    "hint2": "Đôi giày quốc dân của Nike suýt soát chạm ngưỡng 3 triệu, cấu tạo bởi cụm số 2 chữ số 29 lặp lại 2 lần liên tiếp.",
+    "time": 35
+  },
+  {
     "name": "Đồng hồ thể thao nam Casio G-Shock GA-2100 (Bát giác CasiOak)",
     "brand": "Casio G-Shock",
     "category": "Đồng Hồ Nam",
@@ -1103,6 +1129,18 @@ window.QUESTION_SETS = {
     "time": 35
   },
   {
+    "name": "Nước hoa nam Dior Sauvage Eau de Parfum 100ml",
+    "brand": "Dior",
+    "category": "Nước Hoa Nam",
+    "price": 3950000,
+    "image": "images/products/v2_dior_sauvage.jpg",
+    "sourceUrl": "https://www.dior.com/",
+    "hint1": "Chai nước hoa nam tính quyền lực bán chạy nhất hành tinh, giá từ 3.200.000đ - 4.800.000đ.",
+    "hint2": "Gần chạm mốc 4 triệu đồng, cụm chữ số sau hàng triệu là 950 (đuôi chín trăm năm mươi nghìn).",
+    "time": 35,
+    "id": 36
+  },
+  {
     "name": "Máy chơi game cầm tay Nintendo Switch OLED",
     "brand": "Nintendo",
     "category": "Máy Chơi Game",
@@ -1113,18 +1151,6 @@ window.QUESTION_SETS = {
     "hint2": "Hơn 7 triệu đồng, chữ số hàng trăm nghìn là số chẵn 4 và đuôi là 90.000đ quen thuộc.",
     "time": 35,
     "id": 38
-  },
-  {
-    "id": 40,
-    "name": "Máy sấy tóc Dyson Supersonic HD15",
-    "brand": "Dyson",
-    "category": "Chăm Sóc Tóc",
-    "price": 12990000,
-    "image": "images/products/p37.jpg",
-    "sourceUrl": "https://www.dyson.vn/",
-    "hint1": "Chiếc máy sấy tóc đắt đỏ bậc nhất thế giới, giá trong khoảng từ 10.500.000đ - 16.000.000đ.",
-    "hint2": "Suýt soát 13 triệu đồng, cấu tạo bởi cụm số 12 ở đầu và đuôi 990.000đ.",
-    "time": 35
   },
   {
     "id": 41,
@@ -1148,18 +1174,6 @@ window.QUESTION_SETS = {
     "sourceUrl": "https://www.apple.com/vn/iphone-16-pro/",
     "hint1": "Flagship cao cấp nhất của Apple, giá tham khảo từ 30.000.000đ đến 42.000.000đ.",
     "hint2": "Chỉ kém đúng 10.000đ là chạm mốc tròn 35 triệu đồng, đuôi 990k quen thuộc.",
-    "time": 35
-  },
-  {
-    "id": 44,
-    "name": "Xe tay ga cao cấp Honda SH 160i (Bản Tiêu Chuẩn)",
-    "brand": "Honda",
-    "category": "Xe Máy",
-    "price": 92490000,
-    "image": "images/products/v2_sh160i.jpg",
-    "sourceUrl": "https://www.honda.com.vn/",
-    "hint1": "Mẫu xe tay ga vua đường phố của Honda, giá đề xuất hãng trong khoảng từ 80.000.000đ - 110.000.000đ.",
-    "hint2": "Hơn 90 triệu đồng, hai chữ số đầu là 9 và 2, đuôi kết thúc là 490.000đ.",
     "time": 35
   }
 ]

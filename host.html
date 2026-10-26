@@ -74,7 +74,7 @@
             color: #fdf4ff;
             font-size: 0.95rem;
             font-weight: 800;
-            z-index: 50;
+            z-index: 9999;
             display: flex;
             align-items: center;
             gap: 12px;
@@ -1021,7 +1021,7 @@
 
     <!-- Game Scripts -->
     <script src="firebase-config.js"></script>
-    <script src="questions.js?v=20261026_v7"></script>
+    <script src="questions.js?v=20261026_v8"></script>
     <script src="audio.js"></script>
 
     <script>
@@ -1274,6 +1274,7 @@
                 window.QUESTION_SETS[currentSetId].questions = resetQuestions;
             }
             updateSetBadgeUI(currentSetId, resetQuestions.length);
+            showScreen('screenLobby');
 
             if (type === 'NEW_ROUND') {
                 db.ref('game_state').set({
