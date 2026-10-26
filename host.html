@@ -813,13 +813,13 @@
             <!-- Bộ Chọn Gói Câu Hỏi (Bộ 1 / Bộ 2 / Bộ 3 / Bộ 4) -->
             <div style="display:flex; flex-direction:column; align-items:center; margin-bottom: 12px;">
                 <div class="question-set-bar">
-                    <button class="btn-qset" id="btnQSet1" onclick="switchQuestionSet('set1')">🎲 Bộ 1 (15 Món)</button>
-                    <button class="btn-qset" id="btnQSet2" onclick="switchQuestionSet('set2')">✨ Bộ 2 (30 Món)</button>
-                    <button class="btn-qset" id="btnQSet3" onclick="switchQuestionSet('set3')">👑 Bộ 3 (47 Món Cũ)</button>
-                    <button class="btn-qset active" id="btnQSet4" onclick="switchQuestionSet('set4')">🔥 Bộ 4 (Mix 44 Món Mới)</button>
+                    <button class="btn-qset active" id="btnQSet1" onclick="switchQuestionSet('set1')">🎲 Bộ 1 (15 Món Mix Mới)</button>
+                    <button class="btn-qset" id="btnQSet2" onclick="switchQuestionSet('set2')">✨ Bộ 2 (30 Món Mix Mới)</button>
+                    <button class="btn-qset" id="btnQSet4" onclick="switchQuestionSet('set4')">🔥 Bộ 3 (Full 44 Món Mix)</button>
+                    <button class="btn-qset" id="btnQSet3" onclick="switchQuestionSet('set3')">👑 Bộ Cũ (47 Món 20/10)</button>
                     <button class="btn-qset" id="btnReshuffleQSet" onclick="reshuffleCurrentSet()" style="background:#fbbf24; color:#1e0a24; border:1.5px solid #000; box-shadow:2px 2px 0px #000;" title="Bốc ngẫu nhiên một bộ đề mới">🔄 Bốc Bộ Mới</button>
                 </div>
-                <div id="qSetInfoBadge" style="font-size:0.88rem; font-weight:800; color:#fed7aa; margin-top:-2px;">🔥 Đang chọn: Bộ 4 (44 món siêu mix đa dạng từ KFC đến SH 160i)</div>
+                <div id="qSetInfoBadge" style="font-size:0.88rem; font-weight:800; color:#fed7aa; margin-top:-2px;">🎲 Đang chọn: Bộ 1 (15 món ngẫu nhiên cân bằng từ 44 món mới - Tự động bốc mới mỗi ván)</div>
             </div>
 
             <div class="qr-section">
@@ -1018,18 +1018,18 @@
 
     <!-- Game Scripts -->
     <script src="firebase-config.js"></script>
-    <script src="questions.js?v=20261026_v6"></script>
+    <script src="questions.js?v=20261026_v7"></script>
     <script src="audio.js"></script>
 
     <script>
-        let currentSetId = 'set4';
-        let QUESTIONS = (window.QUESTION_SETS && window.QUESTION_SETS[currentSetId]) 
-            ? window.QUESTION_SETS[currentSetId].questions 
-            : (window.GAME_QUESTIONS_V2 || window.GAME_QUESTIONS || []);
+        let currentSetId = 'set1';
+        let QUESTIONS = (window.generateOptimalQuestionSet 
+            ? window.generateOptimalQuestionSet('set1') 
+            : ((window.QUESTION_SETS && window.QUESTION_SETS['set1']) ? window.QUESTION_SETS['set1'].questions : []));
 
         let timerInterval = null;
         let timeLeft = 0;
-        let currentState = { status: 'LOBBY', current_q_idx: 0, question_set: 'set4' };
+        let currentState = { status: 'LOBBY', current_q_idx: 0, question_set: 'set1' };
         let activePlayerUrl = '';
         let prevPlayersCount = 0;
         let serverTimeOffset = 0;
@@ -1056,13 +1056,13 @@
             const badge = document.getElementById('qSetInfoBadge');
             if (!badge) return;
             if (setId === 'set1') {
-                badge.innerHTML = `🎲 Đang chọn: <b>Bộ 1</b> (${count || 15} món ngẫu nhiên tối ưu)`;
+                badge.innerHTML = `🎲 Đang chọn: <b>Bộ 1</b> (${count || 15} món ngẫu nhiên cân bằng từ 44 món mới - Tự động bốc mới mỗi ván)`;
             } else if (setId === 'set2') {
-                badge.innerHTML = `✨ Đang chọn: <b>Bộ 2</b> (${count || 30} món ngẫu nhiên tối ưu)`;
+                badge.innerHTML = `✨ Đang chọn: <b>Bộ 2</b> (${count || 30} món ngẫu nhiên cân bằng từ 44 món mới)`;
             } else if (setId === 'set4') {
-                badge.innerHTML = `🔥 Đang chọn: <b>Bộ 4</b> (${count || 44} món siêu mix đa dạng từ KFC đến SH 160i)`;
+                badge.innerHTML = `🔥 Đang chọn: <b>Bộ 3</b> (Toàn bộ ${count || 44} món mix siêu hấp dẫn từ KFC đến SH 160i)`;
             } else {
-                badge.innerHTML = `👑 Đang chọn: <b>Bộ 3</b> (Toàn bộ ${count || 47} bảo vật 20/10)`;
+                badge.innerHTML = `👑 Đang chọn: <b>Bộ Cũ</b> (Toàn bộ ${count || 47} bảo vật 20/10)`;
             }
         }
 
