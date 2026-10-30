@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="referrer" content="no-referrer">
-    <title>🔥 QUẢN LÝ & ĐỐI SOÁT BỘ MIX 44 SẢN PHẨM • HÃY CHỌN GIÁ ĐÚNG</title>
+    <title>🔥 QUẢN LÝ & ĐỐI SOÁT BỘ MIX 34 SẢN PHẨM • HÃY CHỌN GIÁ ĐÚNG</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800;900&display=swap" rel="stylesheet">
@@ -350,9 +350,9 @@
     <div class="container">
         <!-- Header -->
         <div class="header">
-            <h1>🔥 ĐỐI SOÁT & QUẢN LÝ BỘ 44 SẢN PHẨM MỚI 🔥</h1>
+            <h1>🔥 ĐỐI SOÁT & QUẢN LÝ BỘ 34 SẢN PHẨM MỚI 🔥</h1>
             <p class="subtitle">
-                Bộ sưu tập 44 sản phẩm siêu mix đa dạng cho cả nam và nữ: từ đồ ăn nhanh (KFC), đồ uống (Highlands, Thùng Bia Tiger), văn phòng phẩm (Thiên Long), đồ dùng & thời trang nam (Gillette, Sáp Volcanic Clay, Áo Polo Uniqlo, Máy cạo râu Philips, Chuột Logitech, Casio G-Shock, Nước hoa Dior Sauvage) đến công nghệ & xe tay ga (AirPods Pro, Nintendo Switch, PS5, iPhone 16 Pro Max, SH 160i).
+                Bộ sưu tập 34 sản phẩm siêu mix đa dạng cho cả nam và nữ: từ đồ ăn nhanh (KFC), đồ uống (Highlands, Thùng Bia Tiger), văn phòng phẩm (Thiên Long), đồ dùng & thời trang nam (Gillette, Sáp Volcanic Clay, Áo Polo Uniqlo, Máy cạo râu Philips, Chuột Logitech, Casio G-Shock, Nước hoa Dior Sauvage) đến công nghệ & xe tay ga (AirPods Pro, Nintendo Switch, PS5, iPhone 16 Pro Max, SH 160i).
             </p>
             <div class="nav-links">
                 <a href="review_products.html" class="nav-btn">🌸 Xem Bộ 20/10 (47 SP Cũ)</a>
@@ -370,10 +370,10 @@
                     <button class="btn btn-sync" onclick="syncToFirebase()">⚡ Đồng Bộ Lên Firebase</button>
                     <button class="btn btn-ai" onclick="openExportModal()">📋 Xuất Cho AI</button>
                     <button class="btn btn-export" onclick="downloadJSON()">📥 Tải File JSON</button>
-                    <button class="btn btn-reset" onclick="resetToDefault()">🔄 Khôi Phục 44 Món Gốc</button>
+                    <button class="btn btn-reset" onclick="resetToDefault()">🔄 Khôi Phục 34 Món Gốc</button>
                 </div>
                 <div class="stats-badge">
-                    <span class="stat-total" id="statTotal">📦 44 SP</span>
+                    <span class="stat-total" id="statTotal">📦 34 SP</span>
                     <span class="stat-ok" id="statOk">🟢 0 Đúng</span>
                     <span class="stat-err" id="statErr">🔴 0 Lỗi</span>
                 </div>
@@ -382,7 +382,7 @@
             <!-- Filter & Search Row -->
             <div class="filter-row">
                 <span class="filter-label">Phân khúc:</span>
-                <button class="tier-btn active" onclick="filterTier('all', this)">Tất cả (44)</button>
+                <button class="tier-btn active" onclick="filterTier('all', this)">Tất cả (34)</button>
                 <button class="tier-btn" onclick="filterTier('tier1', this)">🍦 Cấp 1: &lt;100k (6)</button>
                 <button class="tier-btn" onclick="filterTier('tier2', this)">💄 Cấp 2: 100k-500k (13)</button>
                 <button class="tier-btn" onclick="filterTier('tier3', this)">☕ Cấp 3: 500k-2tr (10)</button>
@@ -489,10 +489,10 @@
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-database-compat.js"></script>
     <script src="firebase-config.js"></script>
-    <script src="questions.js?v=20261026_v9"></script>
+    <script src="questions.js?v=20261030_v1"></script>
 
     <script>
-        const LOCAL_STORAGE_KEY = 'hay_chon_gia_dung_products_v2_44_v6';
+        const LOCAL_STORAGE_KEY = 'hay_chon_gia_dung_products_v2_34_v1';
         let products = [];
         let okCount = 0;
         let errCount = 0;
@@ -566,7 +566,7 @@
                 function checkFallbackCustom() {
                     db.ref('custom_products').once('value', snap => {
                         const custom = snap.val();
-                        if (custom && Array.isArray(custom) && (custom.length === 44 || (custom[0] && custom[0].name && custom[0].name.includes('KFC')))) {
+                        if (custom && Array.isArray(custom) && (custom.length === 34 || custom.length === 44 || (custom[0] && custom[0].name && custom[0].name.includes('KFC')))) {
                             products = custom;
                             saveToStorage();
                             renderGrid();
@@ -857,7 +857,7 @@
                         total_questions: cleanProducts.length,
                         question_set: 'set4'
                     }).catch(() => {});
-                    showToast('⚡ ĐÃ ĐỒNG BỘ BỘ 44 MÓN LÊN FIREBASE THÀNH CÔNG!');
+                    showToast('⚡ ĐÃ ĐỒNG BỘ BỘ 34 MÓN LÊN FIREBASE THÀNH CÔNG!');
                 })
                 .catch(err => {
                     console.warn('custom_products_v2 không ghi được, kích hoạt fallback custom_products:', err);
@@ -869,7 +869,7 @@
                                 total_questions: cleanProducts.length,
                                 question_set: 'set4'
                             }).catch(() => {});
-                            showToast('⚡ ĐÃ ĐỒNG BỘ BỘ 44 MÓN VÀO GAME THÀNH CÔNG!');
+                            showToast('⚡ ĐÃ ĐỒNG BỘ BỘ 34 MÓN VÀO GAME THÀNH CÔNG!');
                         })
                         .catch(err2 => {
                             // Cố gắng cập nhật trực tiếp vào game_state
@@ -878,7 +878,7 @@
                                 total_questions: cleanProducts.length,
                                 question_set: 'set4'
                             }).then(() => {
-                                showToast('⚡ ĐÃ ĐỒNG BỘ BỘ 44 MÓN VÀO GAME_STATE THÀNH CÔNG!');
+                                showToast('⚡ ĐÃ ĐỒNG BỘ BỘ 34 MÓN VÀO GAME_STATE THÀNH CÔNG!');
                             }).catch(err3 => {
                                 alert('Lỗi đồng bộ Firebase: ' + (err2.message || err.message));
                             });
@@ -938,9 +938,9 @@ ${JSON.stringify(cleanProducts, null, 2)}
             showToast('📥 Đã tải file products_v2.json!');
         }
 
-        // Reset về mặc định 44 món
+        // Reset về mặc định 34 món
         function resetToDefault() {
-            if (confirm('Bạn có muốn đặt lại danh sách về 44 sản phẩm gốc của bộ Mix mới? Mọi thay đổi trong trình duyệt sẽ được khôi phục.')) {
+            if (confirm('Bạn có muốn đặt lại danh sách về 34 sản phẩm gốc của bộ Mix mới? Mọi thay đổi trong trình duyệt sẽ được khôi phục.')) {
                 localStorage.removeItem(LOCAL_STORAGE_KEY);
                 localStorage.removeItem('hay_chon_gia_dung_products_v2');
                 localStorage.removeItem('hay_chon_gia_dung_products_v2_44');
@@ -951,7 +951,7 @@ ${JSON.stringify(cleanProducts, null, 2)}
                 }
                 saveToStorage();
                 renderGrid();
-                showToast('🔄 Đã khôi phục 44 sản phẩm gốc!');
+                showToast('🔄 Đã khôi phục 34 sản phẩm gốc!');
             }
         }
 

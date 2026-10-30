@@ -617,7 +617,7 @@
 
     <!-- Game Scripts -->
     <script src="firebase-config.js"></script>
-    <script src="questions.js?v=20261026_v9"></script>
+    <script src="questions.js?v=20261030_v1"></script>
 
     <script>
         let currentSetId = 'set1';
@@ -1143,7 +1143,7 @@
             db.ref('custom_products').on('value', snap => {
                 const custom = snap.val();
                 if (custom && Array.isArray(custom) && custom.length > 0) {
-                    if (custom.length === 44 || (custom[0] && custom[0].name && custom[0].name.includes('KFC'))) {
+                    if (custom.length === 34 || custom.length === 44 || (custom[0] && custom[0].name && custom[0].name.includes('KFC'))) {
                         if (window.QUESTION_SETS && window.QUESTION_SETS.set4) {
                             window.QUESTION_SETS.set4.questions = custom;
                         }
@@ -1165,7 +1165,7 @@
                 }
             });
 
-            // Lắng nghe sản phẩm tùy chỉnh từ review_products_v2.html (Bộ 44 Món Mix)
+            // Lắng nghe sản phẩm tùy chỉnh từ review_products_v2.html (Bộ 34 Món Mix)
             db.ref('custom_products_v2').on('value', snap => {
                 const custom = snap.val();
                 if (custom && Array.isArray(custom) && custom.length > 0) {
